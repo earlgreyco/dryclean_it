@@ -1,5 +1,9 @@
 @import "bootstrap";
 
+body{
+	margin-top: 60px;
+}
+
 /* mixins, variables, etc. */
 
 @mixin box_sizing {
