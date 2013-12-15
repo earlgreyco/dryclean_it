@@ -22,7 +22,7 @@ describe "Authentication" do
   	end
 
   	describe "after visiting another page" do
-  		before { click_link "ProblemPop" }
+  		before { click_link "Sarmander" }
   		it { should_not have_selector('div.alert.alert-error') }
   	end
 

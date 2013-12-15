@@ -24,4 +24,4 @@ def secure_token
   end
 end
 
-ProblemPop::Application.config.secret_key_base = secure_token
+Sarmander::Application.config.secret_key_base = secure_token
