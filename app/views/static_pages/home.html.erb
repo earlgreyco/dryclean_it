@@ -1,1 +1,13 @@
 <% provide(:title, '') %>
+
+<% if @recipes.length > 0 %>
+
+	<% @recipes.each do |recipe| %>
+		<%= filepicker_image_tag recipe.filepicker_url %>
+		<%= recipe.title %>
+		<%= recipe.description %>
+	<% end %>
+
+	<%= will_paginate @recipes %>
+
+<% end %>

@@ -22,7 +22,7 @@ namespace :db do
     users.each do |user|
       5.times do |n|
         title =  Faker::Commerce.product_name + " #{n}"
-        description = Faker::Company.catch_phrase
+        description = Faker::Lorem.sentences(sentence_count = 5)
         user.recipes.create!(title: title, description: description)
       end
     end
@@ -40,7 +40,7 @@ namespace :db do
       end
 
       10.times do |n|
-        description = Faker::Company.catch_phrase
+        description = Faker::Lorem.sentences(sentence_count = 3)
         recipe_id = recipe
         Step.create!(description: description,
                      recipe_id: recipe_id)
