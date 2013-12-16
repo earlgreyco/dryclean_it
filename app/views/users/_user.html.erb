@@ -1,8 +1,16 @@
-<li>
-  <%= filepicker_image_tag user.filepicker_url, w: 160, h: 160, fit: 'clip' %>
-  <%= link_to user.name, user %>
-  <% if current_user.admin? && !current_user?(user) %>
-    | <%= link_to "delete", user, method: :delete,
-                                  data: { confirm: "You sure?" } %>
-  <% end %>
-</li>
+<tr>
+	<td>
+		<% if user.filepicker_url %>
+	  	<%= filepicker_image_tag user.filepicker_url, w: 160, h: 160, fit: 'clip' %>
+  	<% end %>
+  </td>
+  <td>
+  	<%= link_to user.name, user %>
+  </td>
+  <td>
+	  <% if current_user.admin? && !current_user?(user) %>
+	    <%= link_to "delete", user, method: :delete,
+	                                  data: { confirm: "You sure?" } %>
+	  <% end %>
+	</td>
+</tr>

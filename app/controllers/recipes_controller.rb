@@ -16,18 +16,21 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.friendly.find(params[:id])
     @ingredient = Ingredient.new
     @ingredient.recipe_id = @recipe.id
+    @step = Step.new
+    @step.recipe_id = @recipe.id
     @ingredients = @recipe.ingredients
+    @steps = @recipe.steps
   end
 
   def edit
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.friendly.find(params[:id])
   end
 
   def update
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.friendly.find(params[:id])
     if @recipe.update_attributes(recipe_params)
       flash[:success] = "Recipe updated!"
       redirect_to @recipe
@@ -37,7 +40,7 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-    Recipe.find(params[:id]).destroy
+    Recipe.friendly.find(params[:id]).destroy
     flash[:success] = "Recipe deleted."
     redirect_to recipes_url
   end
@@ -48,6 +51,6 @@ class RecipesController < ApplicationController
 
   private
   	def recipe_params
-  		params.require(:recipe).permit(:user_id, :title, :description)
+  		params.require(:recipe).permit(:user_id, :title, :slug, :description, :filepicker_url)
   	end
 end

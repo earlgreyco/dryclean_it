@@ -23,4 +23,10 @@ FactoryGirl.define do
 
     recipe
   end
+
+  factory :step do
+    sequence(:description) { |n| "This is step #{n}" }
+
+    recipe
+  end
 end

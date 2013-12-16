@@ -20,8 +20,8 @@ namespace :db do
     users = User.all(limit:5)
 
     users.each do |user|
-      50.times do |n|
-        title = Faker::Commerce.product_name
+      5.times do |n|
+        title =  Faker::Commerce.product_name + " #{n}"
         description = Faker::Company.catch_phrase
         user.recipes.create!(title: title, description: description)
       end
@@ -37,6 +37,13 @@ namespace :db do
         Ingredient.create!(title: title,
                            quantity: quantity,
                            recipe_id: recipe_id)
+      end
+
+      10.times do |n|
+        description = Faker::Company.catch_phrase
+        recipe_id = recipe
+        Step.create!(description: description,
+                     recipe_id: recipe_id)
       end
     end
   end

@@ -12,6 +12,9 @@ Sarmander::Application.routes.draw do
   #Ingredients
   resources :ingredients
 
+  #Steps
+  resources :steps
+
   #Sessions
   resources :sessions, only: [:new, :create, :destroy]
   match '/signin', to: 'sessions#new', via: 'get'

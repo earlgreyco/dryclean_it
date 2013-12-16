@@ -1,0 +1,9 @@
+<%= form_for(@step) do |f| %>
+	<%= f.text_area :description, placeholder: "description" %>
+
+	<%= f.filepicker_field :filepicker_url, dragdrop: true %>
+	<%= filepicker_image_tag @step.filepicker_url, w: 160, h: 160, fit: 'clip' %>
+
+	<%= f.hidden_field :recipe_id %>
+	<%= f.submit %>
+<% end %>

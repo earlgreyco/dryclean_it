@@ -1,6 +1,10 @@
 <%= form_for(@recipe) do |f| %>
-	<%= f.text_field :title %>
-	<%= f.text_area :description %>
+	<%= f.text_field :title, placeholder: "title" %>
+	<%= f.text_field :slug, placeholder: "slug" %>
+	<%= f.text_area :description, placeholder: "description" %>
+	<%= f.label :filepicker_url %>
+	<%= filepicker_image_tag @recipe.filepicker_url, w: 160, h: 160, fit: 'clip' %>
+	<%= f.filepicker_field :filepicker_url, dragdrop: true %>
 
 	<%= f.submit %>
 

@@ -1,14 +1,18 @@
 <% provide(:title, @recipe.title) %>
 
-<ul>
-	<li><%= @recipe.title %></li>
-	<li><%= @recipe.description %></li>
-</ul>
+<%= @recipe.title %>
+<%= @recipe.description %>
+<%= filepicker_image_tag @recipe.filepicker_url, w: 160, h: 160, fit: 'clip' %>
+
 
 <%= link_to "edit", edit_recipe_path(@recipe) %>
 <%= link_to "delete", @recipe, method: :delete,
 															data: { confirm: "You sure?" } %>
 
+<%= render 'ingredients/new' %>
+
 <%= render 'ingredients_section' %>
 
-<%= render 'ingredients/new' %>
+<%= render 'steps/new' %>
+
+<%= render 'steps_section' %>

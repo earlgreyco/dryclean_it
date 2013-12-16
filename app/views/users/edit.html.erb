@@ -12,6 +12,7 @@
 
 	<%= f.label :filepicker_url, "Upload Profile Picture:" %>
 	<%= f.filepicker_field :filepicker_url, dragdrop: true %>
+	<%= filepicker_image_tag @user.filepicker_url, w: 160, h: 160, fit: 'clip' %>
 
 	<%= f.label :password %>
 	<%= f.password_field :password %>

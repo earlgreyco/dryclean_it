@@ -1,0 +1,11 @@
+<%= step.description %>
+
+<% if step.filepicker_url? %>
+	<%= filepicker_image_tag step.filepicker_url, w: 160, h: 160, fit: 'clip' %>
+<% end %>
+
+<% if current_user %>
+	<%= link_to "edit", edit_step_path(step) %>
+	<%= link_to "delete", step, method: :delete,
+															data: { confirm: "You sure?" } %>
+<% end %>

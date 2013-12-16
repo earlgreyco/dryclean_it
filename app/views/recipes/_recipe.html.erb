@@ -2,6 +2,7 @@
 	<%= link_to recipe_path(recipe) do %>
 		<%= recipe.title %>
 		<%= recipe.description %>
+		<%= filepicker_image_tag recipe.filepicker_url, w: 160, h: 160, fit: 'clip' %>
 	<% end %>
 
 	<% if current_user %>

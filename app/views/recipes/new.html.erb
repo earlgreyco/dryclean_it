@@ -1,6 +1,7 @@
 <%= form_for(@recipe) do |f| %>
 	<%= f.text_field :title %>
 	<%= f.text_area :description %>
+	<%= f.filepicker_field :filepicker_url, dragdrop: true %>
 
 	<%= f.submit %>
 <% end %>
