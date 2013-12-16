@@ -1,0 +1,14 @@
+<% provide(:title, @recipe.title) %>
+
+<ul>
+	<li><%= @recipe.title %></li>
+	<li><%= @recipe.description %></li>
+</ul>
+
+<%= link_to "edit", edit_recipe_path(@recipe) %>
+<%= link_to "delete", @recipe, method: :delete,
+															data: { confirm: "You sure?" } %>
+
+<%= render 'ingredients_section' %>
+
+<%= render 'ingredients/new' %>

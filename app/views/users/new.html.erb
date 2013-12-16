@@ -11,6 +11,9 @@
 	<%= f.label :email %>
 	<%= f.text_field :email %>
 
+	<%= f.label :filepicker_url, "Upload Profile Picture:" %>
+	<%= f.filepicker_field :filepicker_url, dragdrop: true %>
+
 	<%= f.label :password %>
 	<%= f.password_field :password %>
 

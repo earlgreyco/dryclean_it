@@ -1,0 +1,12 @@
+<li>
+	<%= link_to recipe_path(recipe) do %>
+		<%= recipe.title %>
+		<%= recipe.description %>
+	<% end %>
+
+	<% if current_user %>
+		<%= link_to "edit", edit_recipe_path(recipe) %>
+		<%= link_to "delete", recipe, method: :delete,
+																	data: { confirm: "You sure?" } %>
+	<% end %>
+</li>

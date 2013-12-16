@@ -1,5 +1,5 @@
 <% provide(:title, @user.name) %>
 
-<%= gravatar_for @user %>
+<%= filepicker_image_tag @user.filepicker_url, w: 160, h: 160, fit: 'clip' %>
 <%= @user.name %>
 <%= @user.email %>
