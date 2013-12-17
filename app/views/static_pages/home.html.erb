@@ -3,11 +3,15 @@
 <% if @recipes.length > 0 %>
 
 	<% @recipes.each do |recipe| %>
-		<%= filepicker_image_tag recipe.filepicker_url %>
-		<%= recipe.title %>
-		<%= recipe.description %>
+		<%= link_to recipe_path(recipe) do %>
+			<div class="recipe-img">
+				<%= filepicker_image_tag recipe.filepicker_url %>
+			</div>
+		<% end %>
 	<% end %>
 
-	<%= will_paginate @recipes %>
+	<div class="center">
+		<%= will_paginate @recipes %>
+	</div>
 
 <% end %>
