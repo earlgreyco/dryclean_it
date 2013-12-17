@@ -1,5 +1,7 @@
 <% provide(:title, @user.name) %>
 
-<%= filepicker_image_tag @user.filepicker_url, w: 160, h: 160, fit: 'clip' %>
+<% if @user.filepicker_url? %>
+	<%= filepicker_image_tag @user.filepicker_url, w: 160, h: 160, fit: 'clip' %>
+<% end %>
 <%= @user.name %>
 <%= @user.email %>

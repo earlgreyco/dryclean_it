@@ -95,6 +95,42 @@ a{
 }
 
 
+/* tables */
+
+.form-table, .form-header{
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.form-header{
+	padding: 15px;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.form-table{
+	@extend .table;
+	@extend .table-hover;
+	
+	td{
+		border: 0px !important;
+		padding: 15px !important;
+		&:first-child{
+			width: 20%;
+		}
+		&:second-child{
+			width: 80%;
+		}
+	}
+
+	input, .button{
+		width: 30%;
+		min-width: 150px;
+	}
+}
+
+
 /* mixins, variables, etc. */
 
 @mixin box_sizing {

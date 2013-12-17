@@ -1,24 +1,45 @@
 <% provide(:title, "Edit user") %>
-<h1>Update your profile</h1>
+
+<h1 class="form-header">Update your profile</h1>
 
 <%= form_for(@user) do |f| %>
 	<%= render 'shared/error_messages' %>
 
-	<%= f.label :name %>
-	<%= f.text_field :name %>
+	<table class="form-table">
+		<tr>
+			<td><%= f.label :name %></td>
+			<td><%= f.text_field :name, placeholder: "name" %></td>
+		</tr>
 
-	<%= f.label :email %>
-	<%= f.text_field :email %>
+		<tr>
+			<td><%= f.label :email %></td>
+			<td><%= f.text_field :email, placeholder: "email" %></td>
+		</tr>
 
-	<%= f.label :filepicker_url, "Upload Profile Picture:" %>
-	<%= f.filepicker_field :filepicker_url, dragdrop: true %>
-	<%= filepicker_image_tag @user.filepicker_url, w: 160, h: 160, fit: 'clip' %>
+		<tr>
+			<td><%= f.label :filepicker_url, "Upload Profile Picture:" %></td>
+			
+			<td>
+				<%= f.filepicker_field :filepicker_url, dragdrop: true %>
+				<% if @user.filepicker_url %>
+					<%= filepicker_image_tag @user.filepicker_url, w: 160, h: 160, fit: 'clip' %>
+				<% end %>
+			</td>
+		</tr>
 
-	<%= f.label :password %>
-	<%= f.password_field :password %>
+		<tr>
+			<td><%= f.label :password %></td>
+			<td><%= f.password_field :password, placeholder: "password" %></td>
+		</tr>
 
-	<%= f.label :password_confirmation, "Confirm Password" %>
-	<%= f.password_field :password_confirmation %>
+		<tr>
+			<td><%= f.label :password_confirmation, "Confirm Password" %></td>
+			<td><%= f.password_field :password_confirmation, placeholder: "confirm password" %></td>
+		</tr>
 
-	<%= f.submit "Save changes" %>
+		<tr>
+			<td></td>
+			<td><%= f.submit "Save changes", class: "button" %></td>
+		</tr>
+	</table>
 <% end %>
