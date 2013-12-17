@@ -95,23 +95,33 @@ a{
 }
 
 
-/* tables */
+/* headers */
 
-.form-table, .form-header{
-	width: 80%;
-	margin-left: auto;
-	margin-right: auto;
+
+.index-header{
+	text-align: center;
+	font-size: 60px;
+	padding-top: 30px;
 }
 
 .form-header{
 	padding: 15px;
 	font-weight: bold;
 	text-decoration: underline;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
 }
+
+
+/* tables */
 
 .form-table{
 	@extend .table;
 	@extend .table-hover;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
 	
 	td{
 		border: 0px !important;
@@ -130,6 +140,19 @@ a{
 	}
 }
 
+.index-table{
+	@extend .table;
+	@extend .table-hover;
+	@extend .table-striped;
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+
+	td{
+		padding: 15px !important;
+	}
+}
 
 /* mixins, variables, etc. */
 
@@ -137,6 +160,19 @@ a{
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+
+/* pagination */
+
+.pagination{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus{
+	background-color: $blushing;
+	border: 1px solid $blushing;
 }
 
 
@@ -148,4 +184,8 @@ a{
   width: 100%;
   margin-top: 45px;
   @include box_sizing;
+}
+
+.center{
+	text-align: center;
 }
