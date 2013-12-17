@@ -1,14 +1,18 @@
-<li>
-	<%= link_to recipe_path(recipe) do %>
-		<%= recipe.title %>
+<tr>
+	<td>
+		<%= link_to recipe.title, recipe_path(recipe) %>
+	</td>
+	<td>
 		<% if recipe.filepicker_url %>
 			<%= filepicker_image_tag recipe.filepicker_url, w: 160, h: 160, fit: 'clip' %>
 		<% end %>
-	<% end %>
+	</td>
 
 	<% if current_user %>
-		<%= link_to "edit", edit_recipe_path(recipe) %>
+	<td>
+		<%= link_to "edit", edit_recipe_path(recipe) %> /
 		<%= link_to "delete", recipe, method: :delete,
 																	data: { confirm: "You sure?" } %>
+	</td>
 	<% end %>
-</li>
+</tr>

@@ -1,14 +1,20 @@
 <% provide(:title, 'All recipes') %>
-<h1>All recipes</h1>
+<h1 class="index-header">All recipes</h1>
 
 <% if @recipes.length > 0 %>	
 
-	<%= will_paginate %>
+	<div class="center">
+		<%= will_paginate %>
+	</div>
 
-	<ul>
-		<%= render @recipes %>
-	</ul>
+	<table class="index-table">
+		<tbody>
+			<%= render @recipes %>
+		</tbody>
+	</table>
 
-	<%= will_paginate %>
+	<div class="center">
+		<%= will_paginate %>
+	</div>
 
 <% end %>
