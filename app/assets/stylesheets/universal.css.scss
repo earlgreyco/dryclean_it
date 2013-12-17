@@ -10,7 +10,7 @@
 
 	button.navbar-toggle{
 		border: 1px solid white;
-		
+
 		&:hover{
 			background-color: $peach_skin;
 		}
@@ -46,6 +46,52 @@
 			}
 		}
 	}
+}
+
+
+/* input */
+
+input[type="text"], input[type="password"]{
+	background: white !important;
+	padding: 15px;
+	&:focus{
+		outline: none;
+	  border: 2px solid $blushing !important;
+	  box-shadow:none !important;
+	}
+}
+
+.input-margin-small{
+	margin: 10px 0px;
+}
+
+
+/* links */
+
+a{
+	color: $blushing;
+	&:hover{
+		color: $peach_skin;
+	}
+}
+
+
+/* buttons */
+
+.button{
+	background: $blushing;
+	color: white;
+	font-weight: bold;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border: 0px;
+	&:hover{
+		background-color: $peach_skin;
+	}
+}
+
+.button-margin-small{
+	margin: 10px 0px;
 }
 
 

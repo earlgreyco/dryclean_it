@@ -1,13 +1,14 @@
 <% provide(:title, "Sign in") %>
 
-<%= form_for(:session, url: sessions_path) do |f| %>
-	<%= f.label :email %>
-	<%= f.text_field :email %>
+<div class="sign-up-form row-fluid">
+	<%= form_for(:session, url: sessions_path) do |f| %>
+		<%= f.text_field :email, placeholder: "email", class: "col-md-12 input-margin-small" %><br/>
 
-	<%= f.label :password %>
-	<%= f.password_field :password %>
+		<%= f.password_field :password, placeholder: "password", class: "col-md-12 input-margin-small" %><br/>
 
-	<%= f.submit "Sign in" %>
-<% end %>
-
-New user? <%= link_to "Sign up now!", signup_path %>
+		<%= f.submit "Sign in", class: "col-md-12 button button-margin-small" %><br/>
+	<% end %>
+	<div class="sign-up-now">
+		Don't have an account? <%= link_to "Sign up now!", signup_path %>
+	</div>
+</div>

@@ -1,0 +1,13 @@
+@import "universal.css.scss";
+
+.sign-up-form{
+	@extend .col-md-4;
+	@extend .col-sm-offset-4;
+	margin-top: 130px;
+}
+
+.sign-up-now{
+	@extend .col-md-12;
+	text-align: center;
+	padding: 40px 0px;
+}
