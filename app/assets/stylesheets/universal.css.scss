@@ -1,9 +1,53 @@
 @import "colors.css.scss";
 @import "bootstrap";
 
-body{
-	margin-top: 60px;
+/* navbar */
+
+.navbar{
+	background: $blushing !important;
+	padding-left: 3%;
+	padding-right: 3%;
+
+	button.navbar-toggle{
+		border: 1px solid white;
+		
+		&:hover{
+			background-color: $peach_skin;
+		}
+	}
+
+	.icon-bar{
+		background-color: white !important;
+	}
+
+	.navbar-brand{
+		color: white;
+		font-weight: bold;
+
+		&:hover{
+			color: $peach_skin;
+		}
+	}
+
+	.nav{
+		li{
+			padding-left: 10px;
+			padding-right: 10px;
+
+			&:last-child{
+				padding-right: 0px;
+			}
+
+			a{
+				color: white;
+				&:hover{
+					color: $peach_skin;
+				}
+			}
+		}
+	}
 }
+
 
 /* mixins, variables, etc. */
 
