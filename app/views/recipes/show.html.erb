@@ -5,14 +5,14 @@
 <%= filepicker_image_tag @recipe.filepicker_url, w: 160, h: 160, fit: 'clip' %>
 
 
-<%= link_to "edit", edit_recipe_path(@recipe) %>
-<%= link_to "delete", @recipe, method: :delete,
-															data: { confirm: "You sure?" } %>
-
-<%= render 'ingredients/new' %>
-
 <%= render 'ingredients_section' %>
 
-<%= render 'steps/new' %>
-
 <%= render 'steps_section' %>
+
+<% if current_user && current_user.admin? %>
+	<%= render 'ingredients/new' %>
+	<%= render 'steps/new' %>
+	<%= link_to "edit", edit_recipe_path(@recipe) %>
+	<%= link_to "delete", @recipe, method: :delete,
+																data: { confirm: "You sure?" } %>
+<% end %>
