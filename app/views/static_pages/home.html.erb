@@ -4,7 +4,7 @@
 
 	<% @recipes.each do |recipe| %>
 		<%= link_to recipe_path(recipe) do %>
-			<div class="recipe-img">
+			<div class="recipe-img img-hide">
 				<%= filepicker_image_tag recipe.filepicker_url %>
 			</div>
 		<% end %>

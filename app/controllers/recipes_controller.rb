@@ -17,16 +17,18 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.friendly.find(params[:id])
-    @ingredient = Ingredient.new
-    @ingredient.recipe_id = @recipe.id
-    @step = Step.new
-    @step.recipe_id = @recipe.id
     @ingredients = @recipe.ingredients
     @steps = @recipe.steps
   end
 
   def edit
     @recipe = Recipe.friendly.find(params[:id])
+    @ingredient = Ingredient.new
+    @ingredient.recipe_id = @recipe.id
+    @ingredients = @recipe.ingredients
+    @step = Step.new
+    @step.recipe_id = @recipe.id
+    @steps = @recipe.steps
   end
 
   def update

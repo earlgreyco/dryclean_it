@@ -1,7 +1,19 @@
-<%= form_for(@recipe) do |f| %>
-	<%= f.text_field :title %>
-	<%= f.text_area :description %>
-	<%= f.filepicker_field :filepicker_url, dragdrop: true %>
+<div class="row-fluid new-recipe-form">
+	<%= form_for(@recipe) do |f| %>
+		<div class="col-md-12">
+			<%= f.text_field :title, label: false, placeholder: "title", class: "col-md-12 input-margin-small" %>
+		</div>
 
-	<%= f.submit %>
-<% end %>
+		<div class="col-md-12 filepicker-placement">
+			<%= f.filepicker_field :filepicker_url, dragdrop: true %>
+		</div>
+		
+		<div class="col-md-12 ckeditor-margin">
+			<%= f.cktext_area :description %>
+		</div>
+
+		<div class="col-md-12">
+			<%= f.submit "Create Recipe", class: "col-md-12 button button-margin-small" %>
+		</div>
+	<% end %>
+</div>

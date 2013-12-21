@@ -1,6 +1,7 @@
 <%= form_for(@ingredient) do |f| %>
+	<%= f.text_field :quantity, placeholder: "quantity" %> 
+	x 
 	<%= f.text_field :title, placeholder: "title" %>
-	<%= f.text_field :quantity, placeholder: "quantity" %>
 	<%= f.hidden_field :recipe_id %>
 	<%= f.submit %>
 <% end %>

@@ -1,8 +1,11 @@
-<%= ingredient.title %>
-<%= ingredient.quantity %>
+<li>
+	<%= ingredient.quantity %> 
+	x 
+	<%= ingredient.title %>
 
-<% if current_user && current_user.admin %>
-	<%= link_to "edit", edit_ingredient_path(ingredient) %>
-	<%= link_to "delete", ingredient, method: :delete,
-																		data: { confirm: "You sure?" } %>
-<% end %>
+	<% if current_user && current_user.admin %>
+		<%= link_to "edit", edit_ingredient_path(ingredient) %>
+		<%= link_to "delete", ingredient, method: :delete,
+																			data: { confirm: "You sure?" } %>
+	<% end %>
+</li>

@@ -1,11 +1,40 @@
-<%= form_for(@recipe) do |f| %>
-	<%= f.text_field :title, placeholder: "title" %>
-	<%= f.text_field :slug, placeholder: "slug" %>
-	<%= f.text_area :description, placeholder: "description" %>
-	<%= f.label :filepicker_url %>
-	<%= filepicker_image_tag @recipe.filepicker_url, w: 160, h: 160, fit: 'clip' %>
-	<%= f.filepicker_field :filepicker_url, dragdrop: true %>
+<% if current_user && current_user.admin %>
+	<div id="tab-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#details" data-toggle="tab">Details</a></li>
+			<li><a href="#ingredients" data-toggle="tab">Ingredients</a></li>
+			<li><a href="#steps" data-toggle="tab">Steps</a></li>
+		</ul>
+		<div class="tab-content">
+			<div class="tab-pane active" id="details">
+				<%= form_for(@recipe) do |f| %>
 
-	<%= f.submit %>
+					<%= f.label :image, class: "label-placement" %><br/>
+					<%= filepicker_image_tag @recipe.filepicker_url, w: 160, h: 160, fit: 'clip' %>
+					<%= f.filepicker_field :filepicker_url, dragdrop: true %>
 
+					<%= f.label "title", class: "label-placement" %><br/>
+					<%= f.text_field :title, placeholder: "title", class: "col-md-12" %>
+
+					<%= f.label "slug", class: "label-placement" %><br/>
+					<%= f.text_field :slug, placeholder: "slug", class: "col-md-12" %>
+
+					<%= f.label "description", class: "label-placement" %><br/>
+					<%= f.cktext_area :description %><br/>
+
+					<%= f.submit "Update Recipe", class: "button col-md-12" %>
+				<% end %>
+			</div>
+
+			<div class="tab-pane" id="ingredients">
+				<%= render 'ingredients/new' %>
+				<%= render 'ingredients/ingredient_list' %>
+			</div>
+
+			<div class="tab-pane" id="steps">
+				<%= render 'steps/new' %>
+				<%= render 'steps/step_list' %>
+			</div>
+		</div>
+	</div>
 <% end %>

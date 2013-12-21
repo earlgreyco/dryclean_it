@@ -1,18 +1,25 @@
 <% provide(:title, @recipe.title) %>
 
-<%= @recipe.title %>
-<%= @recipe.description %>
-<%= filepicker_image_tag @recipe.filepicker_url, w: 160, h: 160, fit: 'clip' %>
 
+<% if @recipe.filepicker_url? %>
+	<div class="recipe-img">
+		<%= filepicker_image_tag @recipe.filepicker_url %>
+	</div>
+<% end %>
 
-<%= render 'ingredients_section' %>
+<span class="row-fluid">
+	<div class="recipe-header col-md-7">
+		<div class="recipe-title">
+			<%= @recipe.title %>
+		</div>
+		<div class="recipe-description">
+			<%= raw(@recipe.description) %>
+		</div>
+	</div>
+
+	<div class="ingredients-header col-md-5">
+		<%= render 'ingredients_section' %>
+	</div>
+</span>
 
 <%= render 'steps_section' %>
-
-<% if current_user && current_user.admin? %>
-	<%= render 'ingredients/new' %>
-	<%= render 'steps/new' %>
-	<%= link_to "edit", edit_recipe_path(@recipe) %>
-	<%= link_to "delete", @recipe, method: :delete,
-																data: { confirm: "You sure?" } %>
-<% end %>

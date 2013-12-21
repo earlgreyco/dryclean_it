@@ -1,5 +1,9 @@
 <% provide(:title, 'All recipes') %>
-<h1 class="index-header">All recipes</h1>
+
+<h1 class="index-header">
+	All recipes
+	<span class="pull-right"><%= link_to "[ new ]", new_recipe_path, class: "new-btn" %></span>
+</h1>
 
 <% if @recipes.length > 0 %>	
 
