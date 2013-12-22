@@ -1,0 +1,16 @@
+.pure-menu-selected{
+	color: #fbfdfc !important;
+	&:hover{
+		color: #fbfdfc !important;
+		background: #3d8f45 !important;
+	}
+}
+
+.pure-menu{
+	text-transform: capitalize;
+}
+
+#menu .pure-menu-heading{
+	padding-top: 30px;
+	padding-bottom: 30px;
+}

@@ -2,11 +2,9 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 gem 'rails', '4.0.1'
-gem 'bootstrap-sass', '3.0.3.0'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'faker', '1.2.0'
 gem 'will_paginate', '3.0.4'
-gem 'bootstrap-will_paginate', '0.0.10'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
@@ -48,7 +46,6 @@ gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'
 gem 'filepicker-rails'
 gem 'friendly_id'
-gem "ckeditor"
 
 group :doc do
   gem 'sdoc', '0.3.20', require: false

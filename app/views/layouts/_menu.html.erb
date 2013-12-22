@@ -1,0 +1,42 @@
+<div class="pure-menu pure-menu-open">
+  <%= link_to "Sarmander", root_path, class: "pure-menu-heading" %>
+
+  <ul>
+    <% if !current_user %>
+      <li><%= link_to "sign in", signin_path, class: highlight(signin_path) %></li>
+      <li><%= link_to "sign up", signup_path, class: highlight(signup_path) %></li>
+    <% else %>
+      <% if current_user.admin? %>
+        <li><%= link_to "recipes", recipes_path, class: highlight(recipes_path) %></li>
+        <li><%= link_to "users", users_path, class: highlight(users_path) %></li>
+      <% end %>
+      <li><%= link_to "profile", current_user, class: highlight(current_user) %></li>
+      <li><%= link_to "settings", edit_user_path(current_user), class: highlight(edit_user_path(current_user)) %></li>
+      <li class="menu-item-divided"><%= link_to "sign out", signout_path, method: "delete", class: highlight(signout_path) %></li>
+    <% end %>
+  </ul>
+</div>
+
+<% if false %>
+
+<li class="pure-menu-selected menu-item-divided">
+        <a href="http://purecss.io/layouts/">Layouts</a>
+    </li>
+    
+    <li class="menu-item-divided">
+    
+    </li>
+<%= link_to "The Sarmander", root_path %>
+<% if !current_user %>
+  <%= link_to "sign in", signin_path %>
+  <%= link_to "sign up", signup_path %>
+<% else %>
+  <% if current_user.admin? %>
+    <%= link_to "recipes", recipes_path %>
+    <%= link_to "users", users_path %>
+  <% end %>
+  <%= link_to "profile", current_user %>
+  <%= link_to "settings", edit_user_path(current_user) %>
+  <%= link_to "sign out", signout_path, method: "delete" %>
+<% end %>
+<% end %>

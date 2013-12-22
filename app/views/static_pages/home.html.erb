@@ -10,8 +10,6 @@
 		<% end %>
 	<% end %>
 
-	<div class="center">
-		<%= will_paginate @recipes %>
-	</div>
+	<%= will_paginate @recipes, :page_links => false %>
 
 <% end %>
