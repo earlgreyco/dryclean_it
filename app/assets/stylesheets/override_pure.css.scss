@@ -1,8 +1,9 @@
 .pure-menu-selected{
 	color: #fbfdfc !important;
+	background: #29893C !important;
 	&:hover{
 		color: #fbfdfc !important;
-		background: #3d8f45 !important;
+		background: #29893C !important;
 	}
 }
 
@@ -13,4 +14,9 @@
 #menu .pure-menu-heading{
 	padding-top: 30px;
 	padding-bottom: 30px;
+}
+
+textarea{
+	min-width: 198px;
+	min-height: 100px;
 }

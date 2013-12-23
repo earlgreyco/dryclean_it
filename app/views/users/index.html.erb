@@ -1,20 +1,23 @@
 <% provide(:title, 'All users') %>
-<h1 class="index-header">All users</h1>
 
 <% if @users.length > 0 %>
 
-	<div class="center">
-		<%= will_paginate %>
+	<div class="header">
+		<h1>All Users</h1>
+		<h2>[ <%= @users.count %> ]</h2>
 	</div>
 
-	<table class="index-table">
+	<table class="position-table pure-table pure-table-horizontal">
+		<thead>
+			<tr>
+				<th>Image</th>
+				<th>Name</th>
+				<th>Action</th>
+			</tr>
+		</thead>
 		<tbody>
 			<%= render @users %>
 		</tbody>
 	</table>
-
-	<div class="center">
-		<%= will_paginate %>
-	</div>
 
 <% end %>

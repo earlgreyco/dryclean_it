@@ -1,5 +1,9 @@
 class SessionsController < ApplicationController
 	def new
+    if current_user
+      flash[:error] = "You're already signed in!"
+      redirect_to current_user
+    end
 	end
 
 	def create
@@ -8,7 +12,7 @@ class SessionsController < ApplicationController
       sign_in user
       redirect_back_or user
     else
-      flash.now[:error] = 'Invalid email/password combination'
+      flash.now[:error] = 'Doh! Invalid email/password combination'
       render 'new'
     end
   end

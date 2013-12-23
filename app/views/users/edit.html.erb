@@ -1,45 +1,48 @@
 <% provide(:title, "Edit user") %>
 
-<h1 class="form-header">Update your profile</h1>
+<div class="header">
+	<h1>Update Your Profile</h1>
+	<h2>And make sure to add your pretty mug!</h2>
+</div>
 
-<%= form_for(@user) do |f| %>
-	<%= render 'shared/error_messages' %>
+<div class="main-padding">
+	<div class="pure-form pure-form-stacked settings-form">
+		<%= form_for(@user) do |f| %>
+			<%= render 'shared/error_messages' %>
 
-	<table class="form-table">
-		<tr>
-			<td><%= f.label :name %></td>
-			<td><%= f.text_field :name, placeholder: "name" %></td>
-		</tr>
-
-		<tr>
-			<td><%= f.label :email %></td>
-			<td><%= f.text_field :email, placeholder: "email" %></td>
-		</tr>
-
-		<tr>
-			<td><%= f.label :filepicker_url, "Upload Profile Picture:" %></td>
-			
-			<td>
-				<%= f.filepicker_field :filepicker_url, dragdrop: true %>
+				
 				<% if @user.filepicker_url %>
-					<%= filepicker_image_tag @user.filepicker_url, w: 160, h: 160, fit: 'clip' %>
+					<div class="same-line">
+						<%= filepicker_image_tag @user.filepicker_url, w: 60, h: 60, fit: 'clip' %>
+						<div class="link-lookalike-position">
+							<%= f.filepicker_field :filepicker_url, button_text: "Upload New Picture", button_class: "link-lookalike" %>
+						</div>
+					</div>
+				<% else %>
+					<%= f.filepicker_field :filepicker_url, button_text: "Upload Your Picture", button_class: "pure-button link-lookalike" %>
 				<% end %>
-			</td>
-		</tr>
 
-		<tr>
-			<td><%= f.label :password %></td>
-			<td><%= f.password_field :password, placeholder: "password" %></td>
-		</tr>
+				<fieldset>
+					<%= f.label :name %>
+					<%= f.text_field :name %>
 
-		<tr>
-			<td><%= f.label :password_confirmation, "Confirm Password" %></td>
-			<td><%= f.password_field :password_confirmation, placeholder: "confirm password" %></td>
-		</tr>
 
-		<tr>
-			<td></td>
-			<td><%= f.submit "Save changes", class: "button" %></td>
-		</tr>
-	</table>
-<% end %>
+					<%= f.label :email %>
+					<%= f.text_field :email %>
+
+					<%= f.label :description %>
+					<%= f.text_area :description %>
+
+					<%= f.label :password %>
+					<%= f.password_field :password %>
+
+
+					<%= f.label :password_confirmation, "Confirm Password" %>
+					<%= f.password_field :password_confirmation %>
+					<br/>
+					<%= f.submit "Save Changes", class: "pure-button pure-button-primary" %>
+				</fieldset>
+			</div>
+		<% end %>
+	</div>
+</div>

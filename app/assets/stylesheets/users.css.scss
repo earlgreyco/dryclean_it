@@ -1,3 +1,36 @@
 @import "universal.css.scss";
 
+/* user profile */
+
+.user-profile-img{
+	margin-bottom: 20px;
+}
+
+.blockquote-width{
+	width: 90%;
+	margin: 0px 5%;
+}
+
 /* settings */
+
+.settings-form{
+	label{
+		margin-top: 20px !important;
+	}
+}
+
+.link-lookalike{
+	background: $trans;
+	border: 0px;
+	font-weight: bold;
+	color: $green;
+
+	&:hover{
+		text-decoration: underline;
+	}
+}
+
+.link-lookalike-position{
+	margin-top: -35px !important;
+	margin-left: 65px;
+}

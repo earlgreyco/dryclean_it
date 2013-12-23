@@ -1,24 +1,22 @@
 <% provide(:title, 'All recipes') %>
 
-<h1 class="index-header">
-	All recipes
-	<span class="pull-right"><%= link_to "[ new ]", new_recipe_path, class: "new-btn" %></span>
-</h1>
-
 <% if @recipes.length > 0 %>	
-
-	<div class="center">
-		<%= will_paginate %>
+	<div class="header">
+		<h1>All Recipes</h1>
+		<h2>[ <%= @recipes.count %> ]</h2>
 	</div>
 
-	<table class="index-table">
+	<table class="pure-table pure-table-horizontal position-table">
+		<thead>
+			<tr>
+				<th>Image</th>
+				<th>Name</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
 		<tbody>
 			<%= render @recipes %>
 		</tbody>
 	</table>
-
-	<div class="center">
-		<%= will_paginate %>
-	</div>
 
 <% end %>

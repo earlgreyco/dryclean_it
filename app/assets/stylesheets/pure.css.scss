@@ -33,13 +33,13 @@ body {
     font-size: 100%;
     *font-size: 90%; /*IE 6/7 - To reduce IE's oversized button text*/
     *overflow: visible; /*IE 6/7 - Because of IE's overly large left/right padding on buttons */
-    padding: 0.74em 1.5em 0.74em;
-    color: #fbfdfc; /* rgba not supported (IE 8) */
+    padding: 0.62em 1.5em 0.62em;
+    color: #0e2012; /* rgba not supported (IE 8) */
     /* color: rgba(0, 0, 0, 0.80); rgba supported */
     /* *color: #444; IE 6 & 7 */
-    border: 1px solid #398440; /*IE 6/7/8*/
+    border: 1px solid #8ecc9b; /*IE 6/7/8*/
     border: none rgba(0, 0, 0, 0); /*IE9 + everything else*/
-    background-color: #3d8f45;
+    background-color: #99d1a4;
     text-decoration: none;
     border-radius: 2px;
     -webkit-font-smoothing: antialiased;
@@ -99,8 +99,8 @@ body {
 .pure-skin-sarmander .pure-button-selected,
 .pure-skin-sarmander a.pure-button-primary,
 .pure-skin-sarmander a.pure-button-selected {
-    background-color: #87DE90;
-    color: #010401;
+    background-color: #29893C;
+    color: #f7fdf8;
 }
 
 /*! Copyright 2013 Yahoo! Inc. http://yuilibrary.com/license/ */
@@ -339,7 +339,7 @@ Forms Core
 .pure-skin-sarmander .pure-form input[type="color"],
 .pure-skin-sarmander .pure-form select,
 .pure-skin-sarmander .pure-form textarea {
-    padding: 0.74em 0.6em;
+    padding: 0.62em 0.6em;
     display: inline-block;
     border: 1px solid #e6e6e6;
     font-size: 0.8em;
@@ -524,7 +524,7 @@ Forms Core
 }
 .pure-skin-sarmander .pure-form .pure-group input {
     display: block;
-    padding: 0.74em 0.6em;
+    padding: 0.62em 0.6em;
     margin: 0;
     border-radius: 0;
     position: relative;
@@ -586,7 +586,7 @@ Forms Core
     border-collapse: collapse;
     border-spacing: 0;
     empty-cells: show;
-    border: 1px solid #132b15;
+    border: 1px solid #d1ebd7;
 }
 
 .pure-skin-sarmander .pure-table caption {
@@ -598,12 +598,12 @@ Forms Core
 
 .pure-skin-sarmander .pure-table td,
 .pure-skin-sarmander .pure-table th {
-    border-left: 1px solid #132b15;/* inner column border */
+    border-left: 1px solid #d1ebd7;/* inner column border */
     border-width: 0 0 0 1px;
     font-size: inherit;
     margin: 0;
     overflow: visible; /*to make ths where the title is really long work*/
-    padding: 0.44em 0.6em; /* cell padding */
+    padding: 0.37em 0.6em; /* cell padding */
 }
 
 .pure-skin-sarmander .pure-table td:first-child,
@@ -612,8 +612,8 @@ Forms Core
 }
 
 .pure-skin-sarmander .pure-table thead {
-    background-color: #2f6f36;
-    color: #fbfdfc;
+    background-color: #c7e6cd;
+    color: #18351e;
     text-align: left;
     vertical-align: bottom;
 }
@@ -624,24 +624,24 @@ striping:
    odd  - #f2f2f2 (light gray)
 */
 .pure-skin-sarmander .pure-table td {
-    background-color: #1c401f;
-    color: #d1ebd3;
+    background-color: #e6f4e9;
+    color: #214a2a;
 }
 .pure-skin-sarmander .pure-table-odd td {
-    background-color: #132b15;
-    color: #bce1bf;
+    background-color: #d1ebd7;
+    color: #132a18;
 }
 
 /* nth-child selector for modern browsers */
 .pure-skin-sarmander .pure-table-striped tr:nth-child(2n-1) td {
-    background-color: #132b15;
-    color: #bce1bf;
+    background-color: #d1ebd7;
+    color: #132a18;
 }
 
 
 /* BORDERED TABLES */
 .pure-skin-sarmander .pure-table-bordered td {
-    border-bottom: 1px solid #132b15;
+    border-bottom: 1px solid #d1ebd7;
 }
 .pure-skin-sarmander .pure-table-bordered tbody > tr:last-child td,
 .pure-skin-sarmander .pure-table-horizontal tbody > tr:last-child td {
@@ -652,7 +652,7 @@ striping:
 .pure-skin-sarmander .pure-table-horizontal td,
 .pure-skin-sarmander .pure-table-horizontal th {
     border-width: 0 0 1px 0;
-    border-bottom:1px solid #132b15;
+    border-bottom:1px solid #d1ebd7;
 }
 .pure-skin-sarmander .pure-table-horizontal tbody > tr:last-child td {
     border-bottom-width: 0;
@@ -702,7 +702,7 @@ striping:
     display: block;
     color: inherit;
     line-height: 1.5em;
-    padding: 0.52em 1.4em;
+    padding: 0.43em 1.4em;
     text-decoration: none;
     white-space: nowrap;
 }
@@ -722,7 +722,7 @@ striping:
     /* height: 2.4em; removed for Skin Builder */
 }
 
-.pure-skin-sarmander .pure-menu li a { padding: 0.52em 1.4em; }
+.pure-skin-sarmander .pure-menu li a { padding: 0.43em 1.4em; }
 
 .pure-skin-sarmander .pure-menu-can-have-children > .pure-menu-label:after {
     content: '\25B8';
@@ -737,7 +737,7 @@ striping:
 }
 
 .pure-skin-sarmander .pure-menu-separator {
-    background-color: #132b15;
+    background-color: #d1ebd7;
     display: block;
     height: 1px;
     font-size: 0;
@@ -858,8 +858,8 @@ margin: 7px 2px;
 
 .pure-skin-sarmander .pure-menu.pure-menu-open,
 .pure-skin-sarmander .pure-menu.pure-menu-horizontal li .pure-menu-children {
-    background: #1c401f; /* Old browsers */
-    border: 1px solid #132b15;
+    background: #e6f4e9; /* Old browsers */
+    border: 1px solid #d1ebd7;
 }
 
 /* remove borders for horizontal menus */
@@ -880,28 +880,28 @@ margin: 7px 2px;
 
 .pure-skin-sarmander .pure-menu a,
 .pure-skin-sarmander .pure-menu .pure-menu-can-have-children > li:after {
-    color: #d1ebd3;
+    color: #214a2a;
 }
 
 .pure-skin-sarmander .pure-menu .pure-menu-can-have-children > li:hover:after {
-    color: #bce1bf;
+    color: #132a18;
 }
 
 /* Focus style for a dropdown menu-item when the parent has been opened */
 .pure-skin-sarmander .pure-menu .pure-menu-open {
-    background: #17351a;
+    background: #bce1c4;
 }
 
 .pure-skin-sarmander .pure-menu li a:hover,
 .pure-skin-sarmander .pure-menu li a:focus {
-    background: #17351a;
+    background: #bce1c4;
 }
 
 /* DISABLED STATES */
 .pure-skin-sarmander .pure-menu li.pure-menu-disabled a:hover,
 .pure-skin-sarmander .pure-menu li.pure-menu-disabled a:focus {
-    background: #1c401f;
-    color: #43984a;
+    background: #e6f4e9;
+    color: #58b66d;
 }
 
 .pure-skin-sarmander .pure-menu .pure-menu-disabled > a {
@@ -912,29 +912,29 @@ margin: 7px 2px;
 
 .pure-skin-sarmander .pure-menu .pure-menu-disabled > a,
 .pure-skin-sarmander .pure-menu .pure-menu-can-have-children.pure-menu-disabled > a:after {
-    color: #43984a;
+    color: #58b66d;
 }
 
 /* HEADINGS */
 .pure-skin-sarmander .pure-menu .pure-menu-heading {
-    color: #fbfdfc;
+    color: #0e2012;
     text-transform: uppercase;
     font-size: 90%;
     margin-top: 0.5em;
-    border-bottom: solid 1px #132b15;
+    border-bottom: solid 1px #d1ebd7;
 }
 
 
 /* SELECTED MENU ITEM */
 .pure-skin-sarmander .pure-menu li.pure-menu-selected a {
-    background-color: #87DE90;
-    color: #081c0a;
+    background-color: #29893C;
+    color: #f7fdf8;
 }
 
 /* FIXED MENU */
 .pure-skin-sarmander .pure-menu.pure-menu-open.pure-menu-fixed {
     border: none;
-    border-bottom: 1px solid #132b15;
+    border-bottom: 1px solid #d1ebd7;
 }
 /* end from PURE menu.css ***********************************/
 /* from PURE menu-responsive.css ****************************/
@@ -948,7 +948,7 @@ margin: 7px 2px;
 
     .pure-skin-sarmander .pure-menu-children li {
         display: block;
-        border-bottom:1px solid #132b15;
+        border-bottom:1px solid #d1ebd7;
     }
 
 }

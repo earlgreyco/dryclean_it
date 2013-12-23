@@ -8,7 +8,12 @@ class UsersController < ApplicationController
   end
 
   def new
-  	@user = User.new
+    if !current_user
+    	@user = User.new
+    else
+      flash[:error] = "Doh! You're already signed in!"
+      redirect_to current_user
+    end
   end
 
   def create
@@ -43,13 +48,13 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.all
   end
 
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :filepicker_url, :password,
+      params.require(:user).permit(:name, :email, :description, :filepicker_url, :password,
                                    :password_confirmation)
     end
 

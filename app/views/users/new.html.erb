@@ -1,17 +1,27 @@
 <% provide(:title, 'Sign up') %>
 
-<div class="sign-up-form row-fluid">
-	<%= form_for(@user) do |f| %>
-		<%= render 'shared/error_messages' %>
+<div class="header">
+	<h1>Sign Up</h1>
+	<h2>It's free and always will be!</h2>
+</div>
 
-		<%= f.text_field :name, placeholder: "name", class: "col-md-12 input-margin-small" %><br/>
+<div class="main-padding">
+	<div class="pure-form">
+		<%= form_for(@user) do |f| %>
+			<%= render 'shared/error_messages' %>
 
-		<%= f.text_field :email, placeholder: "email", class: "col-md-12 input-margin-small" %><br/>
+			<fieldset class="pure-group">
 
-		<%= f.password_field :password, placeholder: "password", class: "col-md-12 input-margin-small" %><br/>
+				<%= f.text_field :name, placeholder: "name" %>
 
-		<%= f.password_field :password_confirmation, placeholder: "password confirmation", class: "col-md-12 input-margin-small" %><br/>
+				<%= f.text_field :email, placeholder: "email" %>
 
-		<%= f.submit "Create my account", class: "col-md-12 button button-margin-small" %>
-	<% end %>
+				<%= f.password_field :password, placeholder: "password" %>
+
+				<%= f.password_field :password_confirmation, placeholder: "password confirmation" %>
+			</fieldset>
+
+			<%= f.submit "Sign Up", class: "pure-button pure-button-primary" %>
+		<% end %>
+	</div>
 </div>

@@ -12,7 +12,6 @@ class RecipesController < ApplicationController
     else
       render 'new'
   	end
-
   end
 
   def show
@@ -48,7 +47,7 @@ class RecipesController < ApplicationController
   end
 
   def index
-  	@recipes = Recipe.paginate(page: params[:page])
+  	@recipes = Recipe.all
   end
 
   private
