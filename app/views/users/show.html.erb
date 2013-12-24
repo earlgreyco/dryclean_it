@@ -7,9 +7,11 @@
 
 <div class="main-padding">
 	<div class="pure-g-r">
-		<div class="pure-u-1-5 user-profile-img">
+		<div class="pure-u-1-5 push-blockquote">
 			<% if @user.filepicker_url? %>
-				<%= filepicker_image_tag @user.filepicker_url, class: "user-profile-img" %>
+				<div class="user-profile-img">
+					<%= filepicker_image_tag @user.filepicker_url %>
+				</div>
 			<% end %>
 		</div>
 		<div class="pure-u-4-5">

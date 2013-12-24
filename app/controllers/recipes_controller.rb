@@ -36,6 +36,12 @@ class RecipesController < ApplicationController
       flash[:success] = "Recipe updated!"
       redirect_to @recipe
     else
+      @ingredient = Ingredient.new
+      @ingredient.recipe_id = @recipe.id
+      @ingredients = @recipe.ingredients
+      @step = Step.new
+      @step.recipe_id = @recipe.id
+      @steps = @recipe.steps
       render 'edit'
     end
   end

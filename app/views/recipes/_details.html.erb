@@ -1,0 +1,22 @@
+<div class="pure-form pure-form-stacked">
+	<%= form_for(@recipe) do |f| %>
+		<%= render 'shared/error_messages', object: f.object %>
+
+		<fieldset class="pure-group">
+			<%= filepicker_image_tag @recipe.filepicker_url, w: 160, h: 160, fit: 'clip' %>
+
+			<%= f.filepicker_field :filepicker_url, button_text: "Upload Image", class: "link-lookalike" %>
+
+			<%= f.label :title %>
+			<%= f.text_field :title, placeholder: "title" %>
+
+			<%= f.label :slug %>
+			<%= f.text_field :slug %>
+
+			<%= f.label :description %>
+			<%= f.text_area :description %>
+		</fieldset>
+
+		<%= f.submit "Update Recipe", class: "pure-button pure-button-primary" %>
+	<% end %>
+</div>

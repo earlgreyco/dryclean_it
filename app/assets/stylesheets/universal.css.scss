@@ -31,6 +31,10 @@ img{
 	padding: 50px 22.5%;
 }
 
+.main-padding-large{
+	padding: 50px 14%;
+}
+
 /* blockquote */
 
 blockquote{
@@ -78,18 +82,30 @@ a{
 
 /* flash */
 
-.alert-success{
-	background: #c7e6cd;
-	color: $green;
+.alert{
 	padding: 20px;
 }
 
+.alert-success{
+	background: #c7e6cd;
+	color: $green;
+}
+
+.alert-error{
+	background: $red;
+	color: white;
+}
 
 /* tables */
-
-
 
 .position-table{
 	width: 60%;
 	margin: 30px auto;
+}
+
+/* errors */
+
+#error_list{
+	color: $red;
+	padding: 20px;
 }

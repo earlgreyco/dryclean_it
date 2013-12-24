@@ -1,9 +1,13 @@
-<%= form_for(@step) do |f| %>
-	<%= f.text_area :description, placeholder: "description" %>
+<div class="pure-form">
+	<%= form_for(@step) do |f| %>
+		<fieldset>
+			<%= f.text_area :description, placeholder: "description" %>
 
-	<%= f.label :filepicker_url, "Upload photo:" %>
-	<%= f.filepicker_field :filepicker_url, dragdrop: true %>
-	
-	<%= f.hidden_field :recipe_id %>
-	<%= f.submit %>
-<% end %>
+			<%= f.filepicker_field :filepicker_url, button_text: "Upload Image", class: "link-lookalike" %>
+			
+			<%= f.hidden_field :recipe_id %>
+		</fieldset>
+		
+		<%= f.submit "Add Step", class: "pure-button pure-button-primary" %>
+	<% end %>
+</div>

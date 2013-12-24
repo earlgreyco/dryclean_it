@@ -22,7 +22,7 @@
 
 	<div id="main">
 
-    <% if !current_user && !current_page?(signup_path) && !current_page?(signin_path) %>
+    <% if !current_user && current_page?(root_path) %>
       <%= link_to signup_path, class: "dude-just-sign-up" do %>
         <div class="header">
           <h1>You can only see five recipes now.</h1> 

@@ -8,7 +8,7 @@ class StepsController < ApplicationController
 		@saved = @step.save
 		if @saved
 			flash[:success] = "Added step!"
-			redirect_to recipe_url(@step.recipe)
+			redirect_to edit_recipe_path(@step.recipe)
 		else
 			render 'new'
 		end

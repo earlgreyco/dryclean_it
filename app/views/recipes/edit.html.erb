@@ -1,40 +1,60 @@
 <% if current_user && current_user.admin %>
-	<div id="tab-wrap">
-		<ul class="nav nav-tabs">
-			<li class="active"><a href="#details" data-toggle="tab">Details</a></li>
-			<li><a href="#ingredients" data-toggle="tab">Ingredients</a></li>
-			<li><a href="#steps" data-toggle="tab">Steps</a></li>
-		</ul>
-		<div class="tab-content">
-			<div class="tab-pane active" id="details">
-				<%= form_for(@recipe) do |f| %>
+	<div class="header">
+		<h1><%= @recipe.title %></h1>
+		<h2><a href="<%= recipe_path(@recipe) %>">/<%= @recipe.slug %></a></h2>
+	</div>
 
-					<%= f.label :image, class: "label-placement" %><br/>
-					<%= filepicker_image_tag @recipe.filepicker_url, w: 160, h: 160, fit: 'clip' %>
-					<%= f.filepicker_field :filepicker_url, dragdrop: true %>
-
-					<%= f.label "title", class: "label-placement" %><br/>
-					<%= f.text_field :title, placeholder: "title", class: "col-md-12" %>
-
-					<%= f.label "slug", class: "label-placement" %><br/>
-					<%= f.text_field :slug, placeholder: "slug", class: "col-md-12" %>
-
-					<%= f.label "description", class: "label-placement" %><br/>
-					<%= f.cktext_area :description %><br/>
-
-					<%= f.submit "Update Recipe", class: "button col-md-12" %>
-				<% end %>
-			</div>
-
-			<div class="tab-pane" id="ingredients">
-				<%= render 'ingredients/new' %>
-				<%= render 'ingredients/ingredient_list' %>
-			</div>
-
-			<div class="tab-pane" id="steps">
-				<%= render 'steps/new' %>
-				<%= render 'steps/step_list' %>
-			</div>
+	<div class="main-padding-large">
+		<div class="tabs">   
+		  <div class="tab">
+		    <input type="radio" id="tab-1" name="tab-group-1" checked>
+		    <label class="tab-label" for="tab-1">
+		    	<span class="pure-hidden-phone">
+		    		Details
+		    	</span>
+		    	<span class="pure-hidden-tablet pure-hidden-desktop">
+		    		D
+		    	</span>
+		    </label>
+		     
+		    <div class="content">
+		      <%= render 'details' %>
+		    </div> 
+		   </div>
+		    
+		 	<div class="tab">
+		    <input type="radio" id="tab-2" name="tab-group-1">
+		    <label class="tab-label" for="tab-2">
+		    	<span class="pure-hidden-phone">
+		    		Ingredients [ <%= @recipe.ingredients.count %> ]
+		    	</span>
+		    	<span class="pure-hidden-tablet pure-hidden-desktop">
+		    		I [ <%= @recipe.ingredients.count %> ]
+		    	</span>
+		    </label>
+		     
+		    <div class="content">
+		      <%= render 'ingredients/new' %>
+					<%= render 'ingredients/ingredient_list' %>
+		    </div> 
+		  </div>
+		    
+		    <div class="tab">
+		    	<input type="radio" id="tab-3" name="tab-group-1">
+		    	<label class="tab-label" for="tab-3">
+		    		<span class="pure-hidden-phone">
+		    			Steps [ <%= @recipe.steps.count %> ]
+		    		</span>
+		    		<span class="pure-hidden-tablet pure-hidden-desktop">
+		    			S [ <%= @recipe.steps.count %> ]
+		    		</span>
+		    	</label>
+		   
+		    <div class="content">
+		      <%= render 'steps/new' %>
+					<%= render 'steps/step_list' %>
+		    </div> 
+		  </div>
 		</div>
 	</div>
 <% end %>

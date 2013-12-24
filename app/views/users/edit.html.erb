@@ -8,8 +8,7 @@
 <div class="main-padding">
 	<div class="pure-form pure-form-stacked settings-form">
 		<%= form_for(@user) do |f| %>
-			<%= render 'shared/error_messages' %>
-
+			<%= render 'shared/error_messages', object: f.object %>
 				
 				<% if @user.filepicker_url %>
 					<div class="same-line">
@@ -19,7 +18,7 @@
 						</div>
 					</div>
 				<% else %>
-					<%= f.filepicker_field :filepicker_url, button_text: "Upload Your Picture", button_class: "pure-button link-lookalike" %>
+					<%= f.filepicker_field :filepicker_url, button_text: "Upload Your Picture", button_class: "link-lookalike link-lookalike-left" %>
 				<% end %>
 
 				<fieldset>

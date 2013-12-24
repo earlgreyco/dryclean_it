@@ -1,19 +1,23 @@
-<div class="row-fluid new-recipe-form">
-	<%= form_for(@recipe) do |f| %>
-		<div class="col-md-12">
-			<%= f.text_field :title, label: false, placeholder: "title", class: "col-md-12 input-margin-small" %>
-		</div>
+<div class="header">
+	<h1>Create A New Recipe</h1>
+</div>
 
-		<div class="col-md-12 filepicker-placement">
-			<%= f.filepicker_field :filepicker_url, dragdrop: true %>
-		</div>
-		
-		<div class="col-md-12 ckeditor-margin">
-			<%= f.cktext_area :description %>
-		</div>
+<div class="main-padding">
+	<div class="pure-form">
+		<%= form_for(@recipe) do |f| %>
+			<%= render 'shared/error_messages', object: f.object %>
 
-		<div class="col-md-12">
-			<%= f.submit "Create Recipe", class: "col-md-12 button button-margin-small" %>
-		</div>
-	<% end %>
+			<%= f.filepicker_field :filepicker_url, button_text: "Upload Recipe Picture", class: "link-lookalike" %>
+
+			<fieldset class="pure-group">
+				<%= f.text_field :title, placeholder: "title" %>
+
+				<%= f.text_field :slug, placeholder: "slug" %>
+			
+				<%= f.text_area :description, placeholder: "description" %>
+			</fieldset>
+
+			<%= f.submit "Create Recipe", class: "pure-button pure-button-primary" %>
+		<% end %>
+	</div>
 </div>
