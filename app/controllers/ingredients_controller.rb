@@ -1,4 +1,5 @@
 class IngredientsController < ApplicationController
+  before_action :admin_user, only: [:edit, :update, :new, :create, :destroy]
 	def new
   	@ingredient = Ingredient.new
   end
@@ -22,7 +23,7 @@ class IngredientsController < ApplicationController
   	@ingredient = Ingredient.find(params[:id])
   	if @ingredient.update_attributes(ingredient_params)
 			flash[:success] = "Ingredient updated!"
-			redirect_to recipe_url(@ingredient.recipe)
+			redirect_to edit_recipe_path(@ingredient.recipe)
   	else
   		render 'edit'
   	end
@@ -32,7 +33,7 @@ class IngredientsController < ApplicationController
   	@ingredient = Ingredient.find(params[:id])
   	@ingredient.destroy
   	flash[:success] = "Ingredient deleted."
-  	redirect_to recipe_url(@ingredient.recipe)
+  	redirect_to edit_recipe_path(@ingredient.recipe)
   end
 
   private

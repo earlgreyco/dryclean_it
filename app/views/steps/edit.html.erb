@@ -1,9 +1,24 @@
-<%= form_for(@step) do |f| %>
-	<%= f.text_area :description, placeholder: "description" %>
+<% provide(:title, @step.recipe.title) %>
 
-	<%= f.filepicker_field :filepicker_url, dragdrop: true %>
-	<%= filepicker_image_tag @step.filepicker_url, w: 160, h: 160, fit: 'clip' %>
+<div class="header">
+	<h1>Update Step<h1>
+</div>
 
-	<%= f.hidden_field :recipe_id %>
-	<%= f.submit %>
-<% end %>
+<div class="main-padding">
+	<div class="pure-form pure-form-stacked">
+		<%= form_for(@step) do |f| %>
+			<%= render 'shared/error_messages', object: f.object %>
+
+			<fieldset>
+				<%= f.text_area :description, placeholder: "description" %>
+
+				<%= f.filepicker_field :filepicker_url, dragdrop: true %>
+				<%= filepicker_image_tag @step.filepicker_url, w: 60, h: 60, fit: 'clip' %>
+
+				<%= f.hidden_field :recipe_id %>
+			</fieldset>
+
+			<%= f.submit "Update Step", class: "pure-button pure-button-primary" %>
+		<% end %>
+	</div>
+</div>

@@ -1,4 +1,6 @@
 class StepsController < ApplicationController
+	before_action :admin_user, only: [:edit, :update, :new, :create, :destroy]
+
 	def new
 		@step = Step.new
 	end
@@ -22,7 +24,7 @@ class StepsController < ApplicationController
 		@step = Step.find(params[:id])
 		if @step.update_attributes(step_params)
 			flash[:success] = "Step updated!"
-			redirect_to recipe_url(@step.recipe)
+			redirect_to edit_recipe_path(@step.recipe)
 		else
 			render 'edit'
 		end
@@ -32,7 +34,7 @@ class StepsController < ApplicationController
 		@step = Step.find(params[:id])
 		@step.destroy
 		flash[:success] = "Step deleted."
-		redirect_to recipe_url(@step.recipe)
+		redirect_to edit_recipe_path(@step.recipe)
 	end
 
 	private

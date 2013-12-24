@@ -1,4 +1,6 @@
 class RecipesController < ApplicationController
+  before_action :admin_user, only: [:index, :edit, :update, :new, :create, :destroy]
+
   def new
   	@recipe = Recipe.new
   end
