@@ -26,7 +26,9 @@ module ApplicationHelper
   end
 
   def admin_user
-  	flash[:error] = "Hey, silly - you're not an admin! =P"
+  	if !current_user.admin?
+  		flash[:error] = "Hey, silly - you're not an admin! =P"
+  	end
     redirect_to(root_url) unless current_user.admin?
   end
 end

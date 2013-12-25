@@ -1,5 +1,11 @@
 <% provide(:title, @recipe.title) %>
 
+<div class="header">
+	<h1><%= @recipe.title %></h1>
+	<% if @recipe.description? %>
+		<h2><blockquote>"<%= raw(@recipe.description) %>"</blockquote></h2>
+	<% end %>
+</div>
 
 <% if @recipe.filepicker_url? %>
 	<div class="recipe-img">
@@ -7,19 +13,10 @@
 	</div>
 <% end %>
 
-<span class="row-fluid">
-	<div class="recipe-header col-md-7">
-		<div class="recipe-title">
-			<%= @recipe.title %>
-		</div>
-		<div class="recipe-description">
-			<%= raw(@recipe.description) %>
-		</div>
-	</div>
+<div class="main-padding">
 
-	<div class="ingredients-header col-md-5">
-		<%= render 'ingredients_section' %>
-	</div>
-</span>
+	<%= render 'ingredients_section' %>
 
-<%= render 'steps_section' %>
+	<%= render 'steps_section' %>
+
+</div>

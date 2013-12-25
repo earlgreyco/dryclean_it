@@ -1,0 +1,13 @@
+<div id="new-step" class="pure-form">
+	<%= form_for @step, :remote => true do |f| %>
+		<fieldset>
+			<%= f.text_area :description, placeholder: "description" %>
+
+			<%= f.filepicker_field :filepicker_url, button_text: "Upload Image", class: "link-lookalike" %>
+			
+			<%= f.text_field :recipe_id %>
+		</fieldset>
+		
+		<%= f.submit "Add Step", class: "pure-button pure-button-primary" %>
+	<% end %>
+</div>
