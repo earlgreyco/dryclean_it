@@ -10,7 +10,7 @@ class RecipesController < ApplicationController
   	@saved = @recipe.save
   	if @saved
       flash[:success] = "Added recipe!"
-  		redirect_to @recipe
+  		redirect_to edit_recipe_path(@recipe)
     else
       render 'new'
   	end
