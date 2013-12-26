@@ -32,9 +32,14 @@ class StepsController < ApplicationController
 
 	def destroy
 		@step = Step.find(params[:id])
+		@recipe = @step.recipe
 		@step.destroy
-		flash[:success] = "Step deleted."
-		redirect_to edit_recipe_path(@step.recipe)
+
+		@steps = @recipe.steps
+
+		respond_to do |format|
+      format.js
+    end
 	end
 
 	private

@@ -26,7 +26,7 @@
 	    <label class="tab-label" for="tab-2">
 	    	<span class="pure-hidden-phone">
 	    		Ingredients 
-	    		<span id="ingredient_count_dekstop">
+	    		<span id="ingredient_count_desktop">
 	    			<%= render 'ingredients/ingredient_count' %>
 	    		</span>
 	    	</span>
@@ -51,16 +51,24 @@
 	    	<input type="radio" id="tab-3" name="tab-group-1">
 	    	<label class="tab-label" for="tab-3">
 	    		<span class="pure-hidden-phone">
-	    			Steps [ <%= @recipe.steps.count %> ]
+	    			Steps 
+	    			<span id="step_count_desktop">
+	    				<%= render 'steps/step_count' %>
+	    			</span>
 	    		</span>
 	    		<span class="pure-hidden-tablet pure-hidden-desktop">
-	    			S [ <%= @recipe.steps.count %> ]
+	    			S 
+	    			<span id="step_count_phone">
+	    				<%= render 'steps/step_count' %>
+	    			</span>
 	    		</span>
 	    	</label>
 	   
 	    <div class="content">
 	      <%= render 'steps/new' %>
-				<%= render 'steps/step_list' %>
+	      <div id="step_list">
+					<%= render 'steps/step_list' %>
+				</div>
 	    </div> 
 	  </div>
 	</div>
