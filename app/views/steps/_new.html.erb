@@ -1,13 +1,15 @@
 <div class="pure-form">
 	<%= form_for(@step) do |f| %>
 		<fieldset>
-			<%= f.text_area :description, placeholder: "description" %>
-
 			<%= f.filepicker_field :filepicker_url, button_text: "Upload Image", class: "link-lookalike" %>
+		</fieldset>
+
+		<filedset>
+			<%= f.text_area :description, placeholder: "description" %>
 			
 			<%= f.hidden_field :recipe_id %>
 		</fieldset>
-		
+		<br/><br/>
 		<%= f.submit "Add Step", class: "pure-button pure-button-primary" %>
 	<% end %>
 </div>
