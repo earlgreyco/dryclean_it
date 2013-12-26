@@ -15,7 +15,7 @@
 			<% end %>
 		</div>
 		<div class="pure-u-4-5">
-			<% if @user.description %>
+			<% if @user.description? %>
 				<blockquote class="blockquote-width">
 					"<%= @user.description %>"
 				</blockquote>
