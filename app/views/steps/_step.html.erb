@@ -1,6 +1,20 @@
-<li>
+<% @i += 1 %>
+
+<div class="pure-g-r">
+	<div class="pure-u-1-5">
+		<%= @i.to_s %>
+	</div>
+
 	<% if step.filepicker_url? %>
-		<%= filepicker_image_tag step.filepicker_url, w: 160, h: 160, fit: 'clip' %>
+		<div class="pure-u-1-5">
+			<%= filepicker_image_tag step.filepicker_url, w: 160, h: 160, fit: 'clip' %>
+		</div>
+		<div class="pure-u-3-5">
+			<%= step.description %>
+		<div>
+	<% else %>
+		<div class="pure-u-4-5">
+			<%= step.description %>
+		</div>
 	<% end %>
-	<%= step.description %>
-</li>
+</div>

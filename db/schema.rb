@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131223073509) do
+ActiveRecord::Schema.define(version: 20131226022947) do
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -28,10 +28,10 @@ ActiveRecord::Schema.define(version: 20131223073509) do
 
   create_table "ingredients", force: true do |t|
     t.string   "title"
-    t.integer  "quantity"
     t.string   "recipe_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "quantity"
   end
 
   add_index "ingredients", ["recipe_id", "title"], name: "index_ingredients_on_recipe_id_and_title"
@@ -69,9 +69,11 @@ ActiveRecord::Schema.define(version: 20131223073509) do
     t.boolean  "admin",           default: false
     t.string   "filepicker_url"
     t.string   "description"
+    t.string   "slug"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"
+  add_index "users", ["slug"], name: "index_users_on_slug"
 
 end
