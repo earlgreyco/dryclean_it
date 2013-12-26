@@ -11,7 +11,7 @@
 				<td><%= ingredient.title %></td>
 				<td>
 					<%= link_to "edit", edit_ingredient_path(ingredient) %> / 
-					<%= link_to "delete", ingredient, method: :delete, data: { confirm: "Sure you want to delete #{ingredient.title}?" } %>
+					<%= link_to "delete", ingredient, method: :delete, remote: true, title: "Delete ingredient", data: { confirm: "Sure you want to delete #{ingredient.title}?" } %>
 				</td>
 			</tr>
 		<% end %>

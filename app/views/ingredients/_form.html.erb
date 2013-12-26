@@ -1,0 +1,13 @@
+<div class="pure-form">
+	<%= form_for(@ingredient) do |f| %>
+		<fieldset class="pure-group">
+			<%= f.text_field :quantity, placeholder: "quantity" %> 
+
+			<%= f.text_field :title, placeholder: "title" %>
+
+			<%= f.hidden_field :recipe_id %>
+		</fieldset>
+
+		<%= f.submit "Add Ingredient", class: "pure-button pure-button-primary" %>
+	<% end %>
+</div>

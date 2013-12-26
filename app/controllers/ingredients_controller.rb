@@ -31,9 +31,14 @@ class IngredientsController < ApplicationController
 
   def destroy
   	@ingredient = Ingredient.find(params[:id])
+    @recipe = @ingredient.recipe
   	@ingredient.destroy
-  	flash[:success] = "Ingredient deleted."
-  	redirect_to edit_recipe_path(@ingredient.recipe)
+
+    @ingredients = @recipe.ingredients
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   private
