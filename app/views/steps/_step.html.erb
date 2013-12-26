@@ -1,20 +1,15 @@
 <% @i += 1 %>
 
 <div class="pure-g-r">
-	<div class="pure-u-1-5">
-		<%= @i.to_s %>
-	</div>
-
+	<div class="pure-u-5-8 image-width">
 	<% if step.filepicker_url? %>
-		<div class="pure-u-1-5">
-			<%= filepicker_image_tag step.filepicker_url, w: 160, h: 160, fit: 'clip' %>
-		</div>
-		<div class="pure-u-3-5">
-			<%= step.description %>
-		<div>
-	<% else %>
-		<div class="pure-u-4-5">
-			<%= step.description %>
-		</div>
+		<%= filepicker_image_tag step.filepicker_url %>
 	<% end %>
+	</div>
+	<div class="pure-u-3-8">
+		<div class="header">
+			<h1><%= @i.to_s %>.</h1> 
+			<h4 style="font-weight: 100;"><%= step.description %></h4>
+		</div>
+	</div>
 </div>

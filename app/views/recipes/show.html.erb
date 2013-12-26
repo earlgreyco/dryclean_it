@@ -8,15 +8,13 @@
 </div>
 
 <% if @recipe.filepicker_url? %>
-	<div class="recipe-img">
+	<div class="recipe-img ">
 		<%= filepicker_image_tag @recipe.filepicker_url %>
 	</div>
 <% end %>
 
-<div class="main-padding">
-
+<div class="header">
 	<%= render 'ingredients_section' %>
-
-	<%= render 'steps_section' %>
-
 </div>
+
+<%= render 'steps_section' %>
