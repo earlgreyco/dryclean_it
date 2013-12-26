@@ -25,10 +25,17 @@
 	    <input type="radio" id="tab-2" name="tab-group-1">
 	    <label class="tab-label" for="tab-2">
 	    	<span class="pure-hidden-phone">
-	    		Ingredients [ <%= @recipe.ingredients.count %> ]
+	    		Ingredients 
+	    		<span id="ingredient_count_dekstop">
+	    			<%= render 'ingredients/ingredient_count' %>
+	    		</span>
 	    	</span>
+
 	    	<span class="pure-hidden-tablet pure-hidden-desktop">
-	    		I [ <%= @recipe.ingredients.count %> ]
+	    		I 
+	    		<span id="ingredient_count_phone">
+	    			<%= render 'ingredients/ingredient_count' %>
+	    		</span>
 	    	</span>
 	    </label>
 	     
