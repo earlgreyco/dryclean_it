@@ -60,6 +60,6 @@ class RecipesController < ApplicationController
 
   private
   	def recipe_params
-  		params.require(:recipe).permit(:user_id, :title, :slug, :description, :filepicker_url)
+  		params.require(:recipe).permit(:user_id, :visible, :title, :slug, :description, :filepicker_url)
   	end
 end

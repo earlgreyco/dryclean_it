@@ -17,27 +17,3 @@
     <% end %>
   </ul>
 </div>
-
-<% if false %>
-
-<li class="pure-menu-selected menu-item-divided">
-        <a href="http://purecss.io/layouts/">Layouts</a>
-    </li>
-    
-    <li class="menu-item-divided">
-    
-    </li>
-<%= link_to "The Sarmander", root_path %>
-<% if !current_user %>
-  <%= link_to "sign in", signin_path %>
-  <%= link_to "sign up", signup_path %>
-<% else %>
-  <% if current_user.admin? %>
-    <%= link_to "recipes", recipes_path %>
-    <%= link_to "users", users_path %>
-  <% end %>
-  <%= link_to "profile", current_user %>
-  <%= link_to "settings", edit_user_path(current_user) %>
-  <%= link_to "sign out", signout_path, method: "delete" %>
-<% end %>
-<% end %>
