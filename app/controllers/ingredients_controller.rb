@@ -1,4 +1,5 @@
 class IngredientsController < ApplicationController
+  before_action :signed_in_user, only: [:edit, :update, :new, :create, :destroy]
   before_action :admin_user, only: [:edit, :update, :new, :create, :destroy]
 	def new
   	@ingredient = Ingredient.new

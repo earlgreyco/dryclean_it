@@ -1,25 +1,21 @@
-<% if current_user && current_user.admin %>
+<% provide(:title, 'All recipes') %>
 
-	<% provide(:title, 'All recipes') %>
+<% if @recipes.length > 0 %>	
+	<div class="header">
+		<h1>Recipes</h1>
+		<h2>[ <%= @recipes.count %> ]</h2>
+	</div>
 
-	<% if @recipes.length > 0 %>	
-		<div class="header">
-			<h1>All Recipes</h1>
-			<h2>[ <%= @recipes.count %> ]</h2>
-		</div>
-
-		<table class="pure-table pure-table-horizontal position-table">
-			<thead>
-				<tr>
-					<th>Image</th>
-					<th>Name</th>
-					<th>Actions</th>
-				</tr>
-			</thead>
-			<tbody>
-				<%= render @recipes %>
-			</tbody>
-		</table>
-	<% end %>
-
+	<table class="pure-table pure-table-horizontal position-table">
+		<thead>
+			<tr>
+				<th>Image</th>
+				<th>Name</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<%= render @recipes %>
+		</tbody>
+	</table>
 <% end %>

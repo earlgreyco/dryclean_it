@@ -3,7 +3,7 @@
 <div class="header">
 	<h1><%= @recipe.title %></h1>
 	<% if @recipe.description? %>
-		<h2><blockquote>"<%= raw(@recipe.description) %>"</blockquote></h2>
+		<h2><blockquote><%= raw(@recipe.description) %></blockquote></h2>
 	<% end %>
 </div>
 

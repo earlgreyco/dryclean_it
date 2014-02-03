@@ -1,0 +1,25 @@
+<% provide(:title, 'All ingredient types') %>
+
+<% if @ingredient_types.length > 0 %>	
+	<div class="header">
+		<h1>Ingredient Types</h1>
+		<h2 id="ingredient_type_count">
+			<%= render 'ingredient_types/ingredient_type_count' %>
+		</h2>
+	</div>
+
+	<table class="pure-table pure-table-horizontal position-table">
+		<thead>
+			<tr>
+				<th>Image</th>
+				<th>Name</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<div id="ingredient_type_list">
+				<%= render @ingredient_types %>
+			</div>
+		</tbody>
+	</table>
+<% end %>

@@ -1,0 +1,23 @@
+<div class="header">
+	<h1>Create A New Ingredient Type</h1>
+</div>
+
+<div class="main-padding">
+	<div class="pure-form">
+		<%= form_for(@ingredient_type) do |f| %>
+			<%= render 'shared/error_messages', object: f.object %>
+
+			<%= f.filepicker_field :img, button_text: "Upload Ingredient Type Picture", class: "link-lookalike" %>
+
+			<fieldset class="pure-group">
+				<%= f.text_field :name, placeholder: "name" %>
+			
+				<%= f.text_area :definition, placeholder: "definition" %>
+
+				<%= f.text_field :link, placeholder: "amazon link" %>
+			</fieldset>
+
+			<%= f.submit "Create Ingredient Type", class: "pure-button pure-button-primary" %>
+		<% end %>
+	</div>
+</div>

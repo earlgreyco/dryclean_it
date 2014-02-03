@@ -1,0 +1,36 @@
+<% provide(:title, @ingredient_type.name) %>
+
+<div class="header">
+	<h1>Update Ingredient Type<h1>
+</div>
+
+<div class="main-padding">
+	<div class="pure-form pure-form-stacked">
+		<%= form_for(@ingredient_type) do |f| %>
+			<%= render 'shared/error_messages', object: f.object %>
+
+			<fieldset>
+				<% if @ingredient_type.img? %>
+					<div class="same-line">
+						<%= filepicker_image_tag @ingredient_type.img, w: 60, h: 60, fit: 'clip' %>
+						<div class="link-lookalike-position">
+							<%= f.filepicker_field :img, button_text: "Upload New Photo", class: "link-lookalike" %>
+						</div>
+					</div>
+				<% else %>
+					<%= f.filepicker_field :img, button_text: "Upload Photo", class: "link-lookalike" %>
+				<% end %>
+			</fieldset>
+
+			<fieldset>
+				<%= f.text_field :name, placeholder: "name" %>
+
+				<%= f.text_area :definition, placeholder: "definition" %>
+
+				<%= f.text_field :link, placeholder: "link" %>
+			</fieldset>
+
+			<%= f.submit nil, class: "pure-button pure-button-primary" %>
+		<% end %>
+	</div>
+</div>

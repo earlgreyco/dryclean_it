@@ -1,4 +1,5 @@
 Sarmander::Application.routes.draw do
+
   #Static Pages
   root 'static_pages#home'
 
@@ -11,6 +12,9 @@ Sarmander::Application.routes.draw do
 
   #Ingredients
   resources :ingredients
+
+  #Ingredient Types
+  resources :ingredient_types
 
   #Steps
   resources :steps

@@ -15,7 +15,7 @@ Add transition to containers so they can push in and out.
 This is the parent `<div>` that contains the menu and the content area.
 */
 #layout {
-    padding-left: 150px; /* left col width "#menu" */
+    padding-left: 180px; /* left col width "#menu" */
     left: 0;
 }
 
@@ -63,11 +63,11 @@ By using the combination of `position: fixed; top: 0; bottom:0;`, we can make
 the menu have 100% height and be fixed on the page as the rest of it scrolls.
 */
 #menu {
-    margin-left: -150px; /* this should be "#menu" width */
-    width: 150px;
+    margin-left: -180px; /* this should be "#menu" width */
+    width: 180px;
     position: fixed;
     top: 0;
-    left: 150px; /* this should be "#menu" width */
+    left: 180px; /* this should be "#menu" width */
     bottom: 0;
     z-index: 1; /* so the menu or its navicon stays above all content */
     background: #191818;
@@ -203,11 +203,11 @@ Hides the menu at `767px`, but modify this based on your app's needs.
     }
         #layout.active {
             position: relative;
-            left: 150px;
+            left: 180px;
         }
             #layout.active #menu {
-                left: 150px;
-                width: 150px;
+                left: 180px;
+                width: 180px;
             }
 
     #menu {
@@ -221,6 +221,6 @@ Hides the menu at `767px`, but modify this based on your app's needs.
     }
 
     #layout.active .menu-link {
-        left: 150px;
+        left: 180px;
     }
 }
