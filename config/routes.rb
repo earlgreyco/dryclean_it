@@ -1,9 +1,11 @@
 Sarmander::Application.routes.draw do
 
+  #Recipes
+  resources :recipes
+  match '/your-recipes', to: 'recipes#your_recipes', via: 'get'
+
   #Static Pages
   root 'static_pages#home'
-  match '/create', to: 'static_pages#create', via: 'get'
-  match '/list', to: 'static_pages#list', via: 'get'
 
   #Users
   resources :users

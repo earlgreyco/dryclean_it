@@ -11,63 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140202224640) do
-
-  create_table "friendly_id_slugs", force: true do |t|
-    t.string   "slug",                      null: false
-    t.integer  "sluggable_id",              null: false
-    t.string   "sluggable_type", limit: 50
-    t.string   "scope"
-    t.datetime "created_at"
-  end
-
-  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
-  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
-  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
-  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
-
-  create_table "ingredient_types", force: true do |t|
-    t.string   "name"
-    t.string   "definition"
-    t.string   "link"
-    t.string   "img"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "ingredients", force: true do |t|
-    t.string   "title"
-    t.string   "recipe_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "quantity"
-  end
-
-  add_index "ingredients", ["recipe_id", "title"], name: "index_ingredients_on_recipe_id_and_title"
+ActiveRecord::Schema.define(version: 20140216061500) do
 
   create_table "recipes", force: true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.string   "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "filepicker_url"
-    t.string   "slug"
-    t.boolean  "visible",        default: false
-  end
-
-  add_index "recipes", ["slug"], name: "index_recipes_on_slug"
-  add_index "recipes", ["user_id", "title"], name: "index_recipes_on_user_id_and_title"
-
-  create_table "steps", force: true do |t|
-    t.string   "description"
-    t.string   "recipe_id"
-    t.string   "filepicker_url"
+    t.string   "name"
+    t.string   "story"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "steps", ["recipe_id"], name: "index_steps_on_recipe_id"
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -77,13 +28,9 @@ ActiveRecord::Schema.define(version: 20140202224640) do
     t.string   "password_digest"
     t.string   "remember_token"
     t.boolean  "admin",           default: false
-    t.string   "filepicker_url"
-    t.string   "description"
-    t.string   "slug"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"
-  add_index "users", ["slug"], name: "index_users_on_slug"
 
 end

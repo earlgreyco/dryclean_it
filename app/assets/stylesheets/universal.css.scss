@@ -52,3 +52,11 @@
 		outline-width: 0px !important;
 	}
 }
+
+/* input */
+
+input:focus{
+	outline-width: 0px;
+	border: 1px solid rgb(204, 204, 204) !important;
+	box-shadow: none !important;
+}

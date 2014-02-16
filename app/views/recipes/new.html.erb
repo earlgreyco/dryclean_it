@@ -1,0 +1,142 @@
+<div id="create-recipe-one" class='main-padding'>
+	<div class="new-recipe-header">
+		What's your recipe's name?
+	</div>
+	
+	<div class="name-section">
+		<input type="text" placeholder="type here..." class="ingredient">
+	</div>
+
+	<button class="btn btn-default" id="next-btn-one">Next</button>
+</div>
+
+<div id="create-recipe-two" class='main-padding'>
+	<div class="new-recipe-header">
+		What's the story behind this recipe?
+	</div>
+
+	<textarea type="text" placeholder="type here..." id="resize"></textarea>
+
+	<button class="btn btn-default" id="back-btn-one">Back</button>
+	<button class="btn btn-default" id="next-btn-two">Next</button>
+</div>
+
+<div id="create-recipe-three" class='main-padding'>
+	<div class="new-recipe-header">
+		What ingredients did you use?
+	</div>
+
+	<ul class="ingredient-list">
+		<li>
+			<div class="row">
+				<div class="col-md-1" style="max-width: 20px;">
+					<i class="fa fa-check"></i>
+				</div>
+
+				<div class="col-md-11">
+					<input type="text" maxlength="40" class="ingredient" placeholder="Add a new ingredient">
+					<button class="add-ingredient-btn btn btn-default">Add this ingredient</button>
+				</div>
+			</div>
+		</li>
+	</ul>
+
+	<button class="btn btn-default" id="back-btn-two">Back</button>
+	<button class="btn btn-default" id="next-btn-three">Next</button>
+</div>
+
+<div id="create-recipe-four" class='main-padding'>
+	<div class="new-recipe-header">
+		Add some yummy photos!
+	</div>
+
+	<div>
+		<button class="btn btn-default add-ingredient-btn">Add a new photo</button>
+	</div>
+
+	<div class="list-photos">
+		<%= image_tag "recipe_1.jpg" %>
+		<%= image_tag "recipe_2.jpg" %>
+		<%= image_tag "recipe_3.jpg" %>
+		<div style="clear:both;"></div>
+	</div>
+
+	<button class="btn btn-default" id="back-btn-three">Back</button>
+	<button class="btn btn-default" id="next-btn-four">Next</button>
+</div>
+
+<div id="create-recipe-five" class='main-padding'>
+	<div class="new-recipe-header">
+		What steps did you take?
+	</div>
+
+	<ol class="step-list">
+		<li>
+			<input type="text" maxlength="40" class="ingredient" placeholder="Add a new step">
+			<button class="add-ingredient-btn btn btn-default">Add this step</button>
+		</li>
+	</ol>
+
+	<button class="btn btn-default" id="back-btn-four">Back</button>
+	<button class="btn btn-default" id="next-btn-five">Create Your Recipe&nbsp;&nbsp;<i class="fa fa-arrow-right"></i></button>
+</div>
+
+<script>
+	$(document).ready(function(){
+		$("#next-btn-one").click(function(){
+     	$("#create-recipe-one").hide();
+     	$("#create-recipe-two").show();
+     	$("textarea").css({"height": "20px"});
+     	$("#create-recipe-two").animate({ marginLeft: "10%"} , 500);
+  	});
+
+  	$("#next-btn-two").click(function(){
+  		$("#create-recipe-two").hide();
+  		$("#create-recipe-three").show();
+  		$("#create-recipe-three").animate({ marginLeft: "10%"} , 500);
+  	});
+
+  	$("#next-btn-three").click(function(){
+  		$("#create-recipe-three").hide();
+  		$("#create-recipe-four").show();
+  		$("#create-recipe-four").animate({ marginLeft: "10%"} , 500);
+  	});
+
+  	$("#next-btn-four").click(function(){
+  		$("#create-recipe-four").hide();
+  		$("#create-recipe-five").show();
+  		$("#create-recipe-five").animate({ marginLeft: "10%"} , 500);
+  	});
+
+  	$("#back-btn-one").click(function(){
+  		$("#create-recipe-two").hide();
+  		$("#create-recipe-two").animate({ marginLeft: "100%" }, 500);
+  		$("#create-recipe-one").show();
+  		$("#create-recipe-one").animate({ marginLeft: "10%"}, 500);
+  	});
+
+  	$("#back-btn-two").click(function(){
+  		$("#create-recipe-three").hide();
+  		$("#create-recipe-three").animate({ marginLeft: "100%" }, 500);
+  		$("#create-recipe-two").show();
+  		$("#create-recipe-two").animate({ marginLeft: "10%"}, 500);
+  	});
+
+  	$("#back-btn-three").click(function(){
+  		$("#create-recipe-four").hide();
+  		$("#create-recipe-four").animate({ marginLeft: "100%" }, 500);
+  		$("#create-recipe-three").show();
+  		$("#create-recipe-three").animate({ marginLeft: "10%"}, 500);
+  	});
+
+  	$("#back-btn-four").click(function(){
+  		$("#create-recipe-five").hide();
+  		$("#create-recipe-five").animate({ marginLeft: "100%" }, 500);
+  		$("#create-recipe-four").show();
+  		$("#create-recipe-four").animate({ marginLeft: "10%"}, 500);
+  	});
+
+		$("#resize").autosize();
+		$(".step").autosize();
+	});
+</script>
