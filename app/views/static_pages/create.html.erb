@@ -3,8 +3,7 @@
 		What's your recipe's name?
 	</div>
 
-	<textarea type="text" placeholder="type here now..." id="resize"></textarea>
-
+	<textarea type="text" placeholder="type here..." id="resize"></textarea>
 	<button class="btn btn-default" id="next-btn-one">Next</button>
 </div>
 
@@ -13,8 +12,9 @@
 		What's the story behind this recipe?
 	</div>
 
-	<textarea type="text" placeholder="type here now..." id="resize-two"></textarea>
+	<textarea type="text" placeholder="type here..." id="resize-two"></textarea>
 
+	<button class="btn btn-default" id="back-btn-one">Back</button>
 	<button class="btn btn-default" id="next-btn-two">Next</button>
 </div>
 
@@ -23,6 +23,7 @@
 		What ingredients did you use?
 	</div>
 
+	<button class="btn btn-default" id="back-btn-two">Back</button>
 	<button class="btn btn-default" id="next-btn-three">Next</button>
 </div>
 
@@ -31,6 +32,7 @@
 		Add some yummy photos!
 	</div>
 
+	<button class="btn btn-default" id="back-btn-three">Back</button>
 	<button class="btn btn-default" id="next-btn-four">Next</button>
 </div>
 
@@ -39,6 +41,7 @@
 		What steps did you take?
 	</div>
 
+	<button class="btn btn-default" id="back-btn-four">Back</button>
 	<button class="btn btn-default" id="next-btn-five">Next</button>
 </div>
 
@@ -67,6 +70,34 @@
   		$("#create-recipe-four").hide(100);
   		$("#create-recipe-five").show();
   		$("#create-recipe-five").animate({ marginLeft: "10%"} , 500);
+  	});
+
+  	$("#back-btn-one").click(function(){
+  		$("#create-recipe-two").hide(100);
+  		$("#create-recipe-two").animate({ marginLeft: "100%" }, 500);
+  		$("#create-recipe-one").show();
+  		$("#create-recipe-one").animate({ marginLeft: "10%"}, 500);
+  	});
+
+  	$("#back-btn-two").click(function(){
+  		$("#create-recipe-three").hide(100);
+  		$("#create-recipe-three").animate({ marginLeft: "100%" }, 500);
+  		$("#create-recipe-two").show();
+  		$("#create-recipe-two").animate({ marginLeft: "10%"}, 500);
+  	});
+
+  	$("#back-btn-three").click(function(){
+  		$("#create-recipe-four").hide(100);
+  		$("#create-recipe-four").animate({ marginLeft: "100%" }, 500);
+  		$("#create-recipe-three").show();
+  		$("#create-recipe-three").animate({ marginLeft: "10%"}, 500);
+  	});
+
+  	$("#back-btn-four").click(function(){
+  		$("#create-recipe-five").hide(100);
+  		$("#create-recipe-five").animate({ marginLeft: "100%" }, 500);
+  		$("#create-recipe-four").show();
+  		$("#create-recipe-four").animate({ marginLeft: "10%"}, 500);
   	});
 
 		$("#resize").autosize();
