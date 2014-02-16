@@ -7,18 +7,6 @@ Sarmander::Application.routes.draw do
   resources :users
   match '/signup', to: 'users#new', via: 'get'
 
-  #Recipes
-  resources :recipes
-
-  #Ingredients
-  resources :ingredients
-
-  #Ingredient Types
-  resources :ingredient_types
-
-  #Steps
-  resources :steps
-
   #Sessions
   resources :sessions, only: [:new, :create, :destroy]
   match '/signin', to: 'sessions#new', via: 'get'

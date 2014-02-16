@@ -9,36 +9,10 @@
   <%= render 'layouts/ie_html5_shim' %>
 </head>
 <body class="pure-skin-sarmander">
-		
-<%= render 'layouts/olark' %>
-
-<div id="layout">
-	<a href="#menu" id="menuLink" class="menu-link">
-    <!-- Hamburger icon -->
-    <span></span>
-  </a>
-  <div id="menu">
-		<%= render 'layouts/menu' %>
-	</div>
-
-	<div id="main">
-
-    <% if !current_user && current_page?(root_path) %>
-      <%= link_to signup_path, class: "dude-just-sign-up" do %>
-        <div class="header">
-          <h1>You can only see five recipes now.</h1> 
-          <h2>Doesn't that suck? Well, click here to sign up and unlock all recipes!</h2>
-        </div>
-      <% end %>
-    <% end %>
-
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "alert alert-#{key}") %>
-    <% end %>
-  	
-    <%= yield %>
-  </div>
-</div>
-
+  <!-- chat with clients using Olark -->
+  <%= render 'layouts/olark' %>
+  <%= render 'layouts/error' %>
+	
+  <%= yield %>
 </body>
 </html>

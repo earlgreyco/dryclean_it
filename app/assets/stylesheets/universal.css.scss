@@ -1,13 +1,5 @@
 @import "colors.css.scss";
 
-/* images */
-
-img{
-	user-drag: none; 
-	-moz-user-select: none; 
-	-webkit-user-drag: none;
-}
-
 /* transitions */
 
 .transition{
@@ -23,66 +15,6 @@ img{
 .alert{
 	margin-bottom: 0px;
 	font-weight: bold;
-}
-
-/* main padding */
-
-.main-padding{
-	padding: 50px 22.5%;
-}
-
-.main-padding-large{
-	padding: 50px 14%;
-}
-
-/* blockquote */
-
-blockquote{
-	color: #666;
-	font-style: italic;
-	line-height: 1.8em;
-}
-
-/* sign up dude! */
-
-.dude-just-sign-up{
-	text-decoration: none !important;
-
-	.header{
-		border: 10px solid #191818;
-		padding: 30px;
-		@extend .transition;
-		&:hover{
-			@extend .transition;
-			background: #29893C;
-			h1, h2{
-				color: white !important;
-			}
-		}
-	}
-}
-
-/* force inline */
-
-.same-line{
-  white-space: nowrap;
-}
-
-
-/* links */
-
-a{
-	color: $green;
-	text-decoration: none;
-	&:hover{
-		text-decoration: underline;
-	}
-}
-
-
-/* flash */
-
-.alert{
 	padding: 20px;
 }
 
@@ -96,22 +28,9 @@ a{
 	color: white;
 }
 
-/* tables */
-
-.position-table{
-	width: 60%;
-	margin: 30px auto;
-}
-
 /* errors */
 
 #error_list{
 	color: $red;
 	padding: 20px;
-}
-
-/* width */
-
-.full-width{
-	width: 100%;
 }
