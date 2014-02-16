@@ -41,8 +41,6 @@
 .main-padding{
 	margin-left: 10%;
 	margin-right: 10%;
-	padding-top: 40px;
-	padding-bottom: 40px;
 }
 
 /* buttons */
@@ -57,6 +55,11 @@
 
 input:focus{
 	outline-width: 0px;
-	border: 1px solid rgb(204, 204, 204) !important;
 	box-shadow: none !important;
+}
+
+/* navbar */
+
+.navbar{
+	margin: 20px 10%;
 }

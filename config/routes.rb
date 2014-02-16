@@ -4,6 +4,9 @@ Sarmander::Application.routes.draw do
   resources :recipes
   match '/your-recipes', to: 'recipes#your_recipes', via: 'get'
 
+  #Ingredients
+  resources :ingredients
+
   #Static Pages
   root 'static_pages#home'
 
