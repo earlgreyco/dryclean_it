@@ -1,4 +1,5 @@
 @import "colors.css.scss";
+@import "bootstrap";
 
 /* transitions */
 
@@ -33,4 +34,21 @@
 #error_list{
 	color: $red;
 	padding: 20px;
+}
+
+/* padding */
+
+.main-padding{
+	margin-left: 10%;
+	margin-right: 10%;
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+
+/* buttons */
+
+.btn{
+	&:focus{
+		outline-width: 0px !important;
+	}
 }

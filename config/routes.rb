@@ -2,6 +2,8 @@ Sarmander::Application.routes.draw do
 
   #Static Pages
   root 'static_pages#home'
+  match '/create', to: 'static_pages#create', via: 'get'
+  match '/list', to: 'static_pages#list', via: 'get'
 
   #Users
   resources :users

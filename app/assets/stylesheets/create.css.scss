@@ -1,0 +1,17 @@
+.new-recipe-header{
+	margin: 15px 0px;
+}
+
+#resize, #resize-two{
+	width: 100%;
+	resize: none;
+	border: 0px;
+	&:focus{
+		outline-width: 0px;
+	}
+}
+
+#create-recipe-two, #create-recipe-three, #create-recipe-four, #create-recipe-five{
+	margin-left: 100%;
+	display: none;
+}
