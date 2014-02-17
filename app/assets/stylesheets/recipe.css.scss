@@ -24,10 +24,14 @@
 	display: none;
 }
 
-.ingredient-list{
+.ingredient-section{
 	margin-bottom: 25px;
 	list-style: none;
 	padding-left: 0px;
+}
+
+.ingredient-row{
+	margin: 10px 0px;
 }
 
 .ingredient{
@@ -56,11 +60,17 @@
 	}
 }
 
-.step-list{
+.step-section{
 	margin-bottom: 25px;
 	padding-left: 18px;
 	li{
-		list-style-type: upper-roman;
+		margin: 15px 0px;
+	}
+}
+
+#new-step-form{
+	div{
+		display: none !important;
 	}
 }
 

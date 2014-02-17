@@ -2,8 +2,20 @@ class RecipesController < ApplicationController
 	def index
 	end
 
-	def create
+	def new
+		@recipe = Recipe.new(recipe_params)
+		@ingredients = Ingredient.all
+		@steps = Step.all
+	end
 
+	def create
+		@recipe = Recipe.new(recipe_params)
+		@saved = @recipe.save
+	end
+
+	def update
+		@recipe = Recipe.find(params[:id])
+		@updated = @recipe.update_attributes(recipe_params)
 	end
 
 	def your_recipes
@@ -12,6 +24,8 @@ class RecipesController < ApplicationController
 
 	private
 		def recipe_params
-			params.require(:recipe).permit(:name, :story)
+			if params[:recipe].present?
+				params.require(:recipe).permit(:name, :story)
+			end
 		end
 end

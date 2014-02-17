@@ -15,6 +15,10 @@
 
 			<div class="recipe-name">
 				<%= recipe.name %>
+				<%= recipe.story %>
+				<%= recipe.ingredients.each do |ingredient| %>
+					<b><%= ingredient.name %></b>
+				<% end %>
 			</div>
 			<div style="clear:both;"></div>
 		</div>

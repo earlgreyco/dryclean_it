@@ -1,0 +1,4 @@
+<% if @saved %>
+	$("#new-ingredient-form")[0].reset();
+	$(".ingredient-list").after("<%= j render(@ingredient) %>");
+<% end %>

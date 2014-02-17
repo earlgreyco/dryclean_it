@@ -7,6 +7,9 @@ Sarmander::Application.routes.draw do
   #Ingredients
   resources :ingredients
 
+  #Steps
+  resources :steps
+
   #Static Pages
   root 'static_pages#home'
 
