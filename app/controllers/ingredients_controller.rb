@@ -5,6 +5,7 @@ class IngredientsController < ApplicationController
 
 	def create
 		@ingredient = Ingredient.new(ingredient_params)
+		@recipe = @ingredient.recipe
 		@saved = @ingredient.save
 
 		respond_to do |format|

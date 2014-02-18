@@ -4,7 +4,7 @@ class CreateRecipes < ActiveRecord::Migration
     	t.string :name
     	t.string :story
     	t.string :images
-      t.string :time
+      t.float :time
     	t.integer :user_id
 
       t.timestamps

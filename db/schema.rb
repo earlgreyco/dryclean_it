@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20140217064526) do
     t.string   "name"
     t.string   "story"
     t.string   "images"
-    t.string   "time"
+    t.float    "time"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

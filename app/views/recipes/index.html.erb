@@ -1,0 +1,35 @@
+<div class="main-padding">
+	<%= form_tag recipes_path, method: :get do %>
+	<div class='input-group recipe-search'>
+		 <%= text_field_tag :query, params[:query], placeholder: "Search your recipes", class: "form-control input-lg" %>
+		<span class="input-group-btn">
+			<%= submit_tag "Search", class: "btn btn-default btn-lg", style: "padding-top: 11px; padding-bottom: 10px;" %>
+		</span>
+	</div>
+	<% end %>
+
+	<div id="your-recipes-list">
+		<% @recipes.each do |recipe| %>
+		<div class="row recipe-row">
+			
+			<% if recipe.recipe_images.any? %>
+				<%= filepicker_image_tag recipe.recipe_images[0].img, w: 60, h: 60, fit: 'clip' %>
+			<% end %>
+
+			<div class="recipe-name">
+				<%= recipe.name %>
+				<div class="pull-right">
+					<% if recipe.time.to_i == recipe.time %>
+						<%= recipe.time.to_i %> hours
+					<% else %>
+						<%= recipe.time %> hours
+					<% end %>
+				</div>
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+		<hr>
+		<% end %>
+
+	</div>
+</div>

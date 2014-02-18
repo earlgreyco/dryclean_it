@@ -6,6 +6,7 @@ class RecipeImagesController < ApplicationController
 	def create
 		@recipe_image = RecipeImage.new(recipe_image_params)
 		@saved = @recipe_image.save
+		@recipe = @recipe_image.recipe
 
 		respond_to do |format|
 			format.js

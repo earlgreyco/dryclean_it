@@ -6,6 +6,7 @@ class StepsController < ApplicationController
 	def create
 		@step = Step.new(step_params)
 		@saved = @step.save
+		@recipe = @step.recipe
 
 		respond_to do |format|
 			format.js

@@ -7,6 +7,7 @@ gem 'faker', '1.2.0'
 gem 'will_paginate', '3.0.4'
 gem 'simple_form'
 gem 'best_in_place', github: 'bernat/best_in_place', branch: "rails-4"
+gem "searchkick"
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
