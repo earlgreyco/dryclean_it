@@ -1,4 +1,7 @@
 class RecipesController < ApplicationController
+	before_action :signed_in_user, only: [:new, :create, :update, :your_recipes, :index]
+  before_action :admin_user,     only: [:index]
+
 	def index
 		
 	end
