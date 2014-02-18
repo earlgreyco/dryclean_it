@@ -4,10 +4,11 @@ class CreateRecipes < ActiveRecord::Migration
     	t.string :name
     	t.string :story
     	t.string :images
+      t.string :time
     	t.integer :user_id
 
       t.timestamps
     end
-    add_index :recipes, :user_id
+    add_index :recipes, [:time, :user_id]
   end
 end

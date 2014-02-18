@@ -6,6 +6,7 @@ class RecipesController < ApplicationController
 		@recipe = Recipe.new(recipe_params)
 		@ingredients = Ingredient.all
 		@steps = Step.all
+		@recipe_images = RecipeImage.all
 	end
 
 	def create

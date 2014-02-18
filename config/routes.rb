@@ -4,6 +4,9 @@ Sarmander::Application.routes.draw do
   resources :recipes
   match '/your-recipes', to: 'recipes#your_recipes', via: 'get'
 
+  #Recipe Images
+  resources :recipe_images
+
   #Ingredients
   resources :ingredients
 
