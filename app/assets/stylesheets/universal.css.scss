@@ -58,8 +58,20 @@ input:focus{
 	box-shadow: none !important;
 }
 
+.input-large{
+	padding: 15px;
+	font-size: 20px;
+	width: 500px;
+}
+
 /* navbar */
 
 .navbar{
 	margin: 20px 10%;
+}
+
+/* positioning */
+
+.center{
+	text-align: center;
 }

@@ -1,10 +1,6 @@
 class RecipesController < ApplicationController
 	def index
-		if params[:query].present?
-			@recipes = Recipe.search(params[:query])
-		else
-			@recipes = Recipe.all
-		end
+		
 	end
 
 	def new
@@ -16,6 +12,7 @@ class RecipesController < ApplicationController
 
 	def create
 		@recipe = Recipe.new(recipe_params)
+		@recipe.user_id = current_user.id
 		@saved = @recipe.save
 
 		if @saved
@@ -33,12 +30,17 @@ class RecipesController < ApplicationController
 	end
 
 	def your_recipes
+		if params[:query].present?
+			@recipes = Recipe.search(params[:query], where: {user_id: current_user.id})
+		else
+			@recipes = Recipe.where(user_id: current_user.id)
+		end
 	end
 
 	private
 		def recipe_params
 			if params[:recipe].present?
-				params.require(:recipe).permit(:name, :story, :time)
+				params.require(:recipe).permit(:name, :story, :time, :user_id)
 			end
 		end
 end
