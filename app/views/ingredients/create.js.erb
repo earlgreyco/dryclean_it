@@ -1,0 +1,5 @@
+<% if @saved %>
+	$("#new-ingredient-form")[0].reset();
+	$("#recipe-id-field").val("<%= @recipe.id %>");
+	$(".ingredient-list").after("<%= j render(@ingredient) %>");
+<% end %>

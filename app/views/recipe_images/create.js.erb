@@ -1,0 +1,4 @@
+<% if @saved %>
+	$(".new-photos").before("<%= j render @recipe_image %>");
+	$("#recipe-id-field-three").val("<%= @recipe.id %>");
+<% end %>

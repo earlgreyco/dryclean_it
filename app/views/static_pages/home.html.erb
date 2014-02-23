@@ -1,18 +1,1 @@
 <% provide(:title, '') %>
-
-<% if @recipes.length > 0 %>
-	<% @recipes.each do |recipe| %>
-		<% if recipe.filepicker_url? %>
-			<%= link_to recipe_path(recipe) do %>
-				<div class="recipe-img img-hide">
-					<%= filepicker_image_tag recipe.filepicker_url %>
-				</div>
-			<% end %>
-		<% end %>
-	<% end %>
-
-	<% if current_user %>
-		<%= will_paginate @recipes, :page_links => false %>
-	<% end %>
-
-<% end %>

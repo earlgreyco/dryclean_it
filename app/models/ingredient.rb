@@ -1,6 +1,4 @@
 class Ingredient < ActiveRecord::Base
 	belongs_to :recipe
-	default_scope -> { order('updated_at DESC') }
-	validates_presence_of :recipe_id, :title, :quantity
-	validates :quantity, numericality: true
+	default_scope -> { order('created_at DESC') }
 end

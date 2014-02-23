@@ -16,35 +16,5 @@ namespace :db do
                    password: password,
                    password_confirmation: password)
     end
-
-    users = User.all(limit:5)
-
-    users.each do |user|
-      5.times do |n|
-        title =  Faker::Commerce.product_name + " #{n}"
-        description = Faker::Lorem.sentences(sentence_count = 5)
-        user.recipes.create!(title: title, description: description)
-      end
-    end
-
-    recipes = Recipe.all(limit:50)
-
-    recipes.each do |recipe|
-      10.times do |n|
-        title = Faker::Commerce.product_name
-        quantity = Faker::Number.digit
-        recipe_id = recipe
-        Ingredient.create!(title: title,
-                           quantity: quantity,
-                           recipe_id: recipe_id)
-      end
-
-      10.times do |n|
-        description = Faker::Lorem.sentences(sentence_count = 3)
-        recipe_id = recipe
-        Step.create!(description: description,
-                     recipe_id: recipe_id)
-      end
-    end
   end
 end

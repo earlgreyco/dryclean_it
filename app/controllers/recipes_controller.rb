@@ -1,65 +1,49 @@
 class RecipesController < ApplicationController
-  before_action :admin_user, only: [:index, :edit, :update, :new, :create, :destroy]
+	before_action :signed_in_user, only: [:new, :create, :update, :your_recipes, :index]
+  before_action :admin_user,     only: [:index]
 
-  def new
-  	@recipe = Recipe.new
-  end
+	def index
+		
+	end
 
-  def create
-  	@recipe = current_user.recipes.build(recipe_params)
-  	@saved = @recipe.save
-  	if @saved
-      flash[:success] = "Added recipe!"
-  		redirect_to edit_recipe_path(@recipe)
-    else
-      render 'new'
-  	end
-  end
+	def new
+		@recipe = Recipe.new(recipe_params)
+		@ingredients = Ingredient.where(recipe_id: @recipe.id)
+		@steps = Step.where(recipe_id: @recipe.id)
+		@recipe_images = RecipeImage.where(recipe_id: @recipe.id)
+	end
 
-  def show
-    @recipe = Recipe.friendly.find(params[:id])
-    @ingredients = @recipe.ingredients
-    @steps = @recipe.steps
-  end
+	def create
+		@recipe = Recipe.new(recipe_params)
+		@recipe.user_id = current_user.id
+		@saved = @recipe.save
 
-  def edit
-    @recipe = Recipe.friendly.find(params[:id])
-    @ingredient = Ingredient.new
-    @ingredient.recipe_id = @recipe.id
-    @ingredients = @recipe.ingredients
-    @step = Step.new
-    @step.recipe_id = @recipe.id
-    @steps = @recipe.steps
-  end
+		if @saved
+			@recipe_id = @recipe.id
+		end
 
-  def update
-    @recipe = Recipe.friendly.find(params[:id])
-    if @recipe.update_attributes(recipe_params)
-      flash[:success] = "Recipe updated!"
-      redirect_to @recipe
-    else
-      @ingredient = Ingredient.new
-      @ingredient.recipe_id = @recipe.id
-      @ingredients = @recipe.ingredients
-      @step = Step.new
-      @step.recipe_id = @recipe.id
-      @steps = @recipe.steps
-      render 'edit'
-    end
-  end
+		respond_to do |format|
+			format.js
+		end
+	end
 
-  def destroy
-    Recipe.friendly.find(params[:id]).destroy
-    flash[:success] = "Recipe deleted."
-    redirect_to recipes_url
-  end
+	def update
+		@recipe = Recipe.find(params[:id])
+		@updated = @recipe.update_attributes(recipe_params)
+	end
 
-  def index
-  	@recipes = Recipe.all
-  end
+	def your_recipes
+		if params[:query].present?
+			@recipes = Recipe.search(params[:query], where: {user_id: current_user.id})
+		else
+			@recipes = Recipe.where(user_id: current_user.id)
+		end
+	end
 
-  private
-  	def recipe_params
-  		params.require(:recipe).permit(:user_id, :visible, :title, :slug, :description, :filepicker_url)
-  	end
+	private
+		def recipe_params
+			if params[:recipe].present?
+				params.require(:recipe).permit(:name, :story, :time, :user_id)
+			end
+		end
 end

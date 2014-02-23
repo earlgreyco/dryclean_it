@@ -1,19 +1,24 @@
 Sarmander::Application.routes.draw do
-  #Static Pages
-  root 'static_pages#home'
-
-  #Users
-  resources :users
-  match '/signup', to: 'users#new', via: 'get'
 
   #Recipes
   resources :recipes
+  match '/your-recipes', to: 'recipes#your_recipes', via: 'get'
+
+  #Recipe Images
+  resources :recipe_images
 
   #Ingredients
   resources :ingredients
 
   #Steps
   resources :steps
+
+  #Static Pages
+  root 'static_pages#home'
+
+  #Users
+  resources :users
+  match '/signup', to: 'users#new', via: 'get'
 
   #Sessions
   resources :sessions, only: [:new, :create, :destroy]

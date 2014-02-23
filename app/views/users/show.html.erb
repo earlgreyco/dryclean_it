@@ -1,25 +1,6 @@
 <% provide(:title, @user.name) %>
 
-<div class="header">
+<div class="main-padding center">
 	<h1><%= @user.name %></h1>
 	<h2><%= @user.email %></h2>
-</div>
-
-<div class="main-padding">
-	<div class="pure-g-r">
-		<div class="pure-u-1-5 push-blockquote">
-			<% if @user.filepicker_url? %>
-				<div class="user-profile-img">
-					<%= filepicker_image_tag @user.filepicker_url %>
-				</div>
-			<% end %>
-		</div>
-		<div class="pure-u-4-5">
-			<% if @user.description? %>
-				<blockquote class="blockquote-width">
-					"<%= @user.description %>"
-				</blockquote>
-			<% end %>
-		</div>
-	</div>
 </div>

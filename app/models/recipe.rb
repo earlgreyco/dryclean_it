@@ -1,10 +1,8 @@
 class Recipe < ActiveRecord::Base
-	belongs_to :user
+	searchkick
 	has_many :ingredients, dependent: :destroy
+	has_many :recipe_images, dependent: :destroy
 	has_many :steps, dependent: :destroy
-	default_scope -> { order('created_at DESC') }
-	validates_presence_of :user_id, :title, :slug, :description
-	validates :title, uniqueness: { case_sensitive: false }
-	extend FriendlyId
-	friendly_id :title, use: :slugged
+
+	default_scope -> { order('time ASC') }
 end

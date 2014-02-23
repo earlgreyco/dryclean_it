@@ -5,8 +5,9 @@ gem 'rails', '4.0.1'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'faker', '1.2.0'
 gem 'will_paginate', '3.0.4'
-gem 'purecss-rails'
 gem 'simple_form'
+gem 'best_in_place', github: 'bernat/best_in_place', branch: "rails-4"
+gem "searchkick"
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
@@ -29,7 +30,7 @@ group :test do
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
 
   # Uncomment this line on OS X.
-  # gem 'growl', '1.0.3'
+  gem 'growl', '1.0.3'
 
   # Uncomment these lines on Linux.
   # gem 'libnotify', '0.8.0'
@@ -41,6 +42,7 @@ group :test do
 end
 
 gem 'sass-rails', '4.0.1'
+gem 'bootstrap-sass', '3.1.1'
 gem 'uglifier', '2.1.1'
 gem 'coffee-rails', '4.0.1'
 gem 'jquery-rails', '3.0.4'
