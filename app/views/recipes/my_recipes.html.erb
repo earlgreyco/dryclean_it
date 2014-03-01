@@ -36,3 +36,18 @@
 		<% end %>
 	</div>
 </div>
+
+<script>
+$(document).ready(function(){
+	$(".recipe-row").click(function(){
+		var width = $(this).css("width");
+		if (width !== "80%") {
+			$(this).css({"width": "80%"});
+		}
+
+		if (width == "80%") {
+			$(this).css({"width": "100%"});
+		}
+	});
+});
+</script>
