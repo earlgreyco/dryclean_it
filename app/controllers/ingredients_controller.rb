@@ -1,4 +1,6 @@
 class IngredientsController < ApplicationController
+	respond_to :html, :json
+
 	def new
 		@ingredient = Ingredient.new(ingredient_params)
 	end
@@ -11,6 +13,12 @@ class IngredientsController < ApplicationController
 		respond_to do |format|
 			format.js
 		end
+	end
+
+	def update
+		@ingredient = Ingredient.find(params[:id])
+		@ingredient.update_attributes(ingredient_params)
+		respond_with @ingredient
 	end
 
 	private
