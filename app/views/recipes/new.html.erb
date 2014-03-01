@@ -10,22 +10,26 @@
 	<hr>
 </div>
 
+
+<!-- fill in recipe name and time -->
+
 <div id="create-recipe-one" class='main-padding'>
 	<div class="new-recipe-header">
-		My recipe's name is <%= f.text_field :name, placeholder: "Kalbi Beef", class: "time-input", style: "width: 210px;" %>. 
+		My recipe's name is <%= f.text_field :name, placeholder: "Kalbi Beef", class: "time-input", style: "width: 500px;" %>
 		<br/>
-		It takes <%= f.text_field :time, placeholder: "16", class: "time-input", style: "width: 60px;" %> hours to cook.
+		It takes <%= f.text_field :time, placeholder: "16", class: "time-input", style: "width: 60px;" %> hours to cook
 	</div>
-
 	<%= link_to raw("Next&nbsp;&nbsp;<i class='fa fa-arrow-right'></i>"), '#!', class: "btn btn-default btn-success", id: "next-btn-one" %>
 </div>
+
+
+<!-- fill in recipe story -->
 
 <div id="create-recipe-two" class='main-padding'>
 	<div class="new-recipe-header">
 		Long story short...
 	</div>
 
-	
 	<div class="story-section">
 		<%= f.text_field :story, placeholder: "I thought of this in the shower", id: "resize" %>
 	</div>
@@ -36,6 +40,8 @@
 </div>
 <% end %>
 
+
+<!-- add ingredients to new recipe -->
 
 <div id="create-recipe-three" class='main-padding'>
 	<div class="new-recipe-header">
@@ -63,9 +69,11 @@
 		</div>
 	</ul>
 
-	<button class="btn btn-default" id="back-btn-two">Back</button>
 	<button class="btn btn-default btn-success" id="next-btn-three">Next&nbsp;&nbsp;<i class="fa fa-arrow-right"></i></button>
 </div>
+
+
+<!-- add steps to new recipe -->
 
 <div id="create-recipe-four" class='main-padding'>
 	<div class="new-recipe-header">
@@ -85,9 +93,12 @@
 		</li>
 	</ol>
 
-	<button class="btn btn-default" id="back-btn-three">Back</button>
+	<button class="btn btn-default" id="back-btn-two">Back</button>
 	<button class="btn btn-default btn-success" id="next-btn-four">Next&nbsp;&nbsp;<i class="fa fa-arrow-right"></i></button>
 </div>
+
+
+<!-- add images to recdipe -->
 
 <div id="create-recipe-five" class='main-padding'>
 	<div class="new-recipe-header">
@@ -113,87 +124,6 @@
 
 	<div style="clear:both;"></div>
 
-	<button class="btn btn-default" id="back-btn-four">Back</button>
+	<button class="btn btn-default" id="back-btn-three">Back</button>
 	<%= link_to raw("<i class='fa fa-cutlery'></i>&nbsp;&nbsp;Go See Your Recipe!"), '/your-recipes', class: 'btn btn-default btn-success', id: 'next-btn-five' %>
 </div>
-
-
-
-<script>
-	$(document).ready(function(){
-
-		$("#next-btn-one").click(function(){
-     	$("#create-recipe-one").hide();
-     	$("#create-recipe-two").show();
-     	$("textarea").css({"height": "20px"});
-     	$("#create-recipe-two").animate({ marginLeft: "10%"} , 500);
-     	$(".progress-bar").css({"width": "20%"});
-     	$(".progress-bar").html("20%");
-  	});
-
-  	$("#next-btn-two").click(function(){
-  		$("#create-recipe-two").hide();
-  		$("#create-recipe-three").show();
-  		$("#create-recipe-three").animate({ marginLeft: "10%"} , 500);
-  		$(".progress-bar").css({"width": "40%"});
-  		$(".progress-bar").html("40%");
-  	});
-
-  	$("#next-btn-three").click(function(){
-  		$("#create-recipe-three").hide();
-  		$("#create-recipe-four").show();
-  		$("#create-recipe-four").animate({ marginLeft: "10%"} , 500);
-  		$(".progress-bar").css({"width": "60%"});
-  		$(".progress-bar").html("60%");
-  	});
-
-  	$("#next-btn-four").click(function(){
-  		$("#create-recipe-four").hide();
-  		$("#create-recipe-five").show();
-  		$("#create-recipe-five").animate({ marginLeft: "10%"} , 500);
-  		$(".progress-bar").css({"width": "80%"});
-  		$(".progress-bar").html("80%");
-  	});
-
-  	$("#next-btn-five").click(function(){
-  		$(".progress-bar").css({"width": "100%"});
-  		$(".progress-bar").html("100%");
-  	});
-
-  	$("#back-btn-one").click(function(){
-  		$("#create-recipe-two").hide();
-  		$("#create-recipe-two").animate({ marginLeft: "100%" }, 500);
-  		$("#create-recipe-one").show();
-  		$("#create-recipe-one").animate({ marginLeft: "10%"}, 500);
-  		$(".progress-bar").css({"width": "0%"});
-  		$(".progress-bar").html("");
-  	});
-
-  	$("#back-btn-two").click(function(){
-  		$("#create-recipe-three").hide();
-  		$("#create-recipe-three").animate({ marginLeft: "100%" }, 500);
-  		$("#create-recipe-two").show();
-  		$("#create-recipe-two").animate({ marginLeft: "10%"}, 500);
-  		$(".progress-bar").css({"width": "20%"});
-  		$(".progress-bar").html("20%");
-  	});
-
-  	$("#back-btn-three").click(function(){
-  		$("#create-recipe-four").hide();
-  		$("#create-recipe-four").animate({ marginLeft: "100%" }, 500);
-  		$("#create-recipe-three").show();
-  		$("#create-recipe-three").animate({ marginLeft: "10%"}, 500);
-  		$(".progress-bar").css({"width": "40%"});
-  		$(".progress-bar").html("40%");
-  	});
-
-  	$("#back-btn-four").click(function(){
-  		$("#create-recipe-five").hide();
-  		$("#create-recipe-five").animate({ marginLeft: "100%" }, 500);
-  		$("#create-recipe-four").show();
-  		$("#create-recipe-four").animate({ marginLeft: "10%"}, 500);
-  		$(".progress-bar").css({"width": "60%"});
-  		$(".progress-bar").html("60%");
-  	});
-	});
-</script>
