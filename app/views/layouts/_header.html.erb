@@ -12,7 +12,7 @@
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <% if signed_in? %>
-        <li><%= link_to "Your Recipes", "/your-recipes" %></li>
+        <li><%= link_to "My Recipes", "/my-recipes" %></li>
         <li><%= link_to "New Recipe", new_recipe_path %></li>
         <li><%= link_to "Sign Out", signout_path, method: "delete" %></li>
         <% else %>

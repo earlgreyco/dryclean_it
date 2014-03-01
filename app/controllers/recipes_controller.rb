@@ -1,11 +1,11 @@
 class RecipesController < ApplicationController
-	before_action :signed_in_user, only: [:new, :create, :update, :your_recipes, :index]
+	before_action :signed_in_user, only: [:new, :create, :update, :my_recipes, :index]
   before_action :admin_user,     only: [:index]
 
   def show
   	@recipe = Recipe.find(params[:id])
   end
-  
+
 	def index
 	end
 
@@ -35,7 +35,7 @@ class RecipesController < ApplicationController
 		@updated = @recipe.update_attributes(recipe_params)
 	end
 
-	def your_recipes
+	def my_recipes
 		if params[:query].present?
 			@recipes = Recipe.search(params[:query], where: {user_id: current_user.id})
 		else
