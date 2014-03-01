@@ -13,93 +13,8 @@
 <body class="pure-skin-sarmander">
 		
 <%= render 'layouts/olark' %>
+<%= render 'layouts/header' %>
 
-<div>
-  <div>
-    <div class="pure-g-r">
-
-      <div class="text-box pure-u-1">
-        <div class="l-box">
-          <div class="text-box-head" id="matilde-head">Share recipes from around the world</div>
-          <p class="text-box-subhead">Login / Sign Up</p>
-        </div>
-        </div>
-
-        <div class="photo-box pure-u-1-4 red">
-          <a href="#">  
-            <%= render :partial => 'layouts/circle' %>
-          </a>
-        </div>
-
-        <div class="photo-box pure-u-1-4 creme">
-        <a href="#">  
-          <%= render :partial => 'layouts/circle' %>
-        </a>
-        </div>
-
-        <div class="photo-box pure-u-1-4 red">
-          <a href="#">  
-            <%= render :partial => 'layouts/circle' %>
-          </a>
-        </div>
-
-        <div class="photo-box pure-u-1-4 creme">
-          <a href="#">  
-            <%= render :partial => 'layouts/circle' %>
-          </a>
-        </div>
-
-        <div class="photo-box pure-u-1-4 pink">
-          <a href="#">  
-            <%= render :partial => 'layouts/circle' %>
-          </a>
-        </div>
-
-        <div class="photo-box pure-u-1-4 light-pink">
-          <a href="#">
-            <%= render :partial => 'layouts/circle' %>
-          </a>
-        </div>
-
-        <div class="photo-box pure-u-1-4 pink">
-          <a href="#">
-            <%= render :partial => 'layouts/circle' %>
-          </a>
-        </div>
-
-        <div class="photo-box photo-box pure-u-1-4 light-pink">
-          <a href="#">
-            <%= render :partial => 'layouts/circle' %>
-          </a>
-        </div>
-
-        <div class="photo-box photo-box pure-u-1-4 red">
-          <a href="#">
-            <%= render :partial => 'layouts/circle' %>
-          </a>
-        </div>
-
-        <div class="photo-box photo-box pure-u-1-4 creme">
-          <a href="#">
-            <%= render :partial => 'layouts/circle' %>
-          </a>
-        </div>
-
-        <div class="photo-box photo-box pure-u-1-4 red">
-          <a href="#">
-            <%= render :partial => 'layouts/circle' %>
-          </a>
-        </div>
-
-        <div class="photo-box photo-box pure-u-1-4 creme">
-          <a href="#">
-            <%= render :partial => 'layouts/circle' %>
-          </a>
-        </div>
-    </div> 
-</div>
-
-<% if false %>
 	<div class="pure-u-1-3">
     <% if !current_user && current_page?(root_path) %>
       <%= link_to signup_path, class: "dude-just-sign-up" do %>
@@ -112,8 +27,5 @@
   	
     <%= yield %>
   </div>
-  <% end %>
-</div>
-
 </body>
 </html>
