@@ -11,6 +11,18 @@
   transition: 0.3s ease;
 }
 
+
+/* links */
+
+a{
+	color: #777777;
+	&:hover{
+		color: #333333;
+		text-decoration: none;
+	}
+}
+
+
 /* flash alerts */
 
 .alert{
