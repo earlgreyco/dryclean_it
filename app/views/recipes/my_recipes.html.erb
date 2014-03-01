@@ -12,7 +12,7 @@
 
 	<div id="your-recipes-list">
 		<% @recipes.each do |recipe| %>
-			<%= link_to recipe_path(recipe) do %>
+			<%= link_to "#!", class: "recipe-section" do %>
 			<div class="row recipe-row">
 				
 				<% if recipe.recipe_images.any? %>
