@@ -6,10 +6,7 @@
 <div class="main-padding">
 	<%= form_tag "/my-recipes", method: :get do %>
 	<div class='input-group recipe-search'>
-		 <%= text_field_tag :query, params[:query], placeholder: "Search my recipes", class: "form-control input-lg" %>
-		<span class="input-group-btn">
-			<%= submit_tag "Search", class: "btn btn-default btn-lg" %>
-		</span>
+		<%= text_field_tag :query, params[:query], placeholder: "Search my recipes", class: "form-control input-lg" %>
 	</div>
 	<% end %>
 </div>
@@ -38,7 +35,7 @@
 
 		<!-- recipe delete button -->
 
-		<%= link_to raw("<i class='fa fa-times'></i>"), "#!", class: "fast-speed" %>
+		<%= link_to raw("<i class='fa fa-times'></i>"), recipe, method: :delete, remote: true, class: "fast-speed" %>
 
 
 		<!-- recipe edit button -->
@@ -75,69 +72,9 @@
 				$(".name", this).css({"color": "black"});
 			}
 		});
+
+		$(".fast-speed").click(function(){
+			$(this).parent().css({"display": "none"});
+		});
 	});
 </script>
-
-
-
-<% if false %>
-
-<div class="main-padding">
-	
-
-	<div id="your-recipes-list">
-		<% @recipes.each do |recipe| %>
-			<div class="row recipe-row">
-				
-				<% if recipe.recipe_images.any? %>
-					<%= filepicker_image_tag recipe.recipe_images[0].img, w: 60, h: 60, fit: 'clip' %>
-				<% end %>
-
-				<div class="recipe-name">
-					<%= recipe.name %>
-
-					<div class="actions pull-right">
-
-
-						<!-- view recipe -->
-
-						<%= link_to "#!" do %>
-							<i class='fa fa-video-camera'></i>
-						<% end %>
-
-
-						<!-- edit recipe -->
-
-						<%= link_to "#!" do %>
-							<i class='fa fa-cog'></i>
-						<% end %>
-
-
-						<!-- delete recipe -->
-
-						<%= link_to "#!" do %>
-							<i class='fa fa-times-circle'></i>
-						<% end %>
-					</div>
-
-					<div class="pull-right">
-						<% if recipe.time.to_i == recipe.time %>
-							<%= recipe.time.to_i %> hours
-						<% else %>
-							<%= recipe.time %> hours
-						<% end %>
-					</div>
-				</div>
-			</div>
-			<hr>
-		<% end %>
-	</div>
-</div>
-
-<script>
-$(document).ready(function(){
-
-});
-</script>
-
-<% end %>

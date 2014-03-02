@@ -8,14 +8,25 @@ MY RECIPES
 /* search through my recipces by recipe name */
 
 .recipe-search{
-	margin-bottom: 20px;
+	margin-top: 40px;
+	margin-bottom: 40px;
 	input{
 		border: 1px solid rgb(204, 204, 204) !important;
-	}
+		width: 400px !important;
+		-webkit-transition: 0.3s ease;
+	  -moz-transition: 0.3s ease;
+	  -o-transition: 0.3s ease;
+	  -ms-transition: 0.3s ease;
+	  transition: 0.3s ease;
 
-	.btn{
-		padding-top: 11px;
-		padding-bottom: 10px;
+		&:focus{
+			width: 800px !important;
+			-webkit-transition: 0.3s ease;
+		  -moz-transition: 0.3s ease;
+		  -o-transition: 0.3s ease;
+		  -ms-transition: 0.3s ease;
+		  transition: 0.3s ease;
+		}
 	}
 }
 
@@ -24,7 +35,7 @@ MY RECIPES
 
 .recipe-section{
 	border: 1px solid #ccc;
-	margin: 10px 0px;
+	margin: 30px 0px;
 	cursor: pointer;
 	overflow: hidden;
 	white-space: nowrap;
@@ -46,17 +57,34 @@ MY RECIPES
 
 	a{
 		float: right;
-		padding: 30px;
+		padding: 31px;
 		display: block;
 		margin-top: -150px;
 		border-left: 1px solid #ccc;
 		i{
-			font-size: 40px;
+			font-size: 38px;
 		}
+	}
+
+	.slow-speed, .medium-speed, .fast-speed{
+		-webkit-transition: 0.3s ease;
+	  -moz-transition: 0.3s ease;
+	  -o-transition: 0.3s ease;
+	  -ms-transition: 0.3s ease;
+	  transition: 0.3s ease;
 
 		&:hover{
-			background: url('crossword.png');
+			-webkit-transition: 0.3s ease;
+		  -moz-transition: 0.3s ease;
+		  -o-transition: 0.3s ease;
+		  -ms-transition: 0.3s ease;
+		  transition: 0.3s ease;
 		}
+	}
+
+	.fast-speed:hover{
+		background: #dd514c;
+		color: white;
 	}
 }
 
@@ -168,42 +196,4 @@ MY RECIPES
 	div{
 		display: none !important;
 	}
-}
-
-
-/* your recipes */
-
-
-
-.input-group-btn{
-	button{
-		padding: 12px 20px;
-	}
-}
-
-#your-recipes-list{
-	img{
-		float: left;
-		margin-left: 15px;
-		border: 1px solid #E8E8E8;
-		width: 80px;
-		height: 55px;
-	}
-
-	.recipe-name{
-
-		.actions{
-			margin-right: 30px;
-
-			i{
-				padding: 20px;
-				font-size: 30px;
-				border: 1px solid #ccc;
-			}
-		}
-	}
-}
-
-.recipe-row{
-	margin: 10px 0px;
 }

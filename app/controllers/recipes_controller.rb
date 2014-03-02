@@ -43,6 +43,10 @@ class RecipesController < ApplicationController
 		end
 	end
 
+	def destroy
+		Recipe.find(params[:id]).destroy
+	end
+
 	private
 		def recipe_params
 			if params[:recipe].present?
