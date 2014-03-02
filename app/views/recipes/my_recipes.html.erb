@@ -61,6 +61,7 @@
 				$(".fast-speed", this).animate({"margin-top": "-150px"}, 'slow');
 				$("img", this).animate({"margin-left": "0px"}, 'slow');
 				$(".name", this).css({"color": "#A8A8A8"});
+				$(this).css({"box-shadow": "none"});
 			}
 
 			else {
@@ -70,6 +71,7 @@
 				$(".fast-speed", this).animate({"margin-top": "0px"}, 'fast');
 				$("img", this).animate({"margin-left": "-150px"}, 'slow');
 				$(".name", this).css({"color": "black"});
+				$(this).css({"box-shadow": "0px 0px 1px black"});
 			}
 		});
 
