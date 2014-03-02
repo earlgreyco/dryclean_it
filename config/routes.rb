@@ -2,7 +2,7 @@ Sarmander::Application.routes.draw do
 
   #Recipes
   resources :recipes
-  match '/your-recipes', to: 'recipes#your_recipes', via: 'get'
+  match '/my-recipes', to: 'recipes#my_recipes', via: 'get'
 
   #Recipe Images
   resources :recipe_images

@@ -1,6 +1,6 @@
 class IngredientsController < ApplicationController
 	respond_to :html, :json
-	
+
 	def new
 		@ingredient = Ingredient.new(ingredient_params)
 	end

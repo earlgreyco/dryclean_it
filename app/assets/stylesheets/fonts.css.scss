@@ -1,0 +1,25 @@
+@font-face {
+    font-family: 'eraserregular';
+    src: asset-url('EraserRegular-webfont.eot');
+    src: asset-url('EraserRegular-webfont.eot?#iefix') format('embedded-opentype'),
+         asset-url('EraserRegular-webfont.woff') format('woff'),
+         asset-url('EraserRegular-webfont.ttf') format('truetype'),
+         asset-url('EraserRegular-webfont.svg#eraserregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'matilderegular';
+    src: asset-url('matilde_sketch-webfont.eot');
+    src: asset-url('matilde_sketch-webfont.eot?#iefix') format('embedded-opentype'),
+         asset-url('matilde_sketch-webfont.woff') format('woff'),
+         asset-url('matilde_sketch-webfont.ttf') format('truetype'),
+         asset-url('matilde_sketch-webfont.svg#matilde_sketchregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+

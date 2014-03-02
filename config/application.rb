@@ -16,5 +16,7 @@ module Sarmander
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
     config.filepicker_rails.api_key = "AqAh7fx0zSWOgcyu8QutCz"
     config.filepicker_rails.secret_key = "ABB4L6N2MJF4TIXJA3UY5O4NHA"
+		config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+		config.assets.precompile += %w( .svg .eot .woff .ttf )
   end
 end
