@@ -1,7 +1,6 @@
 development:
-  adapter: postgresql
-  encoding: unicode
-  database: sarmander_development
-  pool: 5
-  username: sarine
-  password:
+    adapter: postgresql
+    database: sarmander_development
+    host: localhost
+    pool: 5
+    timeout: 5000
