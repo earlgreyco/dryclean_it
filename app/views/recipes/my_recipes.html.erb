@@ -1,18 +1,92 @@
 <% provide(:title, "My Recipes") %>
 
+
+<!-- search through my recipces by recipe name -->
+
 <div class="main-padding">
 	<%= form_tag "/my-recipes", method: :get do %>
 	<div class='input-group recipe-search'>
-		 <%= text_field_tag :query, params[:query], placeholder: "Search your recipes", class: "form-control input-lg" %>
+		 <%= text_field_tag :query, params[:query], placeholder: "Search my recipes", class: "form-control input-lg" %>
 		<span class="input-group-btn">
-			<%= submit_tag "Search", class: "btn btn-default btn-lg", style: "padding-top: 11px; padding-bottom: 10px;" %>
+			<%= submit_tag "Search", class: "btn btn-default btn-lg" %>
 		</span>
 	</div>
 	<% end %>
+</div>
+
+
+<!-- list all recipes of current user -->
+
+<% @recipes.each do |recipe| %>
+
+	<div class="main-padding recipe-section">
+
+
+		<!-- recipe image -->
+
+		<% if recipe.recipe_images.any? %>
+			<%= filepicker_image_tag recipe.recipe_images[0].img %>
+		<% end %>
+
+
+		<!-- recipe name -->
+
+		<div class="name">
+			<%= recipe.name %>
+		</div>
+
+
+		<!-- recipe delete button -->
+
+		<%= link_to raw("<i class='fa fa-times'></i>"), "#!", class: "fast-speed" %>
+
+
+		<!-- recipe edit button -->
+
+		<%= link_to raw("<i class='fa fa-cog'></i>"), "#!", class: "medium-speed" %>
+
+
+		<!-- recipe show button -->
+
+		<%= link_to raw("<i class='fa fa-bullseye'></i>"), "#!", class: "slow-speed" %>
+
+		<div style="clear:both;"></div>
+	</div>
+<% end %>
+
+<script>
+	$(document).ready(function(){
+		$(".recipe-section").click(function(){
+			if( $(this).hasClass("show-buttons") ) {
+				$(this).removeClass("show-buttons");
+				$(".slow-speed", this).animate({"margin-top": "-150px"}, 'fast');
+				$(".medium-speed", this).animate({"margin-top": "-150px"}, 'medium');
+				$(".fast-speed", this).animate({"margin-top": "-150px"}, 'slow');
+				$("img", this).animate({"margin-left": "0px"}, 'slow');
+				$(".name", this).css({"color": "#A8A8A8"});
+			}
+
+			else {
+				$(this).addClass("show-buttons");
+				$(".slow-speed", this).animate({"margin-top": "0px"}, 'slow');
+				$(".medium-speed", this).animate({"margin-top": "0px"}, 'medium');
+				$(".fast-speed", this).animate({"margin-top": "0px"}, 'fast');
+				$("img", this).animate({"margin-left": "-150px"}, 'slow');
+				$(".name", this).css({"color": "black"});
+			}
+		});
+	});
+</script>
+
+
+
+<% if false %>
+
+<div class="main-padding">
+	
 
 	<div id="your-recipes-list">
 		<% @recipes.each do |recipe| %>
-			<%= link_to "#!", class: "recipe-section" do %>
 			<div class="row recipe-row">
 				
 				<% if recipe.recipe_images.any? %>
@@ -21,6 +95,31 @@
 
 				<div class="recipe-name">
 					<%= recipe.name %>
+
+					<div class="actions pull-right">
+
+
+						<!-- view recipe -->
+
+						<%= link_to "#!" do %>
+							<i class='fa fa-video-camera'></i>
+						<% end %>
+
+
+						<!-- edit recipe -->
+
+						<%= link_to "#!" do %>
+							<i class='fa fa-cog'></i>
+						<% end %>
+
+
+						<!-- delete recipe -->
+
+						<%= link_to "#!" do %>
+							<i class='fa fa-times-circle'></i>
+						<% end %>
+					</div>
+
 					<div class="pull-right">
 						<% if recipe.time.to_i == recipe.time %>
 							<%= recipe.time.to_i %> hours
@@ -29,25 +128,16 @@
 						<% end %>
 					</div>
 				</div>
-				<div style="clear:both;"></div>
 			</div>
 			<hr>
-			<% end %>
 		<% end %>
 	</div>
 </div>
 
 <script>
 $(document).ready(function(){
-	$(".recipe-row").click(function(){
-		var width = $(this).css("width");
-		if (width !== "80%") {
-			$(this).css({"width": "80%"});
-		}
 
-		if (width == "80%") {
-			$(this).css({"width": "100%"});
-		}
-	});
 });
 </script>
+
+<% end %>

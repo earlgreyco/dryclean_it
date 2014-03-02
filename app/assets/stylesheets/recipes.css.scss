@@ -1,3 +1,77 @@
+/**********
+
+MY RECIPES
+
+**********/
+
+
+/* search through my recipces by recipe name */
+
+.recipe-search{
+	margin-bottom: 20px;
+	input{
+		border: 1px solid rgb(204, 204, 204) !important;
+	}
+
+	.btn{
+		padding-top: 11px;
+		padding-bottom: 10px;
+	}
+}
+
+
+/* list all recipes of current user */
+
+.recipe-section{
+	border: 1px solid #ccc;
+	margin: 10px 0px;
+	cursor: pointer;
+	overflow: hidden;
+	white-space: nowrap;
+	width: 80%;
+
+	img{
+		float: left;
+		width: 150px;
+		height: 100px;
+	}
+
+	.name{
+		float: left;
+		font-weight: bold;
+		font-size: 20px;
+		padding: 35px 20px;
+		color: #A8A8A8;
+	}
+
+	a{
+		float: right;
+		padding: 30px;
+		display: block;
+		margin-top: -150px;
+		border-left: 1px solid #ccc;
+		i{
+			font-size: 40px;
+		}
+
+		&:hover{
+			background: url('crossword.png');
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* new recipe */
 
 .new-recipe-header{
@@ -99,13 +173,7 @@
 
 /* your recipes */
 
-.recipe-search{
-	margin-bottom: 40px;
 
-	input{
-		border: 1px solid rgb(204, 204, 204) !important;
-	}
-}
 
 .input-group-btn{
 	button{
@@ -123,7 +191,16 @@
 	}
 
 	.recipe-name{
-		margin: 15px 15px 15px 110px;
+
+		.actions{
+			margin-right: 30px;
+
+			i{
+				padding: 20px;
+				font-size: 30px;
+				border: 1px solid #ccc;
+			}
+		}
 	}
 }
 
