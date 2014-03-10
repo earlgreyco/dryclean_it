@@ -14,7 +14,7 @@
 		  	<span class="fontawesome-plus"></span> <span class="fontawesome-caret-down"></span>
 		 	</a>
 		  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-		  	<li><%= link_to "View", recipe_path(@recipe) %></li>
+		  	<li><%= link_to "Back To My Recipes", '/my-recipes' %></li>
 		    <li><%= link_to "Favorite", "#" %></li>
 		    <li><%= link_to "Edit", "#" %></li>
 		    <li><%= link_to "Delete", "#" %></li>
@@ -78,7 +78,7 @@
 		</div>
 
 
-		
+
 
 		<!-- comments -->
 
@@ -104,6 +104,8 @@
 			</div>
 		</div>
 
+		<div class="add-new-comments">
+		</div>
 		<div class="comment-list">
 			<% @recipe.comments.each do |comment| %>
 				<div class="new-comment row show-comment">
