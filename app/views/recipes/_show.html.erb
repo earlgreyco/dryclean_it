@@ -78,22 +78,7 @@
 		</div>
 
 
-		<!-- user details -->
-
-		<div class="user-details">
-			<%= filepicker_image_tag @user.filepicker_url, w: 100, h: 100, fit: 'clip' %>
-
-			<div class="user-name">
-				<%= @user.name %>
-			</div>
-
-			<div class="recipe-story">
-				"<%= @recipe.story %>"
-			</div>
-
-			<div style="clear:both;"></div>
-		</div>
-
+		
 
 		<!-- comments -->
 
@@ -141,6 +126,24 @@
 	</div>
 
 	<div class="col-md-6 right-column">
+
+
+		<!-- user details -->
+
+		<div class="user-details">
+			<%= filepicker_image_tag @user.filepicker_url, w: 100, h: 100, fit: 'clip' %>
+
+			<div class="user-name">
+				<%= @user.name %>
+			</div>
+
+			<div class="recipe-story">
+				"<%= @recipe.story %>"
+			</div>
+
+			<div style="clear:both;"></div>
+		</div>
+
 
 		<!-- list all of this recipe's ingredients -->
 
