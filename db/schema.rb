@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140217064526) do
+ActiveRecord::Schema.define(version: 20140310110138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: true do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "recipe_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["user_id", "recipe_id"], name: "index_comments_on_user_id_and_recipe_id", using: :btree
 
   create_table "ingredients", force: true do |t|
     t.string   "name"
@@ -63,6 +73,7 @@ ActiveRecord::Schema.define(version: 20140217064526) do
     t.string   "password_digest"
     t.string   "remember_token"
     t.boolean  "admin",           default: false
+    t.string   "filepicker_url"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

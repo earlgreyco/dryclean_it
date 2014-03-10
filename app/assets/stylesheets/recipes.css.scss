@@ -34,12 +34,12 @@ MY RECIPES
 /* list all recipes of current user */
 
 .recipe-section{
-	border: 1px solid #ccc;
-	margin: 30px 0px;
-	cursor: pointer;
-	overflow: hidden;
-	white-space: nowrap;
-	width: 80%;
+	width: 100%;
+	border-bottom: 1px solid #e1e6e9;
+
+	&:first-child{
+		border-top: 1px solid #e1e6e9;
+	}
 
 	img{
 		float: left;
@@ -49,42 +49,29 @@ MY RECIPES
 
 	.name{
 		float: left;
-		font-weight: bold;
-		font-size: 20px;
-		padding: 35px 20px;
-		color: #A8A8A8;
+		font-size: 15px;
+		padding: 40px 20px;
+		color: black;
 	}
 
-	a{
+	.actions, .time{
 		float: right;
-		padding: 31px;
-		display: block;
-		margin-top: -150px;
-		border-left: 1px solid #ccc;
-		i{
-			font-size: 38px;
-		}
+		color: #94999c;
+		padding: 40px 0px;
 	}
 
-	.slow-speed, .medium-speed, .fast-speed{
-		-webkit-transition: 0.3s ease;
-	  -moz-transition: 0.3s ease;
-	  -o-transition: 0.3s ease;
-	  -ms-transition: 0.3s ease;
-	  transition: 0.3s ease;
-
-		&:hover{
-			-webkit-transition: 0.3s ease;
-		  -moz-transition: 0.3s ease;
-		  -o-transition: 0.3s ease;
-		  -ms-transition: 0.3s ease;
-		  transition: 0.3s ease;
+	.actions{
+		margin-left: 20px;
+		a{
+			cursor: pointer;
 		}
-	}
 
-	.fast-speed:hover{
-		background: #dd514c;
-		color: white;
+		.dropdown{
+			.dropdown-menu{
+				margin-top: -40px;
+				margin-left: -10px;
+			}
+		}
 	}
 }
 
@@ -183,5 +170,196 @@ MY RECIPES
 #new-step-form{
 	div{
 		display: none !important;
+	}
+}
+
+
+/**********
+
+SHOW PAGE
+
+**********/
+
+
+/* show basic recipe details */
+
+#recipe-section-show-page{
+	position: fixed;
+	top: 0;
+	background: white;
+	z-index: 100;
+
+	.actions{
+		padding-right: 20px;
+
+		.dropdown-menu{
+			margin-left: -120px !important;
+		}
+	}
+}
+
+#recipe-columns{
+	width: 80%;
+	padding-top: 150px;
+	padding-bottom: 50px;
+	margin-left: auto;
+	margin-right: auto;
+
+	.left-column{
+		padding-right: 70px;
+	}
+
+	.right-column{
+		padding-left: 70px;
+	}
+}
+
+
+/* show all of recipe images in carousel */
+
+.carousel-control{
+	position: absolute;
+	top: 45% !important;
+}
+
+.carousel{
+	img{
+		width: 100%;
+	}
+
+	.right, .left{
+		background: none !important;
+
+		.fontawesome-chevron-left, .fontawesome-chevron-right{
+			font-size: 30px;
+		}
+	}
+}
+
+
+/* user details */
+
+.user-details{
+	border: 1px solid #d3d6db;
+	margin-top: 40px;
+	margin-bottom: 40px;
+	background: white;
+	border-radius: 3px;
+
+	img, .user-name, .recipe-story{
+		float: left;
+	}
+
+	img{
+		border-radius: 3px 0px 0px 3px;
+		width: 30%;
+		padding-right: 20px;
+	}
+
+	.user-name{
+		font-weight: bold;
+		margin: 10px 0px 5px 0px;
+		font-size: 18px;
+		width: 70%;
+	}
+
+	.recipe-story{
+		width: 70%;
+		padding-right: 20px;
+		font-style: italic;
+	}
+}
+
+
+/* comments */
+
+.new-comment{
+	textarea{
+		width: 100%;
+		height: 100px;
+		padding: 10px;
+
+		&:focus{
+			outline-width: 0px !important;
+		}
+	}
+
+	.comment-form{
+		padding-left: 40px;
+	}
+}
+
+.comment-list{
+
+}
+
+.show-comment{
+	margin-top: 40px;
+}
+
+.content{
+	float: left;
+	width: 100%;
+}
+
+.created-at{
+	color: #94999c;
+	margin-top: 10px;
+	float: left;
+}
+
+
+/* list all of this recipe's ingredients */
+
+.ingredient-wrap, .step-wrap{
+	border: 1px solid #d3d6db;
+	background: white;
+	border-radius: 3px;
+	padding: 40px;
+}
+
+.ingredient-wrap{
+	margin-bottom: 40px;
+}
+
+.ingredient-header, .step-header, .comment-header{
+	font-weight: bold;
+	font-size: 20px;
+	margin-bottom: 15px;
+}
+
+.ingredient-list{
+	list-style: none;
+	margin-left: -40px;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+	line-height: 30px;
+
+	li{
+		margin: 25px 0px;
+		font-size: 15px;
+
+		&:last-child{
+			margin-bottom: 0px;
+		}
+	}
+}
+
+
+/* list all of this recipe's steps */
+
+.step-list{
+	margin-left: -20px;
+	line-height: 30px;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+
+	li{
+		margin: 25px 0px;
+		font-size: 15px;
+
+		&:last-child{
+			margin-bottom: 0px;
+		}
 	}
 }

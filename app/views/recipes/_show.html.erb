@@ -1,0 +1,176 @@
+<% provide(:title, @recipe.name) %>
+
+
+<!-- show basic recipe details -->
+
+<div class="recipe-section" id="recipe-section-show-page">
+	<div class="name">
+		<%= @recipe.name %>
+	</div>
+
+	<div class="actions">
+		<div class="dropdown">
+		  <a data-toggle="dropdown" class="dropdown-link">
+		  	<span class="fontawesome-plus"></span> <span class="fontawesome-caret-down"></span>
+		 	</a>
+		  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+		  	<li><%= link_to "View", recipe_path(@recipe) %></li>
+		    <li><%= link_to "Favorite", "#" %></li>
+		    <li><%= link_to "Edit", "#" %></li>
+		    <li><%= link_to "Delete", "#" %></li>
+		  </ul>
+		</div>
+	</div>
+
+	<div class="time">
+		<%= @recipe.time %> minutes
+	</div>
+
+	<div style="clear:both;"></div>
+</div>
+
+
+<div class="row" id="recipe-columns">
+	<div class="col-md-6 left-column">
+
+
+		<!-- show all of recipe images in carousel -->
+
+		<div id="recipe-images" class="carousel slide" data-ride="carousel">
+
+
+		  <!-- Indicators -->
+
+		  <ol class="carousel-indicators">
+		  <% @recipe.recipe_images.each_with_index do |recipe_image, i| %>
+		  	<% if i == 0 %>
+		  		<li data-target="#recipe-images" class="active"></li>
+		  	<% else %>
+		  		<li data-target="#recipe-images" ></li>
+		  	<% end %>
+		  <% end %>
+		  </ol>
+
+
+		  <!-- Wrapper for slides -->
+
+		  <div class="carousel-inner">
+		  	<% @recipe.recipe_images.each_with_index do |recipe_image, i| %>
+		  	<% if i == 0 %>
+		  	<div class="active item">
+		  	<% else %>
+		    <div class="item">
+		    <% end %>
+		    	<%= filepicker_image_tag recipe_image.img, w: "100%", h: "85%", fit: 'crop' %>
+		    </div>
+		    <% end %>
+		  </div>
+
+
+		  <!-- Controls -->
+
+		  <a class="left carousel-control" href="#recipe-images" data-slide="prev">
+		    <div class="fontawesome-chevron-left"></div>
+		  </a>
+		  <a class="right carousel-control" href="#recipe-images" data-slide="next">
+		    <div class="fontawesome-chevron-right"></div>
+		  </a>
+		</div>
+
+
+		<!-- user details -->
+
+		<div class="user-details">
+			<%= filepicker_image_tag @user.filepicker_url, w: 100, h: 100, fit: 'clip' %>
+
+			<div class="user-name">
+				<%= @user.name %>
+			</div>
+
+			<div class="recipe-story">
+				"<%= @recipe.story %>"
+			</div>
+
+			<div style="clear:both;"></div>
+		</div>
+
+
+		<!-- comments -->
+
+		<div class="comment-header">
+			Comments
+		</div>
+
+		<div class="new-comment row">
+			<div class="comment-image col-md-1">
+				<%= filepicker_image_tag current_user.filepicker_url, w: 50, h: 50, fit: 'clip' %>
+			</div>
+			
+			<div class="comment-form col-md-11">
+			<%= simple_form_for Comment.new, remote: true, html: { id: "new-comment-form" } do |f| %>
+				<%= f.input :content, label: false, placeholder: "Share your thoughts..." %>
+
+				<%= f.hidden_field :recipe_id, id: "recipe-id-field", value: @recipe.id %>
+
+				<%= f.hidden_field :user_id, id: "user-id-field" %>
+
+				<%= f.submit "Post", class: "btn btn-default" %>
+			<% end %>
+			</div>
+		</div>
+
+		<div class="comment-list">
+			<% @recipe.comments.each do |comment| %>
+				<div class="new-comment row show-comment">
+					<div class="comment-image col-md-1">
+						<%= filepicker_image_tag User.where(id: comment.user_id).first.filepicker_url, w: 50, h: 50, fit: 'clip' %>
+					</div>
+
+					<div class="comment-form col-md-11">
+						<div class="content">
+							<%= comment.content %>
+						</div>
+
+						<div class="created-at">
+							<%= comment.created_at.strftime("%D") %>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+
+	<div class="col-md-6 right-column">
+
+		<!-- list all of this recipe's ingredients -->
+
+		<div class="ingredient-wrap">
+			<div class="ingredient-header">Ingredients</div>
+
+			<ul class="ingredient-list">
+			<% @recipe.ingredients.each do |ingredient| %>
+				<li>
+					<span class="fontawesome-ok"></span> 
+					<%= ingredient.name %>
+				</li>
+			<% end %>
+			</ul>
+		</div>
+
+
+		<!-- list all of this recipe's steps -->
+
+		<div class="step-wrap">
+			<div class="step-header">Steps</div>
+
+			<ol class="step-list">
+			<% @recipe.steps.each do |step| %>
+				<li>
+
+					<%= step.description %>
+				</li>
+			<% end %>
+			</ol>
+		</div>
+	</div>
+</div>

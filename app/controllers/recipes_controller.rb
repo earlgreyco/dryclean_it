@@ -4,6 +4,7 @@ class RecipesController < ApplicationController
 
   def show
   	@recipe = Recipe.find(params[:id])
+  	@user = User.where(id: @recipe.user_id).first
   end
 
 	def index

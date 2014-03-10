@@ -1,82 +1,74 @@
 <% provide(:title, "My Recipes") %>
 
-
-<!-- search through my recipces by recipe name -->
-
-<div class="main-padding">
-	<%= form_tag "/my-recipes", method: :get do %>
-	<div class='input-group recipe-search'>
-		<%= text_field_tag :query, params[:query], placeholder: "Search my recipes", class: "form-control input-lg" %>
-	</div>
-	<% end %>
-</div>
+<div id="my-recipes">
 
 
-<!-- list all recipes of current user -->
+	<!-- search through my recipces by recipe name -->
 
-<% @recipes.each do |recipe| %>
-
-	<div class="main-padding recipe-section">
-
-
-		<!-- recipe image -->
-
-		<% if recipe.recipe_images.any? %>
-			<%= filepicker_image_tag recipe.recipe_images[0].img %>
-		<% end %>
-
-
-		<!-- recipe name -->
-
-		<div class="name">
-			<%= recipe.name %>
+	<div class="main-padding">
+		<%= form_tag "/my-recipes", method: :get do %>
+		<div class='input-group recipe-search'>
+			<%= text_field_tag :query, params[:query], placeholder: "Search my recipes", class: "form-control input-lg" %>
 		</div>
-
-
-		<!-- recipe delete button -->
-
-		<%= link_to raw("<i class='fa fa-times'></i>"), recipe, method: :delete, remote: true, class: "fast-speed" %>
-
-
-		<!-- recipe edit button -->
-
-		<%= link_to raw("<i class='fa fa-cog'></i>"), "#!", class: "medium-speed" %>
-
-
-		<!-- recipe show button -->
-
-		<%= link_to raw("<i class='fa fa-bullseye'></i>"), "#!", class: "slow-speed" %>
-
-		<div style="clear:both;"></div>
+		<% end %>
 	</div>
-<% end %>
+
+
+	<div class="main-padding">
+
+
+		<!-- list all recipes of current user -->
+
+		<% @recipes.each do |recipe| %>
+			<div class="recipe-section">
+
+
+				<!-- recipe image -->
+
+				<% if recipe.recipe_images.any? %>
+					<%= filepicker_image_tag recipe.recipe_images[0].img %>
+				<% end %>
+
+
+				<!-- recipe name -->
+
+				<div class="name">
+					<%= recipe.name %>
+				</div>
+
+
+				<!-- recipe actions -->
+				<div class="actions">
+					<div class="dropdown">
+					  <a data-toggle="dropdown" class="dropdown-link">
+					  	<span class="fontawesome-plus"></span> <span class="fontawesome-caret-down"></span>
+					 	</a>
+					  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+					  	<li><%= link_to "View", recipe_path(recipe) %></li>
+					    <li><%= link_to "Favorite", "#" %></li>
+					    <li><%= link_to "Edit", "#" %></li>
+					    <li><%= link_to "Delete", "#" %></li>
+					  </ul>
+					</div>
+				</div>
+
+
+				<!-- recipe time -->
+
+				<div class="time">
+					<%= recipe.time %> minutes
+				</div>
+
+				<div style="clear:both;"></div>
+			</div>
+		<% end %>
+	</div>
+</div>
 
 <script>
 	$(document).ready(function(){
 		$(".recipe-section").click(function(){
-			if( $(this).hasClass("show-buttons") ) {
-				$(this).removeClass("show-buttons");
-				$(".slow-speed", this).animate({"margin-top": "-150px"}, 'fast');
-				$(".medium-speed", this).animate({"margin-top": "-150px"}, 'medium');
-				$(".fast-speed", this).animate({"margin-top": "-150px"}, 'slow');
-				$("img", this).animate({"margin-left": "0px"}, 'slow');
-				$(".name", this).css({"color": "#A8A8A8"});
-				$(this).css({"box-shadow": "none"});
-			}
 
-			else {
-				$(this).addClass("show-buttons");
-				$(".slow-speed", this).animate({"margin-top": "0px"}, 'slow');
-				$(".medium-speed", this).animate({"margin-top": "0px"}, 'medium');
-				$(".fast-speed", this).animate({"margin-top": "0px"}, 'fast');
-				$("img", this).animate({"margin-left": "-150px"}, 'slow');
-				$(".name", this).css({"color": "black"});
-				$(this).css({"box-shadow": "0px 0px 1px black"});
-			}
-		});
-
-		$(".fast-speed").click(function(){
-			$(this).parent().css({"display": "none"});
 		});
 	});
 </script>

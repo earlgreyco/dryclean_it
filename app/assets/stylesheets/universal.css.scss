@@ -1,6 +1,23 @@
 @import "colors.css.scss";
 @import "bootstrap";
 
+/* background */
+
+
+/* font family */
+
+* {
+	font-family: 'Whitney SSm 5r', 'lucida grande', tahoma, verdana, arial, sans-serif !important;
+}
+
+/* icons */
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
+
 /* transitions */
 
 .transition{
