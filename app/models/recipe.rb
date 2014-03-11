@@ -5,6 +5,7 @@ class Recipe < ActiveRecord::Base
 	has_many :recipe_images, dependent: :destroy
 	has_many :steps, dependent: :destroy
 	validates_presence_of :user_id
+	has_reputation :votes, source: :user, aggregated_by: :sum
 
 	default_scope -> { order('time ASC') }
 end

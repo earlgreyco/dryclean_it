@@ -1,7 +1,10 @@
 Sarmander::Application.routes.draw do
 
   #Recipes
-  resources :recipes
+  resources :recipes do
+    member { post :vote }
+  end
+  
   match '/my-recipes', to: 'recipes#my_recipes', via: 'get'
 
   #Recipe Images
@@ -14,7 +17,7 @@ Sarmander::Application.routes.draw do
   resources :steps
 
   #Static Pages
-  root 'static_pages#home'
+  root 'recipes#recipes_home'
 
   #Users
   resources :users

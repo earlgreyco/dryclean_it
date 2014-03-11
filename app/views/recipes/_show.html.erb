@@ -1,6 +1,11 @@
 <% provide(:title, @recipe.name) %>
 
 
+<!-- voting system -->
+<br><br><br><br>
+<%= link_to "up", vote_recipe_path(@recipe, type: "up"), method: "post" %>
+<%= pluralize @recipe.reputation_for(:votes).to_i, "vote" %>
+
 <!-- show basic recipe details -->
 
 <div class="recipe-section" id="recipe-section-show-page">

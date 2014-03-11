@@ -11,6 +11,7 @@ gem "searchkick"
 gem 'pg', '0.15.1'
 gem "private_pub"
 gem "thin"
+gem 'activerecord-reputation-system', github: 'NARKOZ/activerecord-reputation-system', branch: 'rails4'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
