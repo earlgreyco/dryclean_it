@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require best_in_place
 //= require best_in_place.purr
+//= require private_pub
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
