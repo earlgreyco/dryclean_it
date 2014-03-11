@@ -19,7 +19,7 @@
 						</div>
 					</div>
 				<% else %>
-					<%= f.filepicker_field :filepicker_url, button_text: "Upload Your Picture", button_class: "link-lookalike link-lookalike-left" %>
+					<%= f.filepicker_field :filepicker_url, button_text: "Upload A Photo Of You", button_class: "link-lookalike link-lookalike-left", onchange: "$('.submit-button').trigger('click');" %>
 				<% end %>
 
 				<fieldset>
