@@ -3,7 +3,9 @@
 
 <!-- voting system -->
 <br><br><br><br>
-<%= link_to "up", vote_recipe_path(@recipe, type: "up"), method: "post" %>
+<% if signed_in? %>
+	<%= link_to "up", vote_recipe_path(@recipe, type: "up"), method: "post" %>
+<% end %>
 <%= pluralize @recipe.reputation_for(:votes).to_i, "vote" %>
 
 <!-- show basic recipe details -->
