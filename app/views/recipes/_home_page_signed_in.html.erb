@@ -1,0 +1,13 @@
+<% @recipes.each do |recipe| %>
+	<% if signed_in? %>
+    <% if !current_user.voted_for?(recipe) %>
+		 <%= link_to "up", vote_recipe_path(recipe, type: "up"), method: "post" %>
+    <% end %>
+	<% end %>
+	<%= pluralize recipe.reputation_for(:votes).to_i, "vote" %>	
+	<%= link_to recipe_path(recipe) do %>
+		<%= recipe.name %>
+		<%= filepicker_image_tag recipe.recipe_images[0].img, w: 100, h: 100 %>
+	<% end %>
+	<br><br><br>
+<% end %>
