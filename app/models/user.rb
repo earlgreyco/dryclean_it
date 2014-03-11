@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 	has_many :recipes, dependent: :destroy
 	has_many :comments
+	has_many :evaluations, class_name: "ReputationSystem::Evaluation", as: :source
 	has_secure_password
 	before_save { email.downcase! }
 	validates :name, presence: true, length: { maximum: 50 }
@@ -13,6 +14,10 @@ class User < ActiveRecord::Base
 
 	def User.encrypt(token)
 		Digest::SHA1.hexdigest(token.to_s)
+	end
+
+	def voted_for?(recipe)
+	  evaluations.where(target_type: recipe.class, target_id: recipe.id).present?
 	end
 
 	private

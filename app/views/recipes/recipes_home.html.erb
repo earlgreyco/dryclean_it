@@ -2,7 +2,9 @@
 
 	<% @recipes.each do |recipe| %>
 		<% if signed_in? %>
-			<%= link_to "up", vote_recipe_path(recipe, type: "up"), method: "post" %>
+      <% if !current_user.voted_for?(recipe) %>
+			 <%= link_to "up", vote_recipe_path(recipe, type: "up"), method: "post" %>
+      <% end %>
 		<% end %>
 		<%= pluralize recipe.reputation_for(:votes).to_i, "vote" %>	
 		<%= recipe.name %>
