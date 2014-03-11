@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140310110138) do
+ActiveRecord::Schema.define(version: 20140311062622) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,10 @@ ActiveRecord::Schema.define(version: 20140310110138) do
     t.string   "remember_token"
     t.boolean  "admin",           default: false
     t.string   "filepicker_url"
+    t.integer  "age"
+    t.string   "gender"
+    t.string   "city"
+    t.string   "state"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

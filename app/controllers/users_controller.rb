@@ -54,7 +54,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :description, :filepicker_url, :password,
+      params.require(:user).permit(:name, :email, :admin, :age, :gender, :city, :state, :filepicker_url, :password,
                                    :password_confirmation)
     end
     

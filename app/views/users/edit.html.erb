@@ -7,7 +7,7 @@
 
 <div class="main-padding">
 	<div class="pure-form pure-form-stacked settings-form">
-		<%= form_for(@user) do |f| %>
+		<%= simple_form_for @user do |f| %>
 			<%= render 'shared/error_messages', object: f.object %>
 				
 				<% if @user.filepicker_url? %>
@@ -22,18 +22,21 @@
 				<% end %>
 
 				<fieldset>
-					<%= f.label :name %>
-					<%= f.text_field :name %>
+					<%= f.input :name %>
 
-					<%= f.label :email %>
-					<%= f.text_field :email %>
+					<%= f.input :email %>
 
-					<%= f.label :password %>
-					<%= f.password_field :password %>
+					<%= f.collection_radio_buttons :gender, [[true, 'Male'], [false, 'Female']], :first, :last %>
 
+					<%= f.input :age %>
 
-					<%= f.label :password_confirmation, "Confirm Password" %>
-					<%= f.password_field :password_confirmation %>
+					<%= f.input :city %>
+
+					<%= f.input :state, collection: ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"] %>
+
+					<%= f.input :password %>
+
+					<%= f.input :password_confirmation %>
 					<br/>
 					<%= f.submit "Save Changes", class: "pure-button pure-button-primary" %>
 				</fieldset>
