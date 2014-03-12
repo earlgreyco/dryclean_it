@@ -2,6 +2,10 @@ class RecipesController < ApplicationController
 	before_action :signed_in_user, only: [:new, :create, :update, :my_recipes, :index]
   before_action :admin_user,     only: [:index]
 
+  def recipes_home
+  	@recipes = Recipe.find_with_reputation(:votes, :all, order: 'votes DESC')
+  end
+
   def show
   	@recipe = Recipe.find(params[:id])
   	@user = User.where(id: @recipe.user_id).first
@@ -34,6 +38,13 @@ class RecipesController < ApplicationController
 	def update
 		@recipe = Recipe.find(params[:id])
 		@updated = @recipe.update_attributes(recipe_params)
+	end
+
+	def vote
+		value = params[:type] == "up" ? 1 : -1
+	  @recipe = Recipe.find(params[:id])
+	  @recipe.add_evaluation(:votes, value, current_user)
+	  redirect_to :back, notice: "Thank you for voting!"
 	end
 
 	def my_recipes

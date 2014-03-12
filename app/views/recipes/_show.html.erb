@@ -1,6 +1,22 @@
 <% provide(:title, @recipe.name) %>
 
 
+<!-- voting system -->
+<br><br><br><br>
+<% if signed_in? %>
+	<% if !current_user.voted_for?(@recipe) %>
+		<%= link_to "up", vote_recipe_path(@recipe, type: "up"), method: "post" %>
+	<% end %>
+<% end %>
+
+<%= pluralize @recipe.reputation_for(:votes).to_i, "vote" %>
+
+
+<!-- shows whether the recipe has been cloned. False if not. True if it is -->
+
+<%= @recipe.clone %>
+
+
 <!-- show basic recipe details -->
 
 <div class="recipe-section" id="recipe-section-show-page">
@@ -15,6 +31,7 @@
 		 	</a>
 		  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 		  	<li><%= link_to "Back To My Recipes", '/my-recipes' %></li>
+		  	<li><%= link_to "Try it out!", @recipe.clone_with_associations(current_user) %></li>
 		    <li><%= link_to "Favorite", "#" %></li>
 		    <li><%= link_to "Edit", "#" %></li>
 		    <li><%= link_to "Delete", "#" %></li>
@@ -179,3 +196,5 @@
 		</div>
 	</div>
 </div>
+
+<%= subscribe_to "/comments/new" %>

@@ -9,6 +9,10 @@ gem 'simple_form'
 gem 'best_in_place', github: 'bernat/best_in_place', branch: "rails-4"
 gem "searchkick"
 gem 'pg', '0.15.1'
+gem "private_pub"
+gem "thin"
+gem 'activerecord-reputation-system', github: 'NARKOZ/activerecord-reputation-system', branch: 'rails4'
+gem 'deep_cloneable', '~> 1.6.0'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
