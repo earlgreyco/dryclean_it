@@ -8,11 +8,11 @@ class Recipe < ActiveRecord::Base
 	has_reputation :votes, source: :user, aggregated_by: :sum
 	default_scope -> { order('time ASC') }
 
-	def clone_with_associations(current_user)
-    new_recipe = self.dup :include => [:steps, :recipe_images, :ingredients]
-    new_recipe.clone = true
-    new_recipe.user_id = current_user.id
-    new_recipe.save
+	def clone_with_associations(current_user, recipe)
+		recipe.user_id = current_user.id
+		recipe.clone = true
+		recipe.story = " "
+    new_recipe = recipe.dup :include => [:steps, :ingredients]
     new_recipe
   end
 end
