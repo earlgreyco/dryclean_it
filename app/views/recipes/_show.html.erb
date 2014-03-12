@@ -31,7 +31,7 @@
 		 	</a>
 		  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 		  	<li><%= link_to "Back To My Recipes", '/my-recipes' %></li>
-		  	<li><%= link_to "Try it out!", @recipe.clone_with_associations(current_user) %></li>
+		  	<li><%= link_to "Try it out!", @recipe.clone_with_associations(current_user, @recipe) %></li>
 		    <li><%= link_to "Favorite", "#" %></li>
 		    <li><%= link_to "Edit", "#" %></li>
 		    <li><%= link_to "Delete", "#" %></li>
