@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   	if @user.save
       sign_in @user
   		flash[:success] = "Welcome to The Sarmander!"
-  		redirect_to @user
+  		redirect_to '/my-recipes'
   	else
       render 'new'
   	end
