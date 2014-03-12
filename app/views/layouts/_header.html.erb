@@ -1,26 +1,41 @@
-<div class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to "The Sarmander", root_path, class: 'navbar-brand' %>
-    </div>
-    <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <% if signed_in? %>
-        <li><%= link_to "My Recipes", "/my-recipes" %></li>
-        <li><%= link_to "New Recipe", new_recipe_path %></li>
-        <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-        <li><%= link_to "Sign Out", signout_path, method: "delete" %></li>
-        <% else %>
-        <li><%= link_to "Sign In", signin_path %></li>
-        <li><%= link_to "Sign Up", signup_path %></li>
-        <% end %>
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div><!--/.container-fluid -->
-</div>
+<!-- home page -->
+
+<%= link_to "The Sarmander", root_path, class: 'navbar-brand' %>
+
+
+<!-- If user is signed in, display all links inside "if signed_in?". If the user is NOT signed in, display all links inside "else" -->
+
+<% if signed_in? %>
+
+
+  <!-- all recipes created by current user -->
+
+  <%= link_to "My Recipes", "/my-recipes" %>
+
+
+  <!-- create a new recipe -->
+
+  <%= link_to "New Recipe", new_recipe_path %>
+
+
+  <!-- edit current user's settings ie. name, email, city -->
+
+  <%= link_to "Settings", edit_user_path(current_user) %>
+
+
+  <!-- sign out -->
+
+  <%= link_to "Sign Out", signout_path, method: "delete" %>
+
+<% else %>
+
+
+  <!-- sign in -->
+
+  <%= link_to "Sign In", signin_path %>
+
+
+  <!-- sign up -->
+
+  <%= link_to "Sign Up", signup_path %>
+<% end %>
