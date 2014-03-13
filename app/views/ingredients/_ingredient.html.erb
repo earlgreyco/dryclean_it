@@ -1,10 +1,4 @@
 <li>
-	<div class="ingredient-row row">
-		<div class="col-md-1" style="max-width: 20px;">
-			<i class="fa fa-check"></i>
-		</div>
-
-		<div class="col-md-11">
-			<%= best_in_place ingredient, :name %>
-		</div>
+	<%= best_in_place ingredient, :name %>
+	<%= link_to "remove ingredient", ingredient, method: :delete, remote: true, class: "remove-ingredient", style: "display: none;" %>
 </li>

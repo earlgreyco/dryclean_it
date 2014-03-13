@@ -16,6 +16,9 @@ class RecipesController < ApplicationController
 
   def show
   	@recipe = Recipe.find(params[:id])
+  	@ingredients = @recipe.ingredients
+  	@steps = @recipe.steps
+  	@recipe_images = @recipe.recipe_images
   	@user = User.where(id: @recipe.user_id).first
   end
 

@@ -114,15 +114,18 @@
 
 <!-- Click this div if you want to be able to edit ingredients and steps. User will only see this if they created the recipe -->
 
-<div class="edit-mode">
-	edit this page
-</div>
+<% if current_user.id == @recipe.user_id %>
+	<div class="edit-mode">
+		edit this page
+	</div>
+<% end %>
 
 <script>
 	$(document).ready(function(){
 		$(".edit-mode").click(function(){
 			$('.best_in_place').best_in_place();
 			$('.remove-ingredient').show();
+			$('.add-ingredient').show();
 			$('.remove-step').show();
 			$('.remove-recipe-image').show();
 		});
@@ -132,19 +135,30 @@
 
 <!-- list all of this recipe's ingredients -->
 
-<ul>
-<% @recipe.ingredients.each do |ingredient| %>
-	<li>
-		<%= best_in_place ingredient, :name %>
-		<%= link_to "remove ingredient", ingredient, method: :delete, remote: true, class: "remove-ingredient", style: "display: none;" %>
-	</li>
+<div class="add-ingredient" style="display: none;">
+	add ingredient
+</div>
+
+<div class="new-ingredient-form" style="display: none;">
+	<%= form_for Ingredient.new, remote: true, html: {id: "new-ingredient-form"} do |f| %>
+	<%= f.text_field :name, placeholder: "2 teaspoons of sesame oil", class: "ingredient" %>
+	<%= f.hidden_field :recipe_id, value: @recipe.id, id: "recipe-id-field" %>
+	<%= f.submit "Add this ingredient" %>
 <% end %>
+</div>
+
+<ul class="ingredient-list">
+	<%= render @ingredients %>
 </ul>
 
 <script>
 $(document).ready(function(){
 	$(".remove-ingredient").click(function(){
 		$(this).parent().remove();
+	});
+
+	$(".add-ingredient").click(function(){
+		$(".new-ingredient-form").show();
 	});
 });
 </script>
