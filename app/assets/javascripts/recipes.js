@@ -22,6 +22,7 @@ $(document).ready(function(){
 	$(".edit-mode-off").click(function(){
 		$('.remove-recipe-image').hide();
 		$('.add-recipe-image').hide();
+		$('.recipe-image-button').hide();
 		$('.remove-ingredient').hide();
 		$('.add-ingredient').hide();
 		$('.remove-step').hide();

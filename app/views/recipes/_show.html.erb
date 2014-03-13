@@ -71,7 +71,7 @@
 </div>
 
 <%= form_for RecipeImage.new, remote: true, html: { id: "new-recipe-image-form", style: "display: none;" } do |f| %>
-	<%= f.filepicker_field :img, button_text: "Add a new photo", onchange: "$('.hidden-button').trigger('click');" %>
+	<%= f.filepicker_field :img, button_text: "Add a new photo", button_class: "recipe-image-button", onchange: "$('.hidden-button').trigger('click');" %>
 	<%= f.hidden_field :recipe_id, id: "recipe-id-field-three", value: @recipe.id %>
 	<%= f.submit nil, class: "hidden-button", style: "display: none;" %>
 <% end %>
@@ -116,12 +116,12 @@
 <!-- Click the "edit-mode" div if you want to be able to edit recipe images, ingredients and steps. Click the "done editing" div to turn off edit functionality. User will only see this if they created the recipe -->
 
 <% if current_user.id == @recipe.user_id %>
-	<div class="edit-mode">
+	<span class="edit-mode">
 		edit this page
-	</div>
-	<div class="edit-mode-off" style="display: none;">
+	</span>
+	<span class="edit-mode-off" style="display: none;">
 		done editing
-	</div>
+	</span>
 <% end %>
 
 
