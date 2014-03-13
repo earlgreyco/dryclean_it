@@ -127,6 +127,7 @@
 			$('.remove-ingredient').show();
 			$('.add-ingredient').show();
 			$('.remove-step').show();
+			$('.add-step').show();
 			$('.remove-recipe-image').show();
 		});
 	});
@@ -139,13 +140,11 @@
 	add ingredient
 </div>
 
-<div class="new-ingredient-form" style="display: none;">
-	<%= form_for Ingredient.new, remote: true, html: {id: "new-ingredient-form"} do |f| %>
+<%= form_for Ingredient.new, remote: true, html: {id: "new-ingredient-form", style: "display: none;"} do |f| %>
 	<%= f.text_field :name, placeholder: "2 teaspoons of sesame oil", class: "ingredient" %>
 	<%= f.hidden_field :recipe_id, value: @recipe.id, id: "recipe-id-field" %>
 	<%= f.submit "Add this ingredient" %>
 <% end %>
-</div>
 
 <ul class="ingredient-list">
 	<%= render @ingredients %>
@@ -158,7 +157,7 @@ $(document).ready(function(){
 	});
 
 	$(".add-ingredient").click(function(){
-		$(".new-ingredient-form").show();
+		$("#new-ingredient-form").show();
 	});
 });
 </script>
@@ -166,19 +165,29 @@ $(document).ready(function(){
 
 <!-- list all of this recipe's steps -->
 
-<ol>
-<% @recipe.steps.each do |step| %>
-	<li>
-		<%= best_in_place step, :description %>
-		<%= link_to "remove step", step, method: :delete, remote: true, class: "remove-step", style: "display: none;" %>
-	</li>
+<div class="add-step" style="display: none;">
+	add step
+</div>
+
+<%= form_for Step.new, remote: true, html: {id: "new-step-form", style: "display: none;"} do |f| %>
+	<%= f.text_field :description, class: "ingredient", placeholder: "Just throw it in the oven at 350 degrees for 15 minutes." %>
+	<%= f.hidden_field :recipe_id, value: @recipe.id, id: "recipe-id-field-two" %>
+	<%= f.submit "Add this step", class: "add-ingredient-btn btn btn-default" %>
 <% end %>
+
+<ol class="step-list">
+	<%= render @steps %>
 </ol>
+
 
 <script>
 $(document).ready(function(){
 	$(".remove-step").click(function(){
 		$(this).parent().remove();
+	});
+
+	$('.add-step').click(function(){
+		$("#new-step-form").show();
 	});
 });
 </script>

@@ -1,3 +1,4 @@
 <li>
-	<%= step.description %>
+	<%= best_in_place step, :description %>
+	<%= link_to "remove step", step, method: :delete, remote: true, class: "remove-step", style: "display: none;" %>
 </li>

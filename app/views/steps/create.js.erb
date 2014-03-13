@@ -2,4 +2,5 @@
 	$("#new-step-form")[0].reset();
 	$(".step-list").append("<%= j render(@step) %>");
 	$("#recipe-id-field-two").val("<%= @recipe.id %>");
+	$('.remove-step').show();
 <% end %>
