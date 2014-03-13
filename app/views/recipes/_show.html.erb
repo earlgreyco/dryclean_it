@@ -53,7 +53,7 @@
     <div class="item" style="text-align: center;">
     <% end %>
       <%= filepicker_image_tag recipe_image.img, w: "100%", h: "85%", fit: 'crop' %>
-      <%= link_to "remove recipe image", recipe_image, method: :delete, remote: true, class: "remove-recipe-image", style: "display: none;" %>
+      <%= link_to "remove recipe image", recipe_image, method: :delete, remote: true, class: "remove-recipe-image" %>
     </div>
     <% end %>
   </div>
@@ -66,14 +66,14 @@
   </a>
 </div>
 
-<div class="add-recipe-image" style="display: none;">
+<div class="add-recipe-image">
 	add recipe image
 </div>
 
-<%= form_for RecipeImage.new, remote: true, html: { id: "new-recipe-image-form", style: "display: none;" } do |f| %>
+<%= form_for RecipeImage.new, remote: true, html: { id: "new-recipe-image-form" } do |f| %>
 	<%= f.filepicker_field :img, button_text: "Add a new photo", button_class: "recipe-image-button", onchange: "$('.hidden-button').trigger('click');" %>
 	<%= f.hidden_field :recipe_id, id: "recipe-id-field-three", value: @recipe.id %>
-	<%= f.submit nil, class: "hidden-button", style: "display: none;" %>
+	<%= f.submit nil, class: "hidden-button" %>
 <% end %>
 
 
@@ -119,7 +119,7 @@
 	<span class="edit-mode">
 		edit this page
 	</span>
-	<span class="edit-mode-off" style="display: none;">
+	<span class="edit-mode-off">
 		done editing
 	</span>
 <% end %>
@@ -127,11 +127,11 @@
 
 <!-- list all of this recipe's ingredients -->
 
-<div class="add-ingredient" style="display: none;">
+<div class="add-ingredient" >
 	add ingredient
 </div>
 
-<%= form_for Ingredient.new, remote: true, html: {id: "new-ingredient-form", style: "display: none;"} do |f| %>
+<%= form_for Ingredient.new, remote: true, html: {id: "new-ingredient-form"} do |f| %>
 	<%= f.text_field :name, placeholder: "2 teaspoons of sesame oil", class: "ingredient" %>
 	<%= f.hidden_field :recipe_id, value: @recipe.id, id: "recipe-id-field" %>
 	<%= f.submit "Add this ingredient" %>
@@ -144,11 +144,11 @@
 
 <!-- list all of this recipe's steps -->
 
-<div class="add-step" style="display: none;">
+<div class="add-step">
 	add step
 </div>
 
-<%= form_for Step.new, remote: true, html: {id: "new-step-form", style: "display: none;"} do |f| %>
+<%= form_for Step.new, remote: true, html: {id: "new-step-form"} do |f| %>
 	<%= f.text_field :description, class: "ingredient", placeholder: "Just throw it in the oven at 350 degrees for 15 minutes." %>
 	<%= f.hidden_field :recipe_id, value: @recipe.id, id: "recipe-id-field-two" %>
 	<%= f.submit "Add this step", class: "add-ingredient-btn btn btn-default" %>
