@@ -21,6 +21,10 @@ class IngredientsController < ApplicationController
 		respond_with @ingredient
 	end
 
+	def destroy
+		Ingredient.find(params[:id]).destroy
+	end
+
 	private
 		def ingredient_params
 			params.require(:ingredient).permit(:name, :recipe_id)

@@ -13,6 +13,10 @@ class RecipeImagesController < ApplicationController
 		end
 	end
 
+	def destroy
+		RecipeImage.find(params[:id]).destroy
+	end
+
 	private
 		def recipe_image_params
 			params.require(:recipe_image).permit(:img, :recipe_id)

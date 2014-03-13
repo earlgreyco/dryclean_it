@@ -1,10 +1,18 @@
 class RecipesController < ApplicationController
+	respond_to :html, :json
+
 	before_action :signed_in_user, only: [:new, :create, :update, :my_recipes, :index]
   before_action :admin_user,     only: [:index]
 
   def recipes_home
   	@recipes = Recipe.find_with_reputation(:votes, :all, order: 'votes DESC')
   end
+
+  def update
+		@recipe = Recipe.find(params[:id])
+		@recipe.update_attributes(recipe_params)
+		respond_with @recipe
+	end
 
   def show
   	@recipe = Recipe.find(params[:id])
@@ -35,11 +43,6 @@ class RecipesController < ApplicationController
 		end
 	end
 
-	def update
-		@recipe = Recipe.find(params[:id])
-		@updated = @recipe.update_attributes(recipe_params)
-	end
-
 	def vote
 		value = params[:type] == "up" ? 1 : -1
 	  @recipe = Recipe.find(params[:id])
@@ -61,8 +64,6 @@ class RecipesController < ApplicationController
 
 	private
 		def recipe_params
-			if params[:recipe].present?
-				params.require(:recipe).permit(:name, :story, :time, :user_id)
-			end
+			params.require(:recipe).permit(:name, :story, :time, :user_id)
 		end
 end

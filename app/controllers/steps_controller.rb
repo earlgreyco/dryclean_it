@@ -1,4 +1,6 @@
 class StepsController < ApplicationController
+	respond_to :html, :json
+
 	def new
 		@step = Step.new(step_params)
 	end
@@ -11,6 +13,16 @@ class StepsController < ApplicationController
 		respond_to do |format|
 			format.js
 		end
+	end
+
+	def update
+		@step = Step.find(params[:id])
+		@step.update_attributes(step_params)
+		respond_with @step
+	end
+
+	def destroy
+		Step.find(params[:id]).destroy
 	end
 
 	private
