@@ -3,4 +3,7 @@
 	$(".step-list").append("<%= j render(@step) %>");
 	$("#recipe-id-field-two").val("<%= @recipe.id %>");
 	$('.remove-step').show();
+	$(".remove-step").click(function(){
+		$(this).parent().remove();
+	});
 <% end %>
