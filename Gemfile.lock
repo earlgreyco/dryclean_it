@@ -1,11 +1,4 @@
 GIT
-  remote: git://github.com/NARKOZ/activerecord-reputation-system.git
-  revision: 01197ad78cac3136317b2884b61ed3da34c607d0
-  branch: rails4
-  specs:
-    activerecord-reputation-system (2.0.2)
-
-GIT
   remote: git://github.com/bernat/best_in_place.git
   revision: 366413be357d65cdf47031e928aea969f72e3659
   branch: rails-4
@@ -231,6 +224,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    statistics2 (0.54)
     thin (1.6.2)
       daemons (>= 1.0.9)
       eventmachine (>= 1.0.0)
@@ -238,6 +232,9 @@ GEM
     thor (0.18.1)
     thread_safe (0.2.0)
       atomic (>= 1.1.7, < 2)
+    thumbs_up (0.6.7)
+      activerecord
+      statistics2
     tilt (1.4.1)
     timers (1.1.0)
     tire (0.6.2)
@@ -271,7 +268,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord-reputation-system!
   bcrypt-ruby (= 3.1.2)
   best_in_place!
   bootstrap-sass (= 3.1.1)
@@ -300,6 +296,7 @@ DEPENDENCIES
   simple_form
   spork-rails (= 4.0.0)
   thin
+  thumbs_up
   turbolinks (= 1.1.1)
   uglifier (= 2.1.1)
   will_paginate (= 3.0.4)

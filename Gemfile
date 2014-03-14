@@ -10,7 +10,7 @@ gem 'best_in_place', github: 'bernat/best_in_place', branch: "rails-4"
 gem "searchkick"
 gem 'pg', '0.15.1'
 gem "thin"
-gem 'activerecord-reputation-system', github: 'NARKOZ/activerecord-reputation-system', branch: 'rails4'
+gem 'thumbs_up'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'

@@ -2,7 +2,9 @@ Sarmander::Application.routes.draw do
 
   #Recipes
   resources :recipes do
-    member { post :vote }
+    member do
+      post :vote_up
+    end
   end
   
   match '/my-recipes', to: 'recipes#my_recipes', via: 'get'

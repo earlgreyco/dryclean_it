@@ -5,7 +5,12 @@ class RecipesController < ApplicationController
   before_action :admin_user,     only: [:index]
 
   def recipes_home
-  	@recipes = Recipe.find_with_reputation(:votes, :all, order: 'votes DESC')
+  	@recipes = Recipe.tally({order: 'vote_count desc'})
+  end
+
+  def vote_up
+    current_user.vote_for(@recipe = Recipe.find(params[:id]))
+    redirect_to :back
   end
 
   def update
@@ -44,13 +49,6 @@ class RecipesController < ApplicationController
 		respond_to do |format|
 			format.js
 		end
-	end
-
-	def vote
-		value = params[:type] == "up" ? 1 : -1
-	  @recipe = Recipe.find(params[:id])
-	  @recipe.add_evaluation(:votes, value, current_user)
-	  redirect_to :back, notice: "Thank you for voting!"
 	end
 
 	def my_recipes
