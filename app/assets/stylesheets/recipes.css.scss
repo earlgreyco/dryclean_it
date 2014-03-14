@@ -1,0 +1,30 @@
+/**********
+
+SHOW PAGE
+
+**********/
+
+
+.show-background{
+	background: url(farmer.png);
+	color: rgb(166,165,161);
+}
+
+
+.carousel-inner{
+	img{
+		width: 100%;
+		height: 500px !important;
+	}
+}
+
+#recipe-images{
+	margin-top: 90px;
+}
+
+.nav-right{
+	float: right;
+	padding-right: 50px;
+	padding-top: 15px;
+
+}

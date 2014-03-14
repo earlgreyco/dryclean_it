@@ -1,41 +1,46 @@
-<!-- home page -->
+<div class="navskinny">
 
-<%= link_to "The Sarmander", root_path, class: 'navbar-brand' %>
+  <!-- home page -->
 
-
-<!-- If user is signed in, display all links inside "if signed_in?". If the user is NOT signed in, display all links inside "else" -->
-
-<% if signed_in? %>
+  <%= link_to "The Sarmander", root_path, class: 'navbar-brand' %>
 
 
-  <!-- all recipes created by current user -->
-
-  <%= link_to "My Recipes", "/my-recipes" %>
-
-
-  <!-- create a new recipe -->
-
-  <%= link_to "New Recipe", new_recipe_path %>
+  <!-- If user is signed in, display all links inside "if signed_in?". If the user is NOT signed in, display all links inside "else" -->
+<div class="nav-right">
+  
+    <% if signed_in? %>
 
 
-  <!-- edit current user's settings ie. name, email, city -->
+      <!-- all recipes created by current user -->
 
-  <%= link_to "Settings", edit_user_path(current_user) %>
-
-
-  <!-- sign out -->
-
-  <%= link_to "Sign Out", signout_path, method: "delete" %>
-
-<% else %>
+      <%= link_to "My Recipes", "/my-recipes" %>
 
 
-  <!-- sign in -->
+      <!-- create a new recipe -->
 
-  <%= link_to "Sign In", signin_path %>
+      <%= link_to "New Recipe", new_recipe_path %>
 
 
-  <!-- sign up -->
+      <!-- edit current user's settings ie. name, email, city -->
 
-  <%= link_to "Sign Up", signup_path %>
-<% end %>
+      <%= link_to "Settings", edit_user_path(current_user) %>
+
+
+      <!-- sign out -->
+
+      <%= link_to "Sign Out", signout_path, method: "delete" %>
+
+    <% else %>
+
+
+      <!-- sign in -->
+
+      <%= link_to "Sign In", signin_path %>
+
+
+      <!-- sign up -->
+
+      <%= link_to "Sign Up", signup_path %>
+    <% end %>
+  </div>
+</div>

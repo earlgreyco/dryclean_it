@@ -1,8 +1,21 @@
 @import "bootstrap";
 
+/* header */
+
+.navskinny{
+	background-color: rgba(251,248,245,.9);
+	position: fixed;
+	z-index: 100;
+	top:0px;
+	right: 0px;
+	left: 0px;
+	height: 50px;
+}
+
 
 /* all best in place fields */
 
 .best_in_place{
 
 }
+
