@@ -29,7 +29,7 @@
 
 <!-- clones recipe -->
 
-<%= link_to "Try it out!", @recipe.clone_with_associations(current_user, @recipe) %>
+<%= link_to "Try it out!", @recipe.clone_recipe(current_user) %>
 
 
 <!-- recipe name -->
