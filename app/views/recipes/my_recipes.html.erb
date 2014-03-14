@@ -11,27 +11,29 @@
 <!-- list all recipes of current user -->
 
 <% @recipes.each do |recipe| %>
+	<div class="recipe-section">
 
 
-	<!-- recipe image -->
+		<!-- recipe image -->
 
-	<% if recipe.recipe_images.any? %>
-		<%= filepicker_image_tag recipe.recipe_images[0].img %>
-	<% end %>
-
-
-	<!-- recipe name -->
-
-	<%= recipe.name %>
+		<% if recipe.recipe_images.any? %>
+			<%= filepicker_image_tag recipe.recipe_images[0].img %>
+		<% end %>
 
 
-	<!-- recipe actions -->
-	
-	<%= link_to "View", recipe_path(recipe) %>
-  <%= link_to "Delete", "#" %>
+		<!-- recipe name -->
+
+		<%= recipe.name %>
 
 
-	<!-- recipe time -->
+		<!-- delete recipe -->
 
-	<%= recipe.time %> minutes
+		<%= link_to "View", recipe_path(recipe) %>
+	  <%= link_to "Delete", recipe, method: :delete, remote: true, class: "delete-recipe" %>
+
+
+		<!-- recipe time -->
+
+		<%= recipe.time %> minutes
+	</div>
 <% end %>

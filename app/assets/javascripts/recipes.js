@@ -1,6 +1,13 @@
 $(document).ready(function(){
 
 
+	/* delete recipe */
+
+	$('.delete-recipe').click(function(){
+		$(this).parent().remove();
+	});
+
+
 	/* edit recipe page */
 
 	$(".edit-mode").click(function(){

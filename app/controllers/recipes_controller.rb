@@ -65,6 +65,6 @@ class RecipesController < ApplicationController
 
 	private
 		def recipe_params
-			params.require(:recipe).permit(:name, :story, :time, :user_id)
+			params.require(:recipe).permit(:name, :story, :time, :user_id) if params[:recipe]
 		end
 end
