@@ -1,0 +1,5 @@
+<% if @recipe.recipe_images.count == 1 %>
+	$(".fontawesome-chevron-left").remove();
+	$(".fontawesome-chevron-right").remove();
+	$(".carousel-control").hide();
+<% end %>

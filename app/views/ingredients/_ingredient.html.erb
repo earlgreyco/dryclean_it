@@ -1,5 +1,22 @@
-<li>
-	<span class="fontawesome-ok"></span> 
-	<%= best_in_place ingredient, :name %>
-	<%= link_to "remove ingredient", ingredient, method: :delete, remote: true, class: "remove-ingredient", style: "display: none;" %>
-</li>
+<tr class="ingredient-row">
+	<td class="check-cell">
+		<span class="fontawesome-ok"></span> 
+	</td>
+	<td>
+		<%= best_in_place ingredient, :name, type: :textarea %>
+		<% if current_page?(edit_recipe_path(ingredient.recipe_id)) %>
+			<%= link_to raw("<span class='fontawesome-remove'></span>"), ingredient, method: :delete, remote: true, class: "remove-ingredient" %>
+		<% end %>
+	</td>
+</tr>
+
+
+<!-- remove ingredient table row -->
+
+<script>
+$(document).ready(function(){
+	$(".remove-ingredient").click(function(){
+		$(this).closest("tr").remove();
+	});
+});
+</script>

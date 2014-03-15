@@ -4,12 +4,19 @@ RECIPE SHOW
 
 **********/
 
+
+.hidden{
+	display: none !important;
+}
+
+input:focus, textarea:focus{
+	outline-width: 0px !important;
+}
+
+/* colors */
+
 $tiger_tooth: #EEE9DE;
 $dark_tiger_tooth: #D1D0CB;
-
-.remove-recipe-image, .add-recipe-image, #new-recipe-image-form, .hidden-button, .edit-mode-off, .add-ingredient, #new-ingredient-form, .add-step, #new-step-form {
-	display: none;
-}
 
 
 /* toolbar to scroll to each section */
@@ -44,6 +51,7 @@ $dark_tiger_tooth: #D1D0CB;
 /* carousel, recipe name, and voting */
 
 #images{
+	position: relative;
 	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
@@ -52,11 +60,13 @@ $dark_tiger_tooth: #D1D0CB;
 		padding: 10px 20px;
 		font-size: 25px;
 		font-weight: 200;
+
 		.recipe-name{
+			float: left;
+			margin-right: 20px;
 		}
 
 		.recipe-voting{
-			margin-top: -35px;
 			a{
 				color: rgb(51, 51, 51);
 				&:hover{
@@ -77,15 +87,52 @@ $dark_tiger_tooth: #D1D0CB;
 	#recipe-images{
 		img{
 			width: 100%;
-			z-index: 0;
 		}
 
 		.carousel-control{
+			z-index: 5;
 			padding-top: 22%;
 			div{
 				font-size: 30px;
 			}
 		}
+	}
+}
+
+.recipe-image-button{
+	z-index: 15;
+	color: white;
+	font-size: 30px;
+	background: rgba(0,0,0,0);
+	border: 0px;
+	position: absolute;
+	top: 75px;
+	right: 50px;
+
+	&:hover{
+		color: green;
+	}
+
+	&:focus{
+		outline-width: 0px;
+	}
+}
+
+.item{
+	position: relative;
+}
+
+.remove-recipe-image{
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	z-index: 15;
+	color: white;
+	font-size: 30px;
+
+	&:hover{
+		color: rgb(199,8,8);
+		text-decoration: none;
 	}
 }
 
@@ -122,18 +169,22 @@ $dark_tiger_tooth: #D1D0CB;
 }
 
 
-/* ingredient list, steps list, and ability to clone */
+/* ingredients and steps */
 
 #recipe{
 	padding-top: 50px;
 	padding-bottom: 50px;
 	background: url("skulls.png");
 
+	#new-step-form, #new-ingredient-form{
+		margin-bottom: 10px;
+	}
+
 	.ingredient-section, .step-section{
 		float: left;
 		width: 38%;
 		background: rgba(255,255,255,0.7);
-		padding: 40px;
+		padding: 60px;
 		height: 550px;
 		overflow-y: scroll;
 		border-radius: 3px;
@@ -149,6 +200,48 @@ $dark_tiger_tooth: #D1D0CB;
 			margin-bottom: 20px;
 			line-height: 25px;
 		}
+
+		.missing-info{
+			font-weight: bold;
+			cursor: pointer;
+			color: rgba(199,8,8,0.7);
+
+			&:hover{
+				color: rgba(199,8,8,0.5);
+			}
+
+			.emojicon{
+				margin-top: 70px;
+				font-size: 30px;
+				font-weight: bold;
+				text-align: center;
+			}
+
+			.emojicon-subtext{
+				text-align: center;
+				font-size: 20px;
+				margin-top: 30px;
+				margin-bottom: 30px;
+			}
+		}
+
+		.ingredient{
+			width: 100%;
+			padding: 10px;
+			margin-top: 20px;
+		}
+	}
+
+	table{
+		td{
+			padding-top: 14px;
+			padding-bottom: 14px;
+		}
+
+		.check-cell{
+			vertical-align: top;
+			padding-right: 5px;
+		}
 	}
 
 	.ingredient-section{
@@ -163,15 +256,30 @@ $dark_tiger_tooth: #D1D0CB;
 	.step-section{
 		margin-right: 10%;
 		margin-left: 1%;
+
+		.step-list{
+			padding-left: 20px;
+		}
 	}
+
+	a{
+		text-decoration: none;
+	}
+
+	.fontawesome-remove{
+		color: rgba(199,8,8,0.5);
+		&:hover{
+			color: rgba(199,8,8,0.3);
+		}
+	}	
 }
 
 
 /* comments */
 
 #comments{
-	margin-bottom: 210px;
-	padding-top: 70px;
+	margin-bottom: 170px;
+	padding-top: 30px;
 
 	.new-comment-section{
 		width: 700px;
@@ -194,7 +302,7 @@ $dark_tiger_tooth: #D1D0CB;
 		float: left;
 		width: 90%;
 		.content{
-			padding-left: 30px;
+			padding-left: 40px;
 			padding-top: 10px;
 
 			.date{
@@ -209,7 +317,7 @@ $dark_tiger_tooth: #D1D0CB;
 			float: left;
 			margin-right: -1px;
 			position: relative;
-			z-index: 20;
+			z-index: 10;
 			margin-left: 30px;
 		}
 
@@ -222,8 +330,8 @@ $dark_tiger_tooth: #D1D0CB;
 			-webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 			-ms-box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 			box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-			width: 570px;
-			height: 100px;
+			width: 570px !important;
+			height: 100px !important;
 			padding: 10px;
 			z-index: 0;
 			position: relative;

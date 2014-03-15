@@ -1,0 +1,36 @@
+<%= render 'show' %>
+
+<script>
+$(document).ready(function(){
+	
+	/* activate best in place to edit page */
+	$('.best_in_place').best_in_place();
+
+
+	/* add and remove recipe images */
+
+	$(".remove-recipe-image").click(function(){
+		$(".item").next().addClass("active");
+    $(this).parent().remove();
+  });
+
+	/* add and remove ingredients */
+
+	$(".add-ingredient").click(function(){
+		$(this).hide();
+		$("#new-ingredient-form").removeClass('hidden');
+	});
+
+
+	/* add and remove steps */
+
+	$(".remove-step").click(function(){
+		$(this).parent().remove();
+	});
+
+	$('.add-step').click(function(){
+		$(this).hide();
+		$("#new-step-form").removeClass('hidden');
+	});
+});
+</script>

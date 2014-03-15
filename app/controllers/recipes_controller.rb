@@ -27,6 +27,14 @@ class RecipesController < ApplicationController
   	@user = User.where(id: @recipe.user_id).first
   end
 
+  def edit
+  	@recipe = Recipe.find(params[:id])
+  	@ingredients = @recipe.ingredients
+  	@steps = @recipe.steps
+  	@recipe_images = @recipe.recipe_images
+  	@user = User.where(id: @recipe.user_id).first
+  end
+
 	def index
 	end
 

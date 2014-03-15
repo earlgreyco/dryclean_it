@@ -14,7 +14,12 @@ class RecipeImagesController < ApplicationController
 	end
 
 	def destroy
-		RecipeImage.find(params[:id]).destroy
+		@recipe_image = RecipeImage.find(params[:id]).destroy
+		@recipe = @recipe_image.recipe
+
+		respond_to do |format|
+			format.js
+		end
 	end
 
 	private

@@ -1,4 +1,4 @@
 <div class="item" style="text-align: center;">
-  <%= filepicker_image_tag recipe_image.img, w: "100%", h: "85%", fit: 'crop' %>
-  <%= link_to "delete recipe image", recipe_image, method: :delete, remote: true, class: "remove-recipe-image", style: "display: none;" %>
+  <%= filepicker_image_tag recipe_image.img, w: 800, h: 350 , fit: 'crop' %>
+	<%= link_to raw("<span class='fontawesome-remove'></span>"), recipe_image, method: :delete, remote: true, class: "remove-recipe-image" %>
 </div>
