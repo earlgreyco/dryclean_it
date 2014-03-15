@@ -1,21 +1,18 @@
 @import "bootstrap";
 
+/* fontawesome */
+
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
+
 /* header */
 
-.navskinny{
-	background-color: rgba(251,248,245,.9);
-	position: fixed;
-	z-index: 100;
-	top:0px;
-	right: 0px;
-	left: 0px;
-	height: 50px;
+.navbar{
+	background: white;
+	border-bottom: 0px;
+	margin: 0px;
 }
-
-
-/* all best in place fields */
-
-.best_in_place{
-
-}
-

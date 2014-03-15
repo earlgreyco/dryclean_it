@@ -1,3 +1,4 @@
-<div class="recipe-image">
-	<%= filepicker_image_tag recipe_image.img, w: 160, h: 160, fit: 'clip' %>
+<div class="item" style="text-align: center;">
+  <%= filepicker_image_tag recipe_image.img, w: "100%", h: "85%", fit: 'crop' %>
+  <%= link_to "delete recipe image", recipe_image, method: :delete, remote: true, class: "remove-recipe-image", style: "display: none;" %>
 </div>

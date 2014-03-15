@@ -1,14 +1,14 @@
-<!-- photo of the user who commented -->
-
-
-<%= filepicker_image_tag User.where(id: comment.user_id).first.filepicker_url, w: 50, h: 50, fit: 'clip' %>
-
-
-<!-- the comment -->
-
-<%= comment.content %>
-
-
-<!-- when the suer posted the comment -->
-
-<%= comment.created_at.strftime("%D") %>
+<div class="new-comment-section">
+	<div class="current-user-img">
+		<%= filepicker_image_tag User.where(id: comment.user_id).first.filepicker_url, w: 70, h: 70, fit: 'clip' %>
+	</div>
+	<div class="comment-form-wrapper">
+		<div class="content">
+			<%= comment.content %>
+			<div class="date">
+				<%= comment.created_at.strftime("%D") %>
+			</div>
+		</div>
+	</div>
+	<div style="clear:both;"></div>
+</div>

@@ -1,1 +1,289 @@
-<%= render 'show' %>
+<!-- displays the recipe name in the browser tab -->
+
+<% provide(:title, @recipe.name) %>
+
+
+<!-- toolbar to scroll to each section -->
+
+<div id="recipe-scroll">
+	<ul class="nav">
+		<li>
+			<a href="#images" title="Recipe Images" id="images-link"><span class="fontawesome-picture"></span></a>
+		</li>
+		<li>
+			<a href="#story" title="What's The Story?" id="story-link"><span class="fontawesome-book"></span></a>
+		</li>
+		<li>
+			<a href="#recipe" title="Learn To Cook This" id="recipe-link"><span class="fontawesome-list-ul"></span></a>
+		</li>
+		<li>
+			<a href="#comments" title="Comments" id="comments-link"><span class="fontawesome-comment-alt"></span></a>
+		</li>
+	</ul>
+</div>
+
+<script>
+	$(document).ready(function(){
+		$("#images-link").hover(function(){
+			$(this).tooltip('toggle');
+		});
+
+		$("#story-link").hover(function(){
+			$(this).tooltip('toggle');
+		});
+
+		$("#recipe-link").hover(function(){
+			$(this).tooltip('toggle');
+		});
+
+		$("#comments-link").hover(function(){
+			$(this).tooltip('toggle');
+		});
+
+		$("#recipe-scroll ul li a[href^='#']").on('click', function(e) {
+   		e.preventDefault();
+		  $('html, body').animate({ scrollTop: $(this.hash).offset().top }, 300);
+		});
+	});
+</script>
+
+
+<!-- carousel, recipe name, and voting -->
+
+<div id="images">
+	<div class="recipe-details-section">
+		<div class="recipe-name">
+			<%= best_in_place @recipe, :name %>
+		</div>
+
+		<div class="pull-right recipe-voting">
+			<% if !current_user.voted_on?(@recipe) %>
+				<%= link_to(raw("<span class='fontawesome-heart'></span>"), vote_up_recipe_path(@recipe), :method => :post) %>
+			<% else %>
+				<span class='fontawesome-heart red'></span>
+			<% end %>
+			<%= @recipe.votes.count %>
+		</div>
+	</div>
+
+	<div id="recipe-images" class="carousel slide" data-ride="carousel">
+	  <div class="carousel-inner recipe-images">
+	    <% @recipe.recipe_images.each_with_index do |recipe_image, i| %>
+	    <% if i == 0 %>
+	    <div class="active item" style="text-align: center;">
+	    <% else %>
+	    <div class="item" style="text-align: center;">
+	    <% end %>
+	      <%= filepicker_image_tag recipe_image.img, w: 800, h: 400 , fit: 'crop' %>
+	      <%= link_to "remove recipe image", recipe_image, method: :delete, remote: true, class: "remove-recipe-image" %>
+	    </div>
+	    <% end %>
+	  </div>
+
+	  <a class="left carousel-control" href="#recipe-images" data-slide="prev">
+	    <div class="fontawesome-chevron-left"></div>
+	  </a>
+	  <a class="right carousel-control" href="#recipe-images" data-slide="next">
+	    <div class="fontawesome-chevron-right"></div>
+	  </a>
+	</div>
+</div>
+
+
+<!-- user name and recipe story -->
+
+<div id="story">
+	<%= filepicker_image_tag @user.filepicker_url, w: 180 %>
+	<div class="user-name">
+		<%= @user.name %>
+	</div>
+	<div class="date">
+		<%= @recipe.created_at.strftime("%D") %>
+	</div>
+	<div class="story">
+		<%= best_in_place @recipe, :story %>
+	</div>
+</div>
+
+
+<!-- ingredient list, steps list, and ability to clone -->
+
+<div id="recipe">
+	<div class="ingredient-section">
+		<div class="ingredient-header">
+			Ingredients
+		</div>
+		<ul class="ingredient-list">
+			<%= render @ingredients %>
+		</ul>
+	</div>
+
+	<div class="step-section">
+		<div class="step-header">
+			Steps
+		</div>
+		<ol class="step-list">
+			<%= render @steps %>
+		</ol>
+	</div>
+	<div style="clear:both;"></div>
+</div>
+
+
+<!-- comments -->
+
+<div id="comments">
+
+
+	<!-- Picture of current user -->
+
+	<div class="new-comment-section">
+		<div class="current-user-img">
+			<%= filepicker_image_tag current_user.filepicker_url, w: 70, h: 70, fit: 'clip' %>
+		</div>
+
+
+		<!-- form to add new comment to this recipe -->
+		<div class="comment-form-wrapper">
+			<%= simple_form_for Comment.new, remote: true, html: { id: "new-comment-form" } do |f| %>
+				<%= image_tag("arrow.png") %>
+				<%= f.input :content, label: false, placeholder: "Share your thoughts..." %>
+				<%= f.hidden_field :recipe_id, id: "recipe-id-field", value: @recipe.id %>
+				<%= f.hidden_field :user_id, id: "user-id-field" %>
+				<div style="clear:both;"></div>
+				<%= f.submit "Comment!", class: "new-comment-btn btn btn-default" %>
+			<% end %>
+		</div>
+		<div style="clear:both;"></div>
+	</div>
+
+
+	<!-- Every time a user posts a comment, our site will post the contents of _comment.html.erb inside this add-new-comments div. Make sure you redesign _comment.html.erb too.  -->
+
+	<div class="add-new-comments">
+	</div>
+
+
+	<!-- loads all comments -->
+
+	<% @recipe.comments.each do |comment| %>
+		<div class="new-comment-section">
+			<div class="current-user-img">
+				<%= filepicker_image_tag User.where(id: comment.user_id).first.filepicker_url, w: 70, h: 70, fit: 'clip' %>
+			</div>
+			<div class="comment-form-wrapper">
+				<div class="content">
+					<%= comment.content %>
+					<div class="date">
+						<%= comment.created_at.strftime("%D") %>
+					</div>
+				</div>
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+	<% end %>
+
+	<div style="clear:both;"></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% if false %>
+
+<%= form_for Ingredient.new, remote: true, html: {id: "new-ingredient-form"} do |f| %>
+		<%= f.text_field :name, placeholder: "2 teaspoons of sesame oil", class: "ingredient" %>
+		<%= f.hidden_field :recipe_id, value: @recipe.id, id: "recipe-id-field" %>
+		<%= f.submit "Add this ingredient" %>
+	<% end %>
+
+	<%= form_for Step.new, remote: true, html: {id: "new-step-form"} do |f| %>
+		<%= f.text_field :description, class: "ingredient", placeholder: "Just throw it in the oven at 350 degrees for 15 minutes." %>
+		<%= f.hidden_field :recipe_id, value: @recipe.id, id: "recipe-id-field-two" %>
+		<%= f.submit "Add this step", class: "add-ingredient-btn btn btn-default" %>
+	<% end %>
+
+<!-- shows whether the recipe has been cloned. False if not. True if it is -->
+
+<%= @recipe.clone %>
+
+
+<!-- clones recipe -->
+
+<%= link_to "Try it out!", @recipe.clone_recipe(current_user) %>
+
+
+
+<!-- recipe time -->
+
+<%= best_in_place @recipe, :time %> minutes
+
+
+<!-- show all of recipe images in carousel -->
+
+<div class="add-recipe-image">
+	add recipe image
+</div>
+
+<%= form_for RecipeImage.new, remote: true, html: { id: "new-recipe-image-form" } do |f| %>
+	<%= f.filepicker_field :img, button_text: "Add a new photo", button_class: "recipe-image-button", onchange: "$('.hidden-button').trigger('click');" %>
+	<%= f.hidden_field :recipe_id, id: "recipe-id-field-three", value: @recipe.id %>
+	<%= f.submit nil, class: "hidden-button" %>
+<% end %>
+
+
+
+
+
+<!-- Click the "edit-mode" div if you want to be able to edit recipe images, ingredients and steps. Click the "done editing" div to turn off edit functionality. User will only see this if they created the recipe -->
+
+<% if current_user.id == @recipe.user_id %>
+	<span class="edit-mode">
+		edit this page
+	</span>
+	<span class="edit-mode-off">
+		done editing
+	</span>
+<% end %>
+
+
+<!-- list all of this recipe's ingredients -->
+
+<div class="add-ingredient" >
+	add ingredient
+</div>
+
+
+
+
+<!-- list all of this recipe's steps -->
+
+<div class="add-step">
+	add step
+</div>
+
+
+<% end %>

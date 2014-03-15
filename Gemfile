@@ -9,10 +9,8 @@ gem 'simple_form'
 gem 'best_in_place', github: 'bernat/best_in_place', branch: "rails-4"
 gem "searchkick"
 gem 'pg', '0.15.1'
-gem "private_pub"
 gem "thin"
-gem 'activerecord-reputation-system', github: 'NARKOZ/activerecord-reputation-system', branch: 'rails4'
-gem 'deep_cloneable', '~> 1.6.0'
+gem 'thumbs_up'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
@@ -45,7 +43,7 @@ group :test do
   # gem 'wdm', '0.1.0'
 end
 
-gem 'sass-rails', '4.0.1'
+gem 'sass-rails', '4.0.2'
 gem 'bootstrap-sass', '3.1.1'
 gem 'uglifier', '2.1.1'
 gem 'coffee-rails', '4.0.1'

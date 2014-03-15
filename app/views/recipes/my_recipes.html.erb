@@ -1,74 +1,39 @@
 <% provide(:title, "My Recipes") %>
 
-<div id="my-recipes">
+
+<!-- search through my recipes by recipe name -->
+
+<%= form_tag "/my-recipes", method: :get do %>
+	<%= text_field_tag :query, params[:query], placeholder: "Search my recipes", class: "form-control input-lg" %>
+<% end %>
 
 
-	<!-- search through my recipces by recipe name -->
+<!-- list all recipes of current user -->
 
-	<div class="main-padding">
-		<%= form_tag "/my-recipes", method: :get do %>
-		<div class='input-group recipe-search'>
-			<%= text_field_tag :query, params[:query], placeholder: "Search my recipes", class: "form-control input-lg" %>
-		</div>
+<% @recipes.each do |recipe| %>
+	<div class="recipe-section">
+
+
+		<!-- recipe image -->
+
+		<% if recipe.recipe_images.any? %>
+			<%= filepicker_image_tag recipe.recipe_images[0].img %>
 		<% end %>
+
+
+		<!-- recipe name -->
+
+		<%= recipe.name %>
+
+
+		<!-- delete recipe -->
+
+		<%= link_to "View", recipe_path(recipe) %>
+	  <%= link_to "Delete", recipe, method: :delete, remote: true, class: "delete-recipe" %>
+
+
+		<!-- recipe time -->
+
+		<%= recipe.time %> minutes
 	</div>
-
-
-	<div class="main-padding">
-
-
-		<!-- list all recipes of current user -->
-
-		<% @recipes.each do |recipe| %>
-			<div class="recipe-section">
-
-
-				<!-- recipe image -->
-
-				<% if recipe.recipe_images.any? %>
-					<%= filepicker_image_tag recipe.recipe_images[0].img %>
-				<% end %>
-
-
-				<!-- recipe name -->
-
-				<div class="name">
-					<%= recipe.name %>
-				</div>
-
-
-				<!-- recipe actions -->
-				<div class="actions">
-					<div class="dropdown">
-					  <a data-toggle="dropdown" class="dropdown-link">
-					  	<span class="fontawesome-plus"></span> <span class="fontawesome-caret-down"></span>
-					 	</a>
-					  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-					  	<li><%= link_to "View", recipe_path(recipe) %></li>
-					    <li><%= link_to "Favorite", "#" %></li>
-					    <li><%= link_to "Edit", "#" %></li>
-					    <li><%= link_to "Delete", "#" %></li>
-					  </ul>
-					</div>
-				</div>
-
-
-				<!-- recipe time -->
-
-				<div class="time">
-					<%= recipe.time %> minutes
-				</div>
-
-				<div style="clear:both;"></div>
-			</div>
-		<% end %>
-	</div>
-</div>
-
-<script>
-	$(document).ready(function(){
-		$(".recipe-section").click(function(){
-
-		});
-	});
-</script>
+<% end %>

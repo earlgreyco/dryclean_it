@@ -1,4 +1,8 @@
 <% if @saved %>
-	$(".new-photos").before("<%= j render @recipe_image %>");
+	$(".recipe-images").append("<%= j render @recipe_image %>");
 	$("#recipe-id-field-three").val("<%= @recipe.id %>");
+	$(".remove-recipe-image").show();
+	$(".remove-recipe-image").click(function(){
+    $(this).parent().html("No image");
+  });
 <% end %>
