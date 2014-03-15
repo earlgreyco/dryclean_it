@@ -61,7 +61,7 @@
 		    <div class="item" style="text-align: center;">
 		    <% end %>
 		    <%= filepicker_image_tag recipe_image.img, w: 800, h: 350 , fit: 'crop' %>
-	      <% if current_page?(edit_recipe_path(@recipe)) %>
+		    <% if current_page?(edit_recipe_path(@recipe)) %>
 	    		<%= link_to raw("<span class='fontawesome-remove'></span>"), recipe_image, method: :delete, remote: true, class: "remove-recipe-image" %>
 	    	<% end %>
 		    </div>

@@ -9,10 +9,10 @@ $(document).ready(function(){
 
 	/* add and remove recipe images */
 
-	$(".remove-recipe-image").click(function(){
-		$(".item").next().addClass("active");
-    $(this).parent().remove();
-  });
+	$("#recipe-images").on("click", ".remove-recipe-image", function(){
+		$(this).parent().remove();
+		$(".item").first().addClass("active");
+	});
 
 	/* add and remove ingredients */
 
@@ -32,7 +32,5 @@ $(document).ready(function(){
 		$(this).hide();
 		$("#new-step-form").removeClass('hidden');
 	});
-
-	$(".no-images-banner").animate({width: "100%"}, 1000);
 });
 </script>
