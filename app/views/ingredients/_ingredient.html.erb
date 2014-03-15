@@ -4,14 +4,11 @@
 	</td>
 	<td>
 		<%= best_in_place ingredient, :name, type: :textarea %>
-		<% if current_page?(edit_recipe_path(ingredient.recipe_id)) %>
+		<% if !current_page?(recipe_path(ingredient.recipe_id)) %>
 			<%= link_to raw("<span class='fontawesome-remove'></span>"), ingredient, method: :delete, remote: true, class: "remove-ingredient" %>
 		<% end %>
 	</td>
 </tr>
-
-
-<!-- remove ingredient table row -->
 
 <script>
 $(document).ready(function(){

@@ -1,6 +1,6 @@
 <li>
 	<%= best_in_place step, :description, type: :textarea %>
-	<% if current_page?(edit_recipe_path(step.recipe_id)) %>
+	<% if !current_page?(recipe_path(step.recipe_id)) %>
 		<%= link_to raw("<span class='fontawesome-remove'></span>"), step, method: :delete, remote: true, class: "remove-step"%>
 	<% end %>
 </li>
