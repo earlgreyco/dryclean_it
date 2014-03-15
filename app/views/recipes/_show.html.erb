@@ -28,7 +28,7 @@
 <div id="images">
 	<% if current_page?(edit_recipe_path(@recipe)) %>
 		<%= form_for RecipeImage.new, remote: true, html: { id: "new-recipe-image-form" } do |f| %>
-			<%= f.filepicker_field :img, button_text: "Add a new photo", button_class: "recipe-image-button", button_text: "<span class='fontawesome-plus'></span>", onchange: "$('.hidden-button').trigger('click');" %>
+			<%= f.filepicker_field :img, button_class: "recipe-image-button", button_text: "<span class='fontawesome-plus'></span>", onchange: "$('.hidden-button').trigger('click');" %>
 			<%= f.hidden_field :recipe_id, id: "recipe-id-field-three", value: @recipe.id %>
 			<%= f.submit nil, class: "hidden hidden-button" %>
 		<% end %>
