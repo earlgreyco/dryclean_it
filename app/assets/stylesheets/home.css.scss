@@ -1,0 +1,104 @@
+.shroom-banner{
+	width: 100%;
+	height:190px;
+	background: url("shrooms.png");
+}
+
+#home-header{
+	margin-top: 25px;
+	font-size: 40px;
+	font-weight: 200;
+	text-align: center;
+}
+
+#what-were-about{
+	padding: 30px 80px;
+	text-align: center;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	margin: 30px 150px 50px 150px;
+	font-size: 23px;
+	font-weight: 200;
+}
+
+#home-container{
+	width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+
+	a{
+		color: black;
+		&:hover{
+			text-decoration: none;
+			color: rgba(0,0,0,0.6);
+		}
+	}
+
+	.home-item{
+		width: 400px;
+		padding-top: 40px;
+		padding-bottom: 40px;
+		border-top: 1px solid #ccc;
+
+		&:nth-child(3n+2){
+			border-left: 1px solid #ccc;
+			border-right: 1px solid #ccc;
+		}
+
+		&:nth-child(1), &:nth-child(2), &:nth-child(3){
+			border-top: 0px;
+		}
+	}
+	
+	.home-image, .home-name, .home-time, .home-user-name, .story, .upvote{
+		width: 80%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.home-image {
+		img{
+			width: 100%;
+		}
+	}
+
+	.home-name, .home-time, .home-user-name{
+		font-size: 13px;
+	}
+
+
+	.home-name{
+		margin-top: 15px;
+		font-weight: bold;
+	}
+
+	.home-time, .home-user-name{
+		font-style: italic;
+		color: rgba(0,0,0,0.6);
+	}
+
+	.home-user-name{
+		margin-bottom: 15px;
+	}
+
+	.story{
+		font-size: 16px;
+	}
+
+	.upvote{
+		margin-top: 30px;
+		.upvote-link{
+			text-transform: uppercase;
+			font-weight: 200;
+			font-size: 11px;
+			background: black;
+			color: white;
+			padding: 5px 10px !important;
+			margin-right: 10px;
+
+			&:hover{
+				background: rgba(0,0,0,0.8);
+			}
+		}
+	}
+}

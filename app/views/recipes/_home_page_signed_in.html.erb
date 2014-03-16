@@ -1,14 +1,60 @@
-<% @recipes.each do |recipe| %>
-	<%= link_to recipe_path(recipe) do %>
-		<%= recipe.name %>
-		<% if recipe.recipe_images.any? %>
-			<%= filepicker_image_tag recipe.recipe_images[0].img, w: 100, h: 100 %>
-		<% end %>
-	<% end %>
-	<% if !current_user.voted_on?(recipe) %>
-		<%= link_to('vote for this recipe!', vote_up_recipe_path(recipe), :method => :post) %>
-	<% end %>
+<div class="shroom-banner">
+</div>
 
-	<%= pluralize recipe.votes.count, 'vote' %>
-	<br><br><br>
-<% end %>
+<div id="home-header">
+	Welcome to the Sarmander
+</div>
+
+<div id="what-were-about">
+	<p>
+		To celebrate the great equalizer, to revive the soul. To share mouthwatering recipes from around the world.
+		At Sarmander, we believe food is meant to bring people together, to refuel, to share stories with each other. Share recipes from around the world with each other here. And remember - there's no one right way to cook!
+	</p>
+</div>
+
+<div id="home-container">
+	<% @recipes.each do |recipe| %>
+		<div class="home-item">
+			<%= link_to recipe_path(recipe) do %>
+				<div class="home-image">
+					<%= filepicker_image_tag recipe.recipe_images[0].img %>
+				</div>
+
+				<div class="home-name">
+					<%= recipe.name %>
+				</div>
+
+				<div class="home-time">
+					<%= recipe.time %> minutes
+				</div>
+
+				<div class="home-user-name">
+					by <%= User.where(id: recipe.user_id)[0].name %>
+				</div>
+
+				<div class="story">
+					<%= recipe.story %>
+				</div>
+
+				<div class="upvote">
+					<% if !current_user.voted_on?(recipe) %>
+						<%= link_to('vote up!', vote_up_recipe_path(recipe), :method => :post, class: "upvote-link") %>
+					<% end %>
+					<%= pluralize recipe.votes.count, 'vote' %>
+				</div>
+				<div style="clear:both;"></div>
+			<% end %>
+		</div>
+	<% end %>
+</div>
+
+<script>
+	jQuery(window).on('load', function(){ 
+		var $ = jQuery;
+		var $container = $('#home-container');
+    $container.masonry({
+      columnWidth:400, 
+      itemSelector: '.home-item'
+    });
+	});
+</script>
