@@ -6,8 +6,6 @@ Sarmander::Application.routes.draw do
       post :vote_up
     end
   end
-  
-  match '/my-recipes', to: 'recipes#my_recipes', via: 'get'
 
   #Recipe Images
   resources :recipe_images

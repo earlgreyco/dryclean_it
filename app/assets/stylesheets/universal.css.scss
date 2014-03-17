@@ -1,5 +1,12 @@
 @import "bootstrap";
 
+/* fonts */
+
+* {
+	font-family: ProximaNova, 'Helvetica Neue', helvetica, arial, sans-serif !important;
+}
+
+
 /* fontawesome */
 
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
@@ -13,6 +20,6 @@
 
 .navbar{
 	background: white;
-	border-bottom: 0px;
+	border-bottom: 1px solid #ccc;
 	margin: 0px;
 }

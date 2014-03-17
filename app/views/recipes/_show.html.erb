@@ -116,7 +116,7 @@
 			<%= render @ingredients %>
 		</table>
 
-		<% if current_user.id == @recipe.user_id && !@ingredients.any? %>
+		<% if current_user.id == @recipe.user_id && !@ingredients.any? && current_page?(edit_recipe_path(@recipe.id)) %>
 			<div class="add-ingredient missing-info" >
 				<div class="emojicon">
 					(╯°□°)╯︵ ┻━┻
@@ -142,7 +142,7 @@
 		<ol class="step-list">
 			<%= render @steps %>
 		</ol>
-		<% if current_user.id == @recipe.user_id && !@steps.any? %>
+		<% if current_user.id == @recipe.user_id && !@steps.any? && current_page?(edit_recipe_path(@recipe.id)) %>
 			<div class="add-step missing-info">
 				<div class="emojicon">
 					ლ(ಠ益ಠლ)
