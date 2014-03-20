@@ -8,20 +8,16 @@ class UsersController < ApplicationController
   end
 
   def new
-    if !current_user
-    	@user = User.new
-    else
-      flash[:error] = "Doh! You're already signed in!"
-      redirect_to current_user
-    end
+    @user = User.new
   end
 
   def create
   	@user = User.new(user_params)
+    @user.password_confirmation = @user.password
   	if @user.save
       sign_in @user
   		flash[:success] = "Welcome to The Sarmander!"
-  		redirect_to '/my-recipes'
+  		redirect_to user_path(@user)
   	else
       render 'new'
   	end
@@ -54,8 +50,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :admin, :age, :gender, :city, :state, :filepicker_url, :password,
-                                   :password_confirmation)
+      params.require(:user).permit(:name, :email, :admin, :age, :gender, :city, :state, :filepicker_url, :password)
     end
     
 end

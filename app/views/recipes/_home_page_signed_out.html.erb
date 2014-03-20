@@ -1,0 +1,105 @@
+<div id="sign-up-section">
+	<div class="taglines">
+		<div class="tag-h1">
+			Your Virtual Recipe Book
+		</div>
+		<div class="tag-h2">
+			Record old recipes and refine the way you cook. Discover new recipes and try them out yourself.
+			<br>
+			It's free! Sign up below. 
+		</div>
+	</div>
+
+	<div class="signup-form">
+		<%= simple_form_for User.new do |f| %>
+			<div class="signup-section name-section">
+				<label>Your Name</label>
+				<%= f.input :name, label: false, class: "name" %>
+			</div>
+			<div class="signup-section">
+				<label>Email Address</label>
+				<%= f.input :email, label: false, class: "email" %>
+			</div>
+			<div class="signup-section">
+				<label>Password</label>
+				<%= f.input :password, label: false, class: "password" %>
+			</div>
+			<div class="signup-footer">
+				<div class="login">
+					Already signed up? 
+				</div>
+				<%= link_to "Sign in.", signin_path, class: "login-link" %> 
+				<%= f.submit "Get Started" %>
+				<div style="clear:both;"></div>
+			</div>
+		<% end %>
+	</div>
+
+	<div class="learn-more">
+		<div class="learn-more-button" id="home-scroll">
+			<%= link_to "#learning-section" do %>
+				<span class="fontawesome-chevron-down"></span> &nbsp;&nbsp; Learn More
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<div id="learning-section">
+	<div class="learning-subtitle">
+		Post A Recipe
+	</div>
+	<div class="learning-title">
+		Learn How to Share Your Recipes With the World
+	</div>
+	<div class="learning-video-button">
+		<span class="fontawesome-play-circle"></span>
+	</div>
+</div>
+
+<div id="do-it">
+	<div class="do-it-subtitle">
+		Stupid Simple
+	</div>
+
+	<div class="do-it-signup">
+		Sign up takes less than a minute.
+	</div>
+
+	<div id="do-it-signup-button">
+		<%= link_to "#sign-up-section", class: "orange-button" do %>
+			Sign Up Now
+		<% end %>
+	</div>
+</div>
+
+<script>
+$(document).ready(function(){
+	$(".signup-section input").focus(function(){
+		$(".signup-section").animate({
+			backgroundColor: "white"
+		}, 300);
+
+		$(".signup-section input").animate({
+			backgroundColor: "white"
+		}, 300);
+
+		$(this).animate({
+			backgroundColor: "#DCEBF2"
+		}, 300);
+
+		$(this).parent().parent().animate({
+			backgroundColor: "#DCEBF2"
+		}, 300);
+	});
+
+	$("#home-scroll a").on('click', function(e) {
+ 		e.preventDefault();
+	  $('html, body').animate({ scrollTop: $(this.hash).offset().top }, 300);
+	});
+
+	$("#do-it-signup-button a").on('click', function(e) {
+ 		e.preventDefault();
+	  $('html, body').animate({ scrollTop: $(this.hash).offset().top }, 300);
+	});
+})
+</script>
