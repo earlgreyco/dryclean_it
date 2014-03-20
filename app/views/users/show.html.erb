@@ -1,4 +1,27 @@
 <% provide(:title, @user.name) %>
 
-<%= @user.name %>
-<%= @user.email %>
+<div class="my-recipe-section">
+	<%= filepicker_image_tag @user.img, w: 70, h: 70, fit: 'crop' if @user.img %>
+	<%= @user.name %>
+	<span class="fontawesome-map-marker"></span><%= @user.location %>
+</div>
+
+<div style="clear:both;"></div>
+
+<% @user.recipes.each do |recipe| %>
+	<div class="row my-recipe-section">
+		<div class="col-md-2 recipe-image">
+			<%= filepicker_image_tag recipe.recipe_images[0].img, w: 100, h: 70, fit: 'crop' %>
+		</div>
+		<div class="col-md-5 recipe-name">
+			<%= recipe.name %>
+		</div>
+		<div class="col-md-3 recipe-actions">
+			<%= link_to "edit", edit_recipe_path(recipe) %>
+			<%= link_to "view", recipe_path(recipe) %>
+		</div>
+		<div class="col-md-2 recipe-votes">
+			<span class="fontawesome-heart"></span> <%= recipe.votes.count %>
+		</div>
+	</div>
+<% end %>

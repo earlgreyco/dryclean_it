@@ -11,6 +11,7 @@ gem "searchkick"
 gem 'pg', '0.15.1'
 gem "thin"
 gem 'thumbs_up'
+gem "font-awesome-rails"
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'

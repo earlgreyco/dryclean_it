@@ -1,0 +1,39 @@
+/**********
+
+MY RECIPES PAGE
+
+**********/
+
+.my-recipe-section{
+	width: 1000px;
+	margin: 30px auto;
+
+	.recipe-image{
+		img{
+			width: 100%;
+			height: auto;
+		}
+	}
+
+	.recipe-name, .recipe-actions{
+		margin-top: 50px;
+		font-size: 20px;
+		border-bottom: 1px solid #333333;
+		padding-bottom: 17px;
+		border-bottom-style: dotted;
+	}
+
+	.recipe-name{
+		font-weight: bold;
+	}
+
+	.recipe-actions{
+		text-align: right;
+	}
+
+	.recipe-votes{
+		text-align: right;
+		font-size: 30px;
+		margin-top: 40px;
+	}
+}

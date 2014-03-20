@@ -10,16 +10,16 @@
 		<%= simple_form_for @user do |f| %>
 			<%= render 'shared/error_messages', object: f.object %>
 				
-				<% if @user.filepicker_url? %>
+				<% if @user.img? %>
 					<div class="same-line">
-						<%= filepicker_image_tag @user.filepicker_url, w: 60, h: 60, fit: 'clip' %>
+						<%= filepicker_image_tag @user.img, w: 60, h: 60, fit: 'clip' %>
 
 						<div class="link-lookalike-position">
-							<%= f.filepicker_field :filepicker_url, button_class: "btn btn-default add-ingredient-btn",button_text: "Add a new photo", onchange: "$('.submit-button').trigger('click');" %>
+							<%= f.filepicker_field :img, button_class: "btn btn-default add-ingredient-btn",button_text: "Add a new photo", onchange: "$('.submit-button').trigger('click');" %>
 						</div>
 					</div>
 				<% else %>
-					<%= f.filepicker_field :filepicker_url, button_text: "Upload A Photo Of You", button_class: "link-lookalike link-lookalike-left", onchange: "$('.submit-button').trigger('click');" %>
+					<%= f.filepicker_field :img, button_text: "Upload A Photo Of You", button_class: "link-lookalike link-lookalike-left", onchange: "$('.submit-button').trigger('click');" %>
 				<% end %>
 
 				<fieldset>
@@ -31,10 +31,8 @@
 
 					<%= f.input :age %>
 
-					<%= f.input :city %>
+					<%= f.input :location %>
 
-					<%= f.input :state, collection: ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"] %>
-					<br/>
 					<%= f.submit "Save Changes", class: "pure-button pure-button-primary submit-button" %>
 				</fieldset>
 			</div>
