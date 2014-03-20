@@ -1,17 +1,10 @@
 <% provide(:title, 'Sign up') %>
 
 <div class="main-padding signin-form">
-	<%= form_for(@user) do |f| %>
-		<%= render 'shared/error_messages', object: f.object %>
-
-		<%= f.text_field :name, placeholder: "name", class: "input-large" %>
-		<br><br>
-		<%= f.text_field :email, placeholder: "email", class: "input-large" %>
-		<br><br>
-		<%= f.password_field :password, placeholder: "password", class: "input-large" %>
-		<br><br>
-		<%= f.password_field :password_confirmation, placeholder: "password confirmation", class: "input-large" %>
-		<br><br>
-		<%= f.submit "Sign Up", class: "btn btn-default btn-lg" %>
+	<%= simple_form_for @user do |f| %>
+		<%= f.input :name, placeholder: "name" %>
+		<%= f.input :email, placeholder: "email" %>
+		<%= f.input :password, placeholder: "password" %>
+		<%= f.submit "Sign Up" %>
 	<% end %>
 </div>
