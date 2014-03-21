@@ -1,0 +1,4 @@
+<% if @saved %>
+	$("#new-article-form").hide();
+	$("#new-article-popup").after("<%= j render @article %>");
+<% end %>

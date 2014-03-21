@@ -1,5 +1,0 @@
-<% if @saved %>
-	$("#new-comment-form")[0].reset();
-	$("#recipe-id-field").val("<%= @comment.recipe_id %>");
-	$(".new-comments").after("<%= j render(@comment) %>");
-<% end %>

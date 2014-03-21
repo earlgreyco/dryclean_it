@@ -1,22 +1,24 @@
 <% provide(:title, "Sign in") %>
 
-<div class="signup signin-page-form" id="signin-form">
-	<%= simple_form_for :session, url: sessions_path do |f| %>
-		<div class="signup-section name-section">
-			<label>Email Address</label>
-			<%= f.input :email, label: false, class: "email" %>
-		</div>
-		<div class="signup-section">
-			<label>Password</label>
-			<%= f.input :password, label: false, class: "password" %>
-		</div>
-		<div class="signup-footer">
-			<div class="login">
-				Don't have an account?
+<div id="signup-wrapper">
+	<div class="signup">
+		<%= simple_form_for :session, url: sessions_path do |f| %>
+			<div class="signup-section name-section">
+				<label>Email Address</label>
+				<%= f.input :email, label: false, class: "email" %>
 			</div>
-			<%= link_to "Sign up.", root_path, class: "login-link", id: "signup-link" %> 
-			<%= f.submit "Get Started" %>
-			<div style="clear:both;"></div>
-		</div>
-	<% end %>
+			<div class="signup-section">
+				<label>Password</label>
+				<%= f.input :password, label: false, class: "password" %>
+			</div>
+			<div class="signup-footer">
+				<div class="login">
+					Don't have an account?
+				</div>
+				<%= link_to "Sign up.", signup_path, class: "login-link" %> 
+				<%= f.submit "Get Started" %>
+				<div style="clear:both;"></div>
+			</div>
+		<% end %>
+	</div>
 </div>

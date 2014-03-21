@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: :destroy
 
   def show
-  	@user = User.includes(:recipes).find(params[:id])
+  	@user = User.find(params[:id])
+    @articles = @user.articles
   end
 
   def new

@@ -1,15 +1,4 @@
-<div id="sign-up-section">
-	<div class="taglines">
-		<div class="tag-h1">
-			Your Virtual Recipe Book
-		</div>
-		<div class="tag-h2">
-			Record old recipes and refine the way you cook. Discover new recipes and try them out yourself.
-			<br>
-			It's free! Sign up below. 
-		</div>
-	</div>
-
+<div id="signup-wrapper">
 	<div class="signup" id="signup-form">
 		<%= simple_form_for User.new do |f| %>
 			<div class="signup-section name-section">
@@ -28,7 +17,7 @@
 				<div class="login">
 					Already signed up? 
 				</div>
-				<%= link_to "Sign in.", "#!", class: "login-link", id: "signin-link" %> 
+				<%= link_to "Sign in.", "#!", class: "login-link", id: "signin-link" %>
 				<%= f.submit "Get Started" %>
 				<div style="clear:both;"></div>
 			</div>

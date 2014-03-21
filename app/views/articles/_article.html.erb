@@ -1,0 +1,14 @@
+<div class="single-article" id="new-article-wrapper">
+	<div class="article-img">
+		<%= image_tag "clothes_hanging.jpg" %>
+	</div>
+	<div class="article-name article-node">
+		<label>Name</label><br>
+		<%= best_in_place article, :name %>
+	</div>
+	<div class="article-price article-node">
+		<label>Price</label><br>
+		<%= best_in_place article, :price, label: "Price ($)" %>
+	</div>
+	<div style="clear:both;"></div>
+</div>

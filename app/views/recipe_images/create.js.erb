@@ -1,8 +1,0 @@
-<% if @saved %>
-	$(".recipe-images").append("<%= j render @recipe_image %>");
-	$("#recipe-id-field-three").val("<%= @recipe.id %>");
-	$(".remove-recipe-image").show();
-  <% if @recipe.recipe_images.count == 2 %>
-  	$(".recipe-images").after("<%= j render 'recipes/carousel_buttons' %>");
-  <% end %>
-<% end %>

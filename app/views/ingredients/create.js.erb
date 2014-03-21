@@ -1,9 +1,0 @@
-<% if @saved %>
-	$("#new-ingredient-form")[0].reset();
-	$("#recipe-id-field").val("<%= @recipe.id %>");
-	$(".ingredient-list").append("<%= j render(@ingredient) %>");
-	$('.remove-ingredient').show();
-	$(".remove-ingredient").click(function(){
-		$(this).parent().remove();
-	});
-<% end %>

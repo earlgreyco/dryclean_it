@@ -1,7 +1,7 @@
 Dryclean::Application.routes.draw do
-  get "static_pages/home"
+  get "articles/new"
   #Static Pages
-  root 'sessions#new'
+  root 'static_pages#home'
 
   #Users
   resources :users
@@ -11,4 +11,7 @@ Dryclean::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   match '/signin', to: 'sessions#new', via: 'get'
   match '/signout', to: 'sessions#destroy', via: 'delete'
+
+  #Articles
+  resources :articles
 end

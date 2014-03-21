@@ -1,40 +1,58 @@
 <% provide(:title, @user.name) %>
 
-<div id="my-recipes-container">
-	<div class="side-nav">
-		<h1>Your Recipes</h1>
-		<ol>
-			<% @user.recipes.each do |recipe| %>
-				<%= link_to "#recipe-#{recipe.id}" do %>
-					<li>
-						<%= recipe.name %>
-					</li>
-				<% end %>
-			<% end %>
-		</ol>
+<!-- dashboard container -->
+
+<div id="dashboard-container">
+	
+	<!-- side navbar -->
+
+	<div id="side-navbar">
+		<div class="business-name">
+			<%= @user.name %>
+		</div>
+		<div class="side-item">
+			<span class="fontawesome-calendar"></span>
+			What's due?
+		</div>
+		<div class="side-item">
+			<span class="fontawesome-user"></span> Customers
+		</div>
+		<div class="side-item">
+			<span class="fontawesome-list"></span>
+			Articles
+		</div>
 	</div>
-	<div id="recipe-page">
-		<% @user.recipes.each do |recipe| %>
-			<div id="recipe-<%= recipe.id %>" class="individual-recipe">
-				<%= recipe.name %>
-				<%= filepicker_image_tag recipe.recipe_images[0].img, w: 100, h: 100, fit: 'clip' if recipe.recipe_images.any? %>
-			</div>
-		<% end %>
+
+	<!-- where the action happens -->
+
+	<div id="main-container">
+		<div id="article-container">
+			<%= link_to "+ Add New Article", "#!", id: "new-article" %>
+
+			<%= simple_form_for Article.new, remote: true, html: {id: "new-article-form"} do |f| %>
+				<div class="single-article" id="new-article-wrapper">
+					<div class="article-img">
+						<%= image_tag "clothes_hanging.jpg" %>
+					</div>
+					<div class="article-name article-node">
+						<%= f.input :name, required: false %>
+					</div>
+					<div class="article-price article-node">
+						<%= f.input :price, as: :string, label: "Price ($)", required: false %>
+					</div>
+					<div style="clear:both;"></div>
+					<br>
+					<%= f.button :submit, class: "orange-button" %>
+				</div>
+			<% end %>
+		</div>
+
+		<div id="new-article-popup">
+		</div>
+
+		<div id="all-articles">
+			<%= render @articles %>
+		</div>
+
 	</div>
 </div>
-
-
-<% if false %>
-<%= filepicker_image_tag @user.img, w: 70, h: 70, fit: 'crop' if @user.img %>
-<%= @user.name %>
-<span class="fontawesome-map-marker"></span><%= @user.location %>
-
-<% @user.recipes.each do |recipe| %>
-	<%= filepicker_image_tag recipe.recipe_images[0].img, w: 100, h: 70, fit: 'crop' %>
-	<%= recipe.name %>
-	<%= link_to "edit", edit_recipe_path(recipe) %>
-	<%= link_to "view", recipe_path(recipe) %>
-	<%= link_to "delete", recipe, method: :delete %>
-	<span class="fontawesome-heart"></span> <%= recipe.votes.count %>
-<% end %>
-<% end %>

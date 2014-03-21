@@ -1,8 +1,6 @@
 class User < ActiveRecord::Base
-	has_many :recipes, dependent: :destroy
-	has_many :comments
+	has_many :articles
 	has_secure_password
-	acts_as_voter
 	before_save { email.downcase! }
 	validates :name, presence: true, length: { maximum: 50 }
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
