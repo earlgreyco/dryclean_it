@@ -28,12 +28,14 @@ $(document).ready(function(){
 	});
 
 	$("#signin-link").click(function(){
-		$("#signup-form").toggle(300);
-		$("#signin-form").toggle(300);
+		$("#signup-form").hide("slide", { direction: "right" }, 300);
+		$("#signin-form").show("slide", { direction: "left" }, 300);
 	});
 
+
+
 	$("#signup-link").click(function(){
-		$("#signup-form").toggle(300);
-		$("#signin-form").toggle(300);
+		$("#signup-form").show("slide", { direction: "right" }, 300);
+		$("#signin-form").hide("slide", { direction: "left" }, 300);
 	});
 })
