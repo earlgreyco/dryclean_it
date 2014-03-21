@@ -11,12 +11,7 @@
   <%= render 'layouts/ie_html5_shim' %>
 </head>
 
-<body data-spy="scroll" data-target="#recipe-scroll" class="pure-skin-sarmander">
-		
-<% if false %>
-<%= render 'layouts/olark' %>
-<% end %>
-
+<body>
   <%= render 'layouts/header' %>
 
   <% if !current_user && current_page?(root_path) %>

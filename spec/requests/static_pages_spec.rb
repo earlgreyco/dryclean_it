@@ -7,7 +7,7 @@ describe "Static pages" do
   describe "Home page" do
     before { visit root_path }
 
-    it { should have_content('Sarmander') }
+    it { should have_content('Dryclean') }
   	it { should have_title(full_title(''))}
   end
 end

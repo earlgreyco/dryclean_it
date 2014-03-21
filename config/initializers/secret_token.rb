@@ -24,4 +24,4 @@ def secure_token
   end
 end
 
-Sarmander::Application.config.secret_key_base = secure_token
+Dryclean::Application.config.secret_key_base = secure_token

@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Sarmander::Application.load_tasks
+Dryclean::Application.load_tasks

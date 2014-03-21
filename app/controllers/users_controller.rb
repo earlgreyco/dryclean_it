@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @user.password_confirmation = @user.password
   	if @user.save
       sign_in @user
-  		flash[:success] = "Welcome to The Sarmander!"
+  		flash[:success] = "Welcome to Dryclean It!"
   		redirect_to user_path(@user)
   	else
       render 'new'

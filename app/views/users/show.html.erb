@@ -1,7 +1,7 @@
 <% provide(:title, @user.name) %>
 
 <div id="my-recipes-container">
-	<div class="side-nav" data-spy="affix" data-offset-top="30px">
+	<div class="side-nav">
 		<h1>Your Recipes</h1>
 		<ol>
 			<% @user.recipes.each do |recipe| %>
@@ -13,7 +13,7 @@
 			<% end %>
 		</ol>
 	</div>
-	<div class="recipe-page">
+	<div id="recipe-page">
 		<% @user.recipes.each do |recipe| %>
 			<div id="recipe-<%= recipe.id %>" class="individual-recipe">
 				<%= recipe.name %>

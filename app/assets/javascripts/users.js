@@ -1,6 +1,7 @@
 $(document).ready(function(){
-	$(".side-nav a").on('click', function(e) {
- 		e.preventDefault();
-	  $('.recipe-page').animate({ scrollTop: $(this.hash).offset().top }, 300);
+	$('.side-nav ol a').on('click', function(event) {
+	  var to = $(this).attr('href');
+	  $('#recipe-page').animate({ scrollTop: $(to).offset().top }, 500);
+	  event.preventDefault();
 	});
 });
