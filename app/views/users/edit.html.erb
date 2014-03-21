@@ -1,41 +1,20 @@
-<% provide(:title, "Edit user") %>
+<% provide(:title, "Edit Your Profile") %>
 
-<div class="header">
-	<h1>Update Your Profile</h1>
-	<h2>And make sure to add your pretty mug!</h2>
-</div>
+<div class="settings-header">Update Your Profile</div>
 
-<div class="main-padding">
-	<div class="pure-form pure-form-stacked settings-form">
-		<%= simple_form_for @user do |f| %>
-			<%= render 'shared/error_messages', object: f.object %>
-				
-				<% if @user.img? %>
-					<div class="same-line">
-						<%= filepicker_image_tag @user.img, w: 60, h: 60, fit: 'clip' %>
+<%= simple_form_for @user do |f| %>
+	<%= filepicker_image_tag @user.img, w: 60, h: 60, fit: 'clip' if @user.img? %>
+	<%= f.filepicker_field :img,button_text: "Add photo", onchange: "$('.submit-button').trigger('click');" %>
 
-						<div class="link-lookalike-position">
-							<%= f.filepicker_field :img, button_class: "btn btn-default add-ingredient-btn",button_text: "Add a new photo", onchange: "$('.submit-button').trigger('click');" %>
-						</div>
-					</div>
-				<% else %>
-					<%= f.filepicker_field :img, button_text: "Upload A Photo Of You", button_class: "link-lookalike link-lookalike-left", onchange: "$('.submit-button').trigger('click');" %>
-				<% end %>
+	<%= f.input :name %>
 
-				<fieldset>
-					<%= f.input :name %>
+	<%= f.input :email %>
 
-					<%= f.input :email %>
+	<%= f.collection_radio_buttons :gender, [[true, 'Male'], [false, 'Female']], :first, :last %>
 
-					<%= f.collection_radio_buttons :gender, [[true, 'Male'], [false, 'Female']], :first, :last %>
+	<%= f.input :age %>
 
-					<%= f.input :age %>
+	<%= f.input :location %>
 
-					<%= f.input :location %>
-
-					<%= f.submit "Save Changes", class: "pure-button pure-button-primary submit-button" %>
-				</fieldset>
-			</div>
-		<% end %>
-	</div>
-</div>
+	<%= f.submit "Save Changes" %>
+<% end %>

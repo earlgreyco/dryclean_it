@@ -10,7 +10,7 @@
 		</div>
 	</div>
 
-	<div class="signup-form">
+	<div class="signup" id="signup-form">
 		<%= simple_form_for User.new do |f| %>
 			<div class="signup-section name-section">
 				<label>Your Name</label>
@@ -28,7 +28,28 @@
 				<div class="login">
 					Already signed up? 
 				</div>
-				<%= link_to "Sign in.", signin_path, class: "login-link" %> 
+				<%= link_to "Sign in.", "#!", class: "login-link", id: "signin-link" %> 
+				<%= f.submit "Get Started" %>
+				<div style="clear:both;"></div>
+			</div>
+		<% end %>
+	</div>
+
+	<div class="signup" id="signin-form">
+		<%= simple_form_for :session, url: sessions_path do |f| %>
+			<div class="signup-section name-section">
+				<label>Email Address</label>
+				<%= f.input :email, label: false, class: "email" %>
+			</div>
+			<div class="signup-section">
+				<label>Password</label>
+				<%= f.input :password, label: false, class: "password" %>
+			</div>
+			<div class="signup-footer">
+				<div class="login">
+					Don't have an account?
+				</div>
+				<%= link_to "Sign up.", "#!", class: "login-link", id: "signup-link" %> 
 				<%= f.submit "Get Started" %>
 				<div style="clear:both;"></div>
 			</div>
@@ -52,8 +73,20 @@
 		Learn How to Share Your Recipes With the World
 	</div>
 	<div class="learning-video-button">
-		<span class="fontawesome-play-circle"></span>
+		<span class="fontawesome-play-circle" data-toggle="modal" data-target="#videoModal"></span>
 	</div>
+	<div class="modal fade" id="videoModal">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <div class="video">
+	        	<!-- PUT VIDEO HERE -->
+	        </div>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 </div>
 
 <div id="do-it">
@@ -71,35 +104,3 @@
 		<% end %>
 	</div>
 </div>
-
-<script>
-$(document).ready(function(){
-	$(".signup-section input").focus(function(){
-		$(".signup-section").animate({
-			backgroundColor: "white"
-		}, 300);
-
-		$(".signup-section input").animate({
-			backgroundColor: "white"
-		}, 300);
-
-		$(this).animate({
-			backgroundColor: "#DCEBF2"
-		}, 300);
-
-		$(this).closest(".signup-section").animate({
-			backgroundColor: "#DCEBF2"
-		}, 300);
-	});
-
-	$("#home-scroll a").on('click', function(e) {
- 		e.preventDefault();
-	  $('html, body').animate({ scrollTop: $(this.hash).offset().top }, 300);
-	});
-
-	$("#do-it-signup-button a").on('click', function(e) {
- 		e.preventDefault();
-	  $('html, body').animate({ scrollTop: $(this.hash).offset().top }, 300);
-	});
-})
-</script>
