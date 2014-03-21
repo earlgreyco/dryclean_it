@@ -1,0 +1,9 @@
+<%= filepicker_image_tag recipe.recipe_images[0].img if recipe.recipe_images.any? %>
+
+<%= recipe.name %>
+
+
+<%= link_to "View", recipe_path(recipe) %>
+<%= link_to "Delete", recipe, method: :delete, remote: true, class: "delete-recipe" %>
+
+<%= recipe.time %> minutes

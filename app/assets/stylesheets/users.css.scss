@@ -4,36 +4,74 @@ MY RECIPES PAGE
 
 **********/
 
-.my-recipe-section{
-	width: 1000px;
-	margin: 30px auto;
+#my-recipes-container{
+	width: 900px;
+	border-radius: 40px;
+	-webkit-border-radius: 4px;
+	border: 1px solid #d6d6d6;
+	background: white;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 1%;
+	height: 650px;
+	position: relative;
 
-	.recipe-image{
-		img{
-			width: 100%;
-			height: auto;
+	.side-nav{
+		background-color: #f9f9f9;
+		border-right: 1px solid #e5e5e5;
+		width: 250px;
+		position: absolute;
+		top: 0;
+		height: 648px;
+		overflow-y: scroll;
+
+		h1{
+			padding-top: 5px;
+			padding-left: 25px;
+			padding-bottom: 20px;
+			margin-bottom: 0px;
+			border-bottom: 1px solid #e5e5e5;
+			font-size: 16px;
+			font-weight: normal;
+			-webkit-font-smoothing: antialiased;
+			color: rgba(110, 110, 110, 0.8);
+		}
+
+		ol{
+			padding-left: 0px;
+			margin-bottom: 0px;
+		}
+
+		a:hover{
+			text-decoration: none;
+		}
+
+		li{
+			color: rgba(110, 110, 110, 0.8);
+			font-size: 13px;
+			font-weight: 600;
+			border-bottom: 1px solid #e5e5e5;
+			list-style: none;
+			padding-top: 16px;
+			padding-bottom: 16px;
+			padding-left: 25px !important;
+		}
+
+		.recipe-votes{
+
 		}
 	}
 
-	.recipe-name, .recipe-actions{
-		margin-top: 50px;
-		font-size: 20px;
-		border-bottom: 1px solid #333333;
-		padding-bottom: 17px;
-		border-bottom-style: dotted;
-	}
+	.recipe-page{
+		width: 650px;
+		position: absolute;
+		top: 0;
+		right: 0;
+		height: 650px;
+		overflow-y: scroll;
 
-	.recipe-name{
-		font-weight: bold;
-	}
-
-	.recipe-actions{
-		text-align: right;
-	}
-
-	.recipe-votes{
-		text-align: right;
-		font-size: 30px;
-		margin-top: 40px;
+		.individual-recipe{
+			height: 1000px;
+		}
 	}
 }

@@ -1,27 +1,40 @@
 <% provide(:title, @user.name) %>
 
-<div class="my-recipe-section">
-	<%= filepicker_image_tag @user.img, w: 70, h: 70, fit: 'crop' if @user.img %>
-	<%= @user.name %>
-	<span class="fontawesome-map-marker"></span><%= @user.location %>
+<div id="my-recipes-container">
+	<div class="side-nav" data-spy="affix" data-offset-top="30px">
+		<h1>Your Recipes</h1>
+		<ol>
+			<% @user.recipes.each do |recipe| %>
+				<%= link_to "#recipe-#{recipe.id}" do %>
+					<li>
+						<%= recipe.name %>
+					</li>
+				<% end %>
+			<% end %>
+		</ol>
+	</div>
+	<div class="recipe-page">
+		<% @user.recipes.each do |recipe| %>
+			<div id="recipe-<%= recipe.id %>" class="individual-recipe">
+				<%= recipe.name %>
+				<%= filepicker_image_tag recipe.recipe_images[0].img, w: 100, h: 100, fit: 'clip' if recipe.recipe_images.any? %>
+			</div>
+		<% end %>
+	</div>
 </div>
 
-<div style="clear:both;"></div>
+
+<% if false %>
+<%= filepicker_image_tag @user.img, w: 70, h: 70, fit: 'crop' if @user.img %>
+<%= @user.name %>
+<span class="fontawesome-map-marker"></span><%= @user.location %>
 
 <% @user.recipes.each do |recipe| %>
-	<div class="row my-recipe-section">
-		<div class="col-md-2 recipe-image">
-			<%= filepicker_image_tag recipe.recipe_images[0].img, w: 100, h: 70, fit: 'crop' %>
-		</div>
-		<div class="col-md-5 recipe-name">
-			<%= recipe.name %>
-		</div>
-		<div class="col-md-3 recipe-actions">
-			<%= link_to "edit", edit_recipe_path(recipe) %>
-			<%= link_to "view", recipe_path(recipe) %>
-		</div>
-		<div class="col-md-2 recipe-votes">
-			<span class="fontawesome-heart"></span> <%= recipe.votes.count %>
-		</div>
-	</div>
+	<%= filepicker_image_tag recipe.recipe_images[0].img, w: 100, h: 70, fit: 'crop' %>
+	<%= recipe.name %>
+	<%= link_to "edit", edit_recipe_path(recipe) %>
+	<%= link_to "view", recipe_path(recipe) %>
+	<%= link_to "delete", recipe, method: :delete %>
+	<span class="fontawesome-heart"></span> <%= recipe.votes.count %>
+<% end %>
 <% end %>

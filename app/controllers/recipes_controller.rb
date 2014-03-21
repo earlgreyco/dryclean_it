@@ -59,14 +59,6 @@ class RecipesController < ApplicationController
 		end
 	end
 
-	def my_recipes
-		if params[:query].present?
-			@recipes = Recipe.search(params[:query], where: {user_id: current_user.id})
-		else
-			@recipes = Recipe.where(user_id: current_user.id)
-		end
-	end
-
 	def destroy
 		Recipe.find(params[:id]).destroy
 	end
