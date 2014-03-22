@@ -21,6 +21,10 @@
 			<span class="fontawesome-list"></span>
 			Articles
 		</div>
+		<div class="side-item" id="reports-link">
+			<span class="fontawesome-bar-chart"></span>
+			Reports
+		</div>
 	</div>
 
 	<!-- where the action happens -->
@@ -29,6 +33,7 @@
 		<%= render 'articles/dashboard_articles' %>
 		<%= render 'customers/dashboard_customers' %>
 		<%= render 'orders/dashboard_orders' %>
+		<%= render 'reports/dashboard_reports' %>
 	</div>
 </div>
 
@@ -38,18 +43,28 @@ $(document).ready(function(){
 		$("#customer-container").show();
 		$("#article-container").hide();
 		$("#order-container").hide();
+		$("#reports-container").hide();
 	});
 
 	$("#articles-link").click(function(){
 		$("#customer-container").hide();
 		$("#article-container").show();
 		$("#order-container").hide();
+		$("#reports-container").hide();
 	});
 
 	$("#orders-link").click(function(){
 		$("#customer-container").hide();
 		$("#article-container").hide();
 		$("#order-container").show();
+		$("#reports-container").hide();
+	});
+
+	$("#reports-link").click(function(){
+		$("#customer-container").hide();
+		$("#article-container").hide();
+		$("#order-container").hide();
+		$("#reports-container").show();
 	});
 
 	$(".side-item").click(function(){
