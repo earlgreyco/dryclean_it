@@ -41,6 +41,12 @@ body{
 	font-weight: 400;
 }
 
+#orders-link{
+	background: rgb(85, 151, 183); 
+	color: white; 
+	border-color: rgb(85, 151, 183);
+}
+
 .side-item{
 	padding: 14px 20px;
 	list-style: none;
@@ -64,12 +70,6 @@ body{
 	  -o-transition: 0.3s;
 	  transition: 0.3s;
 	}
-}
-
-#articles-link{
-	background: rgb(85, 151, 183); 
-	color: white; 
-	border-color: rgb(85, 151, 183);
 }
 
 #main-container{
@@ -265,6 +265,6 @@ body{
 	}
 }
 
-#customer-container, #order-container, #reports-container{
+#customer-container, #report-container, #article-container{
 	display: none;
 }

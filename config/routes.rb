@@ -14,4 +14,7 @@ Dryclean::Application.routes.draw do
 
   #Articles
   resources :articles
+
+  #Customers
+  resources :customers
 end

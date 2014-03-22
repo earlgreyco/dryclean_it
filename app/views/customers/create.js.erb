@@ -1,0 +1,7 @@
+<% if @saved %>
+	$("#new-customer-form")[0].reset();
+	$("#new-customer-form").hide();
+	$(".customer-button").show();
+	$(".img-added").hide();
+	$("#new-customer-popup").after("<%= j render @customer %>");
+<% end %>

@@ -1,6 +1,12 @@
 <div class="single-article" id="new-article-wrapper">
 	<div class="article-img">
-		<%= filepicker_image_tag article.img, w: 110, h: 110 if article.img? %>
+		<% if article.img? %>
+			<%= filepicker_image_tag article.img, w: 110, h: 110 %>
+		<% else %>
+			<div class="no-photo">
+				No Photo
+			</div>
+		<% end %>
 	</div>
 	<div class="article-name article-node">
 		<label>Name</label><br>

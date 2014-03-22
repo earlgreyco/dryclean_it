@@ -1,3 +1,76 @@
+<!-- search -->
+
 <div id="customer-container">
-	customers
+	<%= link_to "+ Add New Customer", "#!", id: "new-customer" %>
+
+	<%= simple_form_for Customer.new, remote: true, html: {id: "new-customer-form"} do |f| %>
+		<div class="single-article" id="new-article-wrapper">
+			<div class="article-img">
+				<%= f.filepicker_field :img, button_class: "customer-button", button_text: "Add Photo", services: "COMPUTER", onchange: "$('.customer-button').hide(); $('.img-added').show();" %>
+				<div class="img-added">
+					Image Added
+				</div>
+			</div>
+			<div class="article-name article-node" style="width:175px;">
+				<%= f.input :first_name, required: false %>
+			</div>
+			<div class="article-price article-node" style="width:175px; border-bottom: 0px;">
+				<%= f.input :last_name, required: false %>
+			</div>
+			<div class="article-price article-node">
+				<%= f.input :phone, required: false %>
+			</div>
+			<div style="clear:both;"></div>
+			<br>
+			<%= f.button :submit, class: "orange-button" %>
+		</div>
+	<% end %>
+
+	<div id="new-customer-popup">
+	</div>
+
+	<%= render @customers %>
 </div>
+
+<script>
+$(document).ready(function(){
+	$("#customer-container").on("click", ".article-img", function(){
+		jQuery(".best_in_place").best_in_place();
+		
+		if(!$(this).hasClass("active-dropdown")){
+			$(this).parent().children(".customer-dropdown").show("slide", {direction:"right"}, 300);
+			$(this).addClass("active-dropdown");
+		}
+		else{
+			$(this).parent().children(".customer-dropdown").hide("slide", {direction:"right"}, 300);
+			$(this).removeClass("active-dropdown");
+		}
+	});
+
+	$("#customer-container").on("click", ".delete-article a", function(){
+		$(this).parent().parent().remove();
+	});
+
+	$("#new-customer").click(function(){
+		$("#new-customer-form").show("slide", { direction: "right" }, 300);
+	});
+
+	$(".article-node input").focus(function(){
+		$(".article-node").animate({
+			backgroundColor: "white"
+		}, 300);
+
+		$(".article-node input").animate({
+			backgroundColor: "white"
+		}, 300);
+
+		$(this).animate({
+			backgroundColor: "#DCEBF2"
+		}, 300);
+
+		$(this).closest(".article-node").animate({
+			backgroundColor: "#DCEBF2"
+		}, 300);
+	});
+});
+</script>

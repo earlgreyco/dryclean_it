@@ -1,0 +1,41 @@
+<div class="single-article">
+	<div class="article-img" style="cursor: pointer;">
+		<% if customer.img? %>
+			<%= filepicker_image_tag customer.img, w: 110, h: 110, fit: 'crop' %>
+		<% else %>
+			<div class="no-photo">
+				No Photo
+			</div>
+		<% end %>
+	</div>
+	<div class="article-name article-node" style="width:175px;">
+		<label>First Name</label><br>
+		<%= best_in_place customer, :first_name %>
+	</div>
+	<div class="article-price article-node" style="width:175px; border-bottom: 0px;">
+		<label>Last Name</label><br>
+		<%= best_in_place customer, :last_name %>
+	</div>
+	<div class="article-price article-node">
+		<label>Phone</label><br>
+		<%= best_in_place customer, :phone %>
+	</div>
+	<div class="customer-dropdown">
+		<div class="article-price article-node" style="width:175px;">
+			<label>Starch</label><br>
+			<%= best_in_place customer, :starch %>
+		</div>
+		<div class="article-price article-node" style="width: 175px;">
+			<label>Credits</label><br>
+			<%= best_in_place customer, :credits %>
+		</div>
+		<div class="article-price article-node" style="border-top: 0px;">
+			<label>Email</label><br>
+			<%= best_in_place customer, :email %>
+		</div>
+	</div>
+	<div style="clear:both;"></div>
+	<div class="delete-article">
+		<%= link_to raw("<span class='fontawesome-remove'></span>"), customer, method: :delete, remote: true %>
+	</div>
+</div>

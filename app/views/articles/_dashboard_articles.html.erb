@@ -30,6 +30,7 @@
 </div>
 
 <script>
+$(document).ready(function(){
 	/* Activating Best In Place */
   jQuery(".best_in_place").best_in_place();
 
@@ -62,4 +63,5 @@
 	$("#all-articles").on("click", ".delete-article a", function(){
 		$(this).parent().parent().remove();
 	});
+});
 </script>
