@@ -32,7 +32,10 @@
 			<%= simple_form_for Article.new, remote: true, html: {id: "new-article-form"} do |f| %>
 				<div class="single-article" id="new-article-wrapper">
 					<div class="article-img">
-						<%= image_tag "clothes_hanging.jpg" %>
+						<%= f.filepicker_field :img, button_class: "article-button", button_text: "Add Photo", services: "COMPUTER", onchange: "$('.article-button').hide(); $('.img-added').show();" %>
+						<div class="img-added">
+							Image Added
+						</div>
 					</div>
 					<div class="article-name article-node">
 						<%= f.input :name, required: false %>

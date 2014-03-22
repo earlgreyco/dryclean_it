@@ -9,11 +9,11 @@ $(document).ready(function(){
 
 	$("#new-article-wrapper input").focus(function(){
 		$(".article-node input").animate({
-			backgroundColor: "#f9f9f9"
+			backgroundColor: "white"
 		}, 300);
 
 		$(".article-node").animate({
-			backgroundColor: "#f9f9f9"
+			backgroundColor: "white"
 		}, 300);
 
 		$(this).animate({
@@ -27,5 +27,13 @@ $(document).ready(function(){
 
 	$("#new-article").click(function(){
 		$("#new-article-form").show("slide", { direction: "right" }, 300);
+	});
+
+	$("#dashboard-container").on("click", ".delete-article a", function(){
+		$(this).parent().parent().remove();
+	});
+
+	$("#all-articles").on("click", ".delete-article a", function(){
+		$(this).parent().parent().remove();
 	});
 })
