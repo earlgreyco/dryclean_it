@@ -124,18 +124,14 @@ body{
 
 	.delete-article{
 		position: absolute;
+		cursor: pointer;
 		top: 0;
 		right: -30px;
-		a{
-			border: 1px solid #e5e5e5;
-			padding: 1px 5px;
-			border-radius: 20px;
-			background: white;
+		span{
 			color: #6e6e6e;
 
 			&:hover{
 				color: rgba(110, 110, 110, 0.8);
-				background: #f9f9f9;
 				text-decoration: none;
 			}
 		}
@@ -258,6 +254,7 @@ body{
 	&:hover{
 		border: 1px solid #dd4e26 !important;
 		background: #dd4e26 !important;
+		text-decoration: none !important;
 	}
 
 	&:focus{

@@ -47,8 +47,10 @@ $(document).ready(function(){
 		}
 	});
 
-	$("#customer-container").on("click", ".delete-article a", function(){
-		$(this).parent().parent().remove();
+	$("#customer-container").on("click", ".modal-footer a", function(){
+		$(this).parent().parent().parent().parent().parent().parent().remove();
+		$('body').removeClass('modal-open');
+		$('.modal-backdrop').remove();
 	});
 
 	$("#new-customer").click(function(){

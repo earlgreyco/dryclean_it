@@ -36,6 +36,21 @@
 	</div>
 	<div style="clear:both;"></div>
 	<div class="delete-article">
-		<%= link_to raw("<span class='fontawesome-remove'></span>"), customer, method: :delete, remote: true %>
+		<span class="fontawesome-remove" data-toggle="modal" data-target="#customer-<%= customer.id %>"></span>
+
+		<div class="modal fade" id="customer-<%= customer.id %>">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-body">
+		      	<p>
+		      		Sure you want to delete <%= customer.first_name %> <%= customer.last_name %>?
+		      	</p>
+		      </div>
+		      <div class="modal-footer">
+		      	<%= link_to "Yarp!", customer, method: :delete, remote: true, class: "orange-button" %>
+		    	</div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
 	</div>
 </div>
