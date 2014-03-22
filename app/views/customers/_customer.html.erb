@@ -23,7 +23,7 @@
 	<div class="customer-dropdown">
 		<div class="article-price article-node" style="width:175px;">
 			<label>Starch</label><br>
-			<%= best_in_place customer, :starch %>
+			<%= best_in_place customer, :starch, type: :select, collection: [["none", "none"], ["light", "light"], ["medium", "medium"], ["heavy", "heavy"]] %>
 		</div>
 		<div class="article-price article-node" style="width: 175px;">
 			<label>Credits</label><br>
