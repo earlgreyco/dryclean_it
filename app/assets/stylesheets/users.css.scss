@@ -66,6 +66,12 @@ body{
 	}
 }
 
+#articles-link{
+	background: rgb(85, 151, 183); 
+	color: white; 
+	border-color: rgb(85, 151, 183);
+}
+
 #main-container{
 	float: right;
 	background: #f9f9f9;
@@ -113,7 +119,7 @@ body{
 .single-article{
 	width: 500px;
 	height: 150px;
-	margin-bottom: 20px;
+	margin-bottom: 15px;
 	position: relative;
 
 	.delete-article{

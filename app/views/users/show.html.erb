@@ -10,14 +10,14 @@
 		<div class="business-name">
 			<%= @user.name %>
 		</div>
-		<div class="side-item">
+		<div class="side-item" id="due-date-link">
 			<span class="fontawesome-calendar"></span>
 			What's due?
 		</div>
-		<div class="side-item">
+		<div class="side-item" id="customers-link">
 			<span class="fontawesome-user"></span> Customers
 		</div>
-		<div class="side-item">
+		<div class="side-item" id="articles-link">
 			<span class="fontawesome-list"></span>
 			Articles
 		</div>
@@ -29,3 +29,19 @@
 		<%= render 'articles/dashboard_articles' %>
 	</div>
 </div>
+
+<script>
+$(document).ready(function(){
+	$("#customers-link").click(function(){
+		$("#main-container").html("<%= j render 'customers/dashboard_customers' %>");
+	});
+
+	$("#articles-link").click(function(){
+		$("#main-container").html("<%= j render 'articles/dashboard_articles' %>");
+	});
+
+	$("#due-date-link").click(function(){
+		$("#main-container").html("<%= j render 'orders/dashboard_orders' %>");
+	});
+});
+</script>
