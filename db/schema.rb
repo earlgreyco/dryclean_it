@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140322043153) do
+ActiveRecord::Schema.define(version: 20140322170252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,12 +33,12 @@ ActiveRecord::Schema.define(version: 20140322043153) do
     t.string   "img"
     t.string   "phone"
     t.string   "email"
-    t.string   "starch"
-    t.decimal  "credits"
     t.text     "note"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.decimal  "credits",    default: 0.0
+    t.string   "starch",     default: "none"
   end
 
   add_index "customers", ["first_name", "last_name", "phone", "email"], name: "index_customers_on_first_name_and_last_name_and_phone_and_email", using: :btree
