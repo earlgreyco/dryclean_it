@@ -1,4 +1,7 @@
 <% if @saved %>
+	$("#new-article-form")[0].reset();
 	$("#new-article-form").hide();
+	$(".article-button").show();
+	$(".img-added").hide();
 	$("#new-article-popup").after("<%= j render @article %>");
 <% end %>
