@@ -20,11 +20,46 @@
 			<%= f.button :submit, class: "orange-button" %>
 		</div>
 	<% end %>
+
+	<div id="new-article-popup">
+	</div>
+
+	<div id="all-articles">
+		<%= render @articles %>
+	</div>
 </div>
 
-<div id="new-article-popup">
-</div>
+<script>
+	/* Activating Best In Place */
+  jQuery(".best_in_place").best_in_place();
 
-<div id="all-articles">
-	<%= render @articles %>
-</div>
+	$("#new-article-wrapper input").focus(function(){
+		$(".article-node input").animate({
+			backgroundColor: "white"
+		}, 300);
+
+		$(".article-node").animate({
+			backgroundColor: "white"
+		}, 300);
+
+		$(this).animate({
+			backgroundColor: "#DCEBF2"
+		}, 300);
+
+		$(this).closest(".article-node").animate({
+			backgroundColor: "#DCEBF2"
+		}, 300);
+	});
+
+	$("#new-article").click(function(){
+		$("#new-article-form").show("slide", { direction: "right" }, 300);
+	});
+
+	$("#dashboard-container").on("click", ".delete-article a", function(){
+		$(this).parent().parent().remove();
+	});
+
+	$("#all-articles").on("click", ".delete-article a", function(){
+		$(this).parent().parent().remove();
+	});
+</script>

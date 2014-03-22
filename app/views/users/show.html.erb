@@ -10,7 +10,7 @@
 		<div class="business-name">
 			<%= @user.name %>
 		</div>
-		<div class="side-item" id="due-date-link">
+		<div class="side-item" id="orders-link">
 			<span class="fontawesome-calendar"></span>
 			What's due?
 		</div>
@@ -27,21 +27,34 @@
 
 	<div id="main-container">
 		<%= render 'articles/dashboard_articles' %>
+		<%= render 'customers/dashboard_customers' %>
+		<%= render 'orders/dashboard_orders' %>
 	</div>
 </div>
 
 <script>
 $(document).ready(function(){
 	$("#customers-link").click(function(){
-		$("#main-container").html("<%= j render 'customers/dashboard_customers' %>");
+		$("#customer-container").show();
+		$("#article-container").hide();
+		$("#order-container").hide();
 	});
 
 	$("#articles-link").click(function(){
-		$("#main-container").html("<%= j render 'articles/dashboard_articles' %>");
+		$("#customer-container").hide();
+		$("#article-container").show();
+		$("#order-container").hide();
 	});
 
-	$("#due-date-link").click(function(){
-		$("#main-container").html("<%= j render 'orders/dashboard_orders' %>");
+	$("#orders-link").click(function(){
+		$("#customer-container").hide();
+		$("#article-container").hide();
+		$("#order-container").show();
+	});
+
+	$(".side-item").click(function(){
+		$(".side-item").css({"background" : "none", "color" : "#6e6e6e", "border-color" : "#e5e5e5"});
+		$(this).css({"background" : "rgba(85, 151, 183, 1.0)", "color" : "white", "border-color" : "rgba(85, 151, 183, 1.0)"});
 	});
 });
 </script>
