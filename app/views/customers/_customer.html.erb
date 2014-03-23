@@ -21,15 +21,15 @@
 		<%= best_in_place customer, :phone %>
 	</div>
 	<div class="customer-dropdown">
-		<div class="article-price article-node" style="width:175px;">
+		<div class="article-price article-node" style="width:175px; border-bottom: 0px;">
 			<label>Starch</label><br>
 			<%= best_in_place customer, :starch, type: :select, collection: [["none", "none"], ["light", "light"], ["medium", "medium"], ["heavy", "heavy"]] %>
 		</div>
-		<div class="article-price article-node" style="width: 175px;">
+		<div class="article-price article-node" style="width: 175px; border-bottom: 0px;">
 			<label>Credits</label><br>
 			<%= best_in_place customer, :credits %>
 		</div>
-		<div class="article-price article-node" style="border-top: 0px;">
+		<div class="article-price article-node" style="border-top: 1px solid #e5e5e5;">
 			<label>Email</label><br>
 			<%= best_in_place customer, :email %>
 		</div>
