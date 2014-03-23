@@ -1,0 +1,5 @@
+<% if @saved %>
+	$(".single-article").hide();
+	$(".place-order-button").hide();
+	$("#customer-container").append("<%= j render 'orders/place_order' %>");
+<% end %>

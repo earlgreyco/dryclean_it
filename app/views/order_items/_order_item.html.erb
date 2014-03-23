@@ -1,0 +1,6 @@
+<div class="order-item">
+	<%= best_in_place order_item, :quantity %> 
+	<%= order_item.name %> 
+	x 
+	<%= number_to_currency(order_item.price, precision: (order_item.price.round == order_item.price) ? 0 : 2) %>
+</div>

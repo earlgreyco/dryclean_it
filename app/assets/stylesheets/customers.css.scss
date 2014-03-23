@@ -1,6 +1,5 @@
 #customer-container{
 	position: relative;
-	overflow-x: hidden;
 }
 
 .search-field{
@@ -105,4 +104,19 @@
 
 .modal-body{
 	padding-bottom: 0px !important;
+}
+
+.order-item{
+	margin-top: 20px;
+
+	.best_in_place{
+		input{
+			width: 20px;
+			border: 0px;
+
+			&:focus{
+				outline-width: 0px;
+			}
+		}
+	}
 }

@@ -16,4 +16,10 @@ Dryclean::Application.routes.draw do
 
   #Customers
   resources :customers
+
+  #Orders
+  resources :orders
+
+  #Order Items
+  resources :order_items
 end

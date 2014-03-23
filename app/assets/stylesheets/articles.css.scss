@@ -1,3 +1,116 @@
-// Place all the styles related to the articles controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#select-article-section{
+	width: 470px;
+	float: left;
+}
+
+#new-order-item-form{
+	width: 150px;
+	height: 151px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	float: left;
+
+	button{
+		margin: 0px !important;
+		padding: 0px !important;
+		border: 0px;
+
+		&:focus{
+			outline-width: 0px;
+		}
+	}
+}
+
+.select-article{
+	background: white !important;
+	padding: 15px 0px !important;
+	text-align: center;
+	width: 150px;
+	float: left !important;
+	border: 1px solid #e5e5e5;
+
+	img{
+		pointer-events: none;
+	}
+
+	&:hover{
+		box-shadow: inset 0 1px 3px #ddd;
+	}
+}
+
+.name{
+	-webkit-font-smoothing: antialiased;
+	letter-spacing: 1px;
+	font-size: 11px;
+	color: #b2b2b2;
+	text-transform: uppercase;
+	font-weight: bold;
+	margin-top: 10px;
+	padding-bottom: 5px;
+}
+
+#receipt-section{
+	text-align: center;
+	float: left;
+	width: 393px;
+	margin-left: 15px;
+	min-height: 600px;
+	background: white;
+	border: 1px solid #e5e5e5;
+	padding: 30px 0px 70px 0px;
+	position: relative;
+
+	img{
+		border-radius: 150px;
+		padding: 10px;
+		border: 1px solid #e5e5e5;
+		box-shadow: inset 0 1px 3px #ddd;
+	}
+
+	.receipt-name{
+		-webkit-font-smoothing: antialiased;
+		letter-spacing: 1px;
+		font-size: 11px;
+		color: #b2b2b2;
+		text-transform: uppercase;
+		font-weight: bold;
+		margin-top: 15px;
+		padding-bottom: 15px;
+	}
+
+	.receipt-time{
+		padding-bottom: 30px;
+		border-bottom: 1px solid #e5e5e5;
+		margin-bottom: 30px;
+	}
+}
+
+#checkout-bar{
+	position: absolute;
+	bottom: 0;
+}
+
+.total-price{
+	border-top: 1px solid #e5e5e5;
+	float: left;
+	width: 195px;
+	font-size: 25px;
+	font-weight: bold;
+	padding-top: 2px;
+	margin-bottom: -1px;
+
+	.best_in_place{
+		input{
+			width: 195px;
+			border: 0px;
+			&:focus{
+				outline-width: 0px;
+			}
+		}
+	}
+}
+
+.checkout-button{
+	float: right;
+	width: 196px;
+}

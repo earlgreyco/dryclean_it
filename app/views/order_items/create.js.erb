@@ -1,0 +1,4 @@
+<% if @saved %>
+	$("#new-order-items").before("<%= j render @order_item %>");
+	$(".total-price").html("<%= best_in_place @order, :total_price %>");
+<% end %>

@@ -54,6 +54,8 @@
 		</div><!-- /.modal -->
 	</div>
 </div>
-<div class="orange-button place-order-button" style="width: 135px; margin-bottom: 15px; cursor: pointer; display: none;">
-	Place Order
-</div>
+
+<%= simple_form_for Order.new, remote: true, html: {id:"new-order-form", style: "display: none;"} do |f| %>
+	<%= f.input :customer_id, input_html: {value: customer.id, class: "hidden"}, label: false %>
+	<%= f.submit "Place Order", class: "orange-button place-order-button", style: "width: 135px; margin-bottom: 15px; cursor: pointer;" %>
+<% end %>
