@@ -10,6 +10,11 @@
 		<div class="business-name">
 			<%= @user.name %>
 		</div>
+		<div class="side-item" id="checkout-link">
+			<span class="fontawesome-shopping-cart"></span>
+			&nbsp;&nbsp;
+			Checkout
+		</div>
 		<div class="side-item" id="orders-link">
 			<span class="fontawesome-calendar"></span>
 			&nbsp;&nbsp;
@@ -35,6 +40,7 @@
 	<!-- where the action happens -->
 
 	<div id="main-container">
+		<%= render 'layouts/checkout' %>
 		<%= render 'articles/dashboard_articles' %>
 		<%= render 'customers/dashboard_customers' %>
 		<%= render 'orders/dashboard_orders' %>
@@ -49,6 +55,7 @@ $(document).ready(function(){
 		$("#article-container").hide();
 		$("#order-container").hide();
 		$("#report-container").hide();
+		$("#checkout-container").hide();
 	});
 
 	$("#articles-link").click(function(){
@@ -56,6 +63,7 @@ $(document).ready(function(){
 		$("#article-container").show();
 		$("#order-container").hide();
 		$("#report-container").hide();
+		$("#checkout-container").hide();
 	});
 
 	$("#orders-link").click(function(){
@@ -63,6 +71,7 @@ $(document).ready(function(){
 		$("#article-container").hide();
 		$("#order-container").show();
 		$("#report-container").hide();
+		$("#checkout-container").hide();
 	});
 
 	$("#reports-link").click(function(){
@@ -70,6 +79,15 @@ $(document).ready(function(){
 		$("#article-container").hide();
 		$("#order-container").hide();
 		$("#report-container").show();
+		$("#checkout-container").hide();
+	});
+
+	$("#checkout-link").click(function(){
+		$("#customer-container").hide();
+		$("#article-container").hide();
+		$("#order-container").hide();
+		$("#report-container").hide();
+		$("#checkout-container").show();
 	});
 
 	$(".side-item").click(function(){

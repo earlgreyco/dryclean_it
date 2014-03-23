@@ -1,0 +1,10 @@
+<div id="checkout-container">
+	<%= form_tag user_path(current_user), method: :get do %>
+	  <%= text_field_tag :query, params[:query], placeholder: "Search by name, email, or phone" %>
+	  <%= submit_tag "Search" %>
+	<% end %>
+
+	<% @search_customers.each do |customer| %>
+		<%= customer.first_name %> <%= customer.last_name %>
+	<% end %>
+</div>

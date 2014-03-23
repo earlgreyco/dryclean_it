@@ -1,5 +1,4 @@
 Dryclean::Application.routes.draw do
-  get "articles/new"
   #Static Pages
   root 'static_pages#home'
 

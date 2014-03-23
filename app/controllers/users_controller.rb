@@ -7,6 +7,11 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
     @articles = @user.articles
     @customers = @user.customers
+    if params[:query].present?
+      @search_customers = Customer.where(user_id: current_user.id).search(params[:query], misspellings: {distance: 2}, operator: "or", fields: [{last_name: :word_start}, {phone: :word_start}, {email: :word_start}, {first_name: :word_start}] )
+    else
+      @search_customers = []
+    end
   end
 
   def new
