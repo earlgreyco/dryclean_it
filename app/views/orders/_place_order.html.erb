@@ -36,9 +36,6 @@
 	</div>
 
 	<div id="checkout-bar">
-		<div class="total-price">
-			<%= best_in_place @order, :total_price  %>
-		</div>
 		<div class="checkout-button">
 			<div class="orange-button" style="border-radius: 0px !important;">
 				Checkout
@@ -46,11 +43,3 @@
 		</div>
 	</div>
 </div>
-
-<script>
-$(document).ready(function(){
-	$("#receipt-section").on("change", ".order-item .best_in_place", function(){
-		$(".total-price").html("<%= render 'orders/update_cost' %>");
-	});
-});
-</script>
