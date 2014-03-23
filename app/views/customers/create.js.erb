@@ -4,4 +4,11 @@
 	$(".customer-button").show();
 	$(".img-added").hide();
 	$("#new-customer-popup").after("<%= j render @customer %>");
+	$(".article-node").animate({
+		backgroundColor: "white"
+	}, 300);
+
+	$(".article-node input").animate({
+		backgroundColor: "white"
+	}, 300);
 <% end %>

@@ -1,7 +1,10 @@
-<!-- search -->
-
-<div id="customer-container">
+<div id="customer-container" class="basic-container">
 	<%= link_to "+ Add New Customer", "#!", id: "new-customer" %>
+
+	<%= form_tag user_path(current_user), method: :get do %>
+	  <%= text_field_tag :query, params[:query], placeholder: "Search by name, email, or phone", class: "search-field" %>
+	  <%= submit_tag "Search", class: "hidden" %>
+	<% end %>
 
 	<%= simple_form_for Customer.new, remote: true, html: {id: "new-customer-form"} do |f| %>
 		<div class="single-article" id="new-article-wrapper">
@@ -55,7 +58,6 @@ $(document).ready(function(){
 
 	$("#new-customer").click(function(){
 		$("#new-customer-form").show("slide", { direction: "right" }, 300);
-
 	});
 
 	$(".article-node input").focus(function(){

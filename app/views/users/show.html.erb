@@ -10,7 +10,7 @@
 		<div class="business-name">
 			<%= @user.name %>
 		</div>
-		<div class="side-item" id="checkout-link">
+		<div class="side-item" id="customers-link">
 			<span class="fontawesome-shopping-cart"></span>
 			&nbsp;&nbsp;
 			Checkout
@@ -19,11 +19,6 @@
 			<span class="fontawesome-calendar"></span>
 			&nbsp;&nbsp;
 			What's due?
-		</div>
-		<div class="side-item" id="customers-link">
-			<span class="fontawesome-user"></span> 
-			&nbsp;&nbsp;
-			Customers
 		</div>
 		<div class="side-item" id="articles-link">
 			<span class="fontawesome-list"></span>
@@ -40,9 +35,8 @@
 	<!-- where the action happens -->
 
 	<div id="main-container">
-		<%= render 'layouts/checkout' %>
-		<%= render 'articles/dashboard_articles' %>
 		<%= render 'customers/dashboard_customers' %>
+		<%= render 'articles/dashboard_articles' %>
 		<%= render 'orders/dashboard_orders' %>
 		<%= render 'reports/dashboard_reports' %>
 	</div>
@@ -50,44 +44,24 @@
 
 <script>
 $(document).ready(function(){
+	$("#articles-link, #orders-link, #reports-link, #customers-link").click(function(){
+		$(".basic-container").hide("slide", { direction: "right" }, 300);
+	});
+
 	$("#customers-link").click(function(){
-		$("#customer-container").show();
-		$("#article-container").hide();
-		$("#order-container").hide();
-		$("#report-container").hide();
-		$("#checkout-container").hide();
+		$("#customer-container").show("slide", { direction: "left" }, 300);
 	});
 
 	$("#articles-link").click(function(){
-		$("#customer-container").hide();
-		$("#article-container").show();
-		$("#order-container").hide();
-		$("#report-container").hide();
-		$("#checkout-container").hide();
+		$("#article-container").show("slide", { direction: "left" }, 300);
 	});
 
 	$("#orders-link").click(function(){
-		$("#customer-container").hide();
-		$("#article-container").hide();
-		$("#order-container").show();
-		$("#report-container").hide();
-		$("#checkout-container").hide();
+		$("#order-container").show("slide", { direction: "left" }, 300);
 	});
 
 	$("#reports-link").click(function(){
-		$("#customer-container").hide();
-		$("#article-container").hide();
-		$("#order-container").hide();
-		$("#report-container").show();
-		$("#checkout-container").hide();
-	});
-
-	$("#checkout-link").click(function(){
-		$("#customer-container").hide();
-		$("#article-container").hide();
-		$("#order-container").hide();
-		$("#report-container").hide();
-		$("#checkout-container").show();
+		$("#report-container").show("slide", { direction: "left" }, 300);
 	});
 
 	$(".side-item").click(function(){

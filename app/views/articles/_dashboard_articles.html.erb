@@ -1,4 +1,4 @@
-<div id="article-container">
+<div id="article-container" class="basic-container">
 	<%= link_to "+ Add New Article", "#!", id: "new-article" %>
 
 	<%= simple_form_for Article.new, remote: true, html: {id: "new-article-form"} do |f| %>

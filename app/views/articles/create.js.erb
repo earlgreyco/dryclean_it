@@ -4,4 +4,11 @@
 	$(".article-button").show();
 	$(".img-added").hide();
 	$("#new-article-popup").after("<%= j render @article %>");
+	$(".article-node").animate({
+		backgroundColor: "white"
+	}, 300);
+
+	$(".article-node input").animate({
+		backgroundColor: "white"
+	}, 300);
 <% end %>

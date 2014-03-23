@@ -41,7 +41,7 @@ body{
 	font-weight: 400;
 }
 
-#checkout-link{
+#customers-link{
 	background: rgb(85, 151, 183); 
 	color: white; 
 	border-color: rgb(85, 151, 183);
@@ -262,6 +262,6 @@ body{
 	}
 }
 
-#order-container, #customer-container, #report-container, #article-container{
+#order-container, #report-container, #article-container{
 	display: none;
 }
