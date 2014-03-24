@@ -1,0 +1,17 @@
+<div class="modal-body">
+	<div class="order-modal-name">
+		<%= Customer.where(id:@order.customer_id)[0].first_name %> <%= Customer.where(id:@order.customer_id)[0].last_name %>
+	</div>
+	<div class="order-modal-price">
+		<%= number_to_currency(@order.total_price, precision: (@order.total_price.round == @order.total_price) ? 0 : 2) %>
+	</div>
+	<div class="order-modal-button orange-button">
+		<span class="fontawesome-money"></span> Pay With Cash
+	</div>
+	<div class="order-modal-button orange-button">
+		<span class="fontawesome-credit-card"></span> Pay With Card
+	</div>
+	<div class="order-modal-button orange-button">
+		<span>-_-</span> Pay With Check
+	</div>
+</div>

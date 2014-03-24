@@ -1,3 +1,35 @@
-// Place all the styles related to the orders controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#orderModal .modal-content{
+	text-align: center;
+	padding-top: 30px;
+	padding-bottom: 55px;
+}
+
+#orderModal .modal-dialog{
+	width: 500px;
+}
+
+.order-modal-name{
+	-webkit-font-smoothing: antialiased;
+	letter-spacing: 1px;
+	font-size: 11px;
+	color: #b2b2b2;
+	text-transform: uppercase;
+	font-weight: bold;
+	padding-bottom: 2px;
+}
+
+.order-modal-price{
+	font-size: 35px;
+}
+
+.order-modal-button{
+	cursor: pointer;
+	margin-top: 20px;
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+
+	span{
+		padding-right: 5px;
+	}
+}

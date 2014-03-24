@@ -1,45 +1,60 @@
-<div id="select-article-section">
-<% current_user.articles.each do |article| %>
-	<%= simple_form_for OrderItem.new, remote: true, html: {id:"new-order-item-form"} do |f| %>
-		<%= f.input :price, input_html: {value: article.price, class: "hidden"}, label: false %>
-		<%= f.input :name, input_html: {value: article.name, class: "hidden"}, label: false %>
-		<%= f.input :order_id, input_html: {value:@order.id, class: "hidden"}, label: false %>
-		<%= button_tag(type: "submit") do %>
-			<div class="select-article">
-				<%= filepicker_image_tag article.img, w: 70, h: 70, fit: 'crop' if article.img? %>
-				<div class="name">
-					<%= article.name %>
+<div id="select-article-container">
+	<div id="select-article-section">
+	<% current_user.articles.each do |article| %>
+		<%= simple_form_for OrderItem.new, remote: true, html: {id:"new-order-item-form"} do |f| %>
+			<%= f.input :price, input_html: {value: article.price, class: "hidden"}, label: false %>
+			<%= f.input :name, input_html: {value: article.name, class: "hidden"}, label: false %>
+			<%= f.input :order_id, input_html: {value:@order.id, class: "hidden"}, label: false %>
+			<%= button_tag(type: "submit") do %>
+				<div class="select-article">
+					<%= filepicker_image_tag article.img, w: 70, h: 70, fit: 'crop' if article.img? %>
+					<div class="name">
+						<%= article.name %>
+					</div>
+					<div class="price">
+						<%= number_to_currency(article.price, precision: (article.price.round == article.price) ? 0 : 2) %>
+					</div>
 				</div>
-				<div class="price">
-					<%= number_to_currency(article.price, precision: (article.price.round == article.price) ? 0 :
-					 2) %>
-				</div>
-			</div>
+			<% end %>
 		<% end %>
 	<% end %>
-<% end %>
-</div>
-
-<div id="receipt-section">
-	<%= filepicker_image_tag Customer.where(id:@order.customer_id)[0].img, w: 150, h: 150, fit: 'crop' %>
-	<div class="receipt-name">
-		<%= Customer.where(id:@order.customer_id)[0].first_name %> <%= Customer.where(id:@order.customer_id)[0].last_name %>
-	</div>
-	<div class="receipt-date">
-		<%= @order.created_at.in_time_zone("Pacific Time (US & Canada)").strftime("%D") %>
-	</div>
-	<div class="receipt-time">
-		<%= @order.created_at.in_time_zone("Pacific Time (US & Canada)").strftime("%I:%M%p") %>
 	</div>
 
-	<div id="new-order-items">
-	</div>
+	<div id="receipt-section">
+		<%= filepicker_image_tag Customer.where(id:@order.customer_id)[0].img, w: 150, h: 150, fit: 'crop' %>
+		<div class="receipt-name">
+			<%= Customer.where(id:@order.customer_id)[0].first_name %> <%= Customer.where(id:@order.customer_id)[0].last_name %>
+		</div>
+		<div class="receipt-date">
+			<%= @order.created_at.in_time_zone("Pacific Time (US & Canada)").strftime("%D") %>
+		</div>
+		<div class="receipt-time">
+			<%= @order.created_at.in_time_zone("Pacific Time (US & Canada)").strftime("%I:%M%p") %>
+		</div>
 
-	<div id="checkout-bar">
-		<div class="checkout-button">
-			<div class="orange-button" style="border-radius: 0px !important;">
-				Checkout
+		<div id="new-order-items">
+		</div>
+
+		<div id="checkout-bar">
+			<div class="checkout-button">
+				<div id="load-checkout-modal" class="orange-button" style="border-radius: 0px !important;" data-toggle="modal" data-target="#orderModal">
+					Checkout
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+<div class="modal fade" id="orderModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script>
+$(document).ready(function(){
+	$("#orderModal .modal-dialog .modal-content").html("<%= j render 'orders/order_modal' %>");
+});
+</script>
