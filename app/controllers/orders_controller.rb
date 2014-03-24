@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
 
 	def update
 		@order = Order.find(params[:id])
-		@order.update_attributes(order_params)
+		@updated = @order.update_attributes(order_params)
 		respond_with @order
 	end
 
@@ -37,6 +37,12 @@ class OrdersController < ApplicationController
 		@order = Order.find(params[:id])
 		@order.payment_type = "check"
 		@order.save
+	end
+
+	def load_order_price
+	  respond_to do |format|               
+	    format.js
+	  end
 	end
 
 	private
