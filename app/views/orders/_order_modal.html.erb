@@ -1,25 +1,40 @@
-<% @updated_order = Order.where(user_id: current_user.id).last %>
+<% @order = Order.where(user_id: current_user.id).last %>
 
 <div class="modal-body">
 	<div class="order-modal-name">
-		<%= Customer.where(id:@updated_order.customer_id)[0].first_name %> <%= Customer.where(id:@updated_order.customer_id)[0].last_name %>
+		<%= Customer.where(id:@order.customer_id)[0].first_name %> <%= Customer.where(id:@order.customer_id)[0].last_name %>
 	</div>
 	<div class="order-modal-price">
-		<%= number_to_currency(@updated_order.total_price, precision: (@updated_order.total_price.round == @updated_order.total_price) ? 0 : 2) %>
+		<%= number_to_currency(@order.total_price, precision: (@order.total_price.round == @order.total_price) ? 0 : 2) %>
 	</div>
-	<%= link_to add_cash_type_order_path(@updated_order), remote: true do %>
+	<%= link_to add_cash_type_order_path(@order), remote: true do %>
 		<div class="order-modal-button orange-button">
 			<span class="fontawesome-money"></span> Pay With Cash
 		</div>
 	<% end %>
-	<%= link_to add_card_type_order_path(@updated_order), remote: true do %>
+	<%= link_to add_card_type_order_path(@order), remote: true do %>
 		<div class="order-modal-button orange-button">
 			<span class="fontawesome-credit-card"></span> Pay With Card
 		</div>
 	<% end %>
-	<%= link_to add_check_type_order_path(@updated_order), remote: true do %>
+	<%= link_to add_check_type_order_path(@order), remote: true do %>
 		<div class="order-modal-button orange-button">
 			<span>-_-</span> Pay With Check
 		</div>
 	<% end %>
+
+	<div id="order-modal-tag">
+		<%= best_in_place @order, :tag_number, html_attrs: { default: "hello" } %>
+	</div>
 </div>
+
+<script>
+$(document).ready(function(){
+	$(".order-modal-button").click(function(){
+		$(".order-modal-button").hide("slide", {direction:"right"}, 300, function(){
+			jQuery(".best_in_place").best_in_place();
+			$("#order-modal-tag").show("slide", {direction:"left"}, 300);
+		});
+	});
+});
+</script>

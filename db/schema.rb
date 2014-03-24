@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324172859) do
+ActiveRecord::Schema.define(version: 20140324203918) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,8 +62,11 @@ ActiveRecord::Schema.define(version: 20140324172859) do
     t.datetime "updated_at"
     t.decimal  "total_price",  default: 0.0
     t.string   "payment_type"
+    t.string   "tag_number",   default: "add tag number"
+    t.boolean  "racked"
   end
 
+  add_index "orders", ["tag_number"], name: "index_orders_on_tag_number", using: :btree
   add_index "orders", ["user_id", "customer_id"], name: "index_orders_on_user_id_and_customer_id", using: :btree
 
   create_table "static_pages", force: true do |t|
