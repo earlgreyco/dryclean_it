@@ -18,7 +18,13 @@ Dryclean::Application.routes.draw do
   resources :customers
 
   #Orders
-  resources :orders
+  resources :orders do
+    member do
+      get 'add_cash_type'
+      get 'add_card_type'
+      get 'add_check_type'
+    end
+  end
 
   #Order Items
   resources :order_items

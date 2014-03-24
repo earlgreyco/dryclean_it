@@ -21,6 +21,24 @@ class OrdersController < ApplicationController
 		respond_with @order
 	end
 
+	def add_cash_type
+		@order = Order.find(params[:id])
+		@order.payment_type = "cash"
+		@order.save
+	end
+
+	def add_card_type
+		@order = Order.find(params[:id])
+		@order.payment_type = "card"
+		@order.save
+	end
+
+	def add_check_type
+		@order = Order.find(params[:id])
+		@order.payment_type = "check"
+		@order.save
+	end
+
 	private
 		def order_params
 			params.require(:order).permit(:user_id, :customer_id, :total_price, :payment_type)
