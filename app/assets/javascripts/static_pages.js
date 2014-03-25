@@ -17,7 +17,7 @@ $(document).ready(function(){
 		}, 300);
 	});
 
-	$("#signin-link").click(function(){
+	$("#signin-link, #header-signin-link").click(function(){
 		$("#signup-form").hide("slide", { direction: "right" }, 300);
 		$("#signin-form").show("slide", { direction: "left" }, 300);
 	});

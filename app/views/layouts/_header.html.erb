@@ -23,7 +23,7 @@
             </ul>
           </li>
         <% else %>
-          <li><%= link_to "Sign In", signin_path %></li>
+          <li><%= link_to "Sign In", "#!", id: "header-signin-link", remote: true %></li>
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
