@@ -22,12 +22,15 @@ module ApplicationHelper
 
   def correct_user
     @user = User.find(params[:id])
-    redirect_to(root_url) unless current_user?(@user)
+    if !current_user?(@user)
+      flash[:error] = "Sign in to the right account first!"
+      redirect_to(root_url)
+    end
   end
 
   def admin_user
   	if !current_user.admin?
-  		flash[:error] = "Hey, silly - you're not an admin! =P"
+  		flash[:error] = "Sign in to the right account first!"
   	end
     redirect_to(root_url) unless current_user.admin?
   end

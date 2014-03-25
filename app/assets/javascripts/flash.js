@@ -2,6 +2,6 @@
 
 $(document).ready(function() {
    $('.alert').delay(500).fadeIn('normal', function() {
-      $(this).delay(2500).fadeOut();
+      $(this).delay(10000).fadeOut();
    });
 });
