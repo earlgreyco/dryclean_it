@@ -32,52 +32,53 @@
 	<div id="new-customer-popup">
 	</div>
 
+	<% @customers = current_user.customers %>
 	<%= render @customers %>
+
+	<script>
+	$(document).ready(function(){
+		$("#customer-container").on("click", ".article-img", function(){
+			jQuery(".best_in_place").best_in_place();
+			
+			if(!$(this).hasClass("active-dropdown")){
+				$(this).parent().children(".customer-dropdown").show("slide", {direction:"right"}, 300);
+				$(this).parent().next("#new-order-form").show("slide", {direction:"left"}, 300);
+				$(this).addClass("active-dropdown");
+			}
+			else{
+				$(this).parent().children(".customer-dropdown").hide("slide", {direction:"right"}, 300);
+				$(this).parent().next("#new-order-form").hide("slide", {direction:"left"}, 300);
+				$(this).removeClass("active-dropdown");
+			}
+		});
+
+		$("#customer-container").on("click", ".modal-footer a", function(){
+			$(this).parent().parent().parent().parent().parent().parent().remove();
+			$('body').removeClass('modal-open');
+			$('.modal-backdrop').remove();
+		});
+
+		$("#new-customer").click(function(){
+			$("#new-customer-form").show("slide", { direction: "right" }, 300);
+		});
+
+		$(".article-node input").focus(function(){
+			$(".article-node").animate({
+				backgroundColor: "white"
+			}, 300);
+
+			$(".article-node input").animate({
+				backgroundColor: "white"
+			}, 300);
+
+			$(this).animate({
+				backgroundColor: "#DCEBF2"
+			}, 300);
+
+			$(this).closest(".article-node").animate({
+				backgroundColor: "#DCEBF2"
+			}, 300);
+		});
+	});
+	</script>
 </div>
-
-<script>
-$(document).ready(function(){
-	$("#customer-container").on("click", ".article-img", function(){
-		jQuery(".best_in_place").best_in_place();
-		
-		if(!$(this).hasClass("active-dropdown")){
-			$(this).parent().children(".customer-dropdown").show("slide", {direction:"right"}, 300);
-			$(this).parent().next("#new-order-form").show("slide", {direction:"left"}, 300);
-			$(this).addClass("active-dropdown");
-		}
-		else{
-			$(this).parent().children(".customer-dropdown").hide("slide", {direction:"right"}, 300);
-			$(this).parent().next("#new-order-form").hide("slide", {direction:"left"}, 300);
-			$(this).removeClass("active-dropdown");
-		}
-	});
-
-	$("#customer-container").on("click", ".modal-footer a", function(){
-		$(this).parent().parent().parent().parent().parent().parent().remove();
-		$('body').removeClass('modal-open');
-		$('.modal-backdrop').remove();
-	});
-
-	$("#new-customer").click(function(){
-		$("#new-customer-form").show("slide", { direction: "right" }, 300);
-	});
-
-	$(".article-node input").focus(function(){
-		$(".article-node").animate({
-			backgroundColor: "white"
-		}, 300);
-
-		$(".article-node input").animate({
-			backgroundColor: "white"
-		}, 300);
-
-		$(this).animate({
-			backgroundColor: "#DCEBF2"
-		}, 300);
-
-		$(this).closest(".article-node").animate({
-			backgroundColor: "#DCEBF2"
-		}, 300);
-	});
-});
-</script>

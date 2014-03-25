@@ -4,6 +4,10 @@ MY RECIPES PAGE
 
 **********/
 
+#order-container, #report-container, #article-container{
+	display: none;
+}
+
 body{
 	margin: 0 auto;
 	height: 100%;
@@ -31,6 +35,10 @@ body{
 	color: #6e6e6e;
 	width: 20%;
 	float: left;
+
+	a{
+		color: rgb(110, 110, 110);
+	}
 }
 
 .business-name{
@@ -260,8 +268,4 @@ body{
 	&:focus{
 		outline-width: 0px !important;
 	}
-}
-
-#order-container, #report-container, #article-container{
-	display: none;
 }

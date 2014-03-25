@@ -44,8 +44,14 @@
 
 <script>
 $(document).ready(function(){
+
 	$("#articles-link, #orders-link, #reports-link, #customers-link").click(function(){
 		$(".basic-container").hide("slide", { direction: "right" }, 300);
+	});
+
+	$("#articles-link, #orders-link, #reports-link").click(function(){
+		$("#select-article-container").remove();
+		$("#orderModal").remove();
 	});
 
 	$("#customers-link").click(function(){
@@ -54,6 +60,7 @@ $(document).ready(function(){
 
 	$("#articles-link").click(function(){
 		$("#article-container").show("slide", { direction: "left" }, 300);
+		$(".single-article").show("slide", { direction: "left" }, 300);
 	});
 
 	$("#orders-link").click(function(){

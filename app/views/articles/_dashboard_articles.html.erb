@@ -24,6 +24,7 @@
 	<div id="new-article-popup">
 	</div>
 
+	<% @articles = current_user.articles %>
 	<div id="all-articles">
 		<%= render @articles %>
 	</div>

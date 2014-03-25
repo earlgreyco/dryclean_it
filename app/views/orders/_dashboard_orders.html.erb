@@ -1,6 +1,6 @@
 <div id="order-container" class="basic-container">
 	<ul>
-	<% @orders.each do |order| %>
+	<% current_user.orders.each do |order| %>
 		<li>
 			<%= order.id %>
 			<%= order.total_price %>
