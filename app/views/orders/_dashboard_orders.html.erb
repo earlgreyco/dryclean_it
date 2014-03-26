@@ -1,11 +1,34 @@
 <div id="order-container" class="basic-container">
-	<ul>
-	<% current_user.orders.each do |order| %>
-		<li>
-			<%= order.id %>
-			<%= order.total_price %>
-			<%= Customer.where(id:order.customer_id)[0].first_name %> <%= Customer.where(id:order.customer_id)[0].last_name %>
-		</li>
+	<% if current_user.orders.any? %>
+		<% @dates = [] %>
+		<% current_user.orders.each do |order| %>
+			<% @dates << order.created_at.to_date %>
+		<% end %>
+		<% @oldest_order = @dates.min %>
+
+		<% Date.today.downto(@dates.min) do |date| %>
+			<div class="date-header">
+				<%= date.strftime("%D %A") %>
+			</div>
+			<% date = date - 0.days %>
+			<% @orders_by_date = Order.where(["created_at >= ? AND created_at <= ?", date.beginning_of_day, date.end_of_day]) %>
+
+			<ul>
+			<% @orders_by_date.each do |order| %>
+				<li>
+					<%= filepicker_image_tag order.customer.img, w:50, h:50, fit:'crop' %>
+					<%= order.customer.first_name %> 
+					<%= order.customer.last_name %>
+					<%= order.id %>
+					<%= order.total_price %>
+					<%= order.payment_type %>
+					<%= order.tag_number %>
+					<%= order.credits_used %>
+					<%= order.picked_up %>
+					<%= order.pickup_date %>
+				</li>
+			<% end %>
+			</ul>
+		<% end %>
 	<% end %>
-	</ul>
 </div>
