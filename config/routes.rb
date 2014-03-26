@@ -20,6 +20,7 @@ Dryclean::Application.routes.draw do
   #Orders
   resources :orders do
     member do
+      get 'save_pickup_date'
       get 'add_cash_type'
       get 'add_card_type'
       get 'add_check_type'

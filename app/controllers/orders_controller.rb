@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
 	def create
 		@order = Order.new(order_params)
 		@order.user_id = current_user.id
+		@order.pickup_date = DateTime.now + current_user.turnaround_time.days
 		@saved = @order.save
 
 		respond_to do |format|
@@ -19,6 +20,13 @@ class OrdersController < ApplicationController
 		@order = Order.find(params[:id])
 		@updated = @order.update_attributes(order_params)
 		respond_with @order
+	end
+
+	def save_pickup_date
+		@order = Order.find(params[:id])
+		@order.pickup_date = DateTime.now
+		@order.picked_up = true
+		@order.save!
 	end
 
 	def use_store_credits
@@ -70,6 +78,6 @@ class OrdersController < ApplicationController
 
 	private
 		def order_params
-			params.require(:order).permit(:user_id, :customer_id, :total_price, :payment_type, :tag_number, :racked, :credits_used)
+			params.require(:order).permit(:picked_up, :pickup_date, :user_id, :customer_id, :total_price, :payment_type, :tag_number, :racked, :credits_used)
 		end
 end

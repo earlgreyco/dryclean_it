@@ -28,7 +28,7 @@ $(document).ready(function(){
 	});
 
 	$("#spinning-wheel").show();
-	$("#spinning-wheel").animate({rotate: '4000'}, 15000);
+	$("#spinning-wheel").animate({rotate: '15000'}, 50000);
 
 	$(window).load(function(){
 		$("#spinning-wheel").hide();

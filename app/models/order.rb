@@ -8,6 +8,7 @@ class Order < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :customer
 	validates_presence_of :customer_id, :user_id, :total_price
+  default_scope -> { order('created_at DESC') }
 
   has_barcode :barcode,
     :outputter => :svg,

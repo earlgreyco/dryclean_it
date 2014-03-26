@@ -1,0 +1,1 @@
+$('.pickup-<%= @order.id %>').html("<%= DateTime.now.in_time_zone('Pacific Time (US & Canada)').strftime('%D') %><br><%= DateTime.now.in_time_zone('Pacific Time (US & Canada)').strftime('%I:%M%p') %>");

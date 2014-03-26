@@ -74,7 +74,7 @@
 			<th>Tags</th>
 			<th>Rack #</th>
 			<th>Drop Off Date</th>
-			<th>Ready Date</th>
+			<th>Pick Up Date</th>
 		</tr>
 
 		<% customer.orders.each do |order| %>
@@ -101,11 +101,32 @@
 			<td><%= best_in_place order, :tag_number %></td>
 			<td></td>
 			<td>
-				<%= order.created_at.strftime("%D") %><br>
-				<%= order.created_at.strftime("%I:%M%p") %>
+				<%= order.created_at.in_time_zone("Pacific Time (US & Canada)").strftime("%D") %><br>
+				<%= order.created_at.in_time_zone("Pacific Time (US & Canada)").strftime("%I:%M%p") %>
 			</td>
-			<td></td>
+			<td class="pickup-<%= order.id %>" style="min-width: 165px;">
+				<% if order.picked_up == true %>
+					<%= order.pickup_date.in_time_zone("Pacific Time (US & Canada)").strftime("%D") %><br>
+					<%= order.pickup_date.in_time_zone("Pacific Time (US & Canada)").strftime("%I:%M%p") %>
+				<% else %>
+					<div class="estimated-date">
+						<%= order.pickup_date.in_time_zone("Pacific Time (US & Canada)").strftime("%D") %>
+					</div>
+					<div class="pickup-button">
+						<%= link_to "Picked Up", save_pickup_date_order_path(order), class: "orange-button pickup-button-action", remote: true %>
+					</div>
+				<% end %>
+			</td>
 		<tr>
 		<% end %>
 	</table>
 </div>
+
+<script>
+$(document).ready(function(){
+	$(".pickup-button-action").click(function(){
+		$(this).parent().parent().children(".estimated-date").hide();
+		$(this).parent().hide();
+	});
+});
+</script>
