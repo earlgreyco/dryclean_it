@@ -32,12 +32,15 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    if !flash[:notice]
+      flash[:notice] = "Make sure to save your changes before leaving this page!"
+    end
   end
 
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      flash[:success] = "Profile updated!"
+      flash[:notice] = "Profile updated!"
       redirect_to edit_user_path(@user)
     else
       render 'edit'
@@ -57,8 +60,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :admin, :age, :gender, :location, :img, :password,
-                                   :password_confirmation)
+      params.require(:user).permit(:name, :email, :admin, :img, :password, :password_confirmation, :phone, :turnaround_time, :address, :city, :state, :business_hours, :turnaround_time)
     end
     
 end
