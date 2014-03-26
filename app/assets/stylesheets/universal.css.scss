@@ -1,5 +1,55 @@
 @import "bootstrap";
 
+/* buttons */
+
+.orange-button{
+	background: rgb(235, 86, 53) !important;
+	border: 1px solid rgb(235, 86, 53) !important;
+	color: white !important;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	font-size: 13px;
+	font-weight: 600;
+	padding: 10px 30px;
+	-webkit-font-smoothing: antialiased;
+
+	&:hover{
+		border: 1px solid #dd4e26 !important;
+		background: #dd4e26 !important;
+		text-decoration: none !important;
+	}
+
+	&:focus{
+		outline-width: 0px !important;
+	}
+}
+
+.grey-button{
+	border: 1px solid rgb(217, 217, 217);
+	-webkit-font-smoothing: antialiased;
+	height: 40px;
+	padding: 10px 30px;
+	line-height: 40px;
+	color: white;
+	border-color: #3c3c3c;
+	background-color: #3c3c3c;
+	color: white;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	font-size: 13px;
+	font-weight: 600;
+
+	&:hover{
+		border-color: #303030;
+		background-color: #303030;
+		text-decoration: none;
+		color: white;
+	}
+}
+
+
 /* alerts */
 
 .alert{

@@ -7,7 +7,7 @@
 	<% end %>
 
 	<%= simple_form_for Customer.new, remote: true, html: {id: "new-customer-form"} do |f| %>
-		<div class="single-article" id="new-article-wrapper">
+		<div class="new-customer" id="new-article-wrapper">
 			<div class="article-img">
 				<%= f.filepicker_field :img, button_class: "customer-button", button_text: "Add Photo", services: "COMPUTER", onchange: "$('.customer-button').hide(); $('.img-added').show();" %>
 				<div class="img-added">
@@ -50,6 +50,12 @@
 				$(this).parent().next("#new-order-form").hide("slide", {direction:"left"}, 300);
 				$(this).removeClass("active-dropdown");
 			}
+		});
+
+		$("#customer-container").on("click", ".order-history-button", function(){
+			$(".single-article").hide();
+			$(".order-form").hide();
+			$(this).parent().next(".order-history").show();
 		});
 
 		$("#customer-container").on("click", ".modal-footer a", function(){

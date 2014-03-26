@@ -58,4 +58,49 @@
 <%= simple_form_for Order.new, remote: true, html: {id:"new-order-form", class: "order-form"} do |f| %>
 	<%= f.input :customer_id, input_html: {value: customer.id, class: "hidden"}, label: false %>
 	<%= f.submit "Place Order", class: "orange-button place-order-button", style: "width: 135px; margin-bottom: 15px; cursor: pointer;" %>
+	<%= link_to "Order History", "#!", class: "grey-button order-history-button", remote: true %>
 <% end %>
+
+<div class="order-history" style="display: none;">
+	<div class="order-history-header">
+		<%= filepicker_image_tag customer.img, w:50, h:50, fit:'crop' if customer.img? %> <%= customer.first_name %> <%= customer.last_name %>
+	</div>
+
+	<table class="order-history-table">
+		<tr>
+			<th>Order #</th>
+			<th>Articles</th>
+			<th>Total Price</th>
+			<th>Tags</th>
+			<th>Rack #</th>
+			<th>Drop Off Date</th>
+			<th>Ready Date</th>
+		</tr>
+
+		<% customer.orders.each do |order| %>
+		</tr>
+			<td><%= order.id %></td>
+			<td>
+				<ul>
+				<% order.order_items.each do |order_item| %>
+					<li>
+						<% if order_item.quantity > 0 %>
+							<%= best_in_place order_item, :quantity %>
+							<%= order_item.name.pluralize(order_item.quantity) %>
+						<% end %>
+					</li>
+				<% end %>
+				</ul>
+			</td>
+			<td>$<%= best_in_place order, :total_price %></td>
+			<td><%= best_in_place order, :tag_number %></td>
+			<td></td>
+			<td>
+				<%= order.created_at.strftime("%D") %><br>
+				<%= order.created_at.strftime("%I:%M%p") %>
+			</td>
+			<td></td>
+		<tr>
+		<% end %>
+	</table>
+</div>
