@@ -1,4 +1,4 @@
-<% @order = Order.where(user_id: current_user.id).last %>
+<% @order = Order.where(user_id: current_user.id).first %>
 
 <div class="modal-body">
 	<div class="order-modal-name">

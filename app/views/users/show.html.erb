@@ -30,6 +30,11 @@
 			&nbsp;&nbsp;
 			Reports
 		</div>
+		<div class="side-item" id="rack-link">
+			<span class="fontawesome-barcode"></span>
+			&nbsp;&nbsp;
+			Rack It!
+		</div>
 	</div>
 
 	<!-- where the action happens -->
@@ -39,13 +44,14 @@
 		<%= render 'articles/dashboard_articles' %>
 		<%= render 'orders/dashboard_orders' %>
 		<%= render 'reports/dashboard_reports' %>
+		<%= render 'orders/rack' %>
 	</div>
 </div>
 
 <script>
 $(document).ready(function(){
 
-	$("#articles-link, #orders-link, #reports-link, #customers-link").click(function(){
+	$("#articles-link, #orders-link, #reports-link, #customers-link, #rack-link").click(function(){
 		$(".basic-container").hide("slide", { direction: "right" }, 300);
 	});
 
@@ -69,6 +75,10 @@ $(document).ready(function(){
 
 	$("#reports-link").click(function(){
 		$("#report-container").show("slide", { direction: "left" }, 300);
+	});
+
+	$("#rack-link").click(function(){
+		$("#rack-container").show("slide", { direction: "left" }, 300);
 	});
 
 	$(".side-item").click(function(){
