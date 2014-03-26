@@ -7,28 +7,47 @@
 		<% @oldest_order = @dates.min %>
 
 		<% Date.today.downto(@dates.min) do |date| %>
-			<div class="date-header">
-				<%= date.strftime("%D %A") %>
-			</div>
 			<% date = date - 0.days %>
 			<% @orders_by_date = Order.where(["created_at >= ? AND created_at <= ?", date.beginning_of_day, date.end_of_day]) %>
 
-			<ul>
-			<% @orders_by_date.each do |order| %>
-				<li>
-					<%= filepicker_image_tag order.customer.img, w:50, h:50, fit:'crop' %>
-					<%= order.customer.first_name %> 
-					<%= order.customer.last_name %>
-					<%= order.id %>
-					<%= best_in_place order, :total_price %>
-					<%= best_in_place order, :payment_type, type: :select, collection: [["cash","cash"],["card","card"],["check","check"], ["none","none"]] %>
-					<%= best_in_place order, :tag_number %>
-					<%= best_in_place order, :credits_used %>
-					<%= order.picked_up %>
-					<%= order.pickup_date %>
-				</li>
-			<% end %>
-			</ul>
+			<table class="order-history-table">
+				<tr>
+					<th><%= date.in_time_zone("Pacific Time (US & Canada)").strftime("%A: %D") %></th>
+				</tr>
+				<% @orders_by_date.each do |order| %>
+				<tr>
+					<td style="text-align: left;">
+						<div class="order-id">
+							<%= order.id %>
+						</div>
+						<div class="user-info">
+							<%= filepicker_image_tag order.customer.img, w:50, h:50, fit:'crop' %>
+							<%= order.customer.first_name %> 
+							<%= order.customer.last_name %>
+						</div>
+						<div class="order-fields">
+							<%= best_in_place order, :total_price %>
+						</div>
+						<div class="order-fields">
+							<%= best_in_place order, :payment_type, type: :select, collection: [["cash","cash"],["card","card"],["check","check"], ["none","none"]] %>
+						</div>
+						<div class="order-fields">
+							<%= best_in_place order, :tag_number %>
+						</div>
+						<div class="order-fields">
+							<%= best_in_place order, :credits_used %>
+						</div>
+						<div class="order-fields">
+							<% if order.picked_up %>
+								<%= order.pickup_date.in_time_zone("Pacific Time (US & Canada)").strftime("%D %I:%M%p") %>
+							<% else %>
+								Estimated <%= order.pickup_date.in_time_zone("Pacific Time (US & Canada)").strftime("%D") %>
+							<% end %>
+						</div>
+					</td>
+				</tr>
+				<% end %>
+			</table>
 		<% end %>
 	<% end %>
 </div>
