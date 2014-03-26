@@ -92,7 +92,12 @@
 				<% end %>
 				</ul>
 			</td>
-			<td>$<%= best_in_place order, :total_price %></td>
+			<td>
+				$<%= best_in_place order, :total_price %>
+				<div class="<%= 'blue' if order.credits_used > 0 %>">
+					<%= best_in_place order, :credits_used %> <%= "credit".pluralize(order.credits_used) %>
+				</div>
+			</td>
 			<td><%= best_in_place order, :tag_number %></td>
 			<td></td>
 			<td>

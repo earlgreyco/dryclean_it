@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140326011804) do
+ActiveRecord::Schema.define(version: 20140326093545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20140326011804) do
     t.string   "payment_type"
     t.string   "tag_number",   default: "add tag number"
     t.boolean  "racked"
+    t.decimal  "credits_used", default: 0.0
   end
 
   add_index "orders", ["racked"], name: "index_orders_on_racked", using: :btree

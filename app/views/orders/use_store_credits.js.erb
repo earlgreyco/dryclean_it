@@ -1,0 +1,16 @@
+<% if @payment_left <= 0 %>
+	$(".store-credit-button").hide("slide", {direction:"right"}, 300);
+	$(".order-modal-button").hide("slide", {direction:"right"}, 300, function(){
+		jQuery(".best_in_place").best_in_place();
+		$("#order-modal-tag").show("slide", {direction:"left"}, 300);
+	});
+
+	$(".order-modal-title").hide("slide", {direction:"right"}, 300, function(){
+		jQuery(".best_in_place").best_in_place();
+		$(".order-modal-tag").show("slide", {direction:"left"}, 300);
+	});
+<% else %>
+	$(".order-modal-price").html("<%= number_to_currency(@order.total_price, precision: (@order.total_price.round == @order.total_price) ? 0 : 2) %>");
+	$(".store-credit-button").html("<span class='fontawesome-gift'></span> Use Credits (<%= number_to_currency(@order.customer.credits, precision: (@order.customer.credits.round == @order.customer.credits) ? 0 : 2) %>)");
+	$(".store-credit-button").hide("slide", {direction:"right"}, 300);
+<% end %>

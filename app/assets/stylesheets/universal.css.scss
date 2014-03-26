@@ -1,5 +1,12 @@
 @import "bootstrap";
 
+/* colors */
+
+.blue{
+	color: rgba(85, 151, 183, 1.0);
+	font-weight: bold;
+}
+
 /* loading wheel that spins */
 
 #spinning-wheel{
@@ -40,7 +47,6 @@
 .grey-button{
 	border: 1px solid rgb(217, 217, 217);
 	-webkit-font-smoothing: antialiased;
-	height: 40px;
 	padding: 10px 30px;
 	line-height: 40px;
 	color: white;

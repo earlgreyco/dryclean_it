@@ -21,6 +21,29 @@ class OrdersController < ApplicationController
 		respond_with @order
 	end
 
+	def use_store_credits
+		@order = Order.find(params[:id])
+		@customer = @order.customer
+		@credits = @customer.credits
+		@payment_left = @order.total_price - @credits
+
+		#Too many
+		if @payment_left < 0
+			@order.credits_used = @order.total_price
+			@customer.credits = -@payment_left
+			@order.total_price = 0
+		
+		#Just enough or too little
+		else
+			@order.credits_used = @customer.credits
+			@customer.credits = 0
+			@order.total_price = @payment_left
+		end
+
+		@order.save!
+		@customer.save!
+	end
+
 	def add_cash_type
 		@order = Order.find(params[:id])
 		@order.payment_type = "cash"
@@ -47,6 +70,6 @@ class OrdersController < ApplicationController
 
 	private
 		def order_params
-			params.require(:order).permit(:user_id, :customer_id, :total_price, :payment_type, :tag_number, :racked)
+			params.require(:order).permit(:user_id, :customer_id, :total_price, :payment_type, :tag_number, :racked, :credits_used)
 		end
 end

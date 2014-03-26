@@ -23,6 +23,7 @@ Dryclean::Application.routes.draw do
       get 'add_cash_type'
       get 'add_card_type'
       get 'add_check_type'
+      get 'use_store_credits'
       get 'load_order_price'
     end
   end
