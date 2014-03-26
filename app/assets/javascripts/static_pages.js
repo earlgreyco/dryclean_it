@@ -26,4 +26,12 @@ $(document).ready(function(){
 		$("#signup-form").show("slide", { direction: "right" }, 300);
 		$("#signin-form").hide("slide", { direction: "left" }, 300);
 	});
+
+	$("#spinning-wheel").show();
+	$("#spinning-wheel").animate({rotate: '4000'}, 15000);
+
+	$(window).load(function(){
+		$("#spinning-wheel").hide();
+		$(".hidden-container").css({"visibility":"visible"});
+	});
 })

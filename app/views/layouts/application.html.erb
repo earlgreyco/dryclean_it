@@ -14,15 +14,20 @@
 <body>
   <%= render 'layouts/header' %>
 
-  <% if !current_user && current_page?(root_path) %>
-    <%= link_to signup_path, class: "dude-just-sign-up" do %>
-    <% end %>
-  <% end %>
+  <div id="spinning-wheel">
+  </div>
 
-  <% flash.each do |key, value| %>
-    <%= content_tag(:div, value, class: "alert alert-#{key}") %>
-  <% end %>
-	
-  <%= yield %>
+  <div class="hidden-container" style="visibility:hidden;">
+    <% if !current_user && current_page?(root_path) %>
+      <%= link_to signup_path, class: "dude-just-sign-up" do %>
+      <% end %>
+    <% end %>
+
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+    <% end %>
+  	
+    <%= yield %>
+  </div>
 </body>
 </html>
