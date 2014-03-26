@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140326110341) do
+ActiveRecord::Schema.define(version: 20140326115915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20140326110341) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.decimal  "total_price",  default: 0.0
-    t.string   "payment_type"
+    t.string   "payment_type", default: "none"
     t.string   "tag_number",   default: "add tag number"
     t.boolean  "racked"
     t.decimal  "credits_used", default: 0.0

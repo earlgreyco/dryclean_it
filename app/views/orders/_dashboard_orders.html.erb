@@ -20,10 +20,10 @@
 					<%= order.customer.first_name %> 
 					<%= order.customer.last_name %>
 					<%= order.id %>
-					<%= order.total_price %>
-					<%= order.payment_type %>
-					<%= order.tag_number %>
-					<%= order.credits_used %>
+					<%= best_in_place order, :total_price %>
+					<%= best_in_place order, :payment_type, type: :select, collection: [["cash","cash"],["card","card"],["check","check"], ["none","none"]] %>
+					<%= best_in_place order, :tag_number %>
+					<%= best_in_place order, :credits_used %>
 					<%= order.picked_up %>
 					<%= order.pickup_date %>
 				</li>
