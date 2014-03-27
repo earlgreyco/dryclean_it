@@ -12,6 +12,8 @@ class UsersController < ApplicationController
     else
       @customers = @user.customers
     end
+    
+    @rack_orders = @user.orders
   end
 
   def new
@@ -60,7 +62,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :admin, :img, :password, :password_confirmation, :phone, :turnaround_time, :address, :city, :state, :business_hours, :turnaround_time)
+      params.require(:user).permit(:name, :email, :admin, :img, :password, :password_confirmation, :phone, :turnaround_time, :address, :city, :state, :business_hours, :turnaround_time, :search_id)
     end
     
 end

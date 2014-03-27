@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
 		@order = Order.new(order_params)
 		@order.user_id = current_user.id
 		@order.pickup_date = DateTime.now + current_user.turnaround_time.days
+		@order.search_id = @order.id.to_s
 		@saved = @order.save
 
 		respond_to do |format|
