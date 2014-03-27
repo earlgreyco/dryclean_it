@@ -1,0 +1,60 @@
+<!-- dashboard container -->
+
+<div id="dashboard-container">
+	
+	<!-- side navbar -->
+
+	<div id="side-navbar">
+		<div class="business-name">
+			<%= current_user.name %>
+		</div>
+
+		<%= link_to customers_path, class: cp(customers_path) do %>
+		<div class="side-item">
+			<span class="fontawesome-shopping-cart"></span>&nbsp;&nbsp;Checkout
+		</div>
+		<% end %>
+
+		<%= link_to orders_path, class: cp(orders_path) do %>
+		<div class="side-item">
+			<span class="fontawesome-calendar"></span>&nbsp;&nbsp;What's due?
+		</div>
+		<% end %>
+
+		<%= link_to articles_path, class: cp(articles_path) do %>
+		<div class="side-item">
+			<span class="fontawesome-list"></span>&nbsp;&nbsp;Articles
+		</div>
+		<% end %>
+
+		<%= link_to '/reports', class: cp('/reports') do %>
+		<div class="side-item">
+			<span class="fontawesome-bar-chart"></span>&nbsp;&nbsp;Reports
+		</div>
+		<% end %>
+
+		<%= link_to '/rack-it', class: cp('/rack-it') do %>
+		<div class="side-item">
+			<span class="fontawesome-barcode"></span>&nbsp;&nbsp;Rack It!
+		</div>
+		<% end %>
+
+		<%= link_to edit_user_path(current_user), class: cp(edit_user_path(current_user)) do %>
+		<div class="side-item">
+			<span class="fontawesome-cog"></span>&nbsp;&nbsp;Settings
+		</div>
+		<% end %>
+
+		<%= link_to signout_path, method: "delete" do %>
+		<div class="side-item">
+			<span class="fontawesome-signout"></span>&nbsp;&nbsp;Sign Out
+		</div>
+		<% end %>
+	</div>
+
+	<!-- where the action happens -->
+
+	<div id="main-container">
+		<%= yield :dashboard_content %>
+	</div>
+</div>

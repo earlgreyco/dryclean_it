@@ -1,0 +1,46 @@
+<% content_for :dashboard_content do %>
+	<div id="customer-container">
+
+		<!-- search customers by first name, last name, email, or phone -->
+
+		<%= form_tag customers_path, method: :get do %>
+		  <%= text_field_tag :query, params[:query], placeholder: "Search by name, email, or phone", class: "input customer-search-field" %>
+		<% end %>
+
+		<!-- link to add new customer -->
+
+		<%= link_to "+ Add New Customer", "#!", id: "new-customer" %>
+
+		<!-- form to add new customer -->
+
+		<%= simple_form_for Customer.new, remote: true, html: {id: "new-customer-form"} do |f| %>
+			<div class="customer-img">
+				<%= f.filepicker_field :img, button_class: "add-customer-photo", button_text: "Add Photo", services: "COMPUTER", onchange: "$('.add-customer-photo').hide(); $('.img-added').show();" %>
+				<div class="img-added">
+					Image Added
+				</div>
+			</div>
+			<div class="customer-node mini-customer-node customer-first-name">
+				<%= f.input :first_name, required: false %>
+			</div>
+			<div class="customer-node mini-customer-node customer-last-name">
+				<%= f.input :last_name, required: false %>
+			</div>
+			<div class="customer-node customer-phone">
+				<%= f.input :phone, required: false %>
+			</div>
+			<div style="clear:both;"></div>
+			<br>
+			<%= f.button :submit, class: "button orange-button" %>
+		<% end %>
+
+		<!-- load new customers here w/ ajax -->
+
+		<div id="new-customer-popup">
+		</div>
+
+		<!-- lists all pre-existing customers -->
+
+		<%= render @customers %>
+	</div>
+<% end %>

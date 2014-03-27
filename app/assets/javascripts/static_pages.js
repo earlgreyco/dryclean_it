@@ -22,13 +22,13 @@ $(document).ready(function(){
 
 	/* toggle between signup and signin form */
 
-	$("#signin-link, #header-signin-link").click(function(){
-		$("#signup-form").hide("slide", { direction: "right" }, 300);
-		$("#signin-form").show("slide", { direction: "left" }, 300);
-	});
-
 	$("#signup-link").click(function(){
 		$("#signup-form").show("slide", { direction: "right" }, 300);
 		$("#signin-form").hide("slide", { direction: "left" }, 300);
+	});
+
+	$("#signin-link").click(function(){
+		$("#signup-form").hide("slide", { direction: "right" }, 300);
+		$("#signin-form").show("slide", { direction: "left" }, 300);
 	});
 })

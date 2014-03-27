@@ -30,4 +30,9 @@ module ApplicationHelper
   	end
     redirect_to(root_url) unless current_user.admin?
   end
+
+  #highlights current path
+  def cp(path)
+    "current" if current_page?(path)
+  end
 end

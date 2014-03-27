@@ -1,75 +1,55 @@
 <% provide(:title, "Edit Your Profile") %>
 
-<%= simple_form_for @user, html: {id:"edit-user-form"} do |f| %>
-	<div class="edit-user-header">
-		Business Details
-	</div>
-	<div class="edit-user-section" id="business-details">
-		<div class="edit-user-img">
-			<% if @user.img? %>
-			<%= filepicker_image_tag @user.img, w: 150, h: 150, fit: 'clip' %>
-			<% else %>
-				<%= f.filepicker_field :img,button_text: "Add photo", button_class: "edit-user-img-button", onchange: "$('.edit-user-button .orange-button').trigger('click');", services: "COMPUTER" %>
-			<% end %>
+<% content_for :dashboard_content do %>
+	<%= simple_form_for @user, html: {id:"edit-user-form"} do |f| %>
+		<div class="edit-user-header">
+			Business Details
 		</div>
-		<div class="edit-user-node edit-border-top">
-			<%= f.input :name, label: "Business Name", required: false %>
+		<div class="edit-user-section" id="business-details">
+			<div class="edit-user-img">
+				<% if @user.img? %>
+				<%= filepicker_image_tag @user.img, w: 150, h: 150, fit: 'clip' %>
+				<% else %>
+					<%= f.filepicker_field :img,button_text: "Add photo", button_class: "edit-user-img-button", onchange: "$('.edit-user-button .orange-button').trigger('click');", services: "COMPUTER" %>
+				<% end %>
+			</div>
+			<div class="edit-user-node edit-border-top">
+				<%= f.input :name, label: "Business Name", required: false %>
+			</div>
+			<div class="edit-user-node edit-border-top">
+				<%= f.input :email, required: false %>
+			</div>
+			<div class="edit-user-node">
+				<%= f.input :phone %>
+			</div>
+			<div class="edit-user-node">
+				<%= f.input :turnaround_time, label: "turnaround time (in days)", as: :string %>
+			</div>
+			<div class="edit-user-node business-hours">
+				<%= f.input :business_hours, placeholder: "ie, Open Monday-Frday from 7am-6pm." %>
+			</div>
+			<div style="clear:both;"></div>
 		</div>
-		<div class="edit-user-node edit-border-top">
-			<%= f.input :email, required: false %>
-		</div>
-		<div class="edit-user-node">
-			<%= f.input :phone %>
-		</div>
-		<div class="edit-user-node">
-			<%= f.input :turnaround_time, label: "turnaround time (in days)", as: :string %>
-		</div>
-		<div class="edit-user-node business-hours">
-			<%= f.input :business_hours, placeholder: "ie, Open Monday-Frday from 7am-6pm." %>
-		</div>
-		<div style="clear:both;"></div>
-	</div>
 
 
-	<div class="edit-user-header">
-		Business Address
-	</div>
-	<div class="edit-user-section" id="business-address">
-		<div class="edit-user-node address-field">
-			<%= f.input :address %>
+		<div class="edit-user-header">
+			Business Address
 		</div>
-		<div class="edit-user-node">
-			<%= f.input :city %>
+		<div class="edit-user-section" id="business-address">
+			<div class="edit-user-node address-field">
+				<%= f.input :address %>
+			</div>
+			<div class="edit-user-node">
+				<%= f.input :city %>
+			</div>
+			<div class="edit-user-node">
+				<%= f.input :state %>
+			</div>
+			<div style="clear:both;"></div>
 		</div>
-		<div class="edit-user-node">
-			<%= f.input :state %>
-		</div>
-		<div style="clear:both;"></div>
-	</div>
 
-	<div class="edit-user-button">
-		<%= f.submit "Save Changes", class: "orange-button" %>
-	</div>
+		<div class="edit-user-button">
+			<%= f.submit "Save Changes", class: "button orange-button" %>
+		</div>
+	<% end %>
 <% end %>
-
-<script>
-$(document).ready(function(){
-	$(".edit-user-node input").focus(function(){
-		$(".edit-user-node").animate({
-			backgroundColor: "white"
-		}, 300);
-
-		$(".edit-user-node input").animate({
-			backgroundColor: "white"
-		}, 300);
-
-		$(this).animate({
-			backgroundColor: "#DCEBF2"
-		}, 300);
-
-		$(this).closest(".edit-user-node").animate({
-			backgroundColor: "#DCEBF2"
-		}, 300);
-	});
-});
-</script>

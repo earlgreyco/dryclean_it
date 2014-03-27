@@ -8,11 +8,6 @@ class UsersController < ApplicationController
     @articles = @user.articles
     @orders = @user.orders.recent_ones_first
     @rack_orders = @user.orders.recent_ones_first
-    if params[:query].present?
-      @customers = @user.customers.recent_ones_first.search(params[:query], operator: "or", fields: [{last_name: :word_start}, {phone: :word_start}, {email: :word_start}, {first_name: :word_start}], misspellings: {distance: 2} )
-    else
-      @customers = @user.customers.recent_ones_first
-    end
   end
 
   def new
@@ -25,7 +20,7 @@ class UsersController < ApplicationController
   	if @user.save
       sign_in @user
   		flash[:success] = "Welcome to Dryclean It!"
-  		redirect_to user_path(@user)
+  		redirect_to customers_path
   	else
       render 'new'
   	end
@@ -34,7 +29,7 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     if !flash[:notice]
-      flash[:notice] = "Make sure to save your changes before leaving this page!"
+      flash.now[:notice] = "Make sure to save your changes before leaving this page!"
     end
   end
 

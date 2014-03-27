@@ -4,17 +4,19 @@ HOME PAGE
 
 **********/
 
-#signup-wrapper{
+.clothes_hanging_bg{
 	background: url("clothes_hanging.jpg");
 	background-size: 100%;
 	background-repeat: no-repeat;
-	height: 700px;
+}
+
+#signup-wrapper{
 	position: relative;
 }
 
 #signup-form, #signin-form{
 	position: absolute;
-	top: 50px;
+	top: 80px;
 	width: 100%;
 }
 

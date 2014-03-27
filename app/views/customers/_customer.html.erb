@@ -1,5 +1,5 @@
 <div class="single-article">
-	<div class="article-img" style="cursor: pointer;">
+	<div class="customer-img" style="cursor: pointer;">
 		<% if customer.img? %>
 			<%= filepicker_image_tag customer.img, w: 110, h: 110, fit: 'crop' %>
 		<% else %>
@@ -8,15 +8,15 @@
 			</div>
 		<% end %>
 	</div>
-	<div class="article-name article-node" style="width:175px;">
+	<div class="customer-node mini-customer-node customer-first-name">
 		<label>First Name</label><br>
 		<%= best_in_place customer, :first_name %>
 	</div>
-	<div class="article-price article-node" style="width:175px; border-bottom: 0px;">
+	<div class="customer-node mini-customer-node customer-last-name">
 		<label>Last Name</label><br>
 		<%= best_in_place customer, :last_name %>
 	</div>
-	<div class="article-price article-node">
+	<div class="customer-node customer-phone">
 		<label>Phone</label><br>
 		<%= best_in_place customer, :phone %>
 	</div>
@@ -47,7 +47,7 @@
 		      	</p>
 		      </div>
 		      <div class="modal-footer">
-		      	<%= link_to "Yarp!", customer, method: :delete, remote: true, class: "orange-button" %>
+		      	<%= link_to "Yarp!", customer, method: :delete, remote: true, class: "button orange-button" %>
 		    	</div>
 		    </div><!-- /.modal-content -->
 		  </div><!-- /.modal-dialog -->
@@ -57,8 +57,8 @@
 
 <%= simple_form_for Order.new, remote: true, html: {id:"new-order-form", class: "order-form"} do |f| %>
 	<%= f.input :customer_id, input_html: {value: customer.id, class: "hidden"}, label: false %>
-	<%= f.submit "Place Order", class: "orange-button place-order-button", style: "width: 135px; margin-bottom: 15px; cursor: pointer;" %>
-	<%= link_to "Order History", "#!", class: "grey-button order-history-button", remote: true %>
+	<%= f.submit "Place Order", class: "orange-button button place-order-button", style: "width: 135px; margin-bottom: 15px; cursor: pointer;" %>
+	<%= link_to "Order History", "#!", class: "grey-button button order-history-button", remote: true %>
 <% end %>
 
 <div class="order-history" style="display: none;">
