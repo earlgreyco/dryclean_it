@@ -1,4 +1,7 @@
 $(document).ready(function(){
+
+	/* light up background of input fields */
+
 	$(".form-field input").focus(function(){
 		$(".form-field").animate({
 			backgroundColor: "white"
@@ -16,6 +19,8 @@ $(document).ready(function(){
 			backgroundColor: "#DCEBF2"
 		}, 300);
 	});
+
+	/* toggle between signup and signin form */
 
 	$("#signin-link, #header-signin-link").click(function(){
 		$("#signup-form").hide("slide", { direction: "right" }, 300);
