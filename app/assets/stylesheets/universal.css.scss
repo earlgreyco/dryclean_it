@@ -10,7 +10,7 @@
 
 /* text input */
 
-input[type="text"]{
+.input{
 	height: 42px;
 	padding: 0.5em 0.6em;
 	border: 1px solid #e5e5e5;
@@ -26,7 +26,7 @@ input[type="text"]{
 	-o-transition: 0.3s;
 	transition: 0.3s;
 
-	&:hover{
+	&:focus{
 		border-color: #5597b7;
 		outline: thin;
 		-webkit-transition: 0.3s;

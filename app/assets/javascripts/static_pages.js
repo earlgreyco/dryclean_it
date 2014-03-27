@@ -1,10 +1,10 @@
 $(document).ready(function(){
-	$(".signup-section input").focus(function(){
-		$(".signup-section").animate({
+	$(".form-field input").focus(function(){
+		$(".form-field").animate({
 			backgroundColor: "white"
 		}, 300);
 
-		$(".signup-section input").animate({
+		$(".form-field input").animate({
 			backgroundColor: "white"
 		}, 300);
 
@@ -12,7 +12,7 @@ $(document).ready(function(){
 			backgroundColor: "#DCEBF2"
 		}, 300);
 
-		$(this).closest(".signup-section").animate({
+		$(this).closest(".form-field").animate({
 			backgroundColor: "#DCEBF2"
 		}, 300);
 	});
