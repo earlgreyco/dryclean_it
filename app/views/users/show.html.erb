@@ -79,6 +79,24 @@ $(document).ready(function(){
 
 	$("#rack-link").click(function(){
 		$("#rack-container").show("slide", { direction: "left" }, 300);
+		$(".rack-number").focus();
+		$('.rack-number').keydown(function(e){
+			//get the next index of text input element
+			var next_idx = $('.search-rack-order').index(this) + 1;
+		 
+			//get number of text input element in a html document
+			var tot_idx = $('body').find('.search-rack-order').length;
+		 
+			//enter button in ASCII code
+			if(e.keyCode == 13){
+				if(tot_idx == next_idx)
+					//go to the first text element if focused in the last text input element
+					$('.search-rack-order:eq(0)').focus();
+				else
+					//go to the next text input element
+					$('.search-rack-order:eq(' + next_idx + ')').focus();
+			}
+		});
 	});
 
 	$(".side-item").click(function(){
