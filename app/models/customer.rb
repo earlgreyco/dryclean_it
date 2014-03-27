@@ -3,5 +3,14 @@ class Customer < ActiveRecord::Base
 	belongs_to :user
 	has_many :orders
 	validates_presence_of :first_name, :last_name, :phone
-	default_scope -> { order('created_at DESC') }
+	scope :recent_ones_first, -> {order('created_at DESC')}
+
+	def deduct_credits(payment_left)
+		if payment_left <= 0
+			self.credits = -payment_left
+		else
+			self.credits = 0
+		end
+		self.save!
+	end
 end

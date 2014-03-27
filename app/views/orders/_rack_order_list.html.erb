@@ -1,32 +1,57 @@
-<div class="rack-wrap">
-	<input type="text" placeholder="Rack #" class="search-rack-order rack-number">
-	<br>
-	<input type="text" placeholder="Ticket #" class="search-rack-order">
-
-	<div class="rack-order-nav">
-		<span class="fontawesome-arrow-left pull-left grey-button"></span>
-		<span class="fontawesome-arrow-right pull-right orange-button"></span>
-		<div style="clear:both;"></div>
-	</div>
-
-	<div style="clear:both;"></div>
-
-	<div class="order-info">
-		<% rack_order = @rack_orders[0] %>
-		<%= filepicker_image_tag rack_order.customer.img, w:150, h:150 %>
-		<div class="rack-order-name">
-			<%= rack_order.customer.first_name %> <%= rack_order.customer.last_name %>
-		</div>
-		<div class="rack-order-date">
-			$<%= best_in_place rack_order, :total_price %><br>
-			<%= best_in_place rack_order, :credits_used %> credits
-		</div>
-		<% rack_order.order_items.each do |order_item| %>
-			<% if order_item.quantity > 0 %>
-				<div class="order-item">
-					<%= best_in_place order_item, :quantity %> <%= order_item.name.pluralize(order_item.quantity) %>
-				</div>
-			<% end %>
+<% @rack_orders.each_with_index do |rack_order, i| %>
+	<% if i == 0 %>
+	<div class="rack-wrap" style="display:block;">
+	<% else %>
+	<div class="rack-wrap">
+	<% end %>
+		<%= simple_form_for rack_order, remote: true do |f| %>
+			<%= f.input :rack_number, input_html: {class: "search-rack-order rack-number"}, placeholder: "Rack #", label: false %>
+			<%= f.input :id, input_html:{class: "search-rack-order"}, placeholder: "Order #", label: false %>
+			<%= f.submit "rack-button", style: "visibility:hidden;" %>
 		<% end %>
+
+		<div class="rack-order-nav">
+			<% if i!=0 %>
+			<span class="fontawesome-arrow-left pull-left grey-button"></span>
+			<% end %>
+			<% if i!=@rack_orders.count-1 %>
+			<span class="fontawesome-arrow-right pull-right orange-button"></span>
+			<% end %>
+			<div style="clear:both;"></div>
+		</div>
+
+		<div style="clear:both;"></div>
+
+		<div class="order-info">
+			<%= filepicker_image_tag rack_order.customer.img, w:150, h:150 %>
+			<div class="rack-order-name">
+				<%= rack_order.customer.first_name %> <%= rack_order.customer.last_name %>
+			</div>
+			<div class="rack-order-date">
+				$<%= best_in_place rack_order, :total_price %><br>
+				<%= best_in_place rack_order, :credits_used %> credits
+			</div>
+			<% rack_order.order_items.each do |order_item| %>
+				<% if order_item.quantity > 0 %>
+					<div class="order-item">
+						<%= best_in_place order_item, :quantity %> <%= order_item.name.pluralize(order_item.quantity) %>
+					</div>
+				<% end %>
+			<% end %>
+		</div>
 	</div>
-</div>
+<% end %>
+
+<script>
+$(document).ready(function(){
+	$(".rack-wrap .fontawesome-arrow-left").click(function(){
+		$(this).parent().parent().hide();
+		$(this).parent().parent().prev().show("slide",{direction:"right"},300);
+	});
+
+	$(".rack-wrap .fontawesome-arrow-right").click(function(){
+		$(this).parent().parent().hide();
+		$(this).parent().parent().next().show("slide",{direction:"left"},300);
+	});
+});
+</script>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140326223637) do
+ActiveRecord::Schema.define(version: 20140327070053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20140326223637) do
 
   create_table "order_items", force: true do |t|
     t.integer  "order_id"
-    t.integer  "quantity"
+    t.integer  "quantity",   default: 1
     t.decimal  "price"
     t.string   "name"
     t.datetime "created_at"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20140326223637) do
     t.datetime "pickup_date",  default: '2014-03-28 00:00:00'
     t.boolean  "picked_up",    default: false
     t.string   "search_id"
+    t.integer  "rack_number"
   end
 
   add_index "orders", ["racked"], name: "index_orders_on_racked", using: :btree

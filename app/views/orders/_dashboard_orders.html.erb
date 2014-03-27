@@ -30,15 +30,15 @@
 					<th>Total Price</th>
 					<th>Pickup Date</th>
 				</tr>
-				<% @orders_by_date.each do |order| %>
+				<% @orders_by_date.recent_ones_first.each do |order| %>
 				<tr>
 					<td>
 						<%= order.id %>
 					</td>
 					<td style="text-align: left;">
-						<%= filepicker_image_tag order.customer.img, w:50, h:50, fit:'crop' %>
-						<%= order.customer.first_name %> 
-						<%= order.customer.last_name %>
+						<%= filepicker_image_tag order.customer_img, w:50, h:50, fit:'crop' %>
+						<%= order.customer_first_name %> 
+						<%= order.customer_last_name %>
 					</td>
 					<td>
 						<!-- rack number -->

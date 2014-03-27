@@ -6,14 +6,13 @@ class UsersController < ApplicationController
   def show
   	@user = User.find(params[:id])
     @articles = @user.articles
-    @orders = @user.orders
+    @orders = @user.orders.recent_ones_first
+    @rack_orders = @user.orders.recent_ones_first
     if params[:query].present?
-      @customers = @user.customers.search(params[:query], operator: "or", fields: [{last_name: :word_start}, {phone: :word_start}, {email: :word_start}, {first_name: :word_start}], misspellings: {distance: 2} )
+      @customers = @user.customers.recent_ones_first.search(params[:query], operator: "or", fields: [{last_name: :word_start}, {phone: :word_start}, {email: :word_start}, {first_name: :word_start}], misspellings: {distance: 2} )
     else
-      @customers = @user.customers
+      @customers = @user.customers.recent_ones_first
     end
-    
-    @rack_orders = @user.orders
   end
 
   def new

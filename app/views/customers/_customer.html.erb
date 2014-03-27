@@ -77,7 +77,7 @@
 			<th>Pick Up Date</th>
 		</tr>
 
-		<% customer.orders.each do |order| %>
+		<% customer.orders.recent_ones_first.each do |order| %>
 		</tr>
 			<td><%= order.id %></td>
 			<td>

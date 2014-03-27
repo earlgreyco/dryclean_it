@@ -8,8 +8,7 @@ class OrdersController < ApplicationController
 	def create
 		@order = Order.new(order_params)
 		@order.user_id = current_user.id
-		@order.pickup_date = DateTime.now + current_user.turnaround_time.days
-		@order.search_id = @order.id.to_s
+    @order.pickup_date = DateTime.now + current_user.turnaround_time.days
 		@saved = @order.save
 
 		respond_to do |format|
@@ -20,7 +19,11 @@ class OrdersController < ApplicationController
 	def update
 		@order = Order.find(params[:id])
 		@updated = @order.update_attributes(order_params)
-		respond_with @order
+
+		respond_to do |format|
+			format.json { respond_with_bip(@order) }
+			format.js
+		end
 	end
 
 	def save_pickup_date
@@ -33,24 +36,9 @@ class OrdersController < ApplicationController
 	def use_store_credits
 		@order = Order.find(params[:id])
 		@customer = @order.customer
-		@credits = @customer.credits
-		@payment_left = @order.total_price - @credits
-
-		#Too many
-		if @payment_left < 0
-			@order.credits_used = @order.total_price
-			@customer.credits = -@payment_left
-			@order.total_price = 0
-		
-		#Just enough or too little
-		else
-			@order.credits_used = @customer.credits
-			@customer.credits = 0
-			@order.total_price = @payment_left
-		end
-
-		@order.save!
-		@customer.save!
+		@payment_left = @order.total_price - @customer.credits
+		@customer.deduct_credits(@payment_left)
+		@order.recalculate_total_price_with_credits(@payment_left)
 	end
 
 	def add_cash_type
@@ -79,6 +67,6 @@ class OrdersController < ApplicationController
 
 	private
 		def order_params
-			params.require(:order).permit(:picked_up, :pickup_date, :user_id, :customer_id, :total_price, :payment_type, :tag_number, :racked, :credits_used)
+			params.require(:order).permit(:rack_number, :picked_up, :pickup_date, :user_id, :customer_id, :total_price, :payment_type, :tag_number, :racked, :credits_used)
 		end
 end

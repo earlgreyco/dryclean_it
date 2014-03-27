@@ -1,44 +1,44 @@
-<% @order = Order.where(user_id: current_user.id).first %>
+<% order = current_user.orders.recent_ones_first.first %>
 
 <div class="modal-body">
 	<div class="order-modal-name">
-		<%= @order.customer.first_name %> <%= @order.customer.last_name %>
+		<%= order.customer_first_name %> <%= order.customer_last_name %>
 	</div>
 	<div class="order-modal-price order-modal-title">
-		<%= number_to_currency(@order.total_price, precision: (@order.total_price.round == @order.total_price) ? 0 : 2) %>
+		<%= number_to_currency(order.total_price, precision: (order.total_price.round == order.total_price) ? 0 : 2) %>
 	</div>
 	<div class="order-modal-price order-modal-tag" style="display: none;">
 		<% @total_tags = 0 %>
-		<% @order.order_items.each do |order_item| %>
+		<% order.order_items.each do |order_item| %>
 			<% @total_tags+=order_item.quantity %>
 		<% end %>
 		<%= @total_tags %> articles
 	</div>
-	<% if @order.customer.credits > 0 %>
-		<%= link_to use_store_credits_order_path(@order), remote: true do %>
+	<% if order.customer.credits > 0 %>
+		<%= link_to use_store_credits_order_path(order), remote: true do %>
 			<div class="store-credit-button grey-button">
-				<span class="fontawesome-gift"></span> Use Credits (<%= number_to_currency(@order.customer.credits, precision: (@order.customer.credits.round == @order.customer.credits) ? 0 : 2) %>)
+				<span class="fontawesome-gift"></span> Use Credits (<%= number_to_currency(order.customer.credits, precision: (order.customer.credits.round == order.customer.credits) ? 0 : 2) %>)
 			</div>
 		<% end %>
 	<% end %>
-	<%= link_to add_cash_type_order_path(@order), remote: true do %>
+	<%= link_to add_cash_type_order_path(order), remote: true do %>
 		<div class="order-modal-button orange-button">
 			<span class="fontawesome-money"></span> Pay With Cash
 		</div>
 	<% end %>
-	<%= link_to add_card_type_order_path(@order), remote: true do %>
+	<%= link_to add_card_type_order_path(order), remote: true do %>
 		<div class="order-modal-button orange-button">
 			<span class="fontawesome-credit-card"></span> Pay With Card
 		</div>
 	<% end %>
-	<%= link_to add_check_type_order_path(@order), remote: true do %>
+	<%= link_to add_check_type_order_path(order), remote: true do %>
 		<div class="order-modal-button orange-button">
 			<span>-_-</span> Pay With Check
 		</div>
 	<% end %>
 
 	<div id="order-modal-tag">
-		<%= best_in_place @order, :tag_number, html_attrs: { default: "hello" } %>
+		<%= best_in_place order, :tag_number, html_attrs: { default: "hello" } %>
 	</div>
 </div>
 

@@ -77,6 +77,7 @@ RACK ORDER LIST
 	width: 400px;
 	margin-left: auto;
 	margin-right: auto;
+	display: none;
 }
 
 .search-rack-order{
@@ -109,7 +110,7 @@ RACK ORDER LIST
 }
 
 .rack-order-nav{
-	padding-top: 20px;
+	margin-top: -5px;
 	padding-bottom: 20px;
 
 	span{

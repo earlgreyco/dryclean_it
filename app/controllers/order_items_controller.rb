@@ -7,12 +7,9 @@ class OrderItemsController < ApplicationController
 
 	def create
 		@order_item = OrderItem.new(order_item_params)
-		@order_item.quantity = 1
 		@saved = @order_item.save
-
 		@order = @order_item.order
-		@order.total_price = @order.total_price + (@order_item.quantity * @order_item.price)
-		@order.save!
+		@order.recalculate_total_price
 
 		respond_to do |format|
 			format.js
@@ -23,11 +20,7 @@ class OrderItemsController < ApplicationController
 		@order_item = OrderItem.find(params[:id])
 		@updated = @order_item.update_attributes(order_item_params)
 		@order = @order_item.order
-		@order.total_price = 0
-		@order.order_items.each do |order_item|
-			@order.total_price = @order.total_price + order_item.quantity * order_item.price
-		end
-		@order.save!
+		@order.recalculate_total_price
 
 		respond_to do |format|
 			format.json { respond_with_bip(@order_item) }
