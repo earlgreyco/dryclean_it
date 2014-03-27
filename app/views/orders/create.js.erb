@@ -1,5 +1,6 @@
 <% if @saved %>
-	$(".single-article").hide();
+	$(".single-customer").hide();
 	$(".order-form").hide();
+	$(".order-history").hide();
 	$("#customer-container").append("<%= j render 'orders/place_order' %>");
 <% end %>

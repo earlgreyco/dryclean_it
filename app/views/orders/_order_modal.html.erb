@@ -5,7 +5,7 @@
 		<%= order.customer_first_name %> <%= order.customer_last_name %>
 	</div>
 	<div class="order-modal-price order-modal-title">
-		<%= number_to_currency(order.total_price, precision: (order.total_price.round == order.total_price) ? 0 : 2) %>
+		$<%= best_in_place order, :total_price %>
 	</div>
 	<div class="order-modal-price order-modal-tag" style="display: none;">
 		<% @total_tags = 0 %>
@@ -16,23 +16,23 @@
 	</div>
 	<% if order.customer.credits > 0 %>
 		<%= link_to use_store_credits_order_path(order), remote: true do %>
-			<div class="store-credit-button grey-button">
+			<div class="store-credit-button button grey-button">
 				<span class="fontawesome-gift"></span> Use Credits (<%= number_to_currency(order.customer.credits, precision: (order.customer.credits.round == order.customer.credits) ? 0 : 2) %>)
 			</div>
 		<% end %>
 	<% end %>
 	<%= link_to add_cash_type_order_path(order), remote: true do %>
-		<div class="order-modal-button orange-button">
+		<div class="order-modal-button button orange-button">
 			<span class="fontawesome-money"></span> Pay With Cash
 		</div>
 	<% end %>
 	<%= link_to add_card_type_order_path(order), remote: true do %>
-		<div class="order-modal-button orange-button">
+		<div class="order-modal-button button orange-button">
 			<span class="fontawesome-credit-card"></span> Pay With Card
 		</div>
 	<% end %>
 	<%= link_to add_check_type_order_path(order), remote: true do %>
-		<div class="order-modal-button orange-button">
+		<div class="order-modal-button button orange-button">
 			<span>-_-</span> Pay With Check
 		</div>
 	<% end %>

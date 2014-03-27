@@ -243,7 +243,6 @@ ORDER HISTORY
 		box-sizing: border-box;
 
 		img{
-			pointer-events: none;
 			border-radius: 100px;
 			padding: 3px;
 			border: 1px solid #e5e5e5;
@@ -267,26 +266,4 @@ ORDER HISTORY
 
 .pickup-button{
 	margin-top: 20px;
-}
-
-
-/**********
-
-PLACE ORDER
-
-**********/
-
-.order-item{
-	margin-top: 20px;
-
-	.best_in_place{
-		input{
-			width: 20px;
-			border: 0px;
-
-			&:focus{
-				outline-width: 0px;
-			}
-		}
-	}
 }
