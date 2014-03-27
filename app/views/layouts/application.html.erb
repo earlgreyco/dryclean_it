@@ -6,27 +6,18 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= filepicker_js_include_tag %>
   <%= csrf_meta_tags %>
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <%= render 'layouts/google_fonts' %>
   <%= render 'layouts/ie_html5_shim' %>
 </head>
 
 <body>
   <%= render 'layouts/header' %>
 
+  <!-- loading wheel spins before page loads -->
   <div id="spinning-wheel">
   </div>
 
-  <div class="hidden-container" style="visibility:hidden;">
-    <% if !current_user && current_page?(root_path) %>
-      <%= link_to signup_path, class: "dude-just-sign-up" do %>
-      <% end %>
-    <% end %>
-
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "alert alert-#{key}") %>
-    <% end %>
-  	
+  <div class="hidden-container">  	
     <%= yield %>
   </div>
 </body>

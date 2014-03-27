@@ -7,7 +7,7 @@
 	font-weight: bold;
 }
 
-/* loading wheel that spins */
+/* loading wheel spins before page loads */
 
 #spinning-wheel{
 	width: 70px;
@@ -17,6 +17,10 @@
 	margin-right: auto;
 	margin-top: 200px;
 	border: 1px solid black;
+}
+
+.hidden-container{
+	visibility: hidden;
 }
 
 /* buttons */
