@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
 	/* loading wheel spins before page loads */
+	
 	$("#spinning-wheel").show();
 	$("#spinning-wheel").animate({rotate: '15000'}, 50000);
 

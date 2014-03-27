@@ -1,11 +1,41 @@
 @import "bootstrap";
 
+
 /* colors */
 
 .blue{
 	color: rgba(85, 151, 183, 1.0);
-	font-weight: bold;
 }
+
+
+/* text input */
+
+input[type="text"]{
+	height: 42px;
+	padding: 0.5em 0.6em;
+	border: 1px solid #e5e5e5;
+	font-size: 13px;
+	box-shadow: inset 0 1px 3px #ddd;
+	border-radius: 4px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	color: #444444;
+	-webkit-transition: 0.3s;
+	-moz-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s;
+
+	&:hover{
+		border-color: #5597b7;
+		outline: thin;
+		-webkit-transition: 0.3s;
+		-moz-transition: 0.3s;
+		-o-transition: 0.3s;
+		transition: 0.3s;
+	}
+}
+
 
 /* loading wheel spins before page loads */
 
@@ -23,50 +53,46 @@
 	visibility: hidden;
 }
 
+
 /* buttons */
 
-.orange-button{
-	background: rgb(235, 86, 53) !important;
-	border: 1px solid rgb(235, 86, 53) !important;
-	color: white !important;
+.button{
+	font-weight: 600;
+	font-size: 13px;
+	padding: 10px 30px;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
-	font-size: 13px;
-	font-weight: 600;
-	padding: 10px 30px;
-	-webkit-font-smoothing: antialiased;
 
 	&:hover{
-		border: 1px solid #dd4e26 !important;
-		background: #dd4e26 !important;
-		text-decoration: none !important;
+		text-decoration: none;
 	}
 
 	&:focus{
-		outline-width: 0px !important;
+		outlin-width: 0px;
+	}
+}
+
+.orange-button{
+	background: rgb(235, 86, 53);
+	border: 1px solid rgb(235, 86, 53);
+	color: white;
+	
+	&:hover{
+		background: #dd4e26;
+		border: 1px solid #dd4e26;
+		color: white;
 	}
 }
 
 .grey-button{
+	background: #3c3c3c;
 	border: 1px solid rgb(217, 217, 217);
-	-webkit-font-smoothing: antialiased;
-	padding: 10px 30px;
-	line-height: 40px;
 	color: white;
-	border-color: #3c3c3c;
-	background-color: #3c3c3c;
-	color: white;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-	font-size: 13px;
-	font-weight: 600;
 
 	&:hover{
+		background: #303030;
 		border-color: #303030;
-		background-color: #303030;
-		text-decoration: none;
 		color: white;
 	}
 }
@@ -84,7 +110,7 @@
 }
 
 
-/* body */
+/* body background */
 
 body{
 	background: rgb(232, 232, 232);
@@ -95,6 +121,7 @@ body{
 
 * {
 	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
 }
 
 
@@ -124,7 +151,6 @@ body{
 		color: rgb(235, 86, 53) !important;
 		font-family: 'Pacifico', cursive !important;
 		font-size: 23px;
-		-webkit-font-smoothing: antialiased;
 		padding-top: 13px;
 		padding-bottom: 0px;
 	}
