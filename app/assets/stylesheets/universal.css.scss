@@ -63,37 +63,32 @@
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
+	outline-width: 0px !important;
 
 	&:hover{
 		text-decoration: none;
-	}
-
-	&:focus{
-		outline-width: 0px;
 	}
 }
 
 .orange-button{
 	background: rgb(235, 86, 53);
 	border: 1px solid rgb(235, 86, 53);
-	color: white;
+	color: white !important;
 	
 	&:hover{
 		background: #dd4e26;
 		border: 1px solid #dd4e26;
-		color: white;
 	}
 }
 
 .grey-button{
 	background: #3c3c3c;
 	border: 1px solid rgb(217, 217, 217);
-	color: white;
+	color: white !important;
 
 	&:hover{
 		background: #303030;
 		border-color: #303030;
-		color: white;
 	}
 }
 

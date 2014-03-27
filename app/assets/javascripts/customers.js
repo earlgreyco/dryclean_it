@@ -31,15 +31,16 @@ $(document).ready(function(){
 	$("#customer-container").on("click", ".customer-img", function(){
 		jQuery(".best_in_place").best_in_place();
 		
-		if(!$(this).hasClass("active-dropdown")){
-			$(this).parent().children(".customer-dropdown").show("slide", {direction:"right"}, 300);
+		if(!$(this).hasClass("active-customer")){
+			$(this).parent().children(".extra-customer-details").show("slide", {direction:"right"}, 300);
 			$(this).parent().next("#new-order-form").show("slide", {direction:"left"}, 300);
-			$(this).addClass("active-dropdown");
+			$(this).addClass("active-customer");
 		}
 		else{
-			$(this).parent().children(".customer-dropdown").hide("slide", {direction:"right"}, 300);
-			$(this).parent().next("#new-order-form").hide("slide", {direction:"left"}, 300);
-			$(this).removeClass("active-dropdown");
+			$(this).parent().children(".extra-customer-details").hide("slide", {direction:"right"}, 300);
+			$(this).parent().next("#new-order-form").hide("slide", {direction:"right"}, 300);
+			$(".order-history").hide("slide", {direction:"right"}, 300);
+			$(this).removeClass("active-customer");
 		}
 	});
 
@@ -57,5 +58,12 @@ $(document).ready(function(){
 		$(this).parent().parent().parent().parent().parent().parent().remove();
 		$('body').removeClass('modal-open');
 		$('.modal-backdrop').remove();
+	});
+
+	/* hide estimated pickup date to make room for real pickup datetime */
+
+	$("#customer-container").on("click", ".pickup-button-action", function(){
+		$(this).parent().parent().children(".estimated-date").hide();
+		$(this).parent().hide();
 	});
 });
