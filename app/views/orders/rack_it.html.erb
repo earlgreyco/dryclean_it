@@ -1,0 +1,11 @@
+<% content_for :dashboard_content do %>
+	<div id="rack-container">
+		<%= form_tag orders_path, method: :get, style: "margin-bottom: -20px;" do %>
+			<%= text_field_tag :query, params[:query], placeholder: "Search by order number", class: "input customer-search-field" %>
+		<% end %>
+	</div>
+
+	<% @orders.each do |order| %>
+		<%= order.id %><br>
+	<% end %>
+<% end %>

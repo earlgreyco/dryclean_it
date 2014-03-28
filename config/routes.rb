@@ -28,6 +28,8 @@ Dryclean::Application.routes.draw do
       get 'load_order_price'
     end
   end
+  match '/reports', to: 'orders#reports', via: 'get'
+  match '/rack-it', to: 'orders#rack_it', via: 'get'
 
   #Order Items
   resources :order_items

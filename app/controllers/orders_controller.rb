@@ -1,6 +1,18 @@
 class OrdersController < ApplicationController
 	respond_to :html, :json
 
+	def reports
+	end
+
+	def rack_it
+		@orders = current_user.orders
+		if params[:query].present?
+      @orders = @orders.recent_ones_first.search(params[:query], operator: "or", fields: [{order_number: :word_start}], misspellings: {distance: 2})
+    else
+      @orders = @orders.recent_ones_first
+    end
+	end
+
 	def index
 		@orders = current_user.orders
 		if params[:query].present?
@@ -17,7 +29,7 @@ class OrdersController < ApplicationController
 	def create
 		@order = Order.new(order_params)
 		@order.user_id = current_user.id
-		@order.order_number = @order.id.to_s
+		@order.order_number = (Order.last.id+1).to_s
     @order.pickup_date = DateTime.now + current_user.turnaround_time.days
 		@saved = @order.save
 
