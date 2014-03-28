@@ -1,6 +1,15 @@
 class OrdersController < ApplicationController
 	respond_to :html, :json
 
+	def index
+		@orders = current_user.orders
+		if params[:query].present?
+      @orders = @orders.recent_ones_first.search(params[:query], operator: "or", fields: [{tag_number: :word_start}, {total_price: :word_start}], misspellings: {distance: 2})
+    else
+      @orders = @orders.recent_ones_first
+    end
+	end
+
 	def new
 		@order = Order.new
 	end
