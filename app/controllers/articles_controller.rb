@@ -1,6 +1,10 @@
 class ArticlesController < ApplicationController
   respond_to :html, :json
 
+  def index
+    @articles = current_user.articles
+  end
+
   def new
   	@article = Article.new
   end
