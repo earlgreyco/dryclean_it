@@ -1,11 +1,33 @@
 <% content_for :dashboard_content do %>
 	<div id="rack-container">
-		<%= form_tag orders_path, method: :get, style: "margin-bottom: -20px;" do %>
-			<%= text_field_tag :query, params[:query], placeholder: "Search by order number", class: "input customer-search-field" %>
+		<%= form_tag '/rack-it', method: :get, style: "margin-bottom: -20px;" do %>
+			<%= text_field_tag :query, params[:query], placeholder: "Search by order number", class: "input rack-search-field" %>
+		<% end %>
+
+		<div style="clear:both;"></div>
+
+		<% @orders.each do |order| %>
+			<%= simple_form_for order, remote: true do |f| %>
+				<%= f.input :rack_number, label: false, placeholder: "Rack #", input_html: {class: "input rack-field"} %>
+				<%= f.submit "rack number", style: "visibility: hidden;" %>
+			<% end %>
+			<div class="order-info">
+				<%= filepicker_image_tag order.customer.img, w:150, h:150 %>
+				<div class="rack-order-name">
+					<%= order.customer.first_name %> <%= order.customer.last_name %>
+				</div>
+				<div class="rack-order-date">
+					$<%= best_in_place order, :total_price %><br>
+					<%= best_in_place order, :credits_used %> credits
+				</div>
+				<% order.order_items.each do |order_item| %>
+					<% if order_item.quantity > 0 %>
+						<div class="order-item">
+							<%= best_in_place order_item, :quantity %> <%= order_item.name.pluralize(order_item.quantity) %>
+						</div>
+					<% end %>
+				<% end %>
+			</div>
 		<% end %>
 	</div>
-
-	<% @orders.each do |order| %>
-		<%= order.id %><br>
-	<% end %>
 <% end %>
