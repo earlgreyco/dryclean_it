@@ -3,7 +3,7 @@ require 'barby/outputter/png_outputter'
 require 'barby/barcode/code_93'
 
 class Order < ActiveRecord::Base
-  searchkick word_start: [:tag_number, :total_price]
+  searchkick word_start: [:order_number, :tag_number, :total_price]
 	include HasBarcode
 	has_many :order_items
 	belongs_to :user

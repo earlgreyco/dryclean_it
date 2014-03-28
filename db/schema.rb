@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140328005628) do
+ActiveRecord::Schema.define(version: 20140328052724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,12 +67,12 @@ ActiveRecord::Schema.define(version: 20140328005628) do
     t.decimal  "credits_used", default: 0.0
     t.datetime "pickup_date",  default: '2014-03-28 00:00:00'
     t.boolean  "picked_up",    default: false
-    t.string   "search_id"
     t.string   "rack_number",  default: "add rack number"
+    t.string   "order_number"
   end
 
+  add_index "orders", ["order_number"], name: "index_orders_on_order_number", using: :btree
   add_index "orders", ["racked"], name: "index_orders_on_racked", using: :btree
-  add_index "orders", ["search_id"], name: "index_orders_on_search_id", using: :btree
   add_index "orders", ["tag_number"], name: "index_orders_on_tag_number", using: :btree
   add_index "orders", ["user_id", "customer_id"], name: "index_orders_on_user_id_and_customer_id", using: :btree
 

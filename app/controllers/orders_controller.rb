@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
 	def index
 		@orders = current_user.orders
 		if params[:query].present?
-      @orders = @orders.recent_ones_first.search(params[:query], operator: "or", fields: [{tag_number: :word_start}, {total_price: :word_start}], misspellings: {distance: 2})
+      @orders = @orders.recent_ones_first.search(params[:query], operator: "or", fields: [{order_number: :word_start}, {tag_number: :word_start}, {total_price: :word_start}], misspellings: {distance: 2})
     else
       @orders = @orders.recent_ones_first
     end
@@ -17,6 +17,7 @@ class OrdersController < ApplicationController
 	def create
 		@order = Order.new(order_params)
 		@order.user_id = current_user.id
+		@order.order_number = @order.id.to_s
     @order.pickup_date = DateTime.now + current_user.turnaround_time.days
 		@saved = @order.save
 
@@ -76,6 +77,6 @@ class OrdersController < ApplicationController
 
 	private
 		def order_params
-			params.require(:order).permit(:rack_number, :picked_up, :pickup_date, :user_id, :customer_id, :total_price, :payment_type, :tag_number, :racked, :credits_used)
+			params.require(:order).permit(:rack_number, :picked_up, :pickup_date, :user_id, :customer_id, :total_price, :payment_type, :tag_number, :racked, :credits_used, :order_number)
 		end
 end
