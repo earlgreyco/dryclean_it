@@ -105,7 +105,7 @@
 				</div>
 			</td>
 			<td><%= best_in_place order, :tag_number %></td>
-			<td></td>
+			<td><%= best_in_place order, :rack_number %></td>
 			<td>
 				<%= order.created_at.in_time_zone("Pacific Time (US & Canada)").strftime("%D") %><br>
 				<%= order.created_at.in_time_zone("Pacific Time (US & Canada)").strftime("%I:%M%p") %>
