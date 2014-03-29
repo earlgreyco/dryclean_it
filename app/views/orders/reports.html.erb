@@ -22,25 +22,26 @@
 					}
 				},
 				series: [
-				<% {"Total Without Credits" => Order, "Cash" => Order.cash, "Card" => Order.card, "Check" => Order.check}.each do |name, orders| %>
+				{
+					name: "Total Revenue",
+					pointInterval: <%= 1.day * 1000 %>,
+					pointStart: <%= Order.first.created_at.to_i * 1000 %>,
+					data:  <%= (Order.first.created_at.to_date..Date.today).map { |date| Order.total_with_credits(date).to_f}.inspect %>
+				},
+				<% {"Cash" => Order.cash, "Card" => Order.card, "Check" => Order.check}.each do |name, orders| %>
 
 				{
 					name: "<%= name %>",
 					pointInterval: <%= 1.day * 1000 %>,
-					pointStart: <%= 3.weeks.ago.to_i * 1000 %>,
-					data: <%= (3.weeks.ago.to_date..Date.today).map { |date| orders.total_on(date).to_f }.inspect %>
+					pointStart: <%= Order.first.created_at.to_i * 1000 %>,
+					data: <%= (Order.first.created_at.to_date..Date.today).map { |date| orders.total_on(date).to_f }.inspect %>
 				},
 				<% end %>
 				{
-					name: "Total Revenue",
+					name: "Credits",
 					pointInterval: <%= 1.day * 1000 %>,
-					pointStart: <%= 3.weeks.ago.to_i * 1000 %>,
-					data:  <%= (3.weeks.ago.to_date..Date.today).map { |date| Order.total_with_credits(date).to_f}.inspect %>
-				}, {
-					name: "Credits Used",
-					pointInterval: <%= 1.day * 1000 %>,
-					pointStart: <%= 3.weeks.ago.to_i * 1000 %>,
-					data:  <%= (3.weeks.ago.to_date..Date.today).map { |date| Order.total_credits_used(date).to_f}.inspect %>
+					pointStart: <%= Order.first.created_at.to_i * 1000 %>,
+					data:  <%= (Order.first.created_at.to_date..Date.today).map { |date| Order.total_credits_used(date).to_f}.inspect %>
  				}]
 			});
 
@@ -68,8 +69,8 @@
 				{
 					name: "# New Customers",
 					pointInterval: <%= 1.day * 1000 %>,
-					pointStart: <%= 3.weeks.ago.to_i * 1000 %>,
-					data:  <%= (3.weeks.ago.to_date..Date.today).map { |date| Customer.total_on(date)}.inspect %>
+					pointStart: <%= Order.first.created_at.to_i * 1000 %>,
+					data:  <%= (Order.first.created_at.to_date..Date.today).map { |date| Customer.total_on(date)}.inspect %>
 				}]
 			});
 
@@ -99,8 +100,8 @@
 				{
 					name: "<%= name %>",
 					pointInterval: <%= 1.day * 1000 %>,
-					pointStart: <%= 3.weeks.ago.to_i * 1000 %>,
-					data: <%= (3.weeks.ago.to_date..Date.today).map { |date| order_items.total_on(date).to_f }.inspect %>
+					pointStart: <%= Order.first.created_at.to_i * 1000 %>,
+					data: <%= (Order.first.created_at.to_date..Date.today).map { |date| order_items.total_on(date).to_f }.inspect %>
 				},
 				<% end %>
 				]
