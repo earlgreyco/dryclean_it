@@ -5,7 +5,7 @@ require 'barby/barcode/code_93'
 class Order < ActiveRecord::Base
   searchkick word_start: [:order_number, :tag_number, :total_price]
 	include HasBarcode
-	has_many :order_items
+	has_many :order_items, dependent: :destroy
 	belongs_to :user
 	belongs_to :customer
   delegate :first_name, :last_name, :img, :phone, :credits, :starch, to: :customer, prefix: true

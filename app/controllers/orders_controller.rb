@@ -33,7 +33,11 @@ class OrdersController < ApplicationController
 	def create
 		@order = Order.new(order_params)
 		@order.user_id = current_user.id
-		@order.order_number = (Order.last.id+1).to_s
+		if Order.last != nil
+			@order.order_number = (Order.last.id+1).to_s
+		else
+			@order.order_number = "0"
+		end
     @order.pickup_date = DateTime.now + current_user.turnaround_time.days
 		@saved = @order.save
 
@@ -44,8 +48,11 @@ class OrdersController < ApplicationController
 
 	def update
 		@order = Order.find(params[:id])
+		@rack_number_changed = false
 		@updated = @order.update_attributes(order_params)
-
+		if @order.rack_number != nil && @order.rack_number != ""
+			@rack_number_changed = true
+		end
 		respond_to do |format|
 			format.json { respond_with_bip(@order) }
 			format.js
