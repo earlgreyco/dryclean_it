@@ -5,6 +5,10 @@ class Customer < ActiveRecord::Base
 	validates_presence_of :first_name, :last_name, :phone
 	scope :recent_ones_first, -> {order('created_at DESC')}
 
+	def self.total_on(date)
+    where("date(created_at) = ?", date).count
+  end
+
 	def deduct_credits(payment_left)
 		if payment_left <= 0
 			self.credits = -payment_left
