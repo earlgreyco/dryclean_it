@@ -12,6 +12,10 @@
 		<label>Name</label><br>
 		<%= best_in_place article, :name %>
 	</div>
+	<div class="article-name article-node">
+		<label>Cleaning Method</label><br>
+		<%= best_in_place article, :cleaning_method, type: :select, collection: [["dryclean", "dryclean"], ["launder", "launder"], ["other", "other"]] %>
+	</div>
 	<div class="article-price article-node">
 		<label>Price</label><br>
 		<%= best_in_place article, :price, label: "Price ($)" %>

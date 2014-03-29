@@ -7,6 +7,7 @@ class OrderItemsController < ApplicationController
 
 	def create
 		@order_item = OrderItem.new(order_item_params)
+		@order_item.cleaning_method = Article.where(name: @order_item.name)[0].cleaning_method
 		@saved = @order_item.save
 		@order = @order_item.order
 		@order.recalculate_total_price
@@ -30,6 +31,6 @@ class OrderItemsController < ApplicationController
 
 	private
 		def order_item_params
-			params.require(:order_item).permit(:order_id, :name, :quantity, :price)
+			params.require(:order_item).permit(:order_id, :name, :quantity, :price, :cleaning_method)
 		end
 end

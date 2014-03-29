@@ -94,12 +94,16 @@
 					}
 				},
 				series: [
+				<% {"Total Articles" => OrderItem, "Dryclean" => OrderItem.dryclean, "Launder" => OrderItem.launder, "Other" => OrderItem.other}.each do |name, order_items| %>
+
 				{
-					name: "# New Articles",
+					name: "<%= name %>",
 					pointInterval: <%= 1.day * 1000 %>,
 					pointStart: <%= 3.weeks.ago.to_i * 1000 %>,
-					data:  <%= (3.weeks.ago.to_date..Date.today).map { |date| OrderItem.total_on(date)}.inspect %>
-				}]
+					data: <%= (3.weeks.ago.to_date..Date.today).map { |date| order_items.total_on(date).to_f }.inspect %>
+				},
+				<% end %>
+				]
 			});
 		});
 	</script>
