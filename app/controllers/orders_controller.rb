@@ -2,14 +2,18 @@ class OrdersController < ApplicationController
 	respond_to :html, :json
 
 	def reports
+		@orders = current_user.orders
+		if params[:query].present?
+			@orders = current_user.orders.search(params[:query])
+		else
+			@orders = @orders
+		end
 	end
 
 	def rack_it
 		@orders = current_user.orders
 		if params[:query].present?
       @orders = @orders.recent_ones_first.search(params[:query], operator: "or", fields: [{order_number: :word_start}], misspellings: {distance: 2})
-    else
-      @orders = @orders.recent_ones_first
     end
 	end
 

@@ -1,7 +1,7 @@
 <% content_for :dashboard_content do %>
 	<div id="rack-container">
-		<%= form_tag '/rack-it', method: :get, style: "margin-bottom: -20px;" do %>
-			<%= text_field_tag :query, params[:query], placeholder: "Search by order number", class: "input rack-search-field" %>
+		<%= form_tag '/rack-it', method: :get, remote: true, style: "margin-bottom: -20px;" do %>
+			<%= text_field_tag :query, params[:query], placeholder: "Search by order number", class: "input rack-search-field", autofocus: true %>
 		<% end %>
 
 		<div style="clear:both;"></div>

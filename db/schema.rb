@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140328055649) do
+ActiveRecord::Schema.define(version: 20140329064442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,15 +60,16 @@ ActiveRecord::Schema.define(version: 20140328055649) do
     t.integer  "customer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "total_price",  default: 0.0
-    t.string   "payment_type", default: "none"
-    t.string   "tag_number",   default: "add tag number"
-    t.boolean  "racked",       default: false
-    t.decimal  "credits_used", default: 0.0
-    t.datetime "pickup_date",  default: '2014-03-28 00:00:00'
-    t.boolean  "picked_up",    default: false
+    t.decimal  "total_price",        default: 0.0
+    t.string   "payment_type",       default: "none"
+    t.string   "tag_number",         default: "add tag number"
+    t.boolean  "racked",             default: false
+    t.decimal  "credits_used",       default: 0.0
+    t.datetime "pickup_date",        default: '2014-03-28 00:00:00'
+    t.boolean  "picked_up",          default: false
     t.string   "order_number"
     t.string   "rack_number"
+    t.decimal  "total_with_credits", default: 0.0
   end
 
   add_index "orders", ["order_number"], name: "index_orders_on_order_number", using: :btree

@@ -50,7 +50,7 @@
 				<td>
 					<%= best_in_place order, :rack_number %>
 				</td>
-				<td class="pickup-<%= order.id %>" style="min-width: 165px;">
+				<td class="pickup-<%=order.id %>" style="min-width: 165px;">
 					<% if order.picked_up == true %>
 						<%= order.pickup_date.in_time_zone("Pacific Time (US & Canada)").strftime("%D") %><br>
 						<%= order.pickup_date.in_time_zone("Pacific Time (US & Canada)").strftime("%I:%M%p") %>

@@ -16,5 +16,7 @@
 //= require best_in_place
 //= require best_in_place.purr
 //= require bootstrap
+//= require highcharts
+//= require highcharts/highcharts-more
 //= require turbolinks
 //= require_tree .

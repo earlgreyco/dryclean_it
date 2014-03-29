@@ -272,6 +272,15 @@ RACK ORDER LIST
 		padding-bottom: 30px;
 		border-bottom: 1px solid #e5e5e5;
 		margin-bottom: 30px;
+
+		.best_in_place{
+			input{
+				outline-width: 0px !important;
+				border: 0px !important;
+				padding: 0px !important;
+				width: 30px;
+			}
+		}
 	}
 }
 

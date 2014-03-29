@@ -11,11 +11,26 @@ class Order < ActiveRecord::Base
   delegate :first_name, :last_name, :img, :phone, :credits, :starch, to: :customer, prefix: true
 	validates_presence_of :customer_id, :user_id, :total_price
   scope :recent_ones_first, -> {order('created_at DESC')}
+  scope :card, -> {where(payment_type: "card")}
+  scope :cash, -> {where(payment_type: "cash")}
+  scope :check, -> {where(payment_type: "check")}
 
   has_barcode :barcode,
     :outputter => :svg,
     :type => :code_93,
     :value => Proc.new { |p| "#{p.number}" }
+
+  def self.total_on(date)
+    where("date(created_at) = ?", date).sum(:total_price)
+  end
+
+  def self.total_with_credits(date)
+    where("date(created_at) = ?", date).sum(:total_with_credits)
+  end
+
+  def self.total_credits_used(date)
+    where("date(created_at) = ?", date).sum(:credits_used)
+  end
 
   def number
     self.id
@@ -26,6 +41,7 @@ class Order < ActiveRecord::Base
     self.order_items.each do |order_item|
       self.total_price = self.total_price + (order_item.quantity * order_item.price)
     end
+    self.total_with_credits = self.total_price + self.credits_used
     self.save!
   end
 
@@ -37,6 +53,7 @@ class Order < ActiveRecord::Base
       self.credits_used = self.total_price-payment_left
       self.total_price = payment_left
     end
+    self.total_with_credits = self.total_price + self.credits_used
     self.save!
   end
 end

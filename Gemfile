@@ -18,6 +18,7 @@ gem 'chunky_png'
 gem "png"
 gem 'RubyInline'
 gem "yard"
+gem "highcharts-rails", "~> 3.0.0"
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
