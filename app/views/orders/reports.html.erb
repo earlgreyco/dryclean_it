@@ -1,6 +1,12 @@
 <% content_for :dashboard_content do %>
 	<script>
 		$(function(){
+			Highcharts.setOptions({
+        global: {
+          useUTC: false
+        }
+	    });
+
 			new Highcharts.Chart({
 				chart: {
 					renderTo: "orders_chart"
