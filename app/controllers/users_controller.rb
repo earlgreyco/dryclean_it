@@ -22,7 +22,8 @@ class UsersController < ApplicationController
   		flash[:success] = "Welcome to Dryclean It!"
   		redirect_to customers_path
   	else
-      render 'new'
+      flash.now[:error] = 'Please fill out all fields correctly.'
+      render 'static_pages/home'
   	end
   end
 
