@@ -11,7 +11,6 @@ gem "searchkick"
 gem 'pg', '0.15.1'
 gem "thin"
 gem 'thumbs_up'
-gem "font-awesome-rails"
 gem 'barby', '~> 0.5.0'
 gem 'has_barcode', '~> 0.2.0'
 gem 'chunky_png'

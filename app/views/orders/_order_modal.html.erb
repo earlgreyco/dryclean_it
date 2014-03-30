@@ -17,18 +17,18 @@
 	<% if order.customer.credits > 0 %>
 		<%= link_to use_store_credits_order_path(order), remote: true do %>
 			<div class="store-credit-button button grey-button">
-				<span class="fontawesome-gift"></span> Use Credits (<%= number_to_currency(order.customer.credits, precision: (order.customer.credits.round == order.customer.credits) ? 0 : 2) %>)
+				<i class="fa fa-gift"></i> Use Credits (<%= number_to_currency(order.customer.credits, precision: (order.customer.credits.round == order.customer.credits) ? 0 : 2) %>)
 			</div>
 		<% end %>
 	<% end %>
 	<%= link_to add_cash_type_order_path(order), remote: true do %>
 		<div class="order-modal-button button orange-button">
-			<span class="fontawesome-money"></span> Pay With Cash
+			<i class="fa fa-money"></i> Pay With Cash
 		</div>
 	<% end %>
 	<%= link_to add_card_type_order_path(order), remote: true do %>
 		<div class="order-modal-button button orange-button">
-			<span class="fontawesome-credit-card"></span> Pay With Card
+			<i class="fa fa-credit-card"></i> Pay With Card
 		</div>
 	<% end %>
 	<%= link_to add_check_type_order_path(order), remote: true do %>
