@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
 	def rack_it
 		@orders = current_user.orders
 		if params[:query].present?
-      @orders = @orders.recent_ones_first.search(params[:query], operator: "or", fields: [{order_number: :word_start}], misspellings: {distance: 2})
+      @order = @orders.recent_ones_first.search(params[:query], operator: "or", fields: [{order_number: :word_start}], misspellings: {distance: 2}).first
     end
 	end
 
