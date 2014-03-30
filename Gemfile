@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
-gem 'rails', '4.0.1'
-gem 'bcrypt-ruby', '3.1.2'
+gem 'rails', '~> 4.0.4'
+gem 'bcrypt-ruby', '~> 3.1.5'
 gem 'faker', '1.2.0'
 gem 'will_paginate', '3.0.4'
 gem 'simple_form'
@@ -60,7 +60,6 @@ gem 'jquery-ui-rails'
 gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'
 gem 'filepicker-rails'
-gem 'friendly_id'
 
 group :doc do
   gem 'sdoc', '0.3.20', require: false
