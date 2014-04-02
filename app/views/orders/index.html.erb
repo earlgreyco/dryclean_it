@@ -10,8 +10,8 @@
 		<table class="order-history-table">
 			<tr>
 				<th>#</th>
-				<th>Articles</th>
 				<th>Customer</th>
+				<th>Articles</th>
 				<th>Total Price</th>
 				<th>Tag #</th>
 				<th>Rack #</th>
@@ -21,6 +21,10 @@
 			<tr>
 				<td>
 					<%= order.order_number %>
+				</td>
+				<td>
+					<%= order.customer_first_name %> 
+					<%= order.customer_last_name %>
 				</td>
 				<td>
 				<ul>
@@ -33,10 +37,6 @@
 						</li>
 					<% end %>
 					</ul>
-				</td>
-				<td>
-					<%= order.customer_first_name %> 
-					<%= order.customer_last_name %>
 				</td>
 				<td>
 					$<%= best_in_place order, :total_price %>
