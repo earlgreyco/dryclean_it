@@ -15,10 +15,6 @@
 
 		<%= simple_form_for Customer.new, remote: true, html: {id: "new-customer-form"} do |f| %>
 			<div class="customer-img">
-				<%= f.filepicker_field :img, button_class: "add-customer-photo", button_text: "Add Photo", services: "COMPUTER", onchange: "$('.add-customer-photo').hide(); $('.img-added').show();" %>
-				<div class="img-added">
-					Image Added
-				</div>
 			</div>
 			<div class="customer-node mini-customer-node customer-first-name">
 				<%= f.input :first_name, required: false %>

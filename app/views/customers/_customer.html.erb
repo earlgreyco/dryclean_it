@@ -1,15 +1,21 @@
 <!-- individual customer in customer list -->
 
 <div class="single-customer">
-	<div class="customer-img" style="cursor: pointer;">
-		<% if customer.img? %>
-			<%= filepicker_image_tag customer.img, w: 110, h: 110, fit: 'crop' %>
-		<% else %>
-			<div class="no-photo">
-				No Photo
-			</div>
+	<% @pickup = false %>
+	<% customer.orders.each do |order| %>
+		<% if order.picked_up == false %>
+			<% @pickup = true %>
 		<% end %>
-	</div>
+	<% end %>
+
+	<% if @pickup %>
+		<div class="customer-img orange-bg">
+		</div>
+	<% else %>
+		<div class="customer-img">
+		</div>
+	<% end %>
+
 	<div class="customer-node mini-customer-node customer-first-name">
 		<label>First Name</label><br>
 		<%= best_in_place customer, :first_name %>
