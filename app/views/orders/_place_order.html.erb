@@ -21,7 +21,9 @@
 	</div>
 
 	<div id="receipt-section">
-		<%= filepicker_image_tag Customer.where(id:@order.customer_id)[0].img, w: 150, h: 150, fit: 'crop' %>
+		<div class="order-number">
+			<%= @order.id.to_s %>
+		</div>
 		<div class="receipt-name">
 			<%= Customer.where(id:@order.customer_id)[0].first_name %> <%= Customer.where(id:@order.customer_id)[0].last_name %>
 		</div>
