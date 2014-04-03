@@ -12,7 +12,7 @@
 		<% order.order_items.each do |order_item| %>
 			<% @total_tags+=order_item.quantity %>
 		<% end %>
-		<%= @total_tags %> articles
+		<%= pluralize(@total_tags, "article") %>
 	</div>
 	<% if order.customer.credits > 0 %>
 		<%= link_to use_store_credits_order_path(order), remote: true do %>
@@ -41,6 +41,9 @@
 		<%= best_in_place order, :tag_number, html_attrs: { default: "hello" } %>
 	</div>
 </div>
+<div class="modal-footer" style="display: none; text-align: center !important; padding: 50px 20px 0px 20px !important;">
+	<%= link_to "Complete Order!", customers_path, class: "button orange-button" %>
+</div>
 
 <script>
 $(document).ready(function(){
@@ -53,6 +56,7 @@ $(document).ready(function(){
 		$(".order-modal-title").hide("slide", {direction:"right"}, 300, function(){
 			jQuery(".best_in_place").best_in_place();
 			$(".order-modal-tag").show("slide", {direction:"left"}, 300);
+			$(".modal-footer").show("slide", {direction: "left"}, 300);
 		});
 	});
 });
