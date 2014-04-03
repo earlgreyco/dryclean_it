@@ -66,6 +66,12 @@ class OrdersController < ApplicationController
 		@order.save!
 	end
 
+	def reverse_pickup
+		@order = Order.find(params[:id])
+		@order.picked_up = false
+		@order.save!
+	end
+
 	def use_store_credits
 		@order = Order.find(params[:id])
 		@customer = @order.customer

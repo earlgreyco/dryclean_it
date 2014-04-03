@@ -1,5 +1,5 @@
 $('.pickup-<%= @order.id %>').html("<div class='estimated-date'><%= DateTime.now.in_time_zone('Pacific Time (US & Canada)').strftime('%D') %></div>");
-$('.pickup-<%= @order.id %>').append("<%= j render partial: 'orders/reverse_pickup', locals: {order: @order} %>");
+$('.pickup-<%= @order.id %>').append("<%= j render partial: 'orders/pickup_button', locals: {order: @order} %>");
 <% @pickup = false %>
 <% @order.customer.orders.each do |order| %>
 	<% if order.picked_up == false %>
@@ -7,6 +7,6 @@ $('.pickup-<%= @order.id %>').append("<%= j render partial: 'orders/reverse_pick
 	<% end %>
 <% end %>
 
-<% if @pickup == false %>
-	$('.customer-<%= @order.customer.id %>').html("<div class='customer-img'></div>");
+<% if @pickup == true %>
+	$('.customer-<%= @order.customer.id %>').html("<div class='customer-img orange-bg'></div>");
 <% end %>

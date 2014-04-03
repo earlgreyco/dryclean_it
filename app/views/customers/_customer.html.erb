@@ -12,7 +12,7 @@
 		<div class="customer-img orange-bg customer-<%= customer.id %>">
 		</div>
 	<% else %>
-		<div class="customer-img">
+		<div class="customer-img customer-<%= customer.id %>">
 		</div>
 	<% end %>
 
@@ -116,16 +116,17 @@
 				<%= order.created_at.in_time_zone("Pacific Time (US & Canada)").strftime("%D") %><br>
 				<%= order.created_at.in_time_zone("Pacific Time (US & Canada)").strftime("%I:%M%p") %>
 			</td>
-			<td class="pickup-<%= order.id %>" style="min-width: 165px;">
+			<td class="pickup-<%=order.id %>" style="min-width: 165px;">
+				<div class="estimated-date">
+					<%= order.pickup_date.in_time_zone("Pacific Time (US & Canada)").strftime("%D") %>
+				</div>
 				<% if order.picked_up == true %>
-					<%= order.pickup_date.in_time_zone("Pacific Time (US & Canada)").strftime("%D") %><br>
-					<%= order.pickup_date.in_time_zone("Pacific Time (US & Canada)").strftime("%I:%M%p") %>
-				<% else %>
-					<div class="estimated-date">
-						<%= order.pickup_date.in_time_zone("Pacific Time (US & Canada)").strftime("%D") %>
+					<div class="pickup-button" style="min-width:125px !important;">
+						<%= link_to "Undo", reverse_pickup_order_path(order), class: "deactivated-button button pickup-button-action", remote: true %>
 					</div>
-					<div class="pickup-button">
-						<%= link_to "Picked Up", save_pickup_date_order_path(order), class: "button orange-button pickup-button-action", remote: true %>
+				<% else %>
+					<div class="pickup-button" style="min-width: 125px !important;">
+						<%= link_to "Picked Up", save_pickup_date_order_path(order), class: "orange-button button pickup-button-action", remote: true %>
 					</div>
 				<% end %>
 			</td>

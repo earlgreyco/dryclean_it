@@ -51,13 +51,14 @@
 					<%= best_in_place order, :rack_number %>
 				</td>
 				<td class="pickup-<%=order.id %>" style="min-width: 165px;">
+					<div class="estimated-date">
+						<%= order.pickup_date.in_time_zone("Pacific Time (US & Canada)").strftime("%D") %>
+					</div>
 					<% if order.picked_up == true %>
-						<%= order.pickup_date.in_time_zone("Pacific Time (US & Canada)").strftime("%D") %><br>
-						<%= order.pickup_date.in_time_zone("Pacific Time (US & Canada)").strftime("%I:%M%p") %>
-					<% else %>
-						<div class="estimated-date">
-							<%= order.pickup_date.in_time_zone("Pacific Time (US & Canada)").strftime("%D") %>
+						<div class="pickup-button" style="min-width:125px !important;">
+							<%= link_to "Undo", reverse_pickup_order_path(order), class: "deactivated-button button pickup-button-action", remote: true %>
 						</div>
+					<% else %>
 						<div class="pickup-button" style="min-width: 125px !important;">
 							<%= link_to "Picked Up", save_pickup_date_order_path(order), class: "orange-button button pickup-button-action", remote: true %>
 						</div>
