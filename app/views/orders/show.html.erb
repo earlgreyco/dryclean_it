@@ -1,0 +1,28 @@
+<% content_for :dashboard_content do %>
+	<div id="receipt-section" style="padding-bottom: 0px !important; min-height: initial !important;">
+		<div class="order-number">
+			<%= @order.created_at.in_time_zone("Pacific Time (US & Canada)").strftime("%a") %>
+		</div>
+		<div class="receipt-name">
+			<%= Customer.where(id:@order.customer_id)[0].first_name %> <%= Customer.where(id:@order.customer_id)[0].last_name %>
+		</div>
+		<%= @order.barcode_data.html_safe %>
+		<div class="receipt-time">
+		</div>
+
+		<div id="new-order-items" style="padding-bottom: 30px; border-bottom: 1px solid #e5e5e5;">
+			<% @order.order_items.each do |order_item| %>
+				<div class="order-item">
+					<%= best_in_place order_item, :quantity %> 
+					<%= order_item.name %> 
+					x 
+					<%= number_to_currency(order_item.price, precision: (order_item.price.round == order_item.price) ? 0 : 2) %>
+				</div>
+			<% end %>
+		</div>
+		<div class="business-info">
+			<%= current_user.address %><br>
+			<%= current_user.phone %>
+		</div>
+	</div>
+<% end %>

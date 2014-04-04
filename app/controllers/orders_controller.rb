@@ -1,6 +1,10 @@
 class OrdersController < ApplicationController
 	respond_to :html, :json
 
+	def show
+		@order = Order.find(params[:id])
+	end
+
 	def reports
 		@orders = current_user.orders
 		if params[:query].present?
