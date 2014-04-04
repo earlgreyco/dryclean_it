@@ -66,4 +66,14 @@ $(document).ready(function(){
 		$(this).parent().parent().children(".estimated-date").hide();
 		$(this).parent().hide();
 	});
+
+	/* click on best_in_place if user clicks surrounding node */
+
+	$('body').on('click', '.customer-node', function(){
+		$(this).children(".best_in_place").click();
+	});
+
+	$('body').on('click', '.article-node', function(){
+		$(this).children(".best_in_place").click();
+	});
 });
