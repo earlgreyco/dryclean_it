@@ -72,7 +72,7 @@
 <%= simple_form_for Order.new, remote: true, html: {id:"new-order-form", class: "order-form"} do |f| %>
 	<%= f.input :customer_id, input_html: {value: customer.id, class: "hidden"}, label: false %>
 	<%= f.submit "Place Order", class: "orange-button button place-order-button", style: "border: 0px !important;" %>
-	<%= link_to "Order History", "#!", class: "grey-button button order-history-button", remote: true, style: "padding-top: 11px !important; padding-bottom: 11px !important;" %>
+	<%= link_to "Order History", "#!", class: "grey-button button order-history-button", remote: true %>
 <% end %>
 
 <!-- order history -->
