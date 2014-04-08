@@ -1,91 +1,281 @@
-/**********
-
-HOME PAGE
-
-**********/
-
-.clothes_hanging_bg{
-	background: url("clothes_hanging.jpg");
-	background-size: 100%;
-	background-repeat: no-repeat;
-}
-
-#signup-wrapper{
-	position: relative;
-}
-
-#signup-form, #signin-form{
-	position: absolute;
-	top: 80px;
+body{
+	margin: 0 auto;
+	height: 100%;
 	width: 100%;
 }
 
-.form-field{
-	color: #444444;
-	font-size: 11px;
-	letter-spacing: 1px;
-	font-weight: 700;
-	text-transform: uppercase;
-	background: white;
-	border-bottom: 1px solid #e5e5e5;
-	padding: 20px;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	width: 400px;
-	margin-left: auto;
-	margin-right: auto;
+/* navbar */
 
-	input{
-		border: 0px;
-	}
 
-	input{
-		width: 100%;
-		background: none;
-		font-weight: normal;
-		&:focus{
-			outline-width: 0px;
+.navbar-nav{
+
+	li{
+		a{
+			padding-top: 30px !important;
+			padding-bottom: 30px !important;
 		}
 	}
-}
 
-#signin-form{
-	display: none;
-}
+	li:first-child{
+		a{
+			padding-top: 33px !important;
+			border-left: 1px solid #eeeff0 !important;
 
-.signup-footer{
-	width: 400px;
-	margin-left: auto;
-	margin-right: auto;
-	background: #f8f8f8;
-	padding: 20px;
-	box-sizing: border-box;
-	-webkit-border-radius: 0 0 2px 2px;
-	-moz-border-radius: 0 0 2px 2px;
-	border-radius: 0 0 2px 2px;
-
-	.login, .login-link{
-		display: inline;
-		font-size: 13px;
-		font-weight: 600;
-		float: left;
-		padding-top: 10px;
+			&:hover{
+				background: #6cb768 !important;
+			}
+		}
 	}
 
-	.login{
-		color: rgb(158, 158, 158);
-		padding-right: 2px;
+	li:nth-child(2){
+		a:hover{
+			background: #f0a84f !important;
+		}
 	}
 
-	.login-link{
-		color: rgb(82, 150, 185);
+	li:nth-child(3){
+		a{
+			color: #6cb768 !important;
+			padding-top: 33px !important;
+
+			&:hover{
+				color: white !important;
+				background: #28afd7 !important;
+			}
+		}
+	}
+
+	a{
+		border-radius: 0px !important;
+		border-right: 1px solid #eeeff0 !important;
+		border-top: 0px !important;
+		border-bottom: 0px !important;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		text-shadow: none;
+		padding: 30px !important;
+		color: #afafaf !important;
+		text-decoration: none;
+		font-size: 12px;
+		font-weight: bold;
+		margin: 0px !important;
+		-webkit-transition: all 0.2s;
+		-moz-transition: all 0.2s;
+		-o-transition: all 0.2s;
+		transition: all 0.2s;
+
 		&:hover{
-			text-decoration: none;
+			color: white !important;
+			-webkit-transition: all 0.2s;
+			-moz-transition: all 0.2s;
+			-o-transition: all 0.2s;
+			transition: all 0.2s;
 		}
 	}
+}
 
-	input{
-		float: right;
+.navbar{
+	z-index: 100;
+	background: rgba(255,255,255,0.95) !important;
+
+	.navbar-brand{
+		font-size: 25px;
+		font-family: 'Pacifico', cursive !important;
+		padding-top: 27px;
+		color: #6cb768 !important;
 	}
+}
+
+.nav-tabs{
+	border: 0px !important;
+}
+
+.active a{
+	background: rgba(248, 248, 248, 0.5) !important;
+	border-top: 0px !important;
+	border-bottom: 0px !important;
+	border-color: #eeeff0 !important;
+}
+
+.plus{
+	font-size: 18px;
+}
+
+/* easy explanation */
+
+.easy-explanation{
+	background: url("clothes_hanging.jpg");
+	height: 100%;
+	width: 100%;
+	position: absolute;
+}
+
+.explanation-text{
+	color: white;
+	top: 30%;
+	position: absolute;
+	width: 100%;
+	text-align: center;
+
+	.scroll-homepage{
+		a{
+			-webkit-box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+			-moz-box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+			box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+			color: white;
+			border: 2px solid rgba(255,255,255,0.5);
+			padding: 20px 40px;
+			border-radius: 4px;
+			letter-spacing: 0.2em;
+			text-transform: uppercase;
+			font-weight: bold;
+			-webkit-transition: all 0.2s;
+			-moz-transition: all 0.2s;
+			-o-transition: all 0.2s;
+			transition: all 0.2s;
+
+			&:hover{
+				text-decoration: none;
+				border: 2px solid white;
+				-webkit-transition: all 0.2s;
+				-moz-transition: all 0.2s;
+				-o-transition: all 0.2s;
+				transition: all 0.2s;
+			}
+		}
+	}
+}
+
+.header-1{
+	font-size: 60px;
+	font-weight: 500;
+	margin-bottom: 10px;
+}
+
+.header-2{
+	font-size: 25px;
+	font-weight: 400;
+	margin-bottom: 55px;
+}
+
+/* drycleaning */
+
+#drycleaning{
+	background: url("forest.jpg");
+	background-size: 100%;
+	height: 100%;
+	width: 100%;
+	top: 100%;
+	position: absolute;
+}
+
+.drycleaning-text{
+	margin-top: 150px;
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	background: rgba(255,255,255,0.9);
+	padding: 60px 50px 85px 50px;
+}
+
+.drycleaning-h1{
+	color: rgba(0,0,0,0.4);
+	border-bottom: 2px solid rgba(0,0,0,0.1);
+	font-weight: bold;
+	font-size: 13px;
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+	padding-bottom: 5px;
+}
+
+.drycleaning-h2{
+	font-weight: 400;
+	color: #45494d;
+	letter-spacing: -0.04em;
+	margin-top: 35px;
+	margin-bottom: 30px;
+	font-size: 1.5em;
+}
+
+.drycleaning-p{
+	line-height: 150%;
+	color: rgb(98, 98, 99);
+	font-size: 15px;
+	margin-bottom: 60px;
+}
+
+.drycleaning-button{
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+	background: #6cb768;
+	border-radius: 4px;
+	padding: 20px 60px;
+	color: white;
+	font-weight: bold;
+	text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+	cursor: pointer;
+
+	&:hover{
+		background: #7abe77;
+	}
+}
+
+.close:focus{
+	outline-width: 0px;
+}
+
+.article-table{
+	width: 100% !important;
+
+	td{
+		width: 50% !important;
+	}
+
+	img{
+		width: 55%;
+	}
+}
+
+.dryclean-name{
+	color: rgba(0, 0, 0, 0.4);
+	border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+	font-weight: bold;
+	font-size: 13px;
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+	padding-top: 10px;
+	padding-bottom: 7px;
+}
+
+.dryclean-price{
+	padding-top: 10px;
+	padding-bottom: 25px;
+	font-weight: 400;
+	color: #45494d;
+	letter-spacing: -0.04em;
+	font-size: 1.5em;
+}
+
+/* wash and fold */
+
+#wash-and-fold{
+	background: url("laundry.jpg");
+	background-size: 100%;
+	height: 100%;
+	width: 100%;
+	top: 100%;
+	position: absolute;
+	padding: 120px 0px;
+}
+
+.contact-us{
+	background: #f0a84f;
+	color: white;
+	padding-top: 25px;
+	padding-bottom: 25px;
+	font-size: 18px;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	width: 100%;
 }

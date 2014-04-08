@@ -2,12 +2,16 @@ class CustomersController < ApplicationController
 	respond_to :html, :json
 
 	def index
-		@customers = current_user.customers
-		if params[:query].present?
-      @customers = @customers.recent_ones_first.search(params[:query], operator: "or", fields: [{last_name: :word_start}, {phone: :word_start}, {email: :word_start}, {first_name: :word_start}], misspellings: {distance: 2} )
-    else
-      @customers = @customers.recent_ones_first
-    end
+		if signed_in?
+			@customers = current_user.customers
+			if params[:query].present?
+	      @customers = @customers.recent_ones_first.search(params[:query], operator: "or", fields: [{last_name: :word_start}, {phone: :word_start}, {email: :word_start}, {first_name: :word_start}], misspellings: {distance: 2} )
+	    else
+	      @customers = @customers.recent_ones_first
+	    end
+	  else
+	  	redirect_to '/home'
+	  end
 	end
 
 	def new

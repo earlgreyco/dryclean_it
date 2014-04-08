@@ -1,6 +1,6 @@
 Dryclean::Application.routes.draw do
   #Static Pages
-  root 'static_pages#home'
+  match '/home', to: 'static_pages#home', via: 'get'
 
   #Users
   resources :users
@@ -16,6 +16,7 @@ Dryclean::Application.routes.draw do
 
   #Customers
   resources :customers
+  root 'customers#index'
 
   #Orders
   resources :orders do

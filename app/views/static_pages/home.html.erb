@@ -1,48 +1,210 @@
-<div id="signup-wrapper">
+<div class="navbar navbar-fixed-top navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "The Royal Cleaners", root_path, class: "navbar-brand" %>
+    </div>
+    <div class="navbar-collapse collapse scroll-homepage" style="height: 1px;">
+      <ul class="nav navbar-nav navbar-right nav-tabs">
+        <li><%= link_to "Drycleaning", "#drycleaning" %></li>
+        <li><%= link_to raw("Wash <span class='plus'>+</span> Fold"), "#wash-and-fold" %></li>
+        <li><%= link_to "Call us at 408-730-8432!", "#!", style: "cursor: default;" %></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container-fluid -->
+</div>
 
-	<!-- signup form -->
-
-	<div id="signup-form">
-		<%= simple_form_for User.new do |f| %>
-			<div class="form-field">
-				<%= f.input :name, label: "Your Business Name", required: false %>
-			</div>
-			<div class="form-field">
-				<%= f.input :email, label: "Email Address", required: false %>
-			</div>
-			<div class="form-field">
-				<%= f.input :password, required: false %>
-			</div>
-			<div class="signup-footer">
-				<div class="login">
-					Already signed up?
-				</div>
-				<%= link_to "Sign in.", "#!", class: "login-link", id: "signin-link" %>
-				<%= f.submit "Get Started", class: "button orange-button" %>
-				<div style="clear:both;"></div>
-			</div>
-		<% end %>
+<div class="easy-explanation">
+	<div class="explanation-text">
+		<div class="header-1">
+			Cleaning clothes the right way.
+		</div>
+		<div class="header-2">
+			We pick up your clothes, clean it flawlessly, and drop it off at your doorstep. 
+			<br>
+			Kind of like a magic fairy.
+		</div>
+		<div class="scroll-homepage">
+			<%= link_to "Learn More", "#drycleaning" %>
+		</div>
 	</div>
+</div>
 
+<div id="drycleaning">
+	<div class="drycleaning-text">
+		<span class="drycleaning-h1">
+			Eco-Friendly Drycleaning
+		</span>
+		<div class="drycleaning-h2">
+			The next generation of drycleaning technology.
+		</div>
+		<div class="drycleaning-p">
+			Drycleaning your clothes doesn't have to destroy the environment. At the Royal Cleaners, we use eco-friendly solvents that leave your clothes smelling even fresher than before.
+		</div>
+		<span class="drycleaning-button" data-toggle="modal" data-target="#drycleaning-prices">
+			Pricing
+		</span>
 
-	<!-- sign in form -->
+		<div class="modal fade" id="drycleaning-prices" tabindex="-1" role="dialog" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-body">
+		      	<table class="article-table">
+		      		<tr>
+				        <td>
+				        	<%= image_tag "launder_shirt.jpg" %>
+				        </td>
+				        <td>
+				        	<%= image_tag "dryclean_shirt.jpg" %>
+				        </td>
+				      </tr>
+				      <tr>
+				      	<td>
+				      		<span class="dryclean-name">
+				        		Laundered Shirt
+				        	</span>
+				        	<div class="dryclean-price">
+				        		$2
+				        	</div>
+				      	</td>
+				      	<td>
+				      		<span class="dryclean-name">
+				        		Drycleaned Shirt
+				        	</span>
+				        	<div class="dryclean-price">
+				        		$5
+				        	</div>
+				      	</td>
+				      </tr>
+				      <tr>
+				        <td>
+				        	<%= image_tag "pants.jpg" %>
+				        </td>
+				        <td>
+				        	<%= image_tag "jacket.jpg" %>
+				        </td>
+				      </tr>
+				      <tr>
+				      	<td>
+				      		<span class="dryclean-name">
+				        		Pants
+				        	</span>
+				        	<div class="dryclean-price">
+				        		$5
+				        	</div>
+				      	</td>
+				      	<td>
+				      		<span class="dryclean-name">
+				        		Jacket
+				        	</span>
+				        	<div class="dryclean-price">
+				        		$7
+				        	</div>
+				      	</td>
+				      </tr>
+				      <tr>
+				        <td>
+				        	<%= image_tag "sweater.jpg" %>
+				        </td>
+				        <td>
+				        	<%= image_tag "skirt.jpg" %>
+				        </td>
+				      </tr>
+				      <tr>
+				      	<td>
+				      		<span class="dryclean-name">
+				        		Sweater
+				        	</span>
+				        	<div class="dryclean-price">
+				        		$5
+				        	</div>
+				      	</td>
+				      	<td>
+				      		<span class="dryclean-name">
+				        		Skirt
+				        	</span>
+				        	<div class="dryclean-price">
+				        		$5
+				        	</div>
+				      	</td>
+				      </tr>
+				      <tr>
+				        <td>
+				        	<%= image_tag "dress.jpg" %>
+				        </td>
+				        <td>
+				        	<%= image_tag "scarf.jpg" %>
+				        </td>
+				      </tr>
+				      <tr>
+				      	<td>
+				      		<span class="dryclean-name">
+				        		Dress
+				        	</span>
+				        	<div class="dryclean-price">
+				        		$8
+				        	</div>
+				      	</td>
+				      	<td>
+				      		<span class="dryclean-name">
+				        		Scarf
+				        	</span>
+				        	<div class="dryclean-price">
+				        		$5
+				        	</div>
+				      	</td>
+				      </tr>
+				      <tr>
+				        <td>
+				        	<%= image_tag "tie.jpg" %>
+				        </td>
+				        <td>
+				        	<%= image_tag "heavy_jacket.jpg" %>
+				        </td>
+		        	</tr>
+		        	<tr>
+		        		<td>
+		        			<span class="dryclean-name">
+				        		Tie
+				        	</span>
+				        	<div class="dryclean-price">
+				        		$5
+				        	</div>
+		        		</td>
+		        		<td>
+		        			<span class="dryclean-name">
+				        		Heavy Jacket
+				        	</div>
+				        	<div class="dryclean-price">
+				        		$12
+				        	</div>
+		        		<td>
+		        	</tr>
+		      </table>
+		    </div>
+		  </div>
+		</div>
+	</div>
+</div>
 
-	<div id="signin-form">
-		<%= simple_form_for :session, url: sessions_path do |f| %>
-			<div class="form-field">
-				<%= f.input :email, required:false %>
-			</div>
-			<div class="form-field">
-				<%= f.input :password, required:false, class: "password" %>
-			</div>
-			<div class="signup-footer">
-				<div class="login">
-					Don't have an account?
-				</div>
-				<%= link_to "Sign up.", "#!", class: "login-link", id: "signup-link" %>
-				<%= f.submit "Get Started", class: "button orange-button" %>
-				<div style="clear:both;"></div>
-			</div>
-		<% end %>
+<div id="wash-and-fold">
+	<div class="drycleaning-text" style="margin-top: 50px;">
+		<span class="drycleaning-h1">
+			Wash and Fold
+		</span>
+		<div class="drycleaning-h2">
+			Just say no to dirty laundry.
+		</div>
+		<div class="drycleaning-p">
+			At $2 per pound, why would you waste your day washing and folding clothes? Let us take away your big mountain of dirty laundry and we'll take care of the rest.
+		</div>
+		<div class="contact-us">
+			$2 Per Pound
+		</div>
 	</div>
 </div>

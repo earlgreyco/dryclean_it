@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   		redirect_to customers_path
   	else
       flash.now[:error] = 'Please fill out all fields correctly.'
-      render 'static_pages/home'
+      render 'new'
   	end
   end
 

@@ -1,26 +1,46 @@
-<% provide(:title, 'Sign up') %>
-
 <div id="signup-wrapper">
-	<div class="signup" id="signup-form">
+
+	<!-- signup form -->
+
+	<div id="signup-form">
 		<%= simple_form_for User.new do |f| %>
-			<div class="signup-section name-section">
-				<label>Your Name</label>
-				<%= f.input :name, label: false, class: "name" %>
+			<div class="form-field">
+				<%= f.input :name, label: "Your Business Name", required: false %>
 			</div>
-			<div class="signup-section">
-				<label>Email Address</label>
-				<%= f.input :email, label: false, class: "email" %>
+			<div class="form-field">
+				<%= f.input :email, label: "Email Address", required: false %>
 			</div>
-			<div class="signup-section">
-				<label>Password</label>
-				<%= f.input :password, label: false, class: "password" %>
+			<div class="form-field">
+				<%= f.input :password, required: false %>
 			</div>
 			<div class="signup-footer">
 				<div class="login">
-					Already signed up? 
+					Already signed up?
 				</div>
-				<%= link_to "Sign in.", signin_path, class: "login-link" %>
-				<%= f.submit "Get Started" %>
+				<%= link_to "Sign in.", "#!", class: "login-link", id: "signin-link" %>
+				<%= f.submit "Get Started", class: "button orange-button" %>
+				<div style="clear:both;"></div>
+			</div>
+		<% end %>
+	</div>
+
+
+	<!-- sign in form -->
+
+	<div id="signin-form">
+		<%= simple_form_for :session, url: sessions_path do |f| %>
+			<div class="form-field">
+				<%= f.input :email, required:false %>
+			</div>
+			<div class="form-field">
+				<%= f.input :password, required:false, class: "password" %>
+			</div>
+			<div class="signup-footer">
+				<div class="login">
+					Don't have an account?
+				</div>
+				<%= link_to "Sign up.", "#!", class: "login-link", id: "signup-link" %>
+				<%= f.submit "Get Started", class: "button orange-button" %>
 				<div style="clear:both;"></div>
 			</div>
 		<% end %>

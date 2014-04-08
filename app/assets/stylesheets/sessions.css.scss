@@ -1,3 +1,95 @@
+/**********
+
+SIGN IN PAGE
+
+**********/
+
+.clothes_hanging_bg{
+	background: url("clothes_hanging.jpg");
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+#signup-wrapper{
+	position: relative;
+}
+
+#signup-form, #signin-form{
+	position: absolute;
+	top: 80px;
+	width: 100%;
+}
+
+.form-field{
+	color: #444444;
+	font-size: 11px;
+	letter-spacing: 1px;
+	font-weight: 700;
+	text-transform: uppercase;
+	background: white;
+	border-bottom: 1px solid #e5e5e5;
+	padding: 20px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+
+	input{
+		border: 0px;
+	}
+
+	input{
+		width: 100%;
+		background: none;
+		font-weight: normal;
+		&:focus{
+			outline-width: 0px;
+		}
+	}
+}
+
+#signin-form{
+	display: none;
+}
+
+.signup-footer{
+	width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+	background: #f8f8f8;
+	padding: 20px;
+	box-sizing: border-box;
+	-webkit-border-radius: 0 0 2px 2px;
+	-moz-border-radius: 0 0 2px 2px;
+	border-radius: 0 0 2px 2px;
+
+	.login, .login-link{
+		display: inline;
+		font-size: 13px;
+		font-weight: 600;
+		float: left;
+		padding-top: 10px;
+	}
+
+	.login{
+		color: rgb(158, 158, 158);
+		padding-right: 2px;
+	}
+
+	.login-link{
+		color: rgb(82, 150, 185);
+		&:hover{
+			text-decoration: none;
+		}
+	}
+
+	input{
+		float: right;
+	}
+}
+
 .signin-page-form{
 	margin-top: 100px;
 }
