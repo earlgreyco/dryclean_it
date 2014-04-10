@@ -1,4 +1,4 @@
-<% @new_pickup_date = DateTime.now + 2.days %>
+<% @new_pickup_date = DateTime.now + current_user.turnaround_time.days %>
 $('.pickup-<%= @order.id %>').html("<div class='estimated-date'><%= @new_pickup_date.in_time_zone('Pacific Time (US & Canada)').strftime('%D') %></div>");
 $('.pickup-<%= @order.id %>').append("<%= j render partial: 'orders/pickup_button', locals: {order: @order} %>");
 <% @pickup = false %>

@@ -37,12 +37,17 @@ class OrdersController < ApplicationController
 	def create
 		@order = Order.new(order_params)
 		@order.user_id = current_user.id
+
 		if Order.last != nil
 			@order.order_number = (Order.last.id+1).to_s
 		else
 			@order.order_number = "0"
 		end
+
     @order.pickup_date = DateTime.now + current_user.turnaround_time.days
+    if @order.pickup_date.strftime("%a") == "Sun"
+    	@order.pickup_date = @order.pickup_date + 1.day
+    end
 		@saved = @order.save
 
 		respond_to do |format|
@@ -66,13 +71,19 @@ class OrdersController < ApplicationController
 	def save_pickup_date
 		@order = Order.find(params[:id])
 		@order.pickup_date = DateTime.now
+		if @order.pickup_date.strftime("%a") == "Sun"
+    	@order.pickup_date = @order.pickup_date + 1.day
+    end
 		@order.picked_up = true
 		@order.save!
 	end
 
 	def reverse_pickup
 		@order = Order.find(params[:id])
-		@order.pickup_date = DateTime.now + 2.days
+		@order.pickup_date = DateTime.now + current_user.turnaround_time.days
+		if @order.pickup_date.strftime("%a") == "Sun"
+    	@order.pickup_date = @order.pickup_date + 1.day
+    end
 		@order.picked_up = false
 		@order.save!
 	end
