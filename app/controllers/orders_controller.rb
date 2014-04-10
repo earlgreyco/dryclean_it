@@ -72,6 +72,7 @@ class OrdersController < ApplicationController
 
 	def reverse_pickup
 		@order = Order.find(params[:id])
+		@order.pickup_date = DateTime.now + 2.days
 		@order.picked_up = false
 		@order.save!
 	end
