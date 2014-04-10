@@ -71,9 +71,6 @@ class OrdersController < ApplicationController
 	def save_pickup_date
 		@order = Order.find(params[:id])
 		@order.pickup_date = DateTime.now
-		if @order.pickup_date.strftime("%a") == "Sun"
-    	@order.pickup_date = @order.pickup_date + 1.day
-    end
 		@order.picked_up = true
 		@order.save!
 	end
