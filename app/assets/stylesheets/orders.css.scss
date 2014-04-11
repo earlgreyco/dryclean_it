@@ -339,11 +339,11 @@ RACK IT
 
 /**********
 
-CUSTOMER RECEIPT
+CUSTOMER RECEIPT + BUSINESS RECEIPT
 
 **********/
 
-.customer-receipt{
+.customer-receipt, .business-receipt{
 	border: 1px solid #e5e5e5;
 	width: 350px;
 	text-align: center;
@@ -400,7 +400,19 @@ CUSTOMER RECEIPT
 		padding: 15px;
 
 		.customer-name, .order-total-price{
-			color: rgb(110, 110, 110);
+			color: #6e6e6e;
+			font-weight: bold;
 		}
+	}
+}
+
+.tag-number-section{
+	border-bottom: 1px solid #e5e5e5;
+	background: #f8f8f8;
+	padding: 15px;
+
+	.tag-number, .tag-label{
+		color: #6e6e6e;
+		font-weight: bold;
 	}
 }
