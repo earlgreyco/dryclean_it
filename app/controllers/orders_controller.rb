@@ -9,10 +9,6 @@ class OrdersController < ApplicationController
 		@order = Order.find(params[:id])
 	end
 
-	def show
-		@order = Order.find(params[:id])
-	end
-
 	def reports
 		@orders = current_user.orders
 		if params[:query].present?
