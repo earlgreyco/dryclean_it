@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
 		if params[:query].present?
       @orders = @orders.recent_ones_first.search(params[:query], operator: "or", fields: [{order_number: :word_start}, {tag_number: :word_start}, {total_price: :word_start}], misspellings: {distance: 2})
     else
-      @orders = @orders.recent_ones_first
+      @orders = @orders.recent_ones_first.paginate(page: params[:page], per_page: 20)
     end
 	end
 
