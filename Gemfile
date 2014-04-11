@@ -19,6 +19,7 @@ gem 'RubyInline'
 gem "yard"
 gem "highcharts-rails", "~> 3.0.0"
 gem 'dalli'
+gem 'rack-mini-profiler'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'

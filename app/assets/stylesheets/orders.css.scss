@@ -420,3 +420,12 @@ CUSTOMER RECEIPT + BUSINESS RECEIPT
 		font-weight: bold;
 	}
 }
+
+.order-barcode{
+	margin-top: 25px;
+	height: 40px;
+	overflow: hidden;
+	svg{
+		height: 100px;
+	}
+}

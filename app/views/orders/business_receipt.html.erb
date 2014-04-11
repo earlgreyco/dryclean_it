@@ -18,6 +18,9 @@
 		<div class="order-number">
 			<%= @order.id.to_s %>
 		</div>
+		<div class="order-barcode">
+			<%= @order.barcode_data.html_safe %>
+		</div>
 		<div class="customer-name">
 			<%= @order.customer.first_name %> <%= @order.customer.last_name %>
 		</div>
