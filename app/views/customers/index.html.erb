@@ -37,8 +37,10 @@
 
 		<!-- lists all pre-existing customers -->
 
-		<%= render @customers %>
+		<% if @customers %>
+			<%= render @customers %>
 
-		<%= will_paginate @customers %>
+			<%= will_paginate @customers %>
+		<% end %>
 	</div>
 <% end %>

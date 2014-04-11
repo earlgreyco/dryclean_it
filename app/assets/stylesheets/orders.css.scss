@@ -382,11 +382,13 @@ CUSTOMER RECEIPT + BUSINESS RECEIPT
 
 		.order-number{
 			margin-top: 60px;
+			color: black;
 		}
 
 		.customer-name{
 			margin: 30px 0px 25px 0px;
 			font-weight: bold;
+			color: black;
 		}
 
 		.order-items{
@@ -394,6 +396,7 @@ CUSTOMER RECEIPT + BUSINESS RECEIPT
 			.single-order-item{
 				padding-top: 5px;
 				padding-bottom: 5px;
+				color: black;
 			}
 		}
 	}

@@ -7,6 +7,7 @@
 			<%= text_field_tag :query, params[:query], placeholder: "Search by order number, tag number or total price", class: "input customer-search-field" %>
 		<% end %>
 
+		<% if @orders.any? %>
 		<table class="order-history-table">
 			<tr>
 				<th>#</th>
@@ -69,5 +70,6 @@
 		</table>
 
 		<%= will_paginate @orders %>
+		<% end %>
 	</div>
 <% end %>
