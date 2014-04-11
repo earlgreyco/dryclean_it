@@ -334,3 +334,73 @@ RACK IT
 	width: 400px;
 	margin-bottom: -5px;
 }
+
+
+
+/**********
+
+CUSTOMER RECEIPT
+
+**********/
+
+.customer-receipt{
+	border: 1px solid #e5e5e5;
+	width: 350px;
+	text-align: center;
+
+	.business-details{
+		border-bottom: 1px solid #e5e5e5;
+		background: #f8f8f8;
+		padding: 30px 15px;
+
+		.current-user-name, .current-user-address, .current-user-phone{
+			color: rgb(110, 110, 110);
+		}
+
+		.current-user-name{
+			border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+			font-weight: bold;
+			font-size: 13px;
+			text-transform: uppercase;
+			letter-spacing: 0.2em;
+			padding-bottom: 5px;
+		}
+
+		.current-user-address{
+			padding-top: 15px;
+		}
+
+		.current-user-phone{
+
+		}
+	}
+
+	.order-details{
+		.order-number{
+			margin-top: 40px;
+		}
+
+		.customer-name{
+			margin: 30px 0px 25px 0px;
+			font-weight: bold;
+		}
+
+		.order-items{
+			padding: 0px 0px 35px 0px;
+			.single-order-item{
+				padding-top: 5px;
+				padding-bottom: 5px;
+			}
+		}
+	}
+
+	.pickup-details{
+		border-top: 1px solid #e5e5e5;
+		background: #f8f8f8;
+		padding: 15px;
+
+		.customer-name, .order-total-price{
+			color: rgb(110, 110, 110);
+		}
+	}
+}
