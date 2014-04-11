@@ -3,10 +3,12 @@ class OrdersController < ApplicationController
 
 	def customer_receipt
 		@order = Order.find(params[:id])
+		@dashboard = false
 	end
 
 	def business_receipt
 		@order = Order.find(params[:id])
+		@dashboard = false
 	end
 
 	def reports

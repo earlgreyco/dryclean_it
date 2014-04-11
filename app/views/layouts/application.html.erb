@@ -17,11 +17,10 @@
     <%= content_tag(:div, value, class: "alert alert-#{key}") %>
   <% end %>
   
-  <%= yield %>
-
+  <%= yield %> 
   <!-- load dashboard once user signs in -->
 
-  <% if signed_in? %>
+  <% if signed_in? && @dashboard != false %>
     <%= render 'layouts/dashboard' %>
   <% end %>
 </body>

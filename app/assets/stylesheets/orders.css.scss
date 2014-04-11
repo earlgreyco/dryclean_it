@@ -344,6 +344,7 @@ CUSTOMER RECEIPT + BUSINESS RECEIPT
 **********/
 
 .customer-receipt, .business-receipt{
+	background: white;
 	border: 1px solid #e5e5e5;
 	width: 350px;
 	text-align: center;
@@ -376,6 +377,7 @@ CUSTOMER RECEIPT + BUSINESS RECEIPT
 	}
 
 	.order-details{
+
 		.order-number{
 			margin-top: 60px;
 		}
