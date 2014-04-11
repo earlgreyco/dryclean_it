@@ -199,3 +199,20 @@ body{
 	padding: 20px;
 	overflow-y: scroll;
 }
+
+
+/* pagination */
+
+.pagination{
+	margin: 5px 0px 0px 0px;
+
+	a{
+		color: rgb(110, 110, 110) !important;
+		font-weight: bold;
+	}
+
+	.active a{
+		background-color: rgb(238, 238, 238) !important;
+		border: 1px solid #dddddd !important;
+	}
+}

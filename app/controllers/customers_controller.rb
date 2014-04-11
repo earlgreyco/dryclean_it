@@ -1,13 +1,21 @@
 class CustomersController < ApplicationController
 	respond_to :html, :json
 
+	def load_order_history
+		@customer = Customer.find(params[:id])
+
+		respond_to do |format|
+			format.js
+		end
+	end
+
 	def index
 		if signed_in?
 			@customers = current_user.customers
 			if params[:query].present?
 	      @customers = @customers.recent_ones_first.search(params[:query], operator: "or", fields: [{last_name: :word_start}, {phone: :word_start}, {email: :word_start}, {first_name: :word_start}], misspellings: {distance: 2} )
 	    else
-	      @customers = @customers.recent_ones_first
+	      @customers = @customers.recent_ones_first.paginate(page: params[:page], per_page: 20)
 	    end
 	  else
 	  	redirect_to '/home'

@@ -15,7 +15,12 @@ Dryclean::Application.routes.draw do
   resources :articles
 
   #Customers
-  resources :customers
+  resources :customers do
+    member do
+      get 'load_order_history'
+    end
+  end
+
   root 'customers#index'
 
   #Orders

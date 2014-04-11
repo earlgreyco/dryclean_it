@@ -72,65 +72,8 @@
 <%= simple_form_for Order.new, remote: true, html: {id:"new-order-form", class: "order-form"} do |f| %>
 	<%= f.input :customer_id, input_html: {value: customer.id, class: "hidden"}, label: false %>
 	<%= f.submit "Place Order", class: "orange-button button place-order-button", style: "border: 0px !important;" %>
-	<%= link_to "Order History", "#!", class: "grey-button button order-history-button", remote: true %>
+	<%= link_to "Order History", load_order_history_customer_path(customer), class: "grey-button button order-history-button", remote: true %>
 <% end %>
 
-<!-- order history -->
-
-<div class="order-history">
-	<table class="order-history-table">
-		<tr>
-			<th>#</th>
-			<th>Articles</th>
-			<th>Total Price</th>
-			<th>Tag #</th>
-			<th>Rack #</th>
-			<th>Drop Off Date</th>
-			<th>Pick Up Date</th>
-		</tr>
-
-		<% customer.orders.recent_ones_first.each do |order| %>
-		</tr>
-			<td><%= order.id %></td>
-			<td>
-				<ul>
-				<% order.order_items.each do |order_item| %>
-					<li>
-						<% if order_item.quantity > 0 %>
-							<%= best_in_place order_item, :quantity %>
-							<%= order_item.name.pluralize(order_item.quantity) %>
-						<% end %>
-					</li>
-				<% end %>
-				</ul>
-			</td>
-			<td>
-				$<%= best_in_place order, :total_price %>
-				<div class="<%= 'blue' if order.credits_used > 0 %>">
-					<%= best_in_place order, :credits_used %> <%= "credit".pluralize(order.credits_used) %>
-				</div>
-			</td>
-			<td><%= best_in_place order, :tag_number %></td>
-			<td><%= best_in_place order, :rack_number %></td>
-			<td>
-				<%= order.created_at.in_time_zone("Pacific Time (US & Canada)").strftime("%D") %><br>
-				<%= order.created_at.in_time_zone("Pacific Time (US & Canada)").strftime("%I:%M%p") %>
-			</td>
-			<td class="pickup-<%=order.id %>" style="min-width: 165px;">
-				<div class="estimated-date">
-					<%= order.pickup_date.in_time_zone("Pacific Time (US & Canada)").strftime("%D") %>
-				</div>
-				<% if order.picked_up == true %>
-					<div class="pickup-button" style="min-width:125px !important;">
-						<%= link_to "Undo", reverse_pickup_order_path(order), class: "deactivated-button button pickup-button-action", remote: true %>
-					</div>
-				<% else %>
-					<div class="pickup-button" style="min-width: 125px !important;">
-						<%= link_to "Picked Up", save_pickup_date_order_path(order), class: "orange-button button pickup-button-action", remote: true %>
-					</div>
-				<% end %>
-			</td>
-		<tr>
-		<% end %>
-	</table>
+<div class="order-history-section-<%= customer.id %>">
 </div>
