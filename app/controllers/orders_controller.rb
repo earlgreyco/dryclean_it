@@ -1,6 +1,14 @@
 class OrdersController < ApplicationController
 	respond_to :html, :json
 
+	def customer_receipt
+		@order = Order.find(params[:id])
+	end
+
+	def business_receipt
+		@order = Order.find(params[:id])
+	end
+
 	def show
 		@order = Order.find(params[:id])
 	end
