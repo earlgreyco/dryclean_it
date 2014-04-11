@@ -38,10 +38,10 @@
 	<% end %>
 
 	<div id="order-modal-tag">
-		<%= best_in_place order, :tag_number, html_attrs: { default: "hello" } %>
+		<%= best_in_place order, :tag_number %>
 	</div>
 </div>
-<div class="modal-footer" style="display: none; text-align: center !important; padding: 50px 20px 0px 20px !important;">
+<div class="modal-footer order-modal-footer">
 	<%= link_to "Complete Order!", customers_path, class: "button orange-button" %>
 </div>
 

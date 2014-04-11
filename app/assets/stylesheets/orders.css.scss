@@ -105,12 +105,6 @@ PLACE ORDER
 	width: 362px;
 }
 
-.business-info{
-	padding: 30px 0px;
-	font-weight: bold;
-	font-size: 20px;
-}
-
 
 /**********
 
@@ -168,7 +162,7 @@ ORDER MODAL
 #order-modal-tag{
 	display: none;
 	padding-top: 70px;
-	padding-bottom: 72px;
+	padding-bottom: 55px;
 
 	.best_in_place{
 		input{
@@ -185,6 +179,13 @@ ORDER MODAL
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 20px;
+}
+
+.order-modal-footer{
+	display: none; 
+	text-align: center !important; 
+	padding: 0px !important;
+	border: 0px !important;
 }
 
 
