@@ -63,10 +63,9 @@ class OrdersController < ApplicationController
 
 	def update
 		@order = Order.find(params[:id])
-		@rack_number_changed = false
 		@updated = @order.update_attributes(order_params)
-		if @order.rack_number != nil && @order.rack_number != ""
-			@rack_number_changed = true
+		if @order.rack_number_changed?
+			@order.picked_up = false
 		end
 		respond_to do |format|
 			format.json { respond_with_bip(@order) }
