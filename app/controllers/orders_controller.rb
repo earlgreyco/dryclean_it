@@ -45,8 +45,10 @@ class OrdersController < ApplicationController
 		@order.user_id = current_user.id
 
 		if Order.last != nil
-			@order.order_number = (Order.last.id+1).to_s
+			@order.id = Order.recent_ones_first.first.id+1
+			@order.order_number = (Order.recent_ones_first.first.id+1).to_s
 		else
+			@order.id = 0
 			@order.order_number = "0"
 		end
 

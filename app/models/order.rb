@@ -10,7 +10,7 @@ class Order < ActiveRecord::Base
 	belongs_to :customer
   delegate :first_name, :last_name, :img, :phone, :credits, :starch, to: :customer, prefix: true
 	validates_presence_of :customer_id, :user_id, :total_price
-  scope :recent_ones_first, -> {order('created_at DESC')}
+  scope :recent_ones_first, -> {order('id DESC')}
   scope :card, -> {where(payment_type: "card")}
   scope :cash, -> {where(payment_type: "cash")}
   scope :check, -> {where(payment_type: "check")}
