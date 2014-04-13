@@ -29,6 +29,16 @@
 				<% @order.order_items.each do |order_item| %>
 					<div class="single-order-item">
 						<%= order_item.quantity %> <%= order_item.name.pluralize(order_item.quantity) %>
+						<br>
+						<b>
+						<% if order_item.cleaning_method == "launder" %>
+							<% if @order.customer.starch == "yes" %>
+								[ starch ]
+							<% else %>
+								[ no starch ]
+							<% end %>
+						<% end %>
+						</b>
 					</div>
 				<% end %>
 			</div>

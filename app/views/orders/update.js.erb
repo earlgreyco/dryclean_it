@@ -1,17 +1,4 @@
-<% if @order.rack_number_changed? %>
+<% if @updated %>
 	$('.rack-search-field').val('');
 	$(".rack-search-field").focus();
-
-	$('.pickup-<%= @order.id %>').html("<div class='estimated-date'><%= @new_pickup_date.in_time_zone('Pacific Time (US & Canada)').strftime('%D') %></div>");
-	$('.pickup-<%= @order.id %>').append("<%= j render partial: 'orders/pickup_button', locals: {order: @order} %>");
-	<% @pickup = false %>
-	<% @order.customer.orders.each do |order| %>
-		<% if order.picked_up == false %>
-			<% @pickup = true %>
-		<% end %>
-	<% end %>
-
-	<% if @pickup == true %>
-		$('.customer-<%= @order.customer.id %>').html("<div class='customer-img orange-bg'></div>");
-	<% end %>
 <% end %>

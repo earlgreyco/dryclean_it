@@ -15,6 +15,7 @@
 		<% if @order %>
 			<%= simple_form_for @order, remote: true do |f| %>
 				<%= f.input :rack_number, label: false, placeholder: "Rack #", input_html: {class: "input rack-field"} %>
+				<%= f.input :picked_up, input_html: {checked: false, style: "display: none;"}, label: false %>
 				<%= f.submit "rack number", style: "visibility: hidden;" %>
 			<% end %>
 			<div class="order-info">
