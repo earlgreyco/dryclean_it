@@ -11,15 +11,6 @@ class OrdersController < ApplicationController
 		@dashboard = false
 	end
 
-	def reports
-		@orders = current_user.orders
-		if params[:query].present?
-			@orders = current_user.orders.search(params[:query])
-		else
-			@orders = @orders
-		end
-	end
-
 	def rack_it
 		@orders = current_user.orders
 		if params[:query].present?

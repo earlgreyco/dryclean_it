@@ -35,7 +35,6 @@ Dryclean::Application.routes.draw do
       get 'load_order_price'
     end
   end
-  match '/reports', to: 'orders#reports', via: 'get'
   match '/rack-it', to: 'orders#rack_it', via: 'get'
   match '/orders/:id/customer-receipt', to: 'orders#customer_receipt', via: 'get'
   match '/orders/:id/business-receipt', to: 'orders#business_receipt', via: 'get'
